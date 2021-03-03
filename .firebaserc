@@ -1,6 +1,6 @@
 {
   "projects": {
     "production": "reportix-7480e",
-    "default": "reportix-7480e"
+    "default": "reportix-dev"
   }
 }
