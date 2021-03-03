@@ -8,6 +8,7 @@
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.1",
     "antd": "^4.13.0",
+    "antd-styled": "^1.1.56",
     "env-cmd": "^10.1.0",
     "eslint": "^7.17.0",
     "firebase": "^8.2.6",
@@ -17,8 +18,8 @@
     "node-sass": "^4.14.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-router-dom": "^5.2.0",
     "react-hook-form": "^6.15.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.0"
   },
