@@ -1,33 +1,28 @@
 import { useEffect, useState } from 'react'
-import firebaseConfig from './constants/firebaseConfig'
-import Login from 'components/Login'
+import FIREBASE_CONFIG from './constants/firebaseConfig'
+import Login from './services/Auth/Login'
 import { auth } from './services/Firebase/firebase'
 import { Dashboard } from 'components'
-import { ROUTES_PATHS, ROUTES_VALUE } from './constants'
+// import { ROUTES_PATHS, ROUTES_VALUE } from './constants'
 import { PrivateRoute } from 'components/PrivateRoute'
 import { Redirect, Route, Switch } from 'react-router-dom'
-import { START_PAGE } from './constants/role'
-import { useSession } from './context/SesionContext'
+// import { START_PAGE } from './constants/role'
+// import { useSession } from './context/SesionContext'
+import { BrowserRouter as Router } from 'react-router-dom'
+import { AuthProvider } from './services/Auth/Auth'
+import SignUp from './services/Auth/SignUp'
 
 const App = () => {
-  const session = useSession()
-
   return (
-    <Switch>
-      {ROUTES_VALUE.map((route) => {
-        if (route.protect) {
-          return <PrivateRoute {...route} key={route.path} />
-        }
-        return <Route key={route.path} {...route} />
-      })}
-      <Redirect
-        to={
-          (session && START_PAGE[session?.role?.toUpperCase()]) ||
-          ROUTES_PATHS.LOGIN
-          // '/dashboard'
-        }
-      />
-    </Switch>
+    <AuthProvider>
+      <Router>
+        <>
+          <PrivateRoute exact path="/" component={Dashboard} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={SignUp} />
+        </>
+      </Router>
+    </AuthProvider>
   )
 }
 
