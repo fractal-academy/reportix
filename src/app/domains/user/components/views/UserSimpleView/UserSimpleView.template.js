@@ -1,7 +1,7 @@
 import { Avatar } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
-import { Row, Col, Box } from '@qonsoll/react-design'
-import { Typography, Space } from 'antd'
+import { Row, Col } from '@qonsoll/react-design'
+import { Typography } from 'antd'
 const { Text } = Typography
 
 const UserSimpleView = (props) => {
