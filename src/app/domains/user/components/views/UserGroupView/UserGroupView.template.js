@@ -1,6 +1,7 @@
 import { Avatar } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
 import { Row, Col } from '@qonsoll/react-design'
+import { style } from './UserGroupView.styles'
 
 const mockData = [
   {
@@ -22,7 +23,7 @@ const UserGroupView = (props) => {
         <Avatar.Group
           maxCount={maxCount}
           size={avatarSize}
-          maxStyle={{ color: '#f56a00', backgroundColor: '#fde3cf' }}>
+          maxStyle={style.maxStyle}>
           {mockData.map((item) => (
             <Avatar
               key={item.src}
