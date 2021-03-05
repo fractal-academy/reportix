@@ -2,11 +2,12 @@ import { ThemeProvider } from '@qonsoll/react-design'
 import Theme from '../config/theme'
 import '../config/root.scss'
 import 'antd/dist/antd.css'
+import { Box } from '@qonsoll/react-design'
 
-function App() {
+const App = () => {
   return (
     <ThemeProvider theme={Theme}>
-      <div>Hello app</div>
+      <Box>Hello</Box>
     </ThemeProvider>
   )
 }
