@@ -14,10 +14,10 @@ const UserSimpleView = (props) => {
         <Avatar size={avatarSize} src={avatarURL} icon={<UserOutlined />} />
       </Col>
       <Col cw="auto" px={0}>
-        <Row>
+        <Row v="center" noOuterGutters>
           <Col>{withName && <Text>{name}</Text>}</Col>
         </Row>
-        <Row>
+        <Row v="center" noOuterGutters>
           <Col>{withEmail && <Text>{email}</Text>}</Col>
         </Row>
       </Col>
