@@ -4,14 +4,6 @@ import { Row, Col } from '@qonsoll/react-design'
 import { PropTypes } from 'prop-types'
 import { style } from 'app/style'
 
-const pages = [
-  'Company dashboard',
-  'Calendar',
-  'Projects',
-  'Reports',
-  'Statistic'
-]
-
 const Layout = (props) => {
   const { title, children } = props
   return (
@@ -24,7 +16,7 @@ const Layout = (props) => {
       </Row>
       <Row>
         <Col cw={[4, 3, 2]} px={3}>
-          <Menu pages={pages} />
+          <Menu />
         </Col>
         <Col cw={10}>{children}</Col>
       </Row>

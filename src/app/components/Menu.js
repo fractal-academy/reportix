@@ -1,11 +1,10 @@
 import { Menu, Typography, Divider } from 'antd'
 import { PropTypes } from 'prop-types'
+import { pages } from 'app/constants'
 
 const { Text } = Typography
 
 const CustomMenu = (props) => {
-  const { pages } = props
-
   return (
     <Menu>
       {pages.map((page, index) => (
