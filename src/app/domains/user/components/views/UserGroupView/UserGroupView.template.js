@@ -15,12 +15,12 @@ const mockData = [
 ]
 
 const UserGroupView = (props) => {
-  const { avatarSize } = props
+  const { avatarSize, maxCount } = props
   return (
     <Row v="center" noOuterGutters>
       <Col cw="auto">
         <Avatar.Group
-          maxCount={2}
+          maxCount={maxCount}
           size={avatarSize}
           maxStyle={{ color: '#f56a00', backgroundColor: '#fde3cf' }}>
           {mockData.map((item) => (
@@ -37,6 +37,7 @@ const UserGroupView = (props) => {
   )
 }
 UserGroupView.defaultProps = {
-  avatarSize: 'large'
+  avatarSize: 'large',
+  maxCount: 2
 }
 export default UserGroupView
