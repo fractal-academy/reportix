@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-// import { SessionSimpleView } from 'domains/Session/components/views'
+import { SessionSimpleView } from 'domains/Session/components/views'
 import { auth } from 'app/services/Firebase/firebase'
 import { Dashboard } from 'components/Dashboard'
 import Login from '../../../../services/Auth/Login'

@@ -76,7 +76,12 @@ const SignUp = ({ history }) => {
             </Form.Item>
 
             <Form.Item {...tailLayout}>
-              <Button type="primary">Sign Up</Button>
+              <Button
+                type="primary"
+                htmlType="submit"
+                onClick={() => console.log('1')}>
+                Sign Up
+              </Button>
             </Form.Item>
 
             <Button
