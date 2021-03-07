@@ -1,7 +1,7 @@
 import { Button, Form, Input } from 'antd'
 import { useCallback, useContext } from 'react'
 import { Redirect, withRouter } from 'react-router-dom'
-import { fbAuth } from '../Firebase/firebase'
+import { auth } from '../Firebase/firebase'
 import { AuthContext } from '../../context/SesionContext/useSession'
 import Title from 'antd/lib/typography/Title'
 import { Container, Row, Col } from '@qonsoll/react-design'
@@ -11,7 +11,7 @@ const Login = ({ history }) => {
     async (event) => {
       const { email, password } = event
       try {
-        await fbAuth.signInWithEmailAndPassword(email, password)
+        await auth.signInWithEmailAndPassword(email, password)
         history.push('/')
       } catch (error) {
         console.log(error)

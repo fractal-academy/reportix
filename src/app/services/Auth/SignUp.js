@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import { fbAuth } from '../Firebase/firebase'
+import { auth } from '../Firebase/firebase'
 import { Button, Form, Input } from 'antd'
 import { withRouter } from 'react-router-dom'
 import Title from 'antd/es/typography/Title'
@@ -10,7 +10,7 @@ const SignUp = ({ history }) => {
     async (event) => {
       const { email, password } = event
       try {
-        await fbAuth.createUserWithEmailAndPassword(email, password)
+        await auth.createUserWithEmailAndPassword(email, password)
         history.push('/')
       } catch (error) {
         console.log(error)
