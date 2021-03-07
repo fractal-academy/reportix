@@ -1,5 +1,5 @@
 const ROUTES_PATHS = {
   LOGIN: '/login',
-  DASHBOARD: '/dashboard'
+  DASHBOARD: '/'
 }
 export default ROUTES_PATHS
