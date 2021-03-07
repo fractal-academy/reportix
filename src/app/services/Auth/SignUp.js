@@ -13,26 +13,16 @@ const SignUp = ({ history }) => {
         await fbAuth.createUserWithEmailAndPassword(email, password)
         history.push('/')
       } catch (error) {
-        alert(error)
+        console.log(error)
       }
     },
     [history]
   )
 
   const layout = {
-    // labelCol: {
-    //   span: 6
-    // },
-    wrapperCol: {
-      // span: 10
-    }
+    wrapperCol: {}
   }
-  const tailLayout = {
-    // wrapperCol: {
-    //   offset: 8,
-    //   span: 16
-    // }
-  }
+  const tailLayout = {}
 
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo)
@@ -76,10 +66,7 @@ const SignUp = ({ history }) => {
             </Form.Item>
 
             <Form.Item {...tailLayout}>
-              <Button
-                type="primary"
-                htmlType="submit"
-                onClick={() => console.log('1')}>
+              <Button type="primary" htmlType="submit">
                 Sign Up
               </Button>
             </Form.Item>

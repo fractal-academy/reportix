@@ -14,7 +14,7 @@ const Login = ({ history }) => {
         await fbAuth.signInWithEmailAndPassword(email, password)
         history.push('/')
       } catch (error) {
-        alert(error)
+        console.log(error)
       }
     },
     [history]
@@ -27,19 +27,11 @@ const Login = ({ history }) => {
   }
 
   const layout = {
-    labelCol: {
-      // span: 8
-      //
-    },
-    wrapperCol: {
-      // span: 10
-    }
+    labelCol: {},
+    wrapperCol: {}
   }
   const tailLayout = {
-    wrapperCol: {
-      // offset: 8,
-      // span: 16
-    }
+    wrapperCol: {}
   }
 
   const onFinishFailed = (errorInfo) => {

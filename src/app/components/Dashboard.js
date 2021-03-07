@@ -1,4 +1,4 @@
-import { Button, Card } from 'antd'
+import { Button, Card, Typography } from 'antd'
 import { fbAuth } from '../services/Firebase/firebase'
 import { useContext } from 'react'
 import { AuthContext } from '../services/Auth'
@@ -9,7 +9,9 @@ const Dashboard = () => {
   return (
     <Card>
       <h2>Dashboard</h2>
-      <h1>{currentUser.email}</h1>
+      <h1>
+        <Typography>Current user: {currentUser.email}</Typography>
+      </h1>
       <Button onClick={() => fbAuth.signOut()}>Sign out</Button>
     </Card>
   )
