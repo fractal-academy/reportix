@@ -3,7 +3,7 @@ import { Login } from './services/Auth'
 import { SignUp } from './services/Auth'
 import Dashboard from 'components'
 import PrivateRoute from 'components/PrivateRoute'
-import { AuthProvider } from './services/Auth/Authentification'
+import { AuthProvider } from './context/SesionContext/useSession'
 
 const App = () => {
   return (

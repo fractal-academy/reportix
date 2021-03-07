@@ -1,7 +1,7 @@
 import { Button, Card, Typography } from 'antd'
 import { fbAuth } from '../services/Firebase/firebase'
 import { useContext } from 'react'
-import { AuthContext } from '../services/Auth'
+import AuthContext from '../context/SesionContext'
 
 const Dashboard = () => {
   const { currentUser } = useContext(AuthContext)

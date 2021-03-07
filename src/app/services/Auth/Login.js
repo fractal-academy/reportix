@@ -2,7 +2,7 @@ import { Button, Form, Input } from 'antd'
 import { useCallback, useContext } from 'react'
 import { Redirect, withRouter } from 'react-router-dom'
 import { fbAuth } from '../Firebase/firebase'
-import { AuthContext } from './Authentification'
+import { AuthContext } from '../../context/SesionContext/useSession'
 import Title from 'antd/lib/typography/Title'
 import { Container, Row, Col } from '@qonsoll/react-design'
 
