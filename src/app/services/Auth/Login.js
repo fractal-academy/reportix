@@ -1,29 +1,26 @@
 import { Button, Form, Input } from 'antd'
 import { useCallback, useContext } from 'react'
 import { Redirect, withRouter } from 'react-router-dom'
-import { auth } from '../Firebase/firebase'
-import { AuthContext } from './Auth'
+import { fbAuth } from '../Firebase/firebase'
+import { AuthContext } from './Authentification'
 import Title from 'antd/lib/typography/Title'
 import { Container, Row, Col } from '@qonsoll/react-design'
-import { useSession } from '../../context/SesionContext'
 
 const Login = ({ history }) => {
-  const { currentUser, setCurrentUser } = useSession()
-
   const handleLogin = useCallback(
     async (event) => {
       const { email, password } = event
       try {
-        const user = await auth.signInWithEmailAndPassword(email, password)
-        console.log(user, user.user.providerData[0])
-        setCurrentUser(user.user.providerData[0].email)
+        await fbAuth.signInWithEmailAndPassword(email, password)
         history.push('/')
       } catch (error) {
-        console.log(error)
+        alert(error)
       }
     },
     [history]
   )
+
+  const { currentUser } = useContext(AuthContext)
 
   if (currentUser) {
     return <Redirect to="/" />

@@ -2,8 +2,8 @@
 // import { SessionLogin } from 'domains/Session/routes'
 
 import ROUTES_PATHS from './routhPaths'
-import { Dashboard } from 'components'
-import { Login } from 'components'
+import Dashboard from 'components'
+import { Login } from 'app/services/Auth'
 
 const ROUTES = {
   LOGIN: {

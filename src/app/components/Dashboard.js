@@ -1,16 +1,16 @@
 import { Button, Card } from 'antd'
-import { auth } from '../services/Firebase/firebase'
+import { fbAuth } from '../services/Firebase/firebase'
 import { useContext } from 'react'
-import { useSession } from '../context/SesionContext'
+import { AuthContext } from '../services/Auth'
 
 const Dashboard = () => {
-  const user = useSession()
-  console.log('user', user)
+  const { currentUser } = useContext(AuthContext)
+
   return (
     <Card>
       <h2>Dashboard</h2>
-
-      <Button onClick={() => auth.signOut()}>Sign out</Button>
+      <h1>{currentUser.email}</h1>
+      <Button onClick={() => fbAuth.signOut()}>Sign out</Button>
     </Card>
   )
 }

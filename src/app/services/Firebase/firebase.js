@@ -12,10 +12,10 @@ if (!firebase.apps.length) {
   firebase.app()
 }
 
-const auth = firebase.auth()
+const fbAuth = firebase.auth()
 const storage = firebase.storage()
 const firestore = firebase.firestore()
 
 export default firebase
 
-export { auth, storage, firestore }
+export { fbAuth, storage, firestore }

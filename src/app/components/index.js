@@ -1,3 +1,2 @@
-import Login from '../services/Auth/Login'
-import Dashboard from 'components/Dashboard'
-export { Login, Dashboard }
+import Dashboard from './Dashboard'
+export default Dashboard

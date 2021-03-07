@@ -1,9 +1,9 @@
-import Login from './services/Auth/Login'
-import { Dashboard } from 'components'
-import { PrivateRoute } from 'components/PrivateRoute'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import { AuthProvider } from './services/Auth/Auth'
-import SignUp from './services/Auth/SignUp'
+import { Login } from './services/Auth'
+import { SignUp } from './services/Auth'
+import Dashboard from 'components'
+import PrivateRoute from 'components/PrivateRoute'
+import { AuthProvider } from './services/Auth/Authentification'
 
 const App = () => {
   return (
