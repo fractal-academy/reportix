@@ -4,7 +4,7 @@ import { Row, Col } from '@qonsoll/react-design'
 import { PropTypes } from 'prop-types'
 import { style } from 'app/style'
 
-const Layout = (props) => {
+const PageWrapper = (props) => {
   const { title, children } = props
   return (
     <>
@@ -15,7 +15,7 @@ const Layout = (props) => {
         </Col>
       </Row>
       <Row>
-        <Col cw={[4, 3, 2]} px={3}>
+        <Col cw={[3, 3, 2]}>
           <Menu />
         </Col>
         <Col cw={10}>{children}</Col>
@@ -24,8 +24,8 @@ const Layout = (props) => {
   )
 }
 
-Layout.propTypes = {
+PageWrapper.propTypes = {
   title: PropTypes.string,
   children: PropTypes.element
 }
-export default Layout
+export default PageWrapper

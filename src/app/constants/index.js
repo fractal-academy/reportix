@@ -1,4 +1,4 @@
 import FIREBASE_CONFIG from './firebaseConfig'
-import pages from './pages'
+import PAGES from './pages'
 
-export { FIREBASE_CONFIG, pages }
+export { FIREBASE_CONFIG, PAGES }

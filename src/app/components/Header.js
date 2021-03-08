@@ -11,10 +11,10 @@ const Header = (props) => {
   const { title } = props
   return (
     <Row v="center" py={3} noGutters>
-      <Col cw={[4, 3, 2]}>
+      <Col cw={[3, 3, 2]}>
         <Box textAlign="center">
           <Title level={3} style={style.resetMargin}>
-            Logo
+            Reportix
           </Title>
         </Box>
       </Col>
@@ -40,7 +40,7 @@ const Header = (props) => {
             </Text>
           </Col>
           <Col cw="auto" pr={4}>
-            <UserSimpleView size="xx-large" />
+            <UserSimpleView />
           </Col>
         </Row>
       </Col>

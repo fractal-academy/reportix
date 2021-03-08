@@ -1,4 +1,4 @@
-const pages = [
+const PAGES = [
   'Company dashboard',
   'Calendar',
   'Projects',
@@ -6,4 +6,4 @@ const pages = [
   'Statistic'
 ]
 
-export default pages
+export default PAGES

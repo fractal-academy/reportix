@@ -1,4 +1,4 @@
-import Layout from './Layout'
+import PageWrapper from './PageWrapper'
 import Header from './Header'
 import CustomMenu from './Menu'
-export { Layout, Header, CustomMenu }
+export { PageWrapper, Header, CustomMenu }

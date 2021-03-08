@@ -1,19 +1,19 @@
-import { Menu, Typography, Divider } from 'antd'
+import { Menu, Typography } from 'antd'
 import { PropTypes } from 'prop-types'
-import { pages } from 'app/constants'
+import { PAGES } from 'app/constants'
+import React from 'react'
 
 const { Text } = Typography
 
-const CustomMenu = (props) => {
+const CustomMenu = () => {
   return (
-    <Menu>
-      {pages.map((page, index) => (
-        <>
-          <Menu.Item id={index}>
+    <Menu defaultSelectedKeys={PAGES[0]}>
+      {PAGES.map((page, index) => (
+        <React.Fragment key={index}>
+          <Menu.Item>
             <Text>{page}</Text>
           </Menu.Item>
-          <Divider style={{ margin: 0 }} />
-        </>
+        </React.Fragment>
       ))}
     </Menu>
   )
