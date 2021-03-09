@@ -9,11 +9,9 @@ const App = () => {
   return (
     <AuthProvider>
       <Router>
-        <>
-          <PrivateRoute exact path="/" component={Dashboard} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={SignUp} />
-        </>
+        <PrivateRoute exact path="/" component={Dashboard} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={SignUp} />
       </Router>
     </AuthProvider>
   )

@@ -1,17 +1,16 @@
-import { Button, Card, Typography } from 'antd'
+import { Button, Card } from 'antd'
 import { auth } from '../services/Firebase/firebase'
 import { useContext } from 'react'
 import AuthContext from '../context/SesionContext'
+import Title from 'antd/lib/typography/Title'
 
 const Dashboard = () => {
   const { currentUser } = useContext(AuthContext)
 
   return (
     <Card>
-      <h2>Dashboard</h2>
-      <h1>
-        <Typography>Current user: {currentUser.email}</Typography>
-      </h1>
+      <Title>Dashboard</Title>
+      <Title level={4}>Current user: {currentUser.email}</Title>
       <Button onClick={() => auth.signOut()}>Sign out</Button>
     </Card>
   )

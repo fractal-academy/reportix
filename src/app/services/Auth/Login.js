@@ -14,7 +14,7 @@ const Login = ({ history }) => {
         await auth.signInWithEmailAndPassword(email, password)
         history.push('/')
       } catch (error) {
-        console.log(error)
+        console.error(error)
       }
     },
     [history]
@@ -39,65 +39,63 @@ const Login = ({ history }) => {
   }
 
   return (
-    <>
-      <Container mt={4}>
-        <Row noGutters h="center">
-          <Col cw="6">
-            <Form
-              {...layout}
-              name="basic"
-              initialValues={{
-                remember: true
-              }}
-              onFinish={handleLogin}
-              onFinishFailed={onFinishFailed}>
-              <Form.Item {...tailLayout}>
-                <Title level={1}> Log in</Title>
-              </Form.Item>
+    <Container mt={4}>
+      <Row noGutters h="center">
+        <Col cw="6">
+          <Form
+            {...layout}
+            name="basic"
+            initialValues={{
+              remember: true
+            }}
+            onFinish={handleLogin}
+            onFinishFailed={onFinishFailed}>
+            <Form.Item {...tailLayout}>
+              <Title level={1}> Log in</Title>
+            </Form.Item>
 
-              <Form.Item
-                label="Email"
-                name="email"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Please input your email to Login!'
-                  }
-                ]}>
-                <Input placeholder="Input your email to Login" />
-              </Form.Item>
+            <Form.Item
+              label="Email"
+              name="email"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input your email to Login!'
+                }
+              ]}>
+              <Input placeholder="Input your email to Login" />
+            </Form.Item>
 
-              <Form.Item
-                label="Password"
-                name="password"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Please input your password!'
-                  }
-                ]}>
-                <Input.Password placeholder="Type your password to Login" />
-              </Form.Item>
+            <Form.Item
+              label="Password"
+              name="password"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input your password!'
+                }
+              ]}>
+              <Input.Password placeholder="Type your password to Login" />
+            </Form.Item>
 
-              <Form.Item {...tailLayout}>
-                <Button type="primary" htmlType="submit">
-                  LOG IN
-                </Button>
-              </Form.Item>
+            <Form.Item {...tailLayout}>
+              <Button type="primary" htmlType="submit">
+                LOG IN
+              </Button>
+            </Form.Item>
 
-              <Form.Item {...tailLayout}>
-                <Button
-                  onClick={() => {
-                    history.push('/SignUp')
-                  }}>
-                  Dont have an account yet? Sign Up
-                </Button>
-              </Form.Item>
-            </Form>
-          </Col>
-        </Row>
-      </Container>
-    </>
+            <Form.Item {...tailLayout}>
+              <Button
+                onClick={() => {
+                  history.push('/SignUp')
+                }}>
+                Don't have an account yet? Sign Up
+              </Button>
+            </Form.Item>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
   )
 }
 

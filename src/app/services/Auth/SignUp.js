@@ -13,7 +13,7 @@ const SignUp = ({ history }) => {
         await auth.createUserWithEmailAndPassword(email, password)
         history.push('/')
       } catch (error) {
-        console.log(error)
+        console.error(error)
       }
     },
     [history]
