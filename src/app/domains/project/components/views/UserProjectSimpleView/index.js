@@ -1,1 +1,1 @@
-export { default as CompanyProjectSimpleView } from './UserProjectSimpleView.template'
+export { default as UserProjectSimpleView } from './UserProjectSimpleView.template'
