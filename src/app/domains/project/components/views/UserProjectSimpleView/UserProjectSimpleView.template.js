@@ -44,17 +44,3 @@ UserProjectSimpleView.defaultProps = {
 }
 
 export default UserProjectSimpleView
-
-// hints To insert project to any components
-
-// const projectsArr = [0, 1, 3]
-//
-// <Row>
-// {projectsArr.map((item, index) => (
-//       <Fragment key={index}>
-//         <Col cw={4} mb={3}>
-//           <UserProjectSimpleView />
-//         </Col>
-//       </Fragment>
-//   ))}
-// </Row>
