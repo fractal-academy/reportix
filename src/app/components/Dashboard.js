@@ -9,13 +9,11 @@ const Dashboard = () => {
   const { currentUser } = useSession()
 
   return (
-    <PageWrapper>
-      <Box p={2}>
-        <Title>Dashboard</Title>
-        <Title level={4}>Current user: {currentUser.email}</Title>
-        <Button onClick={() => auth.signOut()}>Sign out</Button>
-      </Box>
-    </PageWrapper>
+    <Box p={2}>
+      <Title>Dashboard</Title>
+      <Title level={4}>Current user: {currentUser.email}</Title>
+      <Button onClick={() => auth.signOut()}>Sign out</Button>
+    </Box>
   )
 }
 
