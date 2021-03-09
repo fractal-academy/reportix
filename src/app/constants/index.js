@@ -1,3 +1,6 @@
-import FIREBASE_CONFIG from './firebaseConfig'
+import FIREBASE_CONFIG from './firebaseConfig.js'
+import ROUTES_PATHS from './routhPaths'
+import ROUTES, { ROUTES_VALUE } from './route'
+import COLLECTIONS from './collection'
 
-export { FIREBASE_CONFIG }
+export { FIREBASE_CONFIG, ROUTES, ROUTES_PATHS, ROUTES_VALUE, COLLECTIONS }
