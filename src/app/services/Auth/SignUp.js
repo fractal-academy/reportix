@@ -75,7 +75,7 @@ const SignUp = ({ history }) => {
               onClick={() => {
                 history.push('/Login')
               }}>
-              Already has an account? LogIn
+              Already have an account? LogIn
             </Button>
           </Form>
         </Col>
