@@ -4,6 +4,7 @@ import { Button, Form, Input } from 'antd'
 import { withRouter } from 'react-router-dom'
 import Title from 'antd/es/typography/Title'
 import { Container, Row, Col } from '@qonsoll/react-design'
+import { ROUTES_PATHS } from 'app/constants'
 
 const SignUp = ({ history }) => {
   const handleSignUp = useCallback(
@@ -73,7 +74,7 @@ const SignUp = ({ history }) => {
 
             <Button
               onClick={() => {
-                history.push('/Login')
+                history.push(ROUTES_PATHS.LOGIN)
               }}>
               Already have an account? LogIn
             </Button>

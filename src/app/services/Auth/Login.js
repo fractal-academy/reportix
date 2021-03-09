@@ -5,6 +5,7 @@ import { auth } from '../Firebase/firebase'
 import { AuthContext } from '../../context/SesionContext/useSession'
 import Title from 'antd/lib/typography/Title'
 import { Container, Row, Col } from '@qonsoll/react-design'
+import { ROUTES_PATHS } from 'app/constants'
 
 const Login = ({ history }) => {
   const handleLogin = useCallback(
@@ -87,7 +88,7 @@ const Login = ({ history }) => {
             <Form.Item {...tailLayout}>
               <Button
                 onClick={() => {
-                  history.push('/SignUp')
+                  history.push(ROUTES_PATHS.SIGN_UP)
                 }}>
                 Don't have an account yet? Sign Up
               </Button>
