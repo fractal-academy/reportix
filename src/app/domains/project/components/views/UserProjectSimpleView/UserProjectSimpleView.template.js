@@ -12,7 +12,7 @@ const UserProjectSimpleView = (props) => {
       hoverColor="red">
       <Row>
         <Col>
-          <Row mb={2} mt={2} noGutters>
+          <Row my={2} noGutters>
             <Col cw="auto">
               <Text strong>Company: </Text>
               <Text>{company}</Text>
