@@ -1,2 +1,3 @@
-import { AuthContext } from './useSession'
+import { AuthContext, useSession } from './useSession'
+export { useSession }
 export default AuthContext
