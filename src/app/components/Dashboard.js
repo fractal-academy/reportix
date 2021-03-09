@@ -1,7 +1,7 @@
-import { Button, Card } from 'antd'
-import { auth } from '../services/Firebase/firebase'
+import { Button } from 'antd'
+import { auth } from 'app/services/Firebase/firebase'
 import Title from 'antd/lib/typography/Title'
-import { useSession } from '../context/SesionContext'
+import { useSession } from 'app/context/SesionContext'
 import { Box } from '@qonsoll/react-design'
 import PageWrapper from 'components/PageWrapper'
 

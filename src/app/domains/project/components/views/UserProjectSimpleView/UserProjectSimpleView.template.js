@@ -20,9 +20,7 @@ const UserProjectSimpleView = (props) => {
           </Row>
           <Row mb={2} noGutters>
             <Col>
-              <Text ы strong>
-                Projects:
-              </Text>
+              <Text strong>Projects:</Text>
               <Text>{withProjects ? project : 'none'}</Text>
             </Col>
           </Row>
