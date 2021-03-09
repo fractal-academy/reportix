@@ -5,6 +5,7 @@ import { ThemeProvider } from '@qonsoll/react-design'
 import Theme from 'app/config/theme'
 import { ROUTES_VALUE } from 'app/constants'
 import 'app/config/root.scss'
+import { PageWrapper } from 'components'
 
 const App = () => {
   return (
@@ -13,7 +14,11 @@ const App = () => {
         <Switch>
           {ROUTES_VALUE.map((route) => {
             if (route.protect) {
-              return <PrivateRoute key={route.path} {...route} />
+              return (
+                <PageWrapper>
+                  <PrivateRoute key={route.path} {...route} />
+                </PageWrapper>
+              )
             }
             return <Route key={route.path} {...route} />
           })}
