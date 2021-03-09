@@ -1,5 +1,6 @@
 const ROUTES_PATHS = {
   LOGIN: '/login',
-  DASHBOARD: '/'
+  DASHBOARD: '/',
+  SIGN_UP: '/signup'
 }
 export default ROUTES_PATHS

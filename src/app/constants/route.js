@@ -2,14 +2,11 @@
 // import { SessionLogin } from 'domains/Session/routes'
 
 import ROUTES_PATHS from './routhPaths'
-import Dashboard from 'components'
-import { Login } from 'app/services/Auth'
+import { Dashboard } from 'components'
+import { Login, SignUp } from 'app/services/Auth'
 
 const ROUTES = {
   LOGIN: {
-    protect: [
-      /*'admin', 'user'*/
-    ],
     component: Login,
     path: ROUTES_PATHS.LOGIN,
     exact: true
@@ -20,6 +17,11 @@ const ROUTES = {
     ],
     component: Dashboard,
     path: ROUTES_PATHS.DASHBOARD,
+    exact: true
+  },
+  SIGN_UP: {
+    component: SignUp,
+    path: ROUTES_PATHS.SIGN_UP,
     exact: true
   }
 }
