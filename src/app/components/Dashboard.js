@@ -4,16 +4,18 @@ import Title from 'antd/lib/typography/Title'
 import { useSession } from 'app/context/SesionContext'
 import { Box } from '@qonsoll/react-design'
 import { ProjectAdvancedView } from 'domains/project/components/views/ProjectAdvancedView'
+import { UserShow } from 'domains/user/routes'
 
 const Dashboard = () => {
   const { currentUser } = useSession()
 
   return (
     <Box p={2}>
-      <Title>Dashboard</Title>
-      <Title level={4}>Current user: {currentUser.email}</Title>
-      <ProjectAdvancedView />
-      <Button onClick={() => auth.signOut()}>Sign out</Button>
+      <UserShow />
+      {/*<Title>Dashboard</Title>*/}
+      {/*<Title level={4}>Current user: {currentUser.email}</Title>*/}
+      {/*/!*<ProjectAdvancedView />*!/*/}
+      {/*<Button onClick={() => auth.signOut()}>Sign out</Button>*/}
     </Box>
   )
 }
