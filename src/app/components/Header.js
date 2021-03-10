@@ -1,14 +1,24 @@
 import { BellOutlined, LeftOutlined } from '@ant-design/icons'
-import { Typography } from 'antd'
+import { Typography, Dropdown, Menu } from 'antd'
 import { Box, Row, Col } from '@qonsoll/react-design'
 import { style } from 'app/style'
 import { PropTypes } from 'prop-types'
 import { UserSimpleView } from 'domains/user/components/views/UserSimpleView'
+import { auth } from 'app/services/Firebase/firebase'
 
 const { Title, Text } = Typography
 
 const Header = (props) => {
   const { title } = props
+
+  const dropdownMenu = (
+    <Menu>
+      <Menu.Item key="0">Profile</Menu.Item>
+      <Menu.Item key="1" onClick={() => auth.signOut()}>
+        Log Out
+      </Menu.Item>
+    </Menu>
+  )
   return (
     <Row v="center" py={3} noGutters>
       <Col cw={[3, 3, 2]}>
@@ -40,7 +50,11 @@ const Header = (props) => {
             </Text>
           </Col>
           <Col cw="auto" pr={4}>
-            <UserSimpleView />
+            <Dropdown overlay={dropdownMenu} trigger={['click']} arrow>
+              <Box onClick={(e) => e.preventDefault()}>
+                <UserSimpleView withName={false} withEmail={false} />
+              </Box>
+            </Dropdown>
           </Col>
         </Row>
       </Col>
