@@ -1,7 +1,7 @@
 import { Box, Col, Row } from '@qonsoll/react-design'
 import Text from 'antd/lib/typography/Text'
 
-const UserProjectSimpleView = (props) => {
+const ProjectAdvancedView = (props) => {
   const { company, withProjects, project, withTasks, tasks } = props
   return (
     <Box
@@ -35,7 +35,7 @@ const UserProjectSimpleView = (props) => {
     </Box>
   )
 }
-UserProjectSimpleView.defaultProps = {
+ProjectAdvancedView.defaultProps = {
   company: 'Senseteq',
   withProjects: true,
   project: 'Expences-tracking-app',
@@ -43,7 +43,7 @@ UserProjectSimpleView.defaultProps = {
   tasks: '20'
 }
 
-export default UserProjectSimpleView
+export default ProjectAdvancedView
 
 // hints To insert project to any components
 
@@ -53,7 +53,7 @@ export default UserProjectSimpleView
 // {projectsArr.map((item, index) => (
 //       <Fragment key={index}>
 //         <Col cw={4} mb={3}>
-//           <UserProjectSimpleView />
+//           <ProjectAdvancedView />
 //         </Col>
 //       </Fragment>
 //   ))}
