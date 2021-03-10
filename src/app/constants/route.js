@@ -11,17 +11,17 @@ const ROUTES = {
     path: ROUTES_PATHS.LOGIN,
     exact: true
   },
+  SIGN_UP: {
+    component: SignUp,
+    path: ROUTES_PATHS.SIGN_UP,
+    exact: true
+  },
   DASHBOARD: {
     protect: [
       /*'admin', 'user'*/
     ],
     component: Dashboard,
     path: ROUTES_PATHS.DASHBOARD,
-    exact: true
-  },
-  SIGN_UP: {
-    component: SignUp,
-    path: ROUTES_PATHS.SIGN_UP,
     exact: true
   }
 }
