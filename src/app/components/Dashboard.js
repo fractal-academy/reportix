@@ -14,15 +14,6 @@ const Dashboard = () => {
     <Box p={2}>
       <Title>Dashboard</Title>
       <Title level={4}>Current user: {currentUser.email}</Title>
-      <Row>
-        {projectsArr.map((item, index) => (
-          <Fragment key={index}>
-            <Col cw={4} mb={3}>
-              <ProjectAdvancedView />
-            </Col>
-          </Fragment>
-        ))}
-      </Row>
       <Button onClick={() => auth.signOut()}>Sign out</Button>
     </Box>
   )
