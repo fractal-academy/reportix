@@ -14,7 +14,11 @@ const App = () => {
         <Switch>
           {ROUTES_VALUE.map((route) => {
             if (route.protect) {
-              return <PrivateRoute key={route.path} {...route} />
+              return (
+                <PageWrapper>
+                  <PrivateRoute key={route.path} {...route} />
+                </PageWrapper>
+              )
             }
             return <Route key={route.path} {...route} />
           })}
