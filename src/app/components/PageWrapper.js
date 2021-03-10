@@ -18,7 +18,7 @@ const PageWrapper = (props) => {
         <Col cw={[3, 3, 2]}>
           <Menu />
         </Col>
-        <Col cw={10}>{children}</Col>
+        <Col>{children}</Col>
       </Row>
     </>
   )
