@@ -6,7 +6,8 @@ const ProjectAdvancedView = (props) => {
   const { company, withProjects, project, withTasks, tasks } = props
   return (
     <Box
-      p={2}
+      py={4}
+      px={2}
       mb={2}
       border="1px solid lightgrey"
       borderRadius="md"
