@@ -2,8 +2,8 @@ import { Button } from 'antd'
 import { auth } from 'app/services/Firebase/firebase'
 import Title from 'antd/lib/typography/Title'
 import { useSession } from 'app/context/SesionContext'
-import { Box } from '@qonsoll/react-design'
 import InvoiceAdvancedView from 'domains/Invoice/components/view/InvoiceAdvancedView'
+import { Box } from '@qonsoll/react-design'
 
 const Dashboard = () => {
   const { currentUser } = useSession()
@@ -13,7 +13,6 @@ const Dashboard = () => {
       <Title>Dashboard</Title>
       <Title level={4}>Current user: {currentUser.email}</Title>
       <InvoiceAdvancedView status="Approved" />
-
       <Button onClick={() => auth.signOut()}>Sign out</Button>
     </Box>
   )
