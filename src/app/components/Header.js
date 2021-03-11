@@ -31,7 +31,11 @@ const Header = (props) => {
   return (
     <Row v="center" py={3} noGutters>
       <Col cw={[3, 3, 2]}>
-        <Box textAlign="center">
+        <Box
+          textAlign="center"
+          onClick={() => {
+            history.push(ROUTES_PATHS.DASHBOARD)
+          }}>
           <Title level={3} style={style.resetMargin}>
             Reportix
           </Title>
