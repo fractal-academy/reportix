@@ -12,10 +12,10 @@ const App = () => {
     <ThemeProvider theme={Theme}>
       <AuthProvider>
         <Switch>
-          {ROUTES_VALUE.map((route) => {
+          {ROUTES_VALUE.map((route, index) => {
             if (route.protect) {
               return (
-                <PageWrapper>
+                <PageWrapper key={index}>
                   <PrivateRoute key={route.path} {...route} />
                 </PageWrapper>
               )
