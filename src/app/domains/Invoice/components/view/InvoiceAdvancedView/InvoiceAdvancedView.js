@@ -63,7 +63,7 @@ const InvoiceAdvancedView = (props) => {
           <Collapse>
             <Panel header={`Tasks: (${tasksCounter})`}>
               {taskItem.map((item, index) => (
-                <Row mb={1}>
+                <Row mb={1} key={index}>
                   <Text key={index}>
                     {index + 1}. {item}
                   </Text>
