@@ -11,7 +11,7 @@ import { style } from 'app/style'
 const { Text } = Typography
 
 const AccountSimpleView = (props) => {
-  const { type, nickname } = props
+  const { type, userName } = props
   return (
     <Row v="center" p={2}>
       <Col cw="auto" p={0}>
@@ -20,10 +20,10 @@ const AccountSimpleView = (props) => {
       <Col cw="auto">
         <Text>{type}:</Text>
       </Col>
-      {nickname ? (
+      {userName ? (
         <>
           <Col>
-            <Text>{nickname}</Text>
+            <Text>{userName}</Text>
           </Col>
           <Col cw="auto">
             <Button type="primary" shape="circle" icon={<EditOutlined />} />
