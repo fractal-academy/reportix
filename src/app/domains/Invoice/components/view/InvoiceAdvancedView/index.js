@@ -1,0 +1,2 @@
+import InvoiceAdvancedView from 'domains/Invoice/components/view/InvoiceAdvancedView/InvoiceAdvancedView'
+export default InvoiceAdvancedView
