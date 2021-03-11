@@ -1,11 +1,16 @@
-import { Divider } from 'antd'
-import { Header, CustomMenu as Menu } from 'components'
+import { Divider, Typography, Menu } from 'antd'
+import { Header } from 'components'
 import { Row, Col } from '@qonsoll/react-design'
 import { PropTypes } from 'prop-types'
 import { style } from 'app/style'
+import { useHistory } from 'react-router'
+import { PAGES } from 'app/constants'
+
+const { Text } = Typography
 
 const PageWrapper = (props) => {
   const { title, children } = props
+  const history = useHistory()
   return (
     <>
       <Row noGutters>
@@ -16,7 +21,17 @@ const PageWrapper = (props) => {
       </Row>
       <Row>
         <Col cw={[3, 3, 2]}>
-          <Menu />
+          <Menu defaultSelectedKeys={PAGES[0]}>
+            {PAGES.map((page, index) => (
+              <Menu.Item
+                key={index}
+                onClick={() => {
+                  history.push(page.path)
+                }}>
+                <Text>{page.text}</Text>
+              </Menu.Item>
+            ))}
+          </Menu>
         </Col>
         <Col>{children}</Col>
       </Row>
