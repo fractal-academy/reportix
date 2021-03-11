@@ -12,8 +12,6 @@ import { ProjectAll } from 'domains/project/routes'
 import { StatisticAll } from 'domains/Statistic/routes'
 import { UserShow } from 'domains/user/routes'
 
-
-
 const ROUTES = {
   LOGIN: {
     component: Login,
@@ -66,14 +64,14 @@ const ROUTES = {
   USER_SHOW: {
     protect: [],
     component: UserShow,
-    path: ROUTES_PATHS.USER_SHOW,
+    path: ROUTES_PATHS.USER_SHOW
   },
-//   PROJECTS: {
-//     protect: [],
-//     component: ProjectsAll,
-//     path: ROUTES_PATHS.DASHBOARD,
-//     exact: true
-//   },
+  //   PROJECTS: {
+  //     protect: [],
+  //     component: ProjectsAll,
+  //     path: ROUTES_PATHS.DASHBOARD,
+  //     exact: true
+  //   },
   NOPAGE: {
     protect: [],
     component: PageExistError,

@@ -13,7 +13,7 @@ const Login = ({ history }) => {
       const { email, password } = event
       try {
         await auth.signInWithEmailAndPassword(email, password)
-        history.push('/')
+        history.push(ROUTES_PATHS.DASHBOARD)
       } catch (error) {
         console.error(error)
       }
@@ -24,7 +24,7 @@ const Login = ({ history }) => {
   const { currentUser } = useContext(AuthContext)
 
   if (currentUser) {
-    return <Redirect to="/" />
+    return <Redirect to={ROUTES_PATHS.DASHBOARD} />
   }
 
   const layout = {
