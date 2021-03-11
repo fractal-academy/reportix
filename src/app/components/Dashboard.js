@@ -3,7 +3,6 @@ import { auth } from 'app/services/Firebase/firebase'
 import Title from 'antd/lib/typography/Title'
 import { useSession } from 'app/context/SesionContext'
 import { Box } from '@qonsoll/react-design'
-import { ProjectAdvancedView } from 'domains/project/components/views/ProjectAdvancedView'
 import InvoiceAdvancedView from 'domains/Invoice/components/view/InvoiceAdvancedView'
 
 const Dashboard = () => {
@@ -13,9 +12,8 @@ const Dashboard = () => {
     <Box p={2}>
       <Title>Dashboard</Title>
       <Title level={4}>Current user: {currentUser.email}</Title>
-      <InvoiceAdvancedView status={'Accept'} />
-      <InvoiceAdvancedView status={'Pending'} />
-      <InvoiceAdvancedView status={'Reject'} />
+      <InvoiceAdvancedView status="Approved" />
+
       <Button onClick={() => auth.signOut()}>Sign out</Button>
     </Box>
   )

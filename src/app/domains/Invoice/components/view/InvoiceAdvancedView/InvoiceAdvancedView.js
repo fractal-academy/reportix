@@ -1,30 +1,14 @@
 import { Box, Col, Row } from '@qonsoll/react-design'
 import Text from 'antd/lib/typography/Text'
-import { Collapse, Tag } from 'antd'
+import { Collapse } from 'antd'
 import {
   CheckCircleOutlined,
   CloseCircleOutlined,
   SyncOutlined
 } from '@ant-design/icons'
+import Tag from 'components/Tags'
 
 const { Panel } = Collapse
-const statusMap = [
-  {
-    type: 'Reject',
-    icon: <CloseCircleOutlined />,
-    color: 'error'
-  },
-  {
-    type: 'Pending',
-    icon: <SyncOutlined />,
-    color: 'warning'
-  },
-  {
-    type: 'Accept',
-    icon: <CheckCircleOutlined />,
-    color: 'success'
-  }
-]
 
 const InvoiceAdvancedView = (props) => {
   const {
@@ -44,42 +28,46 @@ const InvoiceAdvancedView = (props) => {
         <Col>
           <Row h="between" noGutters>
             <Col>
-              <Text>From: {userName}</Text>
+              <Text type="secondary">From: </Text>
+              <Text>{userName}</Text>
             </Col>
             <Col cw={'auto'}>
-              {statusMap.map((item, index) => {
-                if (item.type === status)
-                  return (
-                    <Row key={index}>
-                      <Tag icon={item.icon} color={item.color}>
-                        {item.type}
-                      </Tag>
-                    </Row>
-                  )
-              })}
+              <Tag status={status} />
             </Col>
           </Row>
-          <Row>
-            <Text>To: {companyName}</Text>
+          <Row noGutters>
+            <Col>
+              <Text type="secondary">To:</Text> <Text>{companyName}</Text>
+            </Col>
           </Row>
-          <Row>
-            <Text>Project: {project}</Text>
+          <Row noGutters>
+            <Col>
+              <Text type="secondary">Project:</Text> <Text>{project}</Text>
+            </Col>
           </Row>
-          <Row>
-            <Text>IBAN: {iban}</Text>
+          <Row noGutters>
+            <Col>
+              <Text type="secondary">IBAN:</Text> <Text>{iban}</Text>
+            </Col>
           </Row>
-          <Row>
-            <Text>Value: {value}</Text>
+          <Row noGutters>
+            <Col>
+              <Text type="secondary">Value:</Text> <Text>{value}</Text>
+            </Col>
           </Row>
-          <Row>
-            <Text>Date: {invoiceDate}</Text>
+          <Row noGutters>
+            <Col>
+              <Text type="secondary">Date:</Text> <Text>{invoiceDate}</Text>
+            </Col>
           </Row>
           <Collapse>
             <Panel header={`Tasks: (${tasksCounter})`}>
               {taskItem.map((item, index) => (
-                <p key={index}>
-                  {index + 1}. {item}
-                </p>
+                <Row mb={1}>
+                  <Text key={index}>
+                    {index + 1}. {item}
+                  </Text>
+                </Row>
               ))}
             </Panel>
           </Collapse>
