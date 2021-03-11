@@ -2,7 +2,7 @@ import { AccountSimpleView } from 'domains/Account/components/Views/AccountSimpl
 import { Box, Row, Col } from '@qonsoll/react-design'
 
 const mockData = [
-  { type: 'GitHub', nickname: 'sashka2131' },
+  { type: 'GitHub', userName: 'sashka2131' },
   { type: 'BitBacket' }
 ]
 
@@ -15,7 +15,7 @@ const AccountAll = () => {
             <AccountSimpleView
               key={index}
               type={account.type}
-              nickname={account.nickname}
+              userName={account.userName}
             />
           ))}
         </Box>
