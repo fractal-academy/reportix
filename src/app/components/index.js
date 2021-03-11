@@ -1,4 +1,6 @@
 import PageWrapper from './PageWrapper'
 import Header from './Header'
 import Dashboard from './Dashboard'
-export { PageWrapper, Header, Dashboard }
+import PageExistError from 'components/PageDoestnExist'
+export { PageWrapper, Header, CustomMenu, Dashboard, PageExistError }
+

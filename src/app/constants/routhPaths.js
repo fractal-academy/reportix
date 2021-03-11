@@ -2,6 +2,7 @@ const ROUTES_PATHS = {
   LOGIN: '/login',
   DASHBOARD: '/',
   SIGN_UP: '/signup',
+
   COMPANIES_SHOW: '/companies/:id',
   COMPANIES_CREATE: '/companies/create',
   COMPANIES_EDIT: '/coompanies/:id/edit',
@@ -15,6 +16,9 @@ const ROUTES_PATHS = {
   REQUESTS_CREATE: '/requests/create',
   REQUESTS_EDIT: '/requests/:id/edit',
   STATISTICS_ALL: '/statistics',
-  USER_SHOW: '/users/:id'
+  USER_SHOW: '/users/:id',
+//   PROJECTS: '/projects',
+  NOPAGE: '/nopage'
+
 }
 export default ROUTES_PATHS

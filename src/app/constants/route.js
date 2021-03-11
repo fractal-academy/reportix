@@ -2,14 +2,17 @@
 // import { SessionLogin } from 'domains/Session/routes'
 
 import ROUTES_PATHS from './routhPaths'
-import { Dashboard } from 'components'
+import { Dashboard, PageExistError } from 'components'
 import { Login, SignUp } from 'app/services/Auth'
+
 import { ReportAll } from 'domains/Report/routes'
 import { CalendarShow } from 'domains/Calendar/routes'
 import { CompanyShow } from 'domains/Company/routes'
 import { ProjectAll } from 'domains/project/routes'
 import { StatisticAll } from 'domains/Statistic/routes'
 import { UserShow } from 'domains/user/routes'
+
+
 
 const ROUTES = {
   LOGIN: {
@@ -23,9 +26,7 @@ const ROUTES = {
     exact: true
   },
   DASHBOARD: {
-    protect: [
-      /*'admin', 'user'*/
-    ],
+    protect: [],
     component: Dashboard,
     path: ROUTES_PATHS.DASHBOARD,
     exact: true
@@ -66,6 +67,18 @@ const ROUTES = {
     protect: [],
     component: UserShow,
     path: ROUTES_PATHS.USER_SHOW,
+  },
+//   PROJECTS: {
+//     protect: [],
+//     component: ProjectsAll,
+//     path: ROUTES_PATHS.DASHBOARD,
+//     exact: true
+//   },
+  NOPAGE: {
+    protect: [],
+    component: PageExistError,
+    path: ROUTES_PATHS.NOPAGE,
+
     exact: true
   }
 }
