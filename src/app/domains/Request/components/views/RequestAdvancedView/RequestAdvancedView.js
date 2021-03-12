@@ -6,7 +6,6 @@ import {
   SyncOutlined
 } from '@ant-design/icons'
 import { UserSimpleView } from 'domains/user/components/views'
-import { CommentAdvancedView } from 'domains/Comment/components/views'
 import { CommentListWithAdd } from 'domains/Comment/components/combined'
 
 const { Text, Title } = Typography
