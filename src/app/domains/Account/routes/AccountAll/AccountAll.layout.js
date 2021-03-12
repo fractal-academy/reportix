@@ -1,4 +1,4 @@
-import { AccountSimpleView } from 'domains/Account/components/Views/AccountSimpleView'
+import { AccountSimpleView } from 'domains/Account/components/views/AccountSimpleView'
 import { Box, Row, Col } from '@qonsoll/react-design'
 
 const mockData = [
