@@ -4,7 +4,7 @@
 import ROUTES_PATHS from './routhPaths'
 import { Dashboard, PageExistError } from 'components'
 import { Login, SignUp } from 'app/services/Auth'
-import { ReportAll } from 'domains/Report/routes'
+import { ReportsAll } from 'domains/Report/routes'
 import { CalendarShow } from 'domains/Calendar/routes'
 import { CompanyShow } from 'domains/Company/routes'
 import { ProjectsAll } from 'domains/Project/routes'
@@ -32,7 +32,7 @@ const ROUTES = {
     protect: [
       /*'admin', 'user'*/
     ],
-    component: ReportAll,
+    component: ReportsAll,
     path: ROUTES_PATHS.REPORTS_ALL,
     exact: true
   },
