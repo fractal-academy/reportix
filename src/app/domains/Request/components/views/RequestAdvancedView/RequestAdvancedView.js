@@ -1,32 +1,12 @@
-import { Card, Typography, Button, Tag } from 'antd'
+import { Card, Typography, Button } from 'antd'
 import { Row, Box, Col } from '@qonsoll/react-design'
-import {
-  CheckCircleOutlined,
-  CloseCircleOutlined,
-  SyncOutlined
-} from '@ant-design/icons'
 import { UserSimpleView } from 'domains/user/components/views'
 import { CommentListWithAdd } from 'domains/Comment/components/combined'
+import { Tags } from 'app/components'
+import { STATUS } from 'app/constants'
 
 const { Text, Title } = Typography
 
-const statusMap = [
-  {
-    status: 'Reject',
-    icon: <CloseCircleOutlined />,
-    color: 'error'
-  },
-  {
-    status: 'Pending',
-    icon: <SyncOutlined />,
-    color: 'warning'
-  },
-  {
-    status: 'Accept',
-    icon: <CheckCircleOutlined />,
-    color: 'success'
-  }
-]
 const RequestAdvancedView = (props) => {
   const {
     type,
@@ -60,16 +40,7 @@ const RequestAdvancedView = (props) => {
                       <UserSimpleView withName={false} withEmail={false} />
                     </Col>
                     <Col>
-                      {statusMap.map((item, index) => {
-                        if (item.status === firstStatus)
-                          return (
-                            <Row key={index}>
-                              <Tag icon={item.icon} color={item.color}>
-                                {item.status}
-                              </Tag>
-                            </Row>
-                          )
-                      })}
+                      <Tags status={firstStatus} />
                     </Col>
                   </Row>
                   <Row v={'center'} noGutters>
@@ -77,16 +48,7 @@ const RequestAdvancedView = (props) => {
                       <UserSimpleView withName={false} withEmail={false} />
                     </Col>
                     <Col>
-                      {statusMap.map((item, index) => {
-                        if (item.status === secondStatus)
-                          return (
-                            <Row key={index}>
-                              <Tag icon={item.icon} color={item.color}>
-                                {item.status}
-                              </Tag>
-                            </Row>
-                          )
-                      })}
+                      <Tags status={secondStatus} />
                     </Col>
                   </Row>
                 </Col>
@@ -111,12 +73,13 @@ const RequestAdvancedView = (props) => {
     </Card>
   )
 }
+
 RequestAdvancedView.defaultProps = {
   type: 'Vacation',
   fromDate: '2021/04/03',
   toDate: '2021/04/24',
   description: 'Trip to Himalayas',
-  firstStatus: 'Pending',
-  secondStatus: 'Accept'
+  firstStatus: 'Approved',
+  secondStatus: 'Rejected'
 }
 export default RequestAdvancedView
