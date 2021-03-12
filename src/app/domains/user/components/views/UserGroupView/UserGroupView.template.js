@@ -24,12 +24,13 @@ const UserGroupView = (props) => {
           maxCount={maxCount}
           size={avatarSize}
           maxStyle={style.maxStyle}>
-          {mockData.map((item) => (
+          {mockData.map((item, index) => (
             <Avatar
-              key={item.src}
+              key={index}
               size={avatarSize}
               src={item.src}
               icon={<UserOutlined />}
+              {...item}
             />
           ))}
         </Avatar.Group>
