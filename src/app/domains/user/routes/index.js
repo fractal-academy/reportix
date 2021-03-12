@@ -1,2 +1,3 @@
 import { UserShow } from './UserShow'
-export { UserShow }
+import { UserAll } from './UserAll'
+export { UserShow, UserAll }
