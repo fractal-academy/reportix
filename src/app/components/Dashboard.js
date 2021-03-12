@@ -8,13 +8,15 @@ import LeaveDayFilter from 'domains/LeaveDay/components/filter'
 import { ProjectAdvancedView } from 'domains/project/components/views/ProjectAdvancedView'
 import { RequestAdvancedView } from 'domains/Request/components/views'
 import { UserList } from 'domains/user/components/list'
+import { UserAll } from 'domains/user/routes'
 
 const Dashboard = () => {
   const { currentUser } = useSession()
 
   return (
     <Box p={2}>
-      <UserList />
+      <UserAll />
+      {/*<UserList />*/}
       <Title>Dashboard</Title>
       <Title level={4}>Current user: {currentUser.email}</Title>
       <InvoiceAdvancedView status="Approved" />
