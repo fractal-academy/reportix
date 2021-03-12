@@ -35,26 +35,16 @@ const UserAdvancedView = (props) => {
                   </Row>
                   <Row noOuterGutters mb={1}>
                     <Col cw={'auto'}>
-                      {/*E-mail*/}
-                      <Row noGutters>
-                        <Col>
-                          <MailOutlined style={style.marginForIcon} />
-                          <Text>{email}</Text>
-                        </Col>
-                      </Row>
+                      <MailOutlined style={style.marginForIcon} />
+                      <Text>{email}</Text>
                     </Col>
                     <Col cw="auto">
-                      {/*Phone*/}
-                      <Row noGutters>
-                        <Col>
-                          <PhoneOutlined style={style.marginForIcon} />
-                          <Text>{phone}</Text>
-                        </Col>
-                      </Row>
+                      <PhoneOutlined style={style.marginForIcon} />
+                      <Text>{phone}</Text>
                     </Col>
                   </Row>
                   <Row v={'center'} noGutters mb={1}>
-                    <Col cw={'auto'} mr={3}>
+                    <Col cw={'auto'} mr={2}>
                       <Text type="secondary">Company:</Text>
                     </Col>
                     <Col>
@@ -68,24 +58,16 @@ const UserAdvancedView = (props) => {
                   {/*Employed*/}
                   <Row noOuterGutters>
                     <Col cw={'auto'}>
-                      <Row noGutters>
-                        <Col>
-                          <Text type="secondary" style={style.marginForIcon}>
-                            Employed:
-                          </Text>
-                          <Text>{employedDate}</Text>
-                        </Col>
-                      </Row>
+                      <Text type="secondary" style={style.marginForIcon}>
+                        Employed:
+                      </Text>
+                      <Text>{employedDate}</Text>
                     </Col>
                     <Col cw="auto">
-                      <Row noGutters>
-                        <Col>
-                          <Text type="secondary" style={style.marginForIcon}>
-                            Projects:
-                          </Text>
-                          <Text>{projectsNumber}</Text>
-                        </Col>
-                      </Row>
+                      <Text type="secondary" style={style.marginForIcon}>
+                        Projects:
+                      </Text>
+                      <Text>{projectsNumber}</Text>
                     </Col>
                   </Row>
                 </Col>
@@ -93,8 +75,6 @@ const UserAdvancedView = (props) => {
             </Col>
           </Row>
         </Col>
-
-        {/*<Col />*/}
         <Col cw={'auto'}>
           <Box mr={2} mt={3}>
             <Button type="primary" icon={<EditOutlined />}>
