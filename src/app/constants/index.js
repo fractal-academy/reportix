@@ -3,6 +3,7 @@ import ROUTES_PATHS from './routhPaths'
 import ROUTES, { ROUTES_VALUE } from './route'
 import COLLECTIONS from './collection'
 import PAGES from './pages'
+import STATUS from './status'
 
 export {
   FIREBASE_CONFIG,
@@ -10,5 +11,6 @@ export {
   ROUTES_PATHS,
   ROUTES_VALUE,
   COLLECTIONS,
-  PAGES
+  PAGES,
+  STATUS
 }
