@@ -1,17 +1,20 @@
 import { Box, Col, Row } from '@qonsoll/react-design'
 import Text from 'antd/lib/typography/Text'
+import { UserGroupView } from 'domains/user/components/views/UserGroupView'
 
 const ProjectAdvancedView = (props) => {
   const { company, withProjects, project, withTasks, tasks } = props
   return (
     <Box
-      p={2}
+      py={4}
+      px={2}
       mb={2}
       border="1px solid lightgrey"
       borderRadius="md"
-      hoverColor="red">
+      background="lightgrey">
       <Row>
         <Col>
+          <UserGroupView />
           <Row my={2} noGutters>
             <Col cw="auto">
               <Text strong>Company: </Text>

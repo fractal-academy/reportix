@@ -5,15 +5,24 @@ import { style } from 'app/style'
 import { PropTypes } from 'prop-types'
 import { UserSimpleView } from 'domains/user/components/views/UserSimpleView'
 import { auth } from 'app/services/Firebase/firebase'
+import { ROUTES_PATHS } from 'app/constants'
+import { useHistory } from 'react-router'
 
 const { Title, Text } = Typography
 
 const Header = (props) => {
   const { title } = props
+  const history = useHistory()
 
   const dropdownMenu = (
     <Menu>
-      <Menu.Item key="0">Profile</Menu.Item>
+      <Menu.Item
+        key="0"
+        onClick={() => {
+          history.push(ROUTES_PATHS.USER_SHOW)
+        }}>
+        Profile
+      </Menu.Item>
       <Menu.Item key="1" onClick={() => auth.signOut()}>
         Log Out
       </Menu.Item>
@@ -22,7 +31,11 @@ const Header = (props) => {
   return (
     <Row v="center" py={3} noGutters>
       <Col cw={[3, 3, 2]}>
-        <Box textAlign="center">
+        <Box
+          textAlign="center"
+          onClick={() => {
+            history.push(ROUTES_PATHS.DASHBOARD)
+          }}>
           <Title level={3} style={style.resetMargin}>
             Reportix
           </Title>
@@ -31,9 +44,12 @@ const Header = (props) => {
       <Col cw="auto">
         <Row noGutters>
           <Col cw="auto" v="center">
-            <Text>
-              <LeftOutlined style={style.iconSize} />
-            </Text>
+            <LeftOutlined
+              style={style.iconSize}
+              onClick={() => {
+                history.goBack()
+              }}
+            />
           </Col>
           <Col cw="auto" px={2}>
             <Title level={3} style={style.resetMargin}>
