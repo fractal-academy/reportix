@@ -1,6 +1,6 @@
 import { Box, Col, Row } from '@qonsoll/react-design'
 import Text from 'antd/lib/typography/Text'
-import { UserGroupView } from 'domains/user/components/views/UserGroupView'
+import { UserGroupView } from 'domains/User/components/views'
 
 const ProjectAdvancedView = (props) => {
   const { company, withProjects, project, withTasks, tasks } = props

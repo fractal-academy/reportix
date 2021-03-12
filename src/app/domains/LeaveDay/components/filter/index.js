@@ -1,2 +1,1 @@
-import LeaveDayFilter from 'domains/LeaveDay/components/filter/LeaveDayFilter.template'
-export default LeaveDayFilter
+export { default as LeaveDayFilter } from './LeaveDayFilter.template'

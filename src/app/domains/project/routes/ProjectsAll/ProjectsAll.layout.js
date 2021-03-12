@@ -1,4 +1,4 @@
 const ProjectsAll = () => {
-  return <div>HELLO ProjectsAll</div>
+  return <>Projects All</>
 }
 export default ProjectsAll
