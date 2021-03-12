@@ -4,5 +4,4 @@ const STATUS = {
   REJECTED: 'Rejected',
   PAYED: 'Payed'
 }
-
 export default STATUS
