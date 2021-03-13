@@ -8,14 +8,14 @@ import { LeaveDayFilter } from 'domains/LeaveDay/components/filter'
 import { ProjectAdvancedView } from 'domains/Project/components/views'
 import { RequestAdvancedView } from 'domains/Request/components/views'
 import { UserList } from 'domains/User/components/list'
-import { UserAll } from 'domains/User/routes'
+import { UsersAll } from 'domains/User/routes'
 
 const Dashboard = () => {
   const { currentUser } = useSession()
 
   return (
     <Box p={2}>
-      <UserAll />
+      <UsersAll />
       {/*<UserList />*/}
       <Title>Dashboard</Title>
       <Title level={4}>Current user: {currentUser.email}</Title>

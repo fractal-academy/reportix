@@ -1,4 +1,4 @@
 import { AccountShow } from './AccountShow'
-import { AccountAll } from './AccountAll'
+import { AccountsAll } from './AccountsAll'
 
-export { AccountShow, AccountAll }
+export { AccountShow, AccountsAll }

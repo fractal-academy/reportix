@@ -2,7 +2,7 @@ import { Row, Col, Container, Box } from '@qonsoll/react-design'
 import { UserList } from 'domains/User/components/list'
 import { UserListSearch } from 'domains/User/components/combine'
 
-const UserAll = () => {
+const UsersAll = () => {
   return (
     <Container>
       <Row>
@@ -16,4 +16,4 @@ const UserAll = () => {
     </Container>
   )
 }
-export default UserAll
+export default UsersAll

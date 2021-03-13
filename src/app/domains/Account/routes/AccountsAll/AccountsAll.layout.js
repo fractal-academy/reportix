@@ -6,7 +6,7 @@ const mockData = [
   { type: 'BitBacket' }
 ]
 
-const AccountAll = () => {
+const AccountsAll = () => {
   return (
     <Row>
       <Col cw="auto">
@@ -24,4 +24,4 @@ const AccountAll = () => {
   )
 }
 
-export default AccountAll
+export default AccountsAll

@@ -8,7 +8,7 @@ import { ReportsAll } from 'domains/Report/routes'
 import { CalendarShow } from 'domains/Calendar/routes'
 import { CompanyShow } from 'domains/Company/routes'
 import { ProjectsAll } from 'domains/Project/routes'
-import { StatisticAll } from 'domains/Statistic/routes'
+import { StatisticsAll } from 'domains/Statistic/routes'
 import { UserShow } from 'domains/User/routes'
 
 const ROUTES = {
@@ -56,7 +56,7 @@ const ROUTES = {
   },
   STATISTIC_ALL: {
     protect: [],
-    component: StatisticAll,
+    component: StatisticsAll,
     path: ROUTES_PATHS.STATISTICS_ALL,
     exact: true
   },

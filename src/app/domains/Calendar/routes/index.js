@@ -1,5 +1,5 @@
-import { CalendarAll } from './CalendarAll'
+import { CalendarsAll } from './CalendarsAll'
 import { CalendarEdit } from './CalendarEdit'
 import { CalendarShow } from './CalendarShow'
 
-export { CalendarAll, CalendarEdit, CalendarShow }
+export { CalendarsAll, CalendarEdit, CalendarShow }
