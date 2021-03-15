@@ -1,18 +1,15 @@
-import { useState } from 'react'
-import { Menu, Tabs } from 'antd'
+import { Tabs } from 'antd'
 import {
   UserOutlined,
   ProjectOutlined,
   PullRequestOutlined,
   LineChartOutlined,
-  FileOutlined,
-  AppleOutlined
+  FileOutlined
 } from '@ant-design/icons'
 import { AccountsAll } from 'domains/Account/routes'
 import { ProjectAdvancedView } from 'domains/Project/components/views'
 import { RequestAdvancedView } from 'domains/Request/components/views'
 import { InvoiceAdvancedView } from 'domains/Invoice/components/views'
-import Text from 'antd/es/typography/Text'
 
 const tabList = [
   {
