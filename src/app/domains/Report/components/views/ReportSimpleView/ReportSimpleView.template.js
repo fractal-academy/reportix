@@ -2,7 +2,7 @@ import { Row, Col } from '@qonsoll/react-design'
 import { Button, Typography } from 'antd'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 import { style } from 'app/style'
-import { UserSimpleView } from 'app/domains/user/components/views/UserSimpleView'
+import { UserSimpleView } from 'domains/user/components/views/UserSimpleView'
 
 const { Text, Title } = Typography
 
