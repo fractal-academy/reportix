@@ -26,8 +26,8 @@ const Dashboard = () => {
       <InvoiceAdvancedView status="Approved" />
       <LeaveDayFilter />
       <ProjectAdvancedView />
-      <Button onClick={() => auth.signOut()}>Sign out</Button>
       <RequestAdvancedView />
+      <Button onClick={() => auth.signOut()}>Sign out</Button>
     </Box>
   )
 }
