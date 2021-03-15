@@ -4,6 +4,7 @@ import ROUTES, { ROUTES_VALUE } from './route'
 import COLLECTIONS from './collection'
 import PAGES from './pages'
 import STATUS from './status'
+import * as LeaveDayColorPalette from './LeaveDayColorPalette'
 
 export {
   FIREBASE_CONFIG,
@@ -12,5 +13,6 @@ export {
   ROUTES_VALUE,
   COLLECTIONS,
   PAGES,
-  STATUS
+  STATUS,
+  LeaveDayColorPalette
 }

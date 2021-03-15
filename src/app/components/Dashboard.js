@@ -7,23 +7,23 @@ import { Box } from '@qonsoll/react-design'
 import { LeaveDayFilter } from 'domains/LeaveDay/components/filter'
 import { ProjectAdvancedView } from 'domains/Project/components/views'
 import { RequestAdvancedView } from 'domains/Request/components/views'
-import { UserList } from 'domains/User/components/list'
 import { UsersAll } from 'domains/User/routes'
+import { CalendarMonth } from 'domains/Calendar/components/views'
 
 const Dashboard = () => {
   const { currentUser } = useSession()
 
   return (
     <Box p={2}>
-      <UsersAll />
-      {/*<UserList />*/}
       <Title>Dashboard</Title>
-      <Title level={4}>Current user: {currentUser.email}</Title>
-      <InvoiceAdvancedView status="Approved" />
-      <LeaveDayFilter />
-      <ProjectAdvancedView />
-      <Button onClick={() => auth.signOut()}>Sign out</Button>
-      <RequestAdvancedView />
+      <CalendarMonth />
+      {/*<UsersAll />*/}
+      {/*<Title level={4}>Current user: {currentUser.email}</Title>*/}
+      {/*<InvoiceAdvancedView status="Approved" />*/}
+      {/*<LeaveDayFilter />*/}
+      {/*<ProjectAdvancedView />*/}
+      {/*<Button onClick={() => auth.signOut()}>Sign out</Button>*/}
+      {/*<RequestAdvancedView />*/}
     </Box>
   )
 }
