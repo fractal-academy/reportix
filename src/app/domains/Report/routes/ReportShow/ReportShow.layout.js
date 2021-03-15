@@ -1,5 +1,4 @@
-import { ReportSimpleView } from '../../components/views/ReportSimpleView'
-import { Row, Col } from '@qonsoll/react-design'
+import { ReportSimpleView } from 'domains/Report/components/views/ReportSimpleView'
 
 const ReportShow = () => {
   return <ReportSimpleView />
