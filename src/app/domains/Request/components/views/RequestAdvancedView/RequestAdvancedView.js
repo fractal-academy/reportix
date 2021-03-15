@@ -1,6 +1,6 @@
 import { Card, Typography, Button } from 'antd'
 import { Row, Box, Col } from '@qonsoll/react-design'
-import { UserSimpleView } from 'domains/user/components/views'
+import { UserSimpleView } from 'domains/User/components/views'
 import { CommentListWithAdd } from 'domains/Comment/components/combined'
 import { Tags } from 'app/components'
 import { STATUS } from 'app/constants'

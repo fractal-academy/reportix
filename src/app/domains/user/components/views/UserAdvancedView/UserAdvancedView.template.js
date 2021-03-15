@@ -1,7 +1,8 @@
 import { Row, Col, Container, Box } from '@qonsoll/react-design'
 import { Typography, Avatar, Button } from 'antd'
 import { EditOutlined, MailOutlined, PhoneOutlined } from '@ant-design/icons'
-import { style } from 'domains/user/components/views/UserAdvancedView/UserAdvancedView.styles'
+import { style } from './UserAdvancedView.styles'
+
 const { Text, Title } = Typography
 
 const UserAdvancedView = (props) => {

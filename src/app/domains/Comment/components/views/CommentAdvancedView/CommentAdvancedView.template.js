@@ -1,8 +1,9 @@
 import moment from 'moment'
 import { Row, Col } from '@qonsoll/react-design'
 import { Card, Typography } from 'antd'
-import { UserSimpleView } from 'domains/user/components/views'
+import { UserSimpleView } from 'domains/User/components/views'
 import { useEffect, useState } from 'react'
+
 const { Text } = Typography
 
 const CommentAdvancedView = (props) => {

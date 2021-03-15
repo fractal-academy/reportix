@@ -1,4 +1,4 @@
 import { UserFilterProfile } from './UserFilterProfile'
-import { UserListSearch } from 'domains/user/components/combine/UserListSearch'
+import { UserListSearch } from './UserListSearch'
 
 export { UserFilterProfile, UserListSearch }

@@ -1,4 +1,4 @@
-import { UserSimpleView } from 'domains/user/components/views'
+import { UserSimpleView } from 'domains/User/components/views'
 import { Divider } from 'antd'
 
 const mockUsers = [

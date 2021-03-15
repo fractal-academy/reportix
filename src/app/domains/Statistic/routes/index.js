@@ -1,4 +1,4 @@
-import { StatisticAll } from './StatisticAll'
+import { StatisticsAll } from './StatisticsAll'
 import { StatisticShow } from './StatisticShow'
 
-export { StatisticAll, StatisticShow }
+export { StatisticsAll, StatisticShow }

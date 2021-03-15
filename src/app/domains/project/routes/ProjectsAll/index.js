@@ -1,3 +1,1 @@
-import ProjectsAll from 'domains/project/routes/ProjectsAll/ProjectsAll.layout'
-
-export default ProjectsAll
+export { default as ProjectsAll } from './ProjectsAll.layout'

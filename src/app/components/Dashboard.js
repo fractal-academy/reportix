@@ -2,20 +2,20 @@ import { Button } from 'antd'
 import { auth } from 'app/services/Firebase/firebase'
 import Title from 'antd/lib/typography/Title'
 import { useSession } from 'app/context/SesionContext'
-import InvoiceAdvancedView from 'domains/Invoice/components/view/InvoiceAdvancedView'
+import { InvoiceAdvancedView } from 'domains/Invoice/components/views'
 import { Box } from '@qonsoll/react-design'
-import LeaveDayFilter from 'domains/LeaveDay/components/filter'
-import { ProjectAdvancedView } from 'domains/project/components/views/ProjectAdvancedView'
+import { LeaveDayFilter } from 'domains/LeaveDay/components/filter'
+import { ProjectAdvancedView } from 'domains/Project/components/views'
 import { RequestAdvancedView } from 'domains/Request/components/views'
-import { UserList } from 'domains/user/components/list'
-import { UserAll } from 'domains/user/routes'
+import { UserList } from 'domains/User/components/list'
+import { UsersAll } from 'domains/User/routes'
 
 const Dashboard = () => {
   const { currentUser } = useSession()
 
   return (
     <Box p={2}>
-      <UserAll />
+      <UsersAll />
       {/*<UserList />*/}
       <Title>Dashboard</Title>
       <Title level={4}>Current user: {currentUser.email}</Title>

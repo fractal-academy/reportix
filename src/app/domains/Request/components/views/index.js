@@ -1,2 +1,3 @@
-import { RequestAdvancedView } from 'domains/Request/components/views/RequestAdvancedView'
+import { RequestAdvancedView } from './RequestAdvancedView'
+
 export { RequestAdvancedView }
