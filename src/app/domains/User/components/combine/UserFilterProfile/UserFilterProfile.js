@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import { Menu } from 'antd'
+import { Tabs } from 'antd'
 import {
   UserOutlined,
   ProjectOutlined,
@@ -7,54 +6,58 @@ import {
   LineChartOutlined,
   FileOutlined
 } from '@ant-design/icons'
+import { AccountsAll } from 'domains/Account/routes'
+import { ProjectAdvancedView } from 'domains/Project/components/views'
+import { RequestAdvancedView } from 'domains/Request/components/views'
+import { InvoiceAdvancedView } from 'domains/Invoice/components/views'
 
-const menuItem = [
+const tabList = [
   {
-    nameMenuItem: 'Accounts',
-    icon: <UserOutlined />
+    tabName: 'Accounts',
+    icon: <UserOutlined />,
+    content: <AccountsAll />
   },
   {
-    nameMenuItem: 'Projects',
-    icon: <ProjectOutlined />
+    tabName: 'Projects',
+    icon: <ProjectOutlined />,
+    content: <ProjectAdvancedView />
   },
   {
-    nameMenuItem: 'Requests',
-    icon: <PullRequestOutlined />
+    tabName: 'Requests',
+    icon: <PullRequestOutlined />,
+    content: <RequestAdvancedView />
   },
   {
-    nameMenuItem: 'Statistic',
-    icon: <LineChartOutlined />
+    tabName: 'Statistic',
+    icon: <LineChartOutlined />,
+    content: <>Statistic</>
   },
   {
-    nameMenuItem: 'Invoices',
-    icon: <FileOutlined />
+    tabName: 'Invoices',
+    icon: <FileOutlined />,
+    content: <InvoiceAdvancedView />
   }
 ]
 
-const UserFilterProfile = () => {
-  // const { size } = props
-  const [currentTab, setCurrentTab] = useState(menuItem[0].nameMenuItem)
+const { TabPane } = Tabs
 
-  const handleClick = (e) => {
-    setCurrentTab(e.key)
-  }
+const UserFilterProfile = () => {
   return (
-    <Menu onClick={handleClick} selectedKeys={currentTab} mode="horizontal">
-      {menuItem.map((item, index) => (
-        <Menu.Item
-          key={item.nameMenuItem}
-          icon={item.icon}
-          onClick={() => {
-            //Todo change to function in map history.push()
-            console.log(index)
-          }}>
-          {item.nameMenuItem}
-        </Menu.Item>
+    <Tabs centered size="large">
+      {tabList.map((item, key) => (
+        <TabPane
+          tab={
+            <>
+              {item.icon}
+              {item.tabName}
+            </>
+          }
+          key={item.tabName}>
+          {item.content}
+        </TabPane>
       ))}
-    </Menu>
+    </Tabs>
   )
 }
-UserFilterProfile.defaultProps = {
-  size: 'small'
-}
+
 export default UserFilterProfile

@@ -8,6 +8,9 @@ import { LeaveDayFilter } from 'domains/LeaveDay/components/filter'
 import { ProjectAdvancedView } from 'domains/Project/components/views'
 import { RequestAdvancedView } from 'domains/Request/components/views'
 import { UsersAll } from 'domains/User/routes'
+import { UserList } from 'domains/User/components/list'
+import RequestForm from 'domains/Request/components/form'
+import { AccountsAll } from 'domains/Account/routes'
 import { CalendarMonth } from 'domains/Calendar/components/views'
 
 const Dashboard = () => {
@@ -15,6 +18,8 @@ const Dashboard = () => {
 
   return (
     <Box p={2}>
+      <UsersAll />
+      {/*<UserList />*/}
       <Title>Dashboard</Title>
       <CalendarMonth />
       {/*<UsersAll />*/}
@@ -24,6 +29,14 @@ const Dashboard = () => {
       {/*<ProjectAdvancedView />*/}
       {/*<Button onClick={() => auth.signOut()}>Sign out</Button>*/}
       {/*<RequestAdvancedView />*/}
+      <Title level={4}>Current user: {currentUser.email}</Title>
+      <RequestForm />
+      <AccountsAll />
+      <InvoiceAdvancedView status="Approved" />
+      <LeaveDayFilter />
+      <ProjectAdvancedView />
+      <RequestAdvancedView />
+      <Button onClick={() => auth.signOut()}>Sign out</Button>
     </Box>
   )
 }
