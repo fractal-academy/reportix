@@ -11,6 +11,7 @@ import { UsersAll } from 'domains/User/routes'
 import { UserList } from 'domains/User/components/list'
 import RequestForm from 'domains/Request/components/form'
 import { AccountsAll } from 'domains/Account/routes'
+import { CalendarMonth } from 'domains/Calendar/components/views'
 
 const Dashboard = () => {
   const { currentUser } = useSession()
@@ -20,6 +21,14 @@ const Dashboard = () => {
       <UsersAll />
       {/*<UserList />*/}
       <Title>Dashboard</Title>
+      <CalendarMonth />
+      {/*<UsersAll />*/}
+      {/*<Title level={4}>Current user: {currentUser.email}</Title>*/}
+      {/*<InvoiceAdvancedView status="Approved" />*/}
+      {/*<LeaveDayFilter />*/}
+      {/*<ProjectAdvancedView />*/}
+      {/*<Button onClick={() => auth.signOut()}>Sign out</Button>*/}
+      {/*<RequestAdvancedView />*/}
       <Title level={4}>Current user: {currentUser.email}</Title>
       <RequestForm />
       <AccountsAll />
