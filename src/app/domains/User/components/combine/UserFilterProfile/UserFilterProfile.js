@@ -41,13 +41,9 @@ const tabList = [
 
 const { TabPane } = Tabs
 
-function callback(key) {
-  console.log(key)
-}
-
 const UserFilterProfile = () => {
   return (
-    <Tabs onChange={callback} centered size="large">
+    <Tabs centered size="large">
       {tabList.map((item, key) => (
         <TabPane
           tab={
