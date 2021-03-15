@@ -1,5 +1,5 @@
-import { UserSimpleView } from 'domains/user/components/views/UserSimpleView'
-import { UserGroupView } from 'domains/user/components/views/UserGroupView'
-import { UserAdvancedView } from 'domains/user/components/views/UserAdvancedView'
+import { UserSimpleView } from './UserSimpleView'
+import { UserGroupView } from './UserGroupView'
+import { UserAdvancedView } from './UserAdvancedView'
 
 export { UserGroupView, UserSimpleView, UserAdvancedView }

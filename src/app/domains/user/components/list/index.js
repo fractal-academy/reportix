@@ -1,2 +1,2 @@
-import { UserList } from 'domains/user/components/list/UserList'
+import { UserList } from './UserList'
 export { UserList }

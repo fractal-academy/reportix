@@ -1,5 +1,5 @@
-import { ReportAll } from './ReportAll'
+import { ReportsAll } from './ReportsAll'
 import { ReportEdit } from './ReportEdit'
 import { ReportShow } from './ReportShow'
 
-export { ReportAll, ReportEdit, ReportShow }
+export { ReportsAll, ReportEdit, ReportShow }

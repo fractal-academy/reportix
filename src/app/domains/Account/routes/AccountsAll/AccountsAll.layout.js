@@ -1,4 +1,4 @@
-import { AccountSimpleView } from 'domains/Account/components/views/AccountSimpleView'
+import { AccountSimpleView } from 'domains/Account/components/views'
 import { Box, Row, Col } from '@qonsoll/react-design'
 
 const mockData = [
@@ -6,7 +6,7 @@ const mockData = [
   { type: 'BitBacket' }
 ]
 
-const AccountAll = () => {
+const AccountsAll = () => {
   return (
     <Row>
       <Col cw="auto">
@@ -24,4 +24,4 @@ const AccountAll = () => {
   )
 }
 
-export default AccountAll
+export default AccountsAll
