@@ -1,1 +1,1 @@
-export { default as AccountSimpleView } from './AccountSimpleView'
+export { default as AccountSimpleView } from './AccountSimpleView.template'
