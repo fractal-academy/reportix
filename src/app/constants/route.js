@@ -3,7 +3,7 @@
 
 import ROUTES_PATHS from './routhPaths'
 import { Dashboard, PageExistError } from 'components'
-import { ReportsAll } from 'domains/Report/routes'
+import { ReportsAll, ReportEdit } from 'domains/Report/routes'
 import { CalendarShow } from 'domains/Calendar/routes'
 import { CompanyShow } from 'domains/Company/routes'
 import { ProjectsAll } from 'domains/Project/routes'

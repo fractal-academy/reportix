@@ -16,9 +16,11 @@ const App = () => {
           <Route component={Login} path={ROUTES_PATHS.LOGIN} />
           <Route component={SignUp} path={ROUTES_PATHS.SIGN_UP} />
           <PageWrapper>
-            {ROUTES_VALUE.map((route) => (
-              <PrivateRoute key={route.path} {...route} />
-            ))}
+            <>
+              {ROUTES_VALUE.map((route) => (
+                <PrivateRoute key={route.path} {...route} />
+              ))}
+            </>
           </PageWrapper>
         </Switch>
       </AuthProvider>
