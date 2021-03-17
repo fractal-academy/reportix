@@ -1,11 +1,9 @@
-import { InvoiceAdvancedView } from 'domains/Invoice/components/views'
+import InvoiceLIst from 'domains/Invoice/components/list/InvoiceList/InvoiceLIst'
 
 const InvoicesAll = () => {
   return (
     <>
-      <InvoiceAdvancedView />
-      <InvoiceAdvancedView />
-      <InvoiceAdvancedView />
+      <InvoiceLIst />
     </>
   )
 }

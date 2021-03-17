@@ -1,10 +1,9 @@
 import { Box, Col, Row } from '@qonsoll/react-design'
 import Text from 'antd/lib/typography/Text'
 import { UserGroupView } from 'domains/User/components/views'
-import { Card } from 'antd'
 
 const ProjectAdvancedView = (props) => {
-  const { company, withProjects, project, withTasks, tasks } = props
+  const { company, project, tasks } = props
   return (
     <Row>
       <Col>

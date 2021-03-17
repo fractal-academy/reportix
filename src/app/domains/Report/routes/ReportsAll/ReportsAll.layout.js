@@ -17,6 +17,20 @@ const reportMockData = [
       { taskName: 'Фікс конфліктів', blocker: 'Слава' },
       { taskName: 'Замінити таблиці на лісти', blocker: 'Максім' }
     ]
+  },
+  {
+    today: [
+      { taskName: 'add something', status: 'Done' },
+      { taskName: 'remove something', status: 'In progress' },
+      { taskName: 'edit something', status: 'Done' },
+      { taskName: 'replace something', status: 'Done' }
+    ],
+    tomorrow: [
+      { taskName: 'Планування', blocker: 'Я' },
+      { taskName: 'редагування деяких компонент', blocker: 'Женя' },
+      { taskName: 'Фікс конфліктів', blocker: 'Слава' },
+      { taskName: 'Замінити таблиці на лісти', blocker: 'Максім' }
+    ]
   }
 ]
 
