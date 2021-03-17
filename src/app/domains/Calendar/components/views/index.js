@@ -1,2 +1,3 @@
-import { CalendarMonth } from './Calendar'
-export { CalendarMonth }
+import { Calendar } from './Calendar'
+import { LegendCalendar } from './LegendCalendar'
+export { Calendar, LegendCalendar }

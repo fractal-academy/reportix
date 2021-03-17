@@ -1,5 +1,5 @@
-import { UserSimpleView } from 'domains/User/components/views'
-import { Divider } from 'antd'
+import { UserListItem } from 'domains/User/components/list'
+import { Col, Row } from '@qonsoll/react-design'
 
 const mockUsers = [
   {
@@ -7,21 +7,48 @@ const mockUsers = [
       'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
     firstName: 'Dima',
     surname: 'Okrushko',
-    email: 'okrdima@gmail.com'
+    email: 'okrdima@gmail.com',
+    leaveDayStatus: 'Vacation'
   },
   {
     avatarURL:
       'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
     firstName: 'Dima',
     surname: 'Okrushko',
-    email: 'okrdima@gmail.com'
+    email: 'okrdima@gmail.com',
+    leaveDayStatus: 'Swap day'
   },
   {
     avatarURL:
       'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
     firstName: 'Dima',
     surname: 'Okrushko',
-    email: 'okrdima@gmail.com'
+    email: 'okrdima@gmail.com',
+    leaveDayStatus: 'Work from home'
+  },
+  {
+    avatarURL:
+      'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+    firstName: 'Dima',
+    surname: 'Okrushko',
+    email: 'okrdima@gmail.com',
+    leaveDayStatus: 'Month Remote'
+  },
+  {
+    avatarURL:
+      'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+    firstName: 'Dima',
+    surname: 'Okrushko',
+    email: 'okrdima@gmail.com',
+    leaveDayStatus: 'Day off'
+  },
+  {
+    avatarURL:
+      'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+    firstName: 'Dima',
+    surname: 'Okrushko',
+    email: 'okrdima@gmail.com',
+    leaveDayStatus: 'Sick day'
   },
   {
     avatarURL:
@@ -36,21 +63,23 @@ const UserList = (props) => {
   const { users, withName, withEmail } = props
 
   return (
-    <>
-      {mockUsers.map((item, index) => (
-        <>
-          <UserSimpleView
+    <Row noGutters>
+      <Col>
+        {/*todo change mockUsers to Users when when there is a connection to DB*/}
+        {mockUsers.map((item, index) => (
+          <UserListItem
             key={index}
             avatarURL={item.avatarURL}
-            name={`${item.firstName} ${item.surname}`}
+            firstName={item.firstName}
+            surname={item.surname}
             email={item.email}
             withName={withName}
             withEmail={withEmail}
+            leaveDayStatus={item?.leaveDayStatus}
           />
-          <Divider />
-        </>
-      ))}
-    </>
+        ))}
+      </Col>
+    </Row>
   )
 }
 export default UserList

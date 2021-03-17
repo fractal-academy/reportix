@@ -6,7 +6,7 @@ import {
   CloseCircleOutlined,
   SyncOutlined
 } from '@ant-design/icons'
-import Tag from 'components/Tags'
+import Tag from 'components/Tags/Tags'
 
 const { Panel } = Collapse
 

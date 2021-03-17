@@ -1,1 +1,1 @@
-export { default as CalendarMonth } from './Calendar.layout'
+export { default as Calendar } from './Calendar.template'

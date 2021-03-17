@@ -1,2 +1,4 @@
 import { UserList } from './UserList'
-export { UserList }
+import { UserListItem } from './UserListItem'
+
+export { UserList, UserListItem }
