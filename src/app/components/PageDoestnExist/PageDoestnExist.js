@@ -1,7 +1,7 @@
 import { Result, Button } from 'antd'
 import { useHistory } from 'react-router-dom'
-import { Dashboard } from 'components/index'
-import { ROUTES_PATHS } from '../constants'
+import { Dashboard } from 'components'
+import { ROUTES_PATHS } from '../../constants'
 
 const PageExistError = () => {
   const history = useHistory()

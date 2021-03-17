@@ -1,5 +1,6 @@
 import { Tag as AntTag } from 'antd'
-import STATUS from '../constants/status'
+import STATUS from 'app/constants/status'
+import { LEAVE_DAY } from 'app/constants/leaveDay'
 import {
   CheckCircleOutlined,
   CloseCircleOutlined,
@@ -7,6 +8,30 @@ import {
 } from '@ant-design/icons'
 
 const statusMap = [
+  {
+    type: LEAVE_DAY.WORK_FROM_HOME,
+    color: 'magenta'
+  },
+  {
+    type: LEAVE_DAY.VACATION,
+    color: 'lime'
+  },
+  {
+    type: LEAVE_DAY.SWAP_DAY,
+    color: 'gold'
+  },
+  {
+    type: LEAVE_DAY.SICK_DAY,
+    color: 'volcano'
+  },
+  {
+    type: LEAVE_DAY.MONTH_REMOTE,
+    color: 'cyan'
+  },
+  {
+    type: LEAVE_DAY.DAY_OFF,
+    color: 'blue'
+  },
   {
     type: STATUS.REJECTED,
     icon: <CloseCircleOutlined />,

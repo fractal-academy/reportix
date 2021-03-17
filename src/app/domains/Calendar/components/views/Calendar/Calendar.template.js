@@ -4,63 +4,59 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 import listPlugin from '@fullcalendar/list'
 import interactionPlugin from '@fullcalendar/interaction'
 import { Typography } from 'antd'
-import { LeaveDayColorPalette } from 'app/constants'
+import {
+  COLOR_CALENDAR,
+  COLOR_CALENDAR_VALUE
+} from 'app/constants/leaveDayColorPalette'
 import { style } from './Calendar.style'
 const { Text } = Typography
-const { COLOR_LITE, COLOR_DARK, COLOR_DARK_VALUE } = LeaveDayColorPalette
 
 const mockDayEvents = [
   {
-    title: 'Makarov SwapDay',
+    title: 'Vacation',
     start: '2021-03-15',
     end: '2021-03-15',
-    backgroundColor: COLOR_DARK.PERSIAN
+    backgroundColor: COLOR_CALENDAR.LIME.backgroundColor
   },
   {
-    title: 'with extended props',
+    title: 'Swap Day',
     start: '2021-03-01',
     end: '2021-03-05',
-    backgroundColor: COLOR_LITE.CRAYOLA
+    backgroundColor: COLOR_CALENDAR.GOLD.backgroundColor
   },
   {
-    title: 'with extended props',
+    title: 'Work from home',
     start: '2021-03-01',
     end: '2021-03-05',
-    backgroundColor: COLOR_LITE.ORANGE
+    backgroundColor: COLOR_CALENDAR.MAGENTA.backgroundColor
   },
   {
-    title: 'with extended props',
+    title: 'Month Remote',
     start: '2021-03-01',
     end: '2021-03-05',
-    backgroundColor: COLOR_LITE.PASTEL
+    backgroundColor: COLOR_CALENDAR.CYAN.backgroundColor
   },
   {
-    title: 'DayTop',
+    title: 'Day off',
     start: '2021-03-05',
     end: '2021-03-05',
-    backgroundColor: COLOR_DARK.CHARCOAL
+    backgroundColor: COLOR_CALENDAR.BLUE.backgroundColor
   },
   {
-    title: 'DayTop',
+    title: 'Sick Day',
     start: '2021-03-05',
     end: '2021-03-05',
-    backgroundColor: COLOR_DARK.PERSIAN
-  },
-  {
-    title: 'DayTop',
-    start: '2021-03-05',
-    end: '2021-03-05',
-    backgroundColor: COLOR_DARK.SIENNA
+    backgroundColor: COLOR_CALENDAR.VOLCANO.backgroundColor
   }
 ]
 
 const renderEventContent = (eventInfo) => {
-  if (COLOR_DARK_VALUE.includes(eventInfo.event.backgroundColor))
-    return (
-      <Text style={style.colorForContrastText}>{eventInfo.event.title}</Text>
-    )
-  else return <Text>{eventInfo.event.title}</Text>
+  const { textColor } = COLOR_CALENDAR_VALUE.find(
+    (color) => color.backgroundColor === eventInfo.event.backgroundColor
+  )
+  return <Text style={{ color: textColor }}>{eventInfo.event.title}</Text>
 }
+
 const CalendarAdvancedView = () => {
   return (
     <FullCalendar
