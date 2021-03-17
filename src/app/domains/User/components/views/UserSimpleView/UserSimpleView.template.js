@@ -10,7 +10,7 @@ const UserSimpleView = (props) => {
   return (
     <Row v="center" noGutters>
       <Col cw="auto">
-        {/*icon if user without avatar*/}
+        {/*icon if User without avatar*/}
         <Avatar size={avatarSize} src={avatarURL} icon={<UserOutlined />} />
       </Col>
       <Col cw="auto" px={0}>

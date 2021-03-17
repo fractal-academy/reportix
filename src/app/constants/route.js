@@ -30,7 +30,7 @@ const ROUTES = {
   },
   REPORTS_ALL: {
     protect: [
-      /*'admin', 'user'*/
+      /*'admin', 'User'*/
     ],
     component: ReportsAll,
     path: ROUTES_PATHS.REPORTS_ALL,
