@@ -16,6 +16,9 @@ const ROUTES_PATHS = {
   REQUESTS_EDIT: '/requests/:id/edit',
   STATISTICS_ALL: '/statistics',
   USER_SHOW: '/users/:id',
-  NOPAGE: '/nopage'
+  NOPAGE: '/nopage',
+  SETTINGS: '/settings',
+  USERS_ALL: '/usersall',
+  INVOICES_ALL: '/invoices'
 }
 export default ROUTES_PATHS
