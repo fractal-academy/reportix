@@ -24,8 +24,8 @@ const ReportsAll = () => {
   const onSubmit = () => {}
   return (
     <>
-      <Row>
-        <Col p={3}>
+      <Row noGutters>
+        <Col py={3}>
           <Search
             placeholder="Search all user reports"
             onSearch={onSubmit}
@@ -34,10 +34,9 @@ const ReportsAll = () => {
         </Col>
       </Row>
       {reportMockData.map((report, index) => (
-        <Row key={index}>
+        <Row key={index} noGutters>
           <Col
-            cw="auto"
-            p={3}
+            py={3}
             mb={3}
             noGutters
             border="1px solid lightgray"

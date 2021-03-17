@@ -8,7 +8,7 @@ import { auth } from 'app/services/Firebase/firebase'
 import { ROUTES_PATHS } from 'app/constants'
 import { useHistory } from 'react-router'
 
-const { Title, Text } = Typography
+const { Title } = Typography
 
 const Header = (props) => {
   const { title } = props
