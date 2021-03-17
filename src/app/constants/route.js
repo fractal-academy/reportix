@@ -21,6 +21,14 @@ const ROUTES = {
     path: ROUTES_PATHS.REPORTS_ALL,
     exact: true
   },
+  REPORT_EDIT: {
+    protect: [
+      /*'admin', 'user'*/
+    ],
+    component: ReportEdit,
+    path: ROUTES_PATHS.REPORTS_EDIT,
+    exact: true
+  },
   CALENDAR_SHOW: {
     component: CalendarShow,
     path: ROUTES_PATHS.CALENDAR_SHOW,

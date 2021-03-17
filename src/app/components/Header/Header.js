@@ -1,5 +1,5 @@
 import { BellOutlined, LeftOutlined } from '@ant-design/icons'
-import { Typography, Dropdown, Menu } from 'antd'
+import { Typography, Dropdown, Menu, Button } from 'antd'
 import { Box, Row, Col } from '@qonsoll/react-design'
 import { style } from 'app/style'
 import { PropTypes } from 'prop-types'
@@ -8,7 +8,7 @@ import { auth } from 'app/services/Firebase/firebase'
 import { ROUTES_PATHS } from 'app/constants'
 import { useHistory } from 'react-router'
 
-const { Title, Text } = Typography
+const { Title } = Typography
 
 const Header = (props) => {
   const { title } = props
@@ -61,9 +61,11 @@ const Header = (props) => {
       <Col px={4}>
         <Row h="right">
           <Col cw="auto" v="center" px={3}>
-            <Text>
-              <BellOutlined style={style.iconSize} />
-            </Text>
+            <Button
+              type="text"
+              shape="circle"
+              icon={<BellOutlined style={style.iconSize} />}
+            />
           </Col>
           <Col cw="auto" pr={4}>
             <Dropdown overlay={dropdownMenu} trigger={['click']} arrow>
