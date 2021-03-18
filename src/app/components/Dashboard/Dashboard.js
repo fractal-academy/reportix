@@ -14,8 +14,8 @@ import { UsersAll } from 'domains/User/routes'
 import { Calendar } from 'domains/Calendar/components/views'
 
 const Dashboard = () => {
-  const { currentUser } = useSession()
-
+  // const { currentUser } = useSession()
+  const currentUser = useSession()
   return (
     <Box p={2}>
       <Title>Dashboard</Title>
@@ -23,7 +23,7 @@ const Dashboard = () => {
       {/*<UserList />*/}
       <Calendar />
       {/*<UsersAll />*/}
-      <Title level={4}>Current user: {currentUser.email}</Title>
+      {/*<Title level={4}>Current user: {currentUser.email}</Title>*/}
       {/*<InvoiceAdvancedView status="Approved" />*/}
       {/*<LeaveDayFilter />*/}
       {/*<ProjectAdvancedView />*/}
