@@ -42,23 +42,29 @@ const mockProject = [
 const ProjectList = (props) => {
   return (
     <>
-      <Row>
+      <Row mt={4}>
         <Col>
           {mockProject.map((item, index) => (
-            <Card>
-              <InvoiceAdvancedView
-                key={index}
-                firstname={item.firstname}
-                surname={item.surname}
-                companyName={item.companyName}
-                project={item.project}
-                iban={item.iban}
-                invoiceDate={item.invoiceDate}
-                value={item.value}
-                taskCounter={item.tasksCounter}
-                taskItem={item.taskItem}
-              />
-            </Card>
+            <Row
+              my={2}
+              border="1px solid lightgray"
+              borderRadius={'8px'}
+              py={3}>
+              <Col>
+                <InvoiceAdvancedView
+                  key={index}
+                  firstname={item.firstname}
+                  surname={item.surname}
+                  companyName={item.companyName}
+                  project={item.project}
+                  iban={item.iban}
+                  invoiceDate={item.invoiceDate}
+                  value={item.value}
+                  taskCounter={item.tasksCounter}
+                  taskItem={item.taskItem}
+                />
+              </Col>
+            </Row>
           ))}
         </Col>
       </Row>

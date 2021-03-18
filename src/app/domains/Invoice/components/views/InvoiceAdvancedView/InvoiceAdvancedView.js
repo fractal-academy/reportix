@@ -19,7 +19,7 @@ const InvoiceAdvancedView = (props) => {
     taskItem
   } = props
   return (
-    <Box border={'1px solid lightgrey'} mb={2} borderRadius={'8px'} p={3}>
+    <Box>
       <Row noGutters>
         <Col>
           <Row h="between" noGutters>

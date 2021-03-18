@@ -1,9 +1,14 @@
 import InvoiceLIst from 'domains/Invoice/components/list/InvoiceList/InvoiceLIst'
+import { Col, Row } from '@qonsoll/react-design'
 
 const InvoicesAll = () => {
   return (
     <>
-      <InvoiceLIst />
+      <Row>
+        <Col>
+          <InvoiceLIst />
+        </Col>
+      </Row>
     </>
   )
 }

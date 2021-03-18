@@ -48,10 +48,9 @@ const ReportsAll = () => {
         </Col>
       </Row>
       {reportMockData.map((report, index) => (
-        <Row key={index} noGutters>
+        <Row key={index} noGutters mb={3}>
           <Col
             py={3}
-            mb={3}
             noGutters
             border="1px solid lightgray"
             borderRadius="1rem">

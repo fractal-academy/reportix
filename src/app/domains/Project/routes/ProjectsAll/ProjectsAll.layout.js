@@ -5,13 +5,11 @@ import ProjectList from 'domains/Project/components/list/ProjectList/ProjectList
 const ProjectsAll = () => {
   return (
     <>
-      <Container>
-        <Row>
-          <Col>
-            <ProjectList />
-          </Col>
-        </Row>
-      </Container>
+      <Row>
+        <Col>
+          <ProjectList />
+        </Col>
+      </Row>
     </>
   )
 }

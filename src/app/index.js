@@ -16,6 +16,7 @@ const App = () => {
         <>
           <Route path={ROUTES_PATHS.LOGIN} component={Login} />
           <Route path={ROUTES_PATHS.SIGN_UP} component={SignUp} />
+          <Redirect to={ROUTES_PATHS.LOGIN} />
         </>
       ) : (
         <PageWrapper>
@@ -24,7 +25,7 @@ const App = () => {
               <PrivateRoute key={route.path} {...route} />
             ))}
           </>
-          <Route path="*" component={PageExistError} />
+          {/*<Route path="*" component={PageExistError} />*/}
         </PageWrapper>
       )}
     </Switch>
