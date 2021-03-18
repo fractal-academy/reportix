@@ -1,11 +1,11 @@
 import { Button, Form, Input } from 'antd'
-import { useCallback, useContext } from 'react'
+import { useCallback } from 'react'
 import { Redirect, withRouter } from 'react-router-dom'
 import { auth } from '../Firebase/firebase'
-import { AuthContext } from '../../context/SesionContext/useSession'
 import Title from 'antd/lib/typography/Title'
 import { Container, Row, Col } from '@qonsoll/react-design'
 import { ROUTES_PATHS } from 'app/constants'
+import { useSession } from 'app/context/SesionContext'
 
 const Login = ({ history }) => {
   const handleLogin = useCallback(
@@ -21,7 +21,7 @@ const Login = ({ history }) => {
     [history]
   )
 
-  const { currentUser } = useContext(AuthContext)
+  const currentUser = useSession()
 
   if (currentUser) {
     return <Redirect to={ROUTES_PATHS.DASHBOARD} />

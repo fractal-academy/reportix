@@ -1,7 +1,7 @@
 // import { Button } from 'antd'
 // import { auth } from 'app/services/Firebase/firebase'
 import Title from 'antd/lib/typography/Title'
-// import { useSession } from 'app/context/SesionContext'
+import { useSession } from 'app/context/SesionContext'
 // import { InvoiceAdvancedView } from 'domains/Invoice/components/views'
 import { Box } from '@qonsoll/react-design'
 // import { LeaveDayFilter } from 'domains/LeaveDay/components/filter'
@@ -15,7 +15,8 @@ import { Calendar } from 'domains/Calendar/components/views'
 
 const Dashboard = () => {
   // const { currentUser } = useSession()
-
+  const currentUser = useSession()
+  console.log(currentUser)
   return (
     <Box p={2}>
       <Title>Dashboard</Title>

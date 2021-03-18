@@ -1,9 +1,8 @@
-import { useContext } from 'react'
 import { Redirect, Route } from 'react-router-dom'
-import AuthContext from 'app/context/SesionContext'
+import { useSession } from 'app/context/SesionContext'
 
 const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
-  const { currentUser } = useContext(AuthContext)
+  const currentUser = useSession()
   return (
     <Route
       {...rest}

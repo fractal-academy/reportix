@@ -1,6 +1,6 @@
-import { Route, Switch } from 'react-router-dom'
+import { Redirect, Route, Switch } from 'react-router-dom'
 import PrivateRoute from 'components/PrivateRoute'
-import { AuthProvider } from './context/SesionContext/useSession'
+import { AuthProvider } from 'app/context/SesionContext/useSession'
 import { ThemeProvider } from '@qonsoll/react-design'
 import Theme from 'app/config/theme'
 import { ROUTES_VALUE, ROUTES_PATHS } from 'app/constants'
@@ -23,6 +23,7 @@ const App = () => {
             </>
           </PageWrapper>
         </Switch>
+        <Redirect to={ROUTES_PATHS.LOGIN} />
       </AuthProvider>
     </ThemeProvider>
   )
