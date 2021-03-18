@@ -16,7 +16,6 @@ import { Calendar } from 'domains/Calendar/components/views'
 const Dashboard = () => {
   // const { currentUser } = useSession()
   const currentUser = useSession()
-  console.log(currentUser)
   return (
     <Box p={2}>
       <Title>Dashboard</Title>

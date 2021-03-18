@@ -23,7 +23,12 @@ const Header = (props) => {
         }}>
         Profile
       </Menu.Item>
-      <Menu.Item key="1" onClick={() => auth.signOut()}>
+      <Menu.Item
+        key="1"
+        onClick={() => {
+          auth.signOut()
+          history.push(ROUTES_PATHS.LOGIN)
+        }}>
         Log Out
       </Menu.Item>
     </Menu>

@@ -11,6 +11,7 @@ import { StatisticsAll } from 'domains/Statistic/routes'
 import { UsersAll, UserShow } from 'domains/User/routes'
 import { Settings } from 'components/Settings'
 import { InvoicesAll } from 'domains/Invoice/routes/InvoicesAll'
+import { RequestsAll } from 'domains/Request/routes/RequestsAll'
 
 const ROUTES = {
   DASHBOARD: {
@@ -82,6 +83,12 @@ const ROUTES = {
     protect: [],
     component: InvoicesAll,
     path: ROUTES_PATHS.INVOICES_ALL,
+    exact: true
+  },
+  REQUESTS_ALL: {
+    protect: [],
+    component: RequestsAll,
+    path: ROUTES_PATHS.REQUESTS_ALL,
     exact: true
   }
 }
