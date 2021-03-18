@@ -1,5 +1,6 @@
 import { Redirect, Route } from 'react-router-dom'
 import { useSession } from 'app/context/SesionContext'
+import { ROUTES_PATHS } from 'app/constants'
 
 const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
   const currentUser = useSession()
@@ -10,7 +11,7 @@ const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
         !!currentUser ? (
           <RouteComponent {...routeProps} />
         ) : (
-          <Redirect to={'/login'} />
+          <Redirect to={ROUTES_PATHS.LOGIN} />
         )
       }
     />
