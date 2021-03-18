@@ -8,7 +8,9 @@ import { CalendarShow } from 'domains/Calendar/routes'
 import { CompanyShow } from 'domains/Company/routes'
 import { ProjectsAll } from 'domains/Project/routes'
 import { StatisticsAll } from 'domains/Statistic/routes'
-import { UserShow } from 'domains/User/routes'
+import { UsersAll, UserShow } from 'domains/User/routes'
+import { Settings } from 'components/Settings'
+import { InvoicesAll } from 'domains/Invoice/routes/InvoicesAll'
 
 const ROUTES = {
   DASHBOARD: {
@@ -62,6 +64,24 @@ const ROUTES = {
   NOPAGE: {
     component: PageExistError,
     path: ROUTES_PATHS.NOPAGE,
+    exact: true
+  },
+  SETTINGS: {
+    protect: [],
+    component: Settings,
+    path: ROUTES_PATHS.SETTINGS,
+    exact: true
+  },
+  USERS_ALL: {
+    protect: [],
+    component: UsersAll,
+    path: ROUTES_PATHS.USERS_ALL,
+    exact: true
+  },
+  INVOICES_ALL: {
+    protect: [],
+    component: InvoicesAll,
+    path: ROUTES_PATHS.INVOICES_ALL,
     exact: true
   }
 }
