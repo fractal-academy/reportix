@@ -11,7 +11,8 @@ import { style } from 'app/style'
 const { Text } = Typography
 
 const AccountSimpleView = (props) => {
-  const { type, nickname } = props
+  const { type, nickname, addAccount } = props
+
   return (
     <Row v="center" p={2}>
       <Col cw="auto" p={0}>
@@ -40,6 +41,7 @@ const AccountSimpleView = (props) => {
               shape="round"
               icon={<PlusCircleOutlined />}
               style={style.fullWidth}
+              onClick={addAccount}
             />
           </Box>
         </Col>
