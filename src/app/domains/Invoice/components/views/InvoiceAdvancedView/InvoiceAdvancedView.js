@@ -1,11 +1,6 @@
 import { Box, Col, Row } from '@qonsoll/react-design'
 import Text from 'antd/lib/typography/Text'
-import { Collapse } from 'antd'
-import {
-  CheckCircleOutlined,
-  CloseCircleOutlined,
-  SyncOutlined
-} from '@ant-design/icons'
+import { Card, Collapse } from 'antd'
 import Tag from 'components/Tags/Tags'
 
 const { Panel } = Collapse
@@ -13,7 +8,8 @@ const { Panel } = Collapse
 const InvoiceAdvancedView = (props) => {
   const {
     companyName,
-    userName,
+    firstname,
+    surname,
     project,
     invoiceDate,
     value,
@@ -23,13 +19,14 @@ const InvoiceAdvancedView = (props) => {
     taskItem
   } = props
   return (
-    <Box border={'1px solid lightgrey'} mb={2} borderRadius={'8px'} p={3}>
+    <Card hoverable>
       <Row noGutters>
         <Col>
           <Row h="between" noGutters>
             <Col>
               <Text type="secondary">From: </Text>
-              <Text>{userName}</Text>
+              <Text>{firstname} </Text>
+              <Text>{surname}</Text>
             </Col>
             <Col cw={'auto'}>
               <Tag status={status} />
@@ -73,11 +70,12 @@ const InvoiceAdvancedView = (props) => {
           </Collapse>
         </Col>
       </Row>
-    </Box>
+    </Card>
   )
 }
 InvoiceAdvancedView.defaultProps = {
-  userName: 'Aleksandr Golyk',
+  firstname: 'Aleksandr',
+  surname: 'Golyk',
   companyName: 'Senseteq',
   project: 'Expences-tracking-app',
   iban: '5532452334324234324234234',

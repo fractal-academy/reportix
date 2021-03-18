@@ -4,31 +4,33 @@ import { UserGroupView } from 'domains/User/components/views'
 import { Card } from 'antd'
 
 const ProjectAdvancedView = (props) => {
-  const { company, withProjects, project, withTasks, tasks } = props
+  const { company, project, tasks } = props
   return (
-    <Row>
-      <Col>
-        <UserGroupView />
-        <Row my={2} noGutters>
-          <Col cw="auto">
-            <Text strong>Company: </Text>
-            <Text> {company}</Text>
-          </Col>
-        </Row>
-        <Row mb={2} noGutters>
-          <Col>
-            <Text strong>Projects: </Text>
-            <Text>{project}</Text>
-          </Col>
-        </Row>
-        <Row mb={2} noGutters>
-          <Col>
-            <Text strong>Tasks: </Text>
-            <Text>{tasks || 'none'}</Text>
-          </Col>
-        </Row>
-      </Col>
-    </Row>
+    <Card hoverable>
+      <Row noGutters>
+        <Col>
+          <UserGroupView />
+          <Row my={2} noGutters>
+            <Col cw="auto">
+              <Text strong>Company: </Text>
+              <Text> {company}</Text>
+            </Col>
+          </Row>
+          <Row mb={2} noGutters>
+            <Col>
+              <Text strong>Projects: </Text>
+              <Text>{project}</Text>
+            </Col>
+          </Row>
+          <Row mb={2} noGutters>
+            <Col>
+              <Text strong>Tasks: </Text>
+              <Text>{tasks || 'none'}</Text>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
+    </Card>
   )
 }
 ProjectAdvancedView.defaultProps = {

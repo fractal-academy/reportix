@@ -1,11 +1,14 @@
-import { InvoiceAdvancedView } from 'domains/Invoice/components/views'
+import InvoiceLIst from 'domains/Invoice/components/list/InvoiceList'
+import { Col, Row } from '@qonsoll/react-design'
 
 const InvoicesAll = () => {
   return (
     <>
-      <InvoiceAdvancedView />
-      <InvoiceAdvancedView />
-      <InvoiceAdvancedView />
+      <Row>
+        <Col>
+          <InvoiceLIst />
+        </Col>
+      </Row>
     </>
   )
 }

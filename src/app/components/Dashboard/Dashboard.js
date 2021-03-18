@@ -14,8 +14,8 @@ import { UsersAll } from 'domains/User/routes'
 import { Calendar } from 'domains/Calendar/components/views'
 
 const Dashboard = () => {
-  const { currentUser } = useSession()
-
+  // const { currentUser } = useSession()
+  const currentUser = useSession()
   return (
     <Box p={2}>
       <Title>Dashboard</Title>
