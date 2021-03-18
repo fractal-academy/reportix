@@ -11,10 +11,15 @@ const mockData = [
 const AccountsAll = () => {
   const addAccount = async () => {
     const GitHubProvider = new firebase.auth.GithubAuthProvider()
-    await auth.signInWithPopup(GitHubProvider).then((result) => {
-      const user = result.additionalUserInfo
-      /*ADD FIREBASE FUNCTIONS LOGIC TO ADD THIS INFO INTO DATABASE*/
-    })
+    try {
+      await auth.signInWithPopup(GitHubProvider).then((result) => {
+        const user = result.additionalUserInfo
+        console.log(user)
+        /*ADD FIREBASE FUNCTIONS LOGIC TO ADD THIS INFO INTO DATABASE*/
+      })
+    } catch (e) {
+      console.log(e)
+    }
   }
   return (
     <Row>
