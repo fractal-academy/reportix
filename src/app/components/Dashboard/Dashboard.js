@@ -1,7 +1,7 @@
 // import { Button } from 'antd'
 // import { auth } from 'app/services/Firebase/firebase'
 import Title from 'antd/lib/typography/Title'
-// import { useSession } from 'app/context/SesionContext'
+import { useSession } from 'app/context/SesionContext'
 // import { InvoiceAdvancedView } from 'domains/Invoice/components/views'
 import { Box } from '@qonsoll/react-design'
 // import { LeaveDayFilter } from 'domains/LeaveDay/components/filter'
@@ -14,14 +14,15 @@ import { UsersAll } from 'domains/User/routes'
 import { Calendar } from 'domains/Calendar/components/views'
 
 const Dashboard = () => {
-  // const { currentUser } = useSession()
+  const { currentUser } = useSession()
 
   return (
     <Box p={2}>
       <Title>Dashboard</Title>
-      <UsersAll />
+      <Title level={4}>Current user: {currentUser.email}</Title>
+      {/*<UsersAll />*/}
       {/*<UserList />*/}
-      <Calendar />
+      {/*<Calendar />*/}
       {/*<UsersAll />*/}
       {/*<Title level={4}>Current user: {currentUser.email}</Title>*/}
       {/*<InvoiceAdvancedView status="Approved" />*/}
@@ -29,7 +30,7 @@ const Dashboard = () => {
       {/*<ProjectAdvancedView />*/}
       {/*<Button onClick={() => auth.signOut()}>Sign out</Button>*/}
       {/*<RequestAdvancedView />*/}
-      {/*<Title level={4}>Current user: {currentUser.email}</Title>*/}
+
       {/*<RequestForm />*/}
       {/*<AccountsAll />*/}
       {/*<InvoiceAdvancedView status="Approved" />*/}
