@@ -10,6 +10,10 @@ import { AccountsAll } from 'domains/Account/routes'
 import { ProjectAdvancedView } from 'domains/Project/components/views'
 import { RequestAdvancedView } from 'domains/Request/components/views'
 import { InvoiceAdvancedView } from 'domains/Invoice/components/views'
+import { ReportsAll } from 'domains/Report/routes'
+import RequestList from 'domains/Request/components/list/RequestList'
+import InvoiceList from 'domains/Invoice/components/list/InvoiceList'
+import ProjectList from 'domains/Project/components/list/ProjectList'
 
 const tabList = [
   {
@@ -20,12 +24,17 @@ const tabList = [
   {
     tabName: 'Projects',
     icon: <ProjectOutlined />,
-    content: <ProjectAdvancedView />
+    content: <ProjectList />
   },
   {
     tabName: 'Requests',
     icon: <PullRequestOutlined />,
-    content: <RequestAdvancedView />
+    content: <RequestList />
+  },
+  {
+    tabName: 'Reports',
+    icon: <FileOutlined />,
+    content: <ReportsAll />
   },
   {
     tabName: 'Statistic',
@@ -35,7 +44,7 @@ const tabList = [
   {
     tabName: 'Invoices',
     icon: <FileOutlined />,
-    content: <InvoiceAdvancedView />
+    content: <InvoiceList />
   }
 ]
 

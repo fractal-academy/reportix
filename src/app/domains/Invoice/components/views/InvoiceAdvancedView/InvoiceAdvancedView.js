@@ -1,6 +1,6 @@
 import { Box, Col, Row } from '@qonsoll/react-design'
 import Text from 'antd/lib/typography/Text'
-import { Collapse } from 'antd'
+import { Card, Collapse } from 'antd'
 import Tag from 'components/Tags/Tags'
 
 const { Panel } = Collapse
@@ -19,7 +19,7 @@ const InvoiceAdvancedView = (props) => {
     taskItem
   } = props
   return (
-    <Box>
+    <Card hoverable>
       <Row noGutters>
         <Col>
           <Row h="between" noGutters>
@@ -70,7 +70,7 @@ const InvoiceAdvancedView = (props) => {
           </Collapse>
         </Col>
       </Row>
-    </Box>
+    </Card>
   )
 }
 InvoiceAdvancedView.defaultProps = {

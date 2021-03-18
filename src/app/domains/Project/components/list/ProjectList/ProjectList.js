@@ -1,6 +1,5 @@
 import { ProjectAdvancedView } from 'domains/Project/components/views'
 import { Col, Row } from '@qonsoll/react-design'
-import { Card } from 'antd'
 
 const mockProject = [
   {
@@ -21,11 +20,7 @@ const ProjectList = () => {
       <Row mt={4}>
         <Col>
           {mockProject.map((item, index) => (
-            <Row
-              my={2}
-              border="1px solid lightgray"
-              borderRadius={'8px'}
-              py={3}>
+            <Row my={2} borderRadius={'8px'} py={3}>
               <Col>
                 <ProjectAdvancedView
                   key={index}

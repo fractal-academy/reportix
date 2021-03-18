@@ -1,6 +1,5 @@
-import { InvoiceAdvancedView } from 'domains/Invoice/components/views'
+import { InvoiceAdvancedView } from 'domains/Invoice/components/views/InvoiceAdvancedView'
 import { Col, Row } from '@qonsoll/react-design'
-import { Card } from 'antd'
 
 const mockProject = [
   {
@@ -39,7 +38,7 @@ const mockProject = [
   }
 ]
 
-const ProjectList = (props) => {
+const InvoiceList = (props) => {
   return (
     <>
       <Row mt={4}>
@@ -47,7 +46,7 @@ const ProjectList = (props) => {
           {mockProject.map((item, index) => (
             <Row
               my={2}
-              border="1px solid lightgray"
+              // border="1px solid lightgray"
               borderRadius={'8px'}
               py={3}>
               <Col>
@@ -71,4 +70,4 @@ const ProjectList = (props) => {
     </>
   )
 }
-export default ProjectList
+export default InvoiceList

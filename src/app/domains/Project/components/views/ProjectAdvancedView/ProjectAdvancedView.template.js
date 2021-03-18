@@ -1,12 +1,13 @@
 import { Box, Col, Row } from '@qonsoll/react-design'
 import Text from 'antd/lib/typography/Text'
 import { UserGroupView } from 'domains/User/components/views'
+import { Card } from 'antd'
 
 const ProjectAdvancedView = (props) => {
   const { company, project, tasks } = props
   return (
-    <Box>
-      <Row>
+    <Card hoverable>
+      <Row noGutters>
         <Col>
           <UserGroupView />
           <Row my={2} noGutters>
@@ -29,7 +30,7 @@ const ProjectAdvancedView = (props) => {
           </Row>
         </Col>
       </Row>
-    </Box>
+    </Card>
   )
 }
 ProjectAdvancedView.defaultProps = {
