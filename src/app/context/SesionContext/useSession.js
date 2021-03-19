@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { auth } from 'app/services/Firebase/firebase'
+import { auth } from 'app/services/Firebase'
 import { Spin } from 'antd'
 import { Row, Col } from '@qonsoll/react-design'
 

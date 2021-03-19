@@ -19,9 +19,10 @@ const Dashboard = () => {
   return (
     <Box p={2}>
       <Title>Dashboard</Title>
-      <UsersAll />
+      <Title level={4}>Current user: {currentUser.email}</Title>
+      {/*<UsersAll />*/}
       {/*<UserList />*/}
-      <Calendar />
+      {/*<Calendar />*/}
       {/*<UsersAll />*/}
       {/*<Title level={4}>Current user: {currentUser.email}</Title>*/}
       {/*<InvoiceAdvancedView status="Approved" />*/}
@@ -29,7 +30,7 @@ const Dashboard = () => {
       {/*<ProjectAdvancedView />*/}
       {/*<Button onClick={() => auth.signOut()}>Sign out</Button>*/}
       {/*<RequestAdvancedView />*/}
-      {/*<Title level={4}>Current user: {currentUser.email}</Title>*/}
+
       {/*<RequestForm />*/}
       {/*<AccountsAll />*/}
       {/*<InvoiceAdvancedView status="Approved" />*/}

@@ -1,17 +1,23 @@
 import { useCallback } from 'react'
-import { auth } from '../Firebase/firebase'
+import { auth } from '../Firebase'
 import { Button, Form, Input } from 'antd'
 import { withRouter } from 'react-router-dom'
 import Title from 'antd/es/typography/Title'
 import { Container, Row, Col } from '@qonsoll/react-design'
-import { ROUTES_PATHS } from 'app/constants'
+import { COLLECTIONS, ROUTES_PATHS } from 'app/constants'
+import { setData } from '../Firestore'
 
 const SignUp = ({ history }) => {
   const handleSignUp = useCallback(
     async (event) => {
       const { email, password } = event
       try {
-        await auth.createUserWithEmailAndPassword(email, password)
+        const data = { email: email }
+        await auth
+          .createUserWithEmailAndPassword(email, password)
+          .then((user) => {
+            setData(COLLECTIONS.USERS, user.user.uid, data)
+          })
         history.push('/')
       } catch (error) {
         console.error(error)

@@ -1,7 +1,7 @@
 import { Button, Form, Input } from 'antd'
 import { useCallback } from 'react'
 import { Redirect, withRouter } from 'react-router-dom'
-import { auth } from '../Firebase/firebase'
+import { auth } from '../Firebase'
 import Title from 'antd/lib/typography/Title'
 import { Container, Row, Col } from '@qonsoll/react-design'
 import { ROUTES_PATHS } from 'app/constants'
