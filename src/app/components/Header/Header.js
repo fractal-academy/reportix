@@ -2,24 +2,32 @@ import { BellOutlined, LeftOutlined } from '@ant-design/icons'
 import { Typography, Dropdown, Menu, Button } from 'antd'
 import { Box, Row, Col } from '@qonsoll/react-design'
 import { style } from 'app/style'
-import { PropTypes } from 'prop-types'
 import { UserSimpleView } from 'domains/User/components/views'
 import { auth } from 'app/services/Firebase/firebase'
 import { ROUTES_PATHS } from 'app/constants'
 import { useHistory } from 'react-router'
+import { useSession } from 'app/context/SesionContext'
+import { generatePath } from 'react-router-dom'
+import { useState } from 'react'
 
 const { Title } = Typography
 
 const Header = (props) => {
   const { title } = props
   const history = useHistory()
+  const user = useSession()
+  const id = user?.uid || 'id'
+  const avatarURL = user?.photoURL
+  // [COMPUTED_PROPERTIES]
+  const userProfile = generatePath(ROUTES_PATHS.USER_SHOW, { id })
 
   const dropdownMenu = (
     <Menu>
       <Menu.Item
         key="0"
         onClick={() => {
-          history.push(ROUTES_PATHS.USER_SHOW)
+          // history.push(userProfile)
+          history.push(userProfile)
         }}>
         Profile
       </Menu.Item>
@@ -75,7 +83,11 @@ const Header = (props) => {
           <Col cw="auto" pr={4}>
             <Dropdown overlay={dropdownMenu} trigger={['click']} arrow>
               <Box onClick={(e) => e.preventDefault()}>
-                <UserSimpleView withName={false} withEmail={false} />
+                <UserSimpleView
+                  withName={false}
+                  withEmail={false}
+                  avatarURL={avatarURL}
+                />
               </Box>
             </Dropdown>
           </Col>
@@ -85,7 +97,4 @@ const Header = (props) => {
   )
 }
 
-Header.propTypes = {
-  title: PropTypes.string
-}
 export default Header

@@ -1,3 +1,5 @@
 import { UserShow } from './UserShow'
 import { UsersAll } from './UsersAll'
-export { UserShow, UsersAll }
+import { UsersEdit } from './UsersEdit'
+
+export { UserShow, UsersAll, UsersEdit }
