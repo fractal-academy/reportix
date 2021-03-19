@@ -51,10 +51,10 @@ const PageWrapper = (props) => {
       </Row>
       <Row>
         <Col cw={[3, 3, 2]}>
-          <Menu defaultSelectedKeys={PAGES[0]}>
+          <Menu defaultSelectedKeys={history.location.pathname}>
             {PAGES.map((page, index) => (
               <Menu.Item
-                key={index}
+                key={page.path}
                 onClick={() => {
                   history.push(page.path)
                 }}>
