@@ -8,7 +8,6 @@ import { generatePath, useHistory } from 'react-router-dom'
 import { ROUTES_PATHS } from 'app/constants'
 
 const UserListItem = (props) => {
-  console.log(props.email)
   const {
     users,
     avatarURL,

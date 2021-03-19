@@ -2,11 +2,10 @@ import { UserListItem } from 'domains/User/components/list'
 import { Col, Row } from '@qonsoll/react-design'
 import { useHistory } from 'react-router-dom'
 import { ROUTES_PATHS } from 'app/constants'
-// import { auth } from 'services/Firebase'
 
 const UserList = (props) => {
   const { users, withName, withEmail } = props
-  const history = useHistory()
+
   return (
     <Row noGutters>
       <Col>
