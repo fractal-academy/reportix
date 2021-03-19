@@ -22,6 +22,7 @@ const Login = ({ history }) => {
   )
 
   const currentUser = useSession()
+  console.log(currentUser)
 
   if (currentUser) {
     return <Redirect to={ROUTES_PATHS.DASHBOARD} />
