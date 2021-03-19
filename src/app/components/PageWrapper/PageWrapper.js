@@ -1,5 +1,5 @@
 import { Divider, Typography, Menu, Dropdown, Button } from 'antd'
-import { Header } from 'components'
+import { Header } from 'components/Header'
 import { Row, Col, Box } from '@qonsoll/react-design'
 import { PropTypes } from 'prop-types'
 import { style } from 'app/style'

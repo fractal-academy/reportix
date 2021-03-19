@@ -75,6 +75,7 @@ const InvoiceAdvancedView = (props) => {
 }
 InvoiceAdvancedView.defaultProps = {
   firstname: 'Aleksandr',
+  status: 'Approved',
   surname: 'Golyk',
   companyName: 'Senseteq',
   project: 'Expences-tracking-app',

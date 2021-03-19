@@ -1,1 +1,1 @@
-export { default as UserSimpleForm } from './UserSimpleForm'
+export { default as UserSimpleForm } from './UserSimpleForm.template'
