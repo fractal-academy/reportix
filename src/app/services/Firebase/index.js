@@ -1,3 +1,3 @@
-import firebase from './firebase'
+import firebase, { auth, storage, firestore } from './firebase'
 export default firebase
-export { firebase }
+export { firebase, auth, storage, firestore }
