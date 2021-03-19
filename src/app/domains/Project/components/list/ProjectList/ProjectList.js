@@ -4,14 +4,14 @@ import { Col, Row } from '@qonsoll/react-design'
 const mockProject = [
   {
     company: 'Senseteq',
-    project: 'Expences-tracking-app',
+    project: 'Expences tracking app',
     tasks: '20',
     startDate: '2021/04/04',
     deadline: '2021/04/04'
   },
   {
     company: 'Senseteq1',
-    project: 'Expences-tracking-app111',
+    project: 'Simple TODO',
     tasks: '2011',
     startDate: '2021/04/04',
     deadline: '2021/04/04'

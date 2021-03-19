@@ -1,11 +1,11 @@
 import { Box, Col, Row } from '@qonsoll/react-design'
-import Text from 'antd/lib/typography/Text'
 import { UserGroupView } from 'domains/User/components/views'
-import { Button, Card, Popconfirm } from 'antd'
+import { Button, Card, Popconfirm, Typography } from 'antd'
 import { EditOutlined } from '@ant-design/icons'
 import { ROUTES_PATHS } from '../../../../../constants'
 import { useHistory } from 'react-router-dom'
 import { useState } from 'react'
+const { Title, Text } = Typography
 
 const ProjectAdvancedView = (props) => {
   const { company, project, tasks, startDate, deadline } = props
@@ -33,34 +33,33 @@ const ProjectAdvancedView = (props) => {
   return (
     <Card hoverable>
       <Row noGutters h="between">
-        <Col cw="auto">
-          <UserGroupView />
-          <Row my={2} noGutters>
+        <Col>
+          <Row mb={2} noGutters>
             <Col cw="auto">
+              <Title level={3}>{project}</Title>
+            </Col>
+          </Row>
+          <Row noGutters h="between">
+            <Col>
+              <Row mb={2}>
+                <UserGroupView />
+              </Row>
               <Text strong>Company: </Text>
               <Text> {company}</Text>
+              <Row>
+                <Text strong>Tasks: </Text>
+                <Text>{tasks || 'none'}</Text>
+              </Row>
             </Col>
-          </Row>
-          <Row mb={2} noGutters>
             <Col>
-              <Text strong>Projects: </Text>
-              <Text>{project}</Text>
+              <Box>
+                <Text>Project start date: {startDate}</Text>
+              </Box>
+              <Box>
+                <Text>Project end date: {deadline}</Text>
+              </Box>
             </Col>
           </Row>
-          <Row mb={2} noGutters>
-            <Col>
-              <Text strong>Tasks: </Text>
-              <Text>{tasks || 'none'}</Text>
-            </Col>
-          </Row>
-        </Col>
-        <Col cw="auto" v={'end'}>
-          <Box>
-            <Text>Project start date: {startDate}</Text>
-          </Box>
-          <Box>
-            <Text>Project end date: {deadline}</Text>
-          </Box>
         </Col>
         <Col cw="auto">
           <Row noGutters>
@@ -94,7 +93,7 @@ const ProjectAdvancedView = (props) => {
 }
 ProjectAdvancedView.defaultProps = {
   company: 'Senseteq',
-  project: 'Expences-tracking-app',
+  project: 'Expences tracking app',
   tasks: '20',
   startDate: '2021/04/04',
   deadline: '2021/04/04'
