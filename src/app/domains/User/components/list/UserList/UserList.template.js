@@ -7,9 +7,9 @@ const UserList = (props) => {
   return (
     <Row noGutters>
       <Col>
-        {/*todo change mockUsers to Users when when there is a connection to DB*/}
         {users.map((item, index) => (
           <UserListItem
+            id={item.id}
             key={index}
             avatarURL={item.avatarURL}
             firstName={item.firstName}

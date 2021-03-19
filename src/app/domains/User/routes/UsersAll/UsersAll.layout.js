@@ -9,9 +9,9 @@ import { Spinner } from 'components/Spinner'
 
 const UsersAll = () => {
   const [users, loading] = useCollectionData(
-    getCollectionRef(COLLECTIONS.USERS)
+    getCollectionRef(COLLECTIONS.USERS),
+    { idField: 'id' }
   )
-  // console.log(users)
 
   if (!users || loading) {
     return <Spinner />
