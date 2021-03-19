@@ -1,23 +1,28 @@
-import { Col, Container, Row } from '@qonsoll/react-design'
+import { Box, Col, Container, Row } from '@qonsoll/react-design'
 import { UserSimpleView } from 'domains/User/components/views'
 import { Button, Card, Popconfirm } from 'antd'
 import { DeleteOutlined } from '@ant-design/icons'
 import { useState } from 'react'
 import Tag from 'components/Tags/Tags'
+import { generatePath, useHistory } from 'react-router-dom'
+import { ROUTES_PATHS } from 'app/constants'
 
 const UserListItem = (props) => {
   console.log(props.email)
   const {
+    users,
     avatarURL,
     firstName,
     surname,
     email,
     withName,
     withEmail,
-    leaveDayStatus
+    leaveDayStatus,
+    id
   } = props
   const [visible, setVisible] = useState(false)
   const [confirmLoading, setConfirmLoading] = useState(false)
+  const history = useHistory()
 
   const showPopConfirm = () => {
     setVisible(!visible)
@@ -30,6 +35,7 @@ const UserListItem = (props) => {
       setConfirmLoading(false)
     }, 800)
   }
+  const userProfile = generatePath(ROUTES_PATHS.USER_SHOW, { id })
 
   const handleCancel = () => {
     setVisible(false)
@@ -39,13 +45,18 @@ const UserListItem = (props) => {
       <Card>
         <Row noGutters>
           <Col>
-            <UserSimpleView
-              avatarURL={avatarURL}
-              name={`${firstName} ${surname}`}
-              email={email}
-              withName={withName}
-              withEmail={withEmail}
-            />
+            <Box
+              onClick={() => {
+                history.push(userProfile)
+              }}>
+              <UserSimpleView
+                avatarURL={avatarURL}
+                name={`${firstName} ${surname}`}
+                email={email}
+                withName={withName}
+                withEmail={withEmail}
+              />
+            </Box>
           </Col>
           <Col>
             <Tag status={leaveDayStatus} />
