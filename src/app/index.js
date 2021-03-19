@@ -13,14 +13,12 @@ const App = () => {
     <ThemeProvider theme={Theme}>
       <AuthProvider>
         <Switch>
-          <Route component={Login} path={ROUTES_PATHS.LOGIN} />
           <Route component={SignUp} path={ROUTES_PATHS.SIGN_UP} />
+          <Route component={Login} path={ROUTES_PATHS.LOGIN} />
           <PageWrapper>
-            <>
-              {ROUTES_VALUE.map((route) => (
-                <PrivateRoute key={route.path} {...route} />
-              ))}
-            </>
+            {ROUTES_VALUE.map((route) => (
+              <PrivateRoute key={route.path} {...route} />
+            ))}
           </PageWrapper>
         </Switch>
         <Redirect to={ROUTES_PATHS.LOGIN} />
