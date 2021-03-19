@@ -2,7 +2,7 @@
 // import { SessionLogin } from 'domains/Session/routes'
 
 import ROUTES_PATHS from './routhPaths'
-import { Dashboard, PageExistError } from 'components'
+import { Dashboard } from 'components'
 import { ReportsAll, ReportEdit } from 'domains/Report/routes'
 import { CalendarShow } from 'domains/Calendar/routes'
 import { CompanyShow } from 'domains/Company/routes'
@@ -62,11 +62,6 @@ const ROUTES = {
   //     path: ROUTES_PATHS.DASHBOARD,
   //     exact: true
   //   },
-  NOPAGE: {
-    component: PageExistError,
-    path: ROUTES_PATHS.NOPAGE,
-    exact: true
-  },
   SETTINGS: {
     protect: [],
     component: Settings,
