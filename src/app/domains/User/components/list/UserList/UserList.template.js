@@ -3,7 +3,6 @@ import { Col, Row } from '@qonsoll/react-design'
 
 const UserList = (props) => {
   const { users, withName, withEmail } = props
-  console.log(users)
 
   return (
     <Row noGutters>
