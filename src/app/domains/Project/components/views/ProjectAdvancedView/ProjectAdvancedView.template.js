@@ -34,14 +34,14 @@ const ProjectAdvancedView = (props) => {
     <Card hoverable>
       <Row noGutters h="between">
         <Col>
-          <Row mb={2} noGutters>
+          <Row noGutters>
             <Col cw="auto">
               <Title level={3}>{project}</Title>
             </Col>
           </Row>
           <Row noGutters h="between">
             <Col>
-              <Row mb={2}>
+              <Row>
                 <UserGroupView />
               </Row>
               <Text strong>Company: </Text>

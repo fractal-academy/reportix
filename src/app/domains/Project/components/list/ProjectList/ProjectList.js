@@ -21,10 +21,10 @@ const mockProject = [
 const ProjectList = () => {
   return (
     <>
-      <Row mt={4}>
+      <Row>
         <Col>
           {mockProject.map((item, index) => (
-            <Row my={2} borderRadius={'8px'} py={3}>
+            <Row my={2} borderRadius={'8px'} py={3} noGutters>
               <Col>
                 <ProjectAdvancedView
                   key={index}
