@@ -1,15 +1,13 @@
-import { Redirect, Route, Switch } from 'react-router-dom'
-import PrivateRoute from 'components/PrivateRoute'
-import { AuthProvider, useSession } from 'app/context/SesionContext/useSession'
+import { Route, Switch } from 'react-router-dom'
+import { AuthProvider } from 'app/context/SesionContext/useSession'
 import { ThemeProvider } from '@qonsoll/react-design'
 import Theme from 'app/config/theme'
 import { ROUTES_VALUE, ROUTES_PATHS } from 'app/constants'
 import { Login, SignUp } from 'app/services/Auth'
-import { PageNotFound, PageWrapper } from 'components'
+import { PageNotFound, PageWrapper, PrivateRoute } from 'components'
 import 'app/config/root.scss'
 
 const App = () => {
-  const currentUser = useSession()
   return (
     <ThemeProvider theme={Theme}>
       <AuthProvider>
