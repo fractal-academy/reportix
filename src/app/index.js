@@ -1,4 +1,4 @@
-import { Route, Switch } from 'react-router-dom'
+import { Redirect, Route, Switch } from 'react-router-dom'
 import PrivateRoute from 'components/PrivateRoute'
 import { AuthProvider, useSession } from 'app/context/SesionContext/useSession'
 import { ThemeProvider } from '@qonsoll/react-design'
@@ -13,22 +13,18 @@ const App = () => {
   return (
     <ThemeProvider theme={Theme}>
       <AuthProvider>
-        {!currentUser ? (
-          <Switch>
-            <Route exact path={ROUTES_PATHS.LOGIN} component={Login} />
-            <Route exact path={ROUTES_PATHS.SIGN_UP} component={SignUp} />
-            <Route component={PageNotFound} />
-          </Switch>
-        ) : (
+        <Switch>
+          <Route exact path={ROUTES_PATHS.LOGIN} component={Login} />
+          <Route exact path={ROUTES_PATHS.SIGN_UP} component={SignUp} />
           <PageWrapper>
             <Switch>
               {ROUTES_VALUE.map((route) => (
-                <Route key={route.path} {...route} />
+                <PrivateRoute key={route.path} {...route} />
               ))}
-              <Route component={PageNotFound} />
+              <PrivateRoute component={PageNotFound} />
             </Switch>
           </PageWrapper>
-        )}
+        </Switch>
       </AuthProvider>
     </ThemeProvider>
   )

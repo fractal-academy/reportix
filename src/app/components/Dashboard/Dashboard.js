@@ -19,7 +19,7 @@ const Dashboard = () => {
   return (
     <Box p={2}>
       <Title>Dashboard</Title>
-      <Title level={4}>Current user: {currentUser.email}</Title>
+      <Title level={4}>Current user: {currentUser?.email}</Title>
       {/*<UsersAll />*/}
       {/*<UserList />*/}
       {/*<Calendar />*/}
