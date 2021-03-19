@@ -23,10 +23,10 @@ const RequestList = (props) => {
 
   return (
     <>
-      <Row mt={4}>
+      <Row>
         <Col>
           {mockRequest.map((item, index) => (
-            <Row my={2} borderRadius={'8px'} py={3}>
+            <Row my={2} borderRadius={'8px'} py={3} noGutters>
               <Col>
                 <RequestAdvancedView
                   key={index}
