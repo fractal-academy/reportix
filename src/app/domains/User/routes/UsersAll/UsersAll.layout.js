@@ -12,7 +12,6 @@ const UsersAll = () => {
     getCollectionRef(COLLECTIONS.USERS),
     { idField: 'id' }
   )
-  console.log(users)
 
   if (!users || loading) {
     return <Spinner />
