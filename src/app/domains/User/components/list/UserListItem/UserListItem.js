@@ -6,6 +6,7 @@ import { useState } from 'react'
 import Tag from 'components/Tags/Tags'
 
 const UserListItem = (props) => {
+  console.log(props.email)
   const {
     avatarURL,
     firstName,
