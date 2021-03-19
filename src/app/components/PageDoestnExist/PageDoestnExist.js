@@ -1,6 +1,6 @@
 import { Result, Button } from 'antd'
 import { useHistory } from 'react-router-dom'
-import { ROUTES_PATHS } from '../../constants'
+import { ROUTES_PATHS } from 'app/constants'
 import { useSession } from 'app/context/SesionContext/useSession'
 
 const PageExistError = () => {
