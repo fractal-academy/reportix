@@ -1,14 +1,16 @@
 import RequestList from 'domains/Request/components/list/RequestList'
-import { Col, Row } from '@qonsoll/react-design'
+import { Col, Container, Row } from '@qonsoll/react-design'
 
 const RequestsAllLayout = () => {
   return (
     <>
-      <Row>
-        <Col>
-          <RequestList />
-        </Col>
-      </Row>
+      <Container>
+        <Row mt={3} noGutters>
+          <Col>
+            <RequestList />
+          </Col>
+        </Row>
+      </Container>
     </>
   )
 }

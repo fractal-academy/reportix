@@ -5,7 +5,16 @@ import { Typography } from 'antd'
 const { Text } = Typography
 
 const UserSimpleView = (props) => {
-  const { avatarURL, withName, name, avatarSize, withEmail, email } = props
+  const {
+    avatarURL,
+    withName,
+    firstName,
+    surname,
+    avatarSize,
+    withEmail,
+    email
+  } = props
+  const name = firstName ? `${firstName} ${surname}` : 'User'
 
   return (
     <Row v="center" noGutters>

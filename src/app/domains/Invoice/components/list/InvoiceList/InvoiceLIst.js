@@ -10,6 +10,7 @@ const mockProject = [
     iban: '5532452334324234324234234',
     invoiceDate: '01-04-2021',
     value: '200$',
+    status: 'Pending',
     tasksCounter: '2',
     taskItem: [
       'Task #1: Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original.',
@@ -24,6 +25,7 @@ const mockProject = [
     iban: '5688852334324234324234234',
     invoiceDate: '09-04-2021',
     value: '300$',
+    status: 'Approved',
     tasksCounter: '8',
     taskItem: [
       'Task #1: Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original.',
@@ -59,6 +61,7 @@ const InvoiceList = (props) => {
                   iban={item.iban}
                   invoiceDate={item.invoiceDate}
                   value={item.value}
+                  status={item.status}
                   taskCounter={item.tasksCounter}
                   taskItem={item.taskItem}
                 />

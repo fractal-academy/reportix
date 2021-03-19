@@ -1,10 +1,11 @@
-import { Tabs } from 'antd'
+import { Button, Tabs } from 'antd'
 import {
   UserOutlined,
   ProjectOutlined,
   PullRequestOutlined,
   LineChartOutlined,
-  FileOutlined
+  FileOutlined,
+  AppstoreAddOutlined
 } from '@ant-design/icons'
 import { AccountsAll } from 'domains/Account/routes'
 import { ProjectAdvancedView } from 'domains/Project/components/views'
@@ -14,37 +15,44 @@ import { ReportsAll } from 'domains/Report/routes'
 import RequestList from 'domains/Request/components/list/RequestList'
 import InvoiceList from 'domains/Invoice/components/list/InvoiceList'
 import ProjectList from 'domains/Project/components/list/ProjectList'
+import { Col, Row } from '@qonsoll/react-design'
 
 const tabList = [
   {
     tabName: 'Accounts',
     icon: <UserOutlined />,
-    content: <AccountsAll />
+    content: <AccountsAll />,
+    addNew: false
   },
   {
     tabName: 'Projects',
     icon: <ProjectOutlined />,
-    content: <ProjectList />
+    content: <ProjectList />,
+    addNew: false
   },
   {
     tabName: 'Requests',
     icon: <PullRequestOutlined />,
-    content: <RequestList />
+    content: <RequestList />,
+    addNew: true
   },
   {
     tabName: 'Reports',
     icon: <FileOutlined />,
-    content: <ReportsAll />
+    content: <ReportsAll />,
+    addNew: true
   },
   {
     tabName: 'Statistic',
     icon: <LineChartOutlined />,
-    content: <>Statistic</>
+    content: <>Statistic</>,
+    addNew: false
   },
   {
     tabName: 'Invoices',
     icon: <FileOutlined />,
-    content: <InvoiceList />
+    content: <InvoiceList />,
+    addNew: false
   }
 ]
 
@@ -62,6 +70,15 @@ const UserFilterProfile = () => {
             </>
           }
           key={item.tabName}>
+          {item.addNew && (
+            <Row h="right">
+              <Col cw="auto">
+                <Button type="primary" icon={<AppstoreAddOutlined />}>
+                  Add project
+                </Button>
+              </Col>
+            </Row>
+          )}
           {item.content}
         </TabPane>
       ))}

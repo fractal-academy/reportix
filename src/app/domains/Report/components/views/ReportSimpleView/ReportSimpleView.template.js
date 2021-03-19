@@ -30,7 +30,7 @@ const ReportSimpleView = (props) => {
             type="primary"
             icon={<EditOutlined />}
             onClick={() => {
-              history.push(ROUTES_PATHS.REPORTS_EDIT)
+              history.push(ROUTES_PATHS.REPORT_EDIT)
             }}>
             Edit
           </Button>
