@@ -5,12 +5,16 @@ const mockProject = [
   {
     company: 'Senseteq',
     project: 'Expences-tracking-app',
-    tasks: '20'
+    tasks: '20',
+    startDate: '2021/04/04',
+    deadline: '2021/04/04'
   },
   {
     company: 'Senseteq1',
     project: 'Expences-tracking-app111',
-    tasks: '2011'
+    tasks: '2011',
+    startDate: '2021/04/04',
+    deadline: '2021/04/04'
   }
 ]
 
@@ -27,6 +31,8 @@ const ProjectList = () => {
                   company={item.company}
                   project={item.project}
                   tasks={item.tasks}
+                  startDate={item.startDate}
+                  deadline={item.deadline}
                 />
               </Col>
             </Row>
