@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom'
 import Title from 'antd/es/typography/Title'
 import { Container, Row, Col } from '@qonsoll/react-design'
 import { COLLECTIONS, ROUTES_PATHS } from 'app/constants'
+import moment from 'moment'
 import { setData } from '../Firestore'
 
 const SignUp = ({ history }) => {
@@ -12,7 +13,8 @@ const SignUp = ({ history }) => {
     async (event) => {
       const { email, password } = event
       try {
-        const data = { email: email }
+        const currentDate = moment().format('DD-MM-YYYY')
+        const data = { email: email, employedDate: currentDate }
         await auth
           .createUserWithEmailAndPassword(email, password)
           .then((user) => {
