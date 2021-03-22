@@ -20,21 +20,17 @@ const UsersEdit = () => {
     form.resetFields()
   }
   const onEditUser = async (data) => {
-    console.log(data)
     setLoading(true)
     try {
       await updateData(COLLECTIONS.USERS, id, {
         firstName: data.firstName,
         surname: data.surname,
-        phone: data.phone,
-        photoURL: data?.photoURL[1]
+        phone: data.phone
       })
-      setVisible(false)
-      form.resetFields()
     } catch (e) {
       message.error("Can't find this email.")
     }
-
+    form.resetFields()
     setLoading(false)
     setVisible(false)
   }
