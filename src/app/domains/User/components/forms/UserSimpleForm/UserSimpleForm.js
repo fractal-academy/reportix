@@ -1,6 +1,7 @@
 import { Form, Input } from 'antd'
-import { LockOutlined, UserOutlined } from '@ant-design/icons'
+import { UserOutlined, PhoneOutlined } from '@ant-design/icons'
 import Title from 'antd/lib/typography/Title'
+import { Col, Row } from '@qonsoll/react-design'
 
 const UserSimpleForm = (props) => {
   const { onFinish, form, loading } = props
@@ -13,35 +14,56 @@ const UserSimpleForm = (props) => {
       }}
       onFinish={onFinish}
       form={form}>
-      <Form.Item
-        name="email"
-        rules={[
-          {
-            required: true,
-            message: 'Please input your Email!'
-          }
-        ]}>
-        <Input
-          prefix={<UserOutlined />}
-          placeholder="Email"
-          defaultValue="@gmail.com"
-        />
-      </Form.Item>
-      <Form.Item
-        name="password"
-        rules={[
-          {
-            required: true,
-            message: 'Please input your Password!'
-          }
-        ]}>
-        <Input
-          hasFeedback={loading}
-          prefix={<LockOutlined />}
-          type="password"
-          placeholder="Password"
-        />
-      </Form.Item>
+      <Row noGutters>
+        <Col>
+          <Row noGutters>
+            <Col>
+              <Form.Item
+                name="firstName"
+                hasFeedback={loading}
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input your First name!'
+                  }
+                ]}>
+                <Input prefix={<UserOutlined />} placeholder="First name" />
+              </Form.Item>
+            </Col>
+            <Col>
+              <Form.Item
+                name="surname"
+                hasFeedback={loading}
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input your surname!'
+                  }
+                ]}>
+                <Input prefix={<UserOutlined />} placeholder="Surname" />
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row noGutters>
+            <Col>
+              <Form.Item
+                name="phone"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input your phone!'
+                  }
+                ]}>
+                <Input
+                  hasFeedback={loading}
+                  prefix={<PhoneOutlined />}
+                  placeholder="+380"
+                />
+              </Form.Item>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
     </Form>
   )
 }

@@ -15,9 +15,10 @@ const UserAdvancedView = (props) => {
     projectsNumber,
     avatarURL,
     avatarSize,
-    name
+    firstName,
+    surname
   } = props
-
+  const name = firstName && surname ? `${firstName} ${surname}` : 'User'
   return (
     <Container>
       <Row mt={2} h="between">
@@ -36,7 +37,7 @@ const UserAdvancedView = (props) => {
                   {/*UserName*/}
                   <Row mt={2} noGutters>
                     <Col>
-                      <Title level={2}>{name ? name : 'None'}</Title>
+                      <Title level={2}>{name}</Title>
                     </Col>
                   </Row>
                   <Row noOuterGutters mb={1}>
