@@ -14,7 +14,7 @@ const UserSimpleView = (props) => {
     withEmail,
     email
   } = props
-  const name = firstName && surname ? `${firstName} ${surname}` : 'User'
+  const name = firstName ? `${firstName} ${surname}` : 'User'
 
   return (
     <Row v="center" noGutters>

@@ -1,11 +1,11 @@
 import { Result, Button } from 'antd'
 import { useHistory } from 'react-router-dom'
-import { Dashboard } from 'components'
-import { ROUTES_PATHS } from '../../constants'
+import { ROUTES_PATHS } from 'app/constants'
+import { useSession } from 'app/context/SesionContext/useSession'
 
 const PageExistError = () => {
   const history = useHistory()
-
+  const currentUser = useSession()
   return (
     <Result
       status="404"
@@ -14,7 +14,11 @@ const PageExistError = () => {
       extra={
         <Button
           type="primary"
-          onClick={() => history.push(ROUTES_PATHS.DASHBOARD)}>
+          onClick={() =>
+            history.push(
+              currentUser ? ROUTES_PATHS.DASHBOARD : ROUTES_PATHS.LOGIN
+            )
+          }>
           Back Home
         </Button>
       }

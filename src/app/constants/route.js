@@ -2,11 +2,11 @@
 // import { SessionLogin } from 'domains/Session/routes'
 
 import ROUTES_PATHS from './routhPaths'
-import { Dashboard, PageExistError } from 'components'
+import { Dashboard } from 'components'
 import { ReportsAll, ReportEdit } from 'domains/Report/routes'
 import { CalendarShow } from 'domains/Calendar/routes'
 import { CompanyShow } from 'domains/Company/routes'
-import { ProjectsAll } from 'domains/Project/routes'
+import { ProjectsAll, ProjectEdit } from 'domains/Project/routes'
 import { StatisticsAll } from 'domains/Statistic/routes'
 import { UsersAll, UserShow } from 'domains/User/routes'
 import { Settings } from 'components/Settings'
@@ -29,7 +29,7 @@ const ROUTES = {
       /*'admin', 'user'*/
     ],
     component: ReportEdit,
-    path: ROUTES_PATHS.REPORTS_EDIT,
+    path: ROUTES_PATHS.REPORT_EDIT,
     exact: true
   },
   CALENDAR_SHOW: {
@@ -47,6 +47,11 @@ const ROUTES = {
     path: ROUTES_PATHS.PROJECTS_ALL,
     exact: true
   },
+  PROJECT_EDIT: {
+    component: ProjectEdit,
+    path: ROUTES_PATHS.PROJECT_EDIT,
+    exact: true
+  },
   STATISTIC_ALL: {
     component: StatisticsAll,
     path: ROUTES_PATHS.STATISTICS_ALL,
@@ -62,11 +67,6 @@ const ROUTES = {
   //     path: ROUTES_PATHS.DASHBOARD,
   //     exact: true
   //   },
-  NOPAGE: {
-    component: PageExistError,
-    path: ROUTES_PATHS.NOPAGE,
-    exact: true
-  },
   SETTINGS: {
     protect: [],
     component: Settings,

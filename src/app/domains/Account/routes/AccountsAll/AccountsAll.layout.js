@@ -12,8 +12,12 @@ const AccountsAll = () => {
   const addAccount = async () => {
     const GitHubProvider = new firebase.auth.GithubAuthProvider()
     try {
-      await auth.signInWithPopup(GitHubProvider).then((result) => {
-        const user = result.additionalUserInfo
+      await auth.currentUser.linkWithPopup(GitHubProvider).then((result) => {
+        // const user = {
+        //   nickname: result.additionalUserInfo.username,
+        //   email: result.user.email
+        // }
+        const user = result
         console.log(user)
         /*ADD FIREBASE FUNCTIONS LOGIC TO ADD THIS INFO INTO DATABASE*/
       })
@@ -21,6 +25,7 @@ const AccountsAll = () => {
       console.log(e)
     }
   }
+
   return (
     <Row>
       <Col cw="auto">
