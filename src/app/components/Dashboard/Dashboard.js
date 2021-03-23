@@ -12,6 +12,8 @@ import { UsersAll } from 'domains/User/routes'
 // import RequestForm from 'domains/Request/components/form'
 // import { AccountsAll } from 'domains/Account/routes'
 import { Calendar } from 'domains/Calendar/components/views'
+import CalendarAddEvent from 'app/domains/Calendar/combined/CalendarAddEvent'
+import LeaveDaySingleSelect from 'domains/LeaveDay/components/select/LeaveDaySingleSelect'
 
 const Dashboard = () => {
   const currentUser = useSession()
@@ -19,6 +21,9 @@ const Dashboard = () => {
     <Box p={2}>
       <Title>Dashboard</Title>
       <Title level={4}>Current user: {currentUser?.email}</Title>
+
+      <CalendarAddEvent />
+      <LeaveDaySingleSelect />
       {/*<UsersAll />*/}
       {/*<UserList />*/}
       {/*<Calendar />*/}
