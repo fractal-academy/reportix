@@ -4,6 +4,7 @@ import ROUTES, { ROUTES_VALUE } from './route'
 import COLLECTIONS from './collection'
 import PAGES from './pages'
 import STATUS from './status'
+import TASK_STATUS from './taskStatus'
 import * as LeaveDayColorPalette from './leaveDayColorPalette'
 
 export {
@@ -14,5 +15,6 @@ export {
   COLLECTIONS,
   PAGES,
   STATUS,
+  TASK_STATUS,
   LeaveDayColorPalette
 }

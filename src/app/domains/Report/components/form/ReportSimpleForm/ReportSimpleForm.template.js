@@ -1,18 +1,26 @@
-// import { Row, Col, Box } from '@qonsoll/react-design'
-// import { Button, Typography, Table } from 'antd'
-
-// const ReportSimpleForm = () => {
-//   return <></>
-// }
 import { useState } from 'react'
-import { Table, Input, InputNumber, Popconfirm, Form, Typography } from 'antd'
-const originData = []
+import {
+  Table,
+  Input,
+  Popconfirm,
+  Form,
+  Typography,
+  Button,
+  Select
+} from 'antd'
+import { style } from 'app/style'
+import { TASK_STATUS } from 'app/constants'
+import { Row, Col } from '@qonsoll/react-design'
 
-for (let i = 0; i < 100; i++) {
+const originData = []
+console.log(TASK_STATUS)
+const taskOptions = [{ value: 'Done' }, { value: 'In progress' }]
+
+for (let i = 0; i < 15; i++) {
   originData.push({
     key: i.toString(),
     today: `Task ${i}`,
-    status: 'done'
+    status: 'In progress'
   })
 }
 
@@ -20,13 +28,18 @@ const EditableCell = ({
   editing,
   dataIndex,
   title,
-  inputType,
+  formNodeType,
   record,
   index,
   children,
   ...restProps
 }) => {
-  const inputNode = inputType === 'number' ? <InputNumber /> : <Input />
+  const formNode =
+    formNodeType === 'select' ? (
+      <Select defaultValue="In progress" options={taskOptions} />
+    ) : (
+      <Input />
+    )
   return (
     <td {...restProps}>
       {editing ? (
@@ -41,7 +54,7 @@ const EditableCell = ({
               message: `Please Input ${title}!`
             }
           ]}>
-          {inputNode}
+          {formNode}
         </Form.Item>
       ) : (
         children
@@ -54,6 +67,16 @@ const ReportSimpleForm = () => {
   const [form] = Form.useForm()
   const [data, setData] = useState(originData)
   const [editingKey, setEditingKey] = useState('')
+
+  const addRow = () => {
+    const newRowData = {
+      key: data.length,
+      today: '',
+      status: 'In progress'
+    }
+    setData([...data, newRowData])
+    console.log(data)
+  }
 
   const isEditing = (record) => record.key === editingKey
 
@@ -95,13 +118,13 @@ const ReportSimpleForm = () => {
     {
       title: 'Today',
       dataIndex: 'today',
-      width: '80%',
+      width: '70%',
       editable: true
     },
     {
       title: 'Status',
       dataIndex: 'status',
-      width: '20%',
+      width: '15%',
       editable: true
     },
     {
@@ -110,19 +133,20 @@ const ReportSimpleForm = () => {
       render: (_, record) => {
         const editable = isEditing(record)
         return editable ? (
-          <span>
-            <a
-              href="javascript:;"
+          <>
+            <Button
+              type="link"
               onClick={() => save(record.key)}
-              style={{
-                marginRight: 8
-              }}>
+              style={style.resetPadding}>
               Save
-            </a>
-            <Popconfirm title="Sure to cancel?" onConfirm={cancel}>
-              <a>Cancel</a>
+            </Button>
+            <Popconfirm
+              title="Sure to cancel?"
+              onConfirm={cancel}
+              placement="topRight">
+              <Button type="link">Cancel</Button>
             </Popconfirm>
-          </span>
+          </>
         ) : (
           <Typography.Link
             disabled={editingKey !== ''}
@@ -133,6 +157,7 @@ const ReportSimpleForm = () => {
       }
     }
   ]
+
   const mergedColumns = columns.map((col) => {
     if (!col.editable) {
       return col
@@ -142,27 +167,45 @@ const ReportSimpleForm = () => {
       ...col,
       onCell: (record) => ({
         record,
-        inputType: 'text',
+        formNodeType: col.dataIndex === 'status' ? 'select' : 'text',
         dataIndex: col.dataIndex,
         title: col.title,
         editing: isEditing(record)
       })
     }
   })
+
   return (
-    <Form form={form} component={false}>
-      <Table
-        components={{
-          body: {
-            cell: EditableCell
-          }
-        }}
-        dataSource={data}
-        columns={mergedColumns}
-        size="small"
-        pagination={{ position: ['none', 'none'] }}
-      />
-    </Form>
+    <>
+      <Row>
+        <Col>
+          <Button
+            type="primary"
+            style={{ marginBottom: '0.5rem' }}
+            onClick={addRow}>
+            Add row
+          </Button>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Form form={form} component={false}>
+            <Table
+              components={{
+                body: {
+                  cell: EditableCell
+                }
+              }}
+              dataSource={data}
+              columns={mergedColumns}
+              size="small"
+              pagination={{ position: [], pageSize: 0 }}
+              scroll={{ y: 265 }}
+            />
+          </Form>
+        </Col>
+      </Row>
+    </>
   )
 }
 
