@@ -3,7 +3,12 @@ const style = {
   resetMargin: { margin: 0 },
   resetPadding: { padding: 0 },
   fullWidth: { width: '100%' },
-  fullHeight: { height: '100%' }
+  fullHeight: { height: '100%' },
+  bottomFixed: {
+    position: '-webkit-sticky',
+    position: 'sticky',
+    bottom: 0
+  }
 }
 
 export { style }
