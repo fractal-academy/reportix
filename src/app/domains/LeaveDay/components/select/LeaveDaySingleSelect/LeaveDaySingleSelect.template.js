@@ -20,8 +20,8 @@ const LeaveDaySingleSelect = (props) => {
             onChange={onChange}>
             {LEAVE_DAY_VALUE.map((item, index) => (
               <Option key={index} value={item}>
-                {item}
-                {/*<Tag status={item} key={index} />*/}
+                {/*{item}*/}
+                <Tag status={item} key={index} />
               </Option>
             ))}
           </Select>

@@ -8,6 +8,7 @@ const LeaveDaySimpleForm = (props) => {
   const { onFinish, form, loading, onCalendarChange } = props
   const { onChange } = (date) => {
     console.log(date)
+    // console.log(date.name)
   }
   const { RangePicker } = DatePicker
   const dateFormat = 'YYYY/MM/DD'
@@ -44,7 +45,7 @@ const LeaveDaySimpleForm = (props) => {
             </Form.Item>
           </Row>
           <Form.Item
-            name="date range"
+            name="dateRange"
             hasFeedback={loading}
             rules={[
               {
