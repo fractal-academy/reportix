@@ -3,11 +3,12 @@ import { Select } from 'antd'
 import Tag from 'components/Tags/Tags'
 import { Col, Row } from '@qonsoll/react-design'
 
-const LeaveDaySingleSelect = () => {
+const LeaveDaySingleSelect = (props) => {
   const { Option } = Select
-  function handleChange(value) {
-    console.log(value)
-  }
+  const { onChange } = props
+  // function handleChange(value) {
+  //   return value
+  // }
   return (
     <>
       <Row h="center">
@@ -16,7 +17,7 @@ const LeaveDaySingleSelect = () => {
             placeholder="Choose Leave day"
             // defaultValue="Choose Leave day"
             style={{ width: 180 }}
-            onChange={handleChange}>
+            onChange={onChange}>
             {LEAVE_DAY_VALUE.map((item, index) => (
               <Option key={index} value={item}>
                 {item}

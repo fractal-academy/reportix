@@ -5,8 +5,10 @@ import moment from 'moment'
 import Title from 'antd/lib/typography/Title'
 
 const LeaveDaySimpleForm = (props) => {
-  const { onFinish, form, loading } = props
-
+  const { onFinish, form, loading, onCalendarChange } = props
+  const { onChange } = (date) => {
+    console.log(date)
+  }
   const { RangePicker } = DatePicker
   const dateFormat = 'YYYY/MM/DD'
   const date = moment(new Date()).format(dateFormat)
@@ -17,7 +19,7 @@ const LeaveDaySimpleForm = (props) => {
         <Col>
           <Row noGutters mb={2}>
             <Form.Item
-              name="leaveDayType"
+              name="title"
               hasFeedback={loading}
               rules={[
                 {
@@ -25,7 +27,7 @@ const LeaveDaySimpleForm = (props) => {
                   message: 'Choose leave day'
                 }
               ]}>
-              <LeaveDaySingleSelect />
+              <LeaveDaySingleSelect onChange={onChange} />
             </Form.Item>
           </Row>
           <Row noGutters mb={2}>
@@ -51,8 +53,10 @@ const LeaveDaySimpleForm = (props) => {
               }
             ]}>
             <RangePicker
-              defaultValue={[moment(date), moment(date)]}
+              // defaultValue={[moment(date), moment(date)]}
+              locale=""
               format={dateFormat}
+              onCalendarChange={onCalendarChange}
             />
           </Form.Item>
         </Col>
