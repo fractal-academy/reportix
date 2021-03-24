@@ -16,7 +16,7 @@ const COLLECTIONS = {
   ACCOUNTS: 'accounts',
   TIME_SHEET_RULES: 'timeSheetRules',
   REQUESTS: 'requests',
-  LEAVE_DAYS: 'leaaveDays'
+  LEAVE_DAYS: 'leaveDays'
 }
 
 export default COLLECTIONS

@@ -1,4 +1,4 @@
-import { Button, DatePicker, Form, Input, Modal, Space } from 'antd'
+import { Button, DatePicker, Form, Input, message, Modal, Space } from 'antd'
 import { useState } from 'react'
 import LeaveDaySimpleForm from 'app/domains/LeaveDay/components/forms/LeaveDaySimpleForm'
 import Title from 'antd/lib/typography/Title'
@@ -7,6 +7,33 @@ import {
   COLOR_CALENDAR_VALUE
 } from 'app/constants/leaveDayColorPalette'
 import { LEAVE_DAY } from 'constants/leaveDay'
+import { addData, setData } from 'services/Firestore'
+import COLLECTIONS from 'constants/collection'
+
+const titleSwitch = (title) => {
+  const color = { backgroundColor: '' }
+  switch (title) {
+    case LEAVE_DAY.SWAP_DAY:
+      color.backgroundColor = COLOR_CALENDAR.GOLD.backgroundColor
+      break
+    case LEAVE_DAY.SICK_DAY:
+      color.backgroundColor = COLOR_CALENDAR.VOLCANO.backgroundColor
+      break
+    case LEAVE_DAY.VACATION:
+      color.backgroundColor = COLOR_CALENDAR.LIME.backgroundColor
+      break
+    case LEAVE_DAY.MONTH_REMOTE:
+      color.backgroundColor = COLOR_CALENDAR.CYAN.backgroundColor
+      break
+    case LEAVE_DAY.WORK_FROM_HOME:
+      color.backgroundColor = COLOR_CALENDAR.MAGENTA.backgroundColor
+      break
+    case LEAVE_DAY.DAY_OFF:
+      color.backgroundColor = COLOR_CALENDAR.BLUE.backgroundColor
+      break
+  }
+  return color.backgroundColor
+}
 
 const CalendarAddEvent = () => {
   const [isModalVisible, setIsModalVisible] = useState(false)
@@ -16,42 +43,20 @@ const CalendarAddEvent = () => {
     setIsModalVisible(true)
   }
 
-  const onLeaveDayCreate = (date) => {
+  const onLeaveDayCreate = async (date) => {
     setLoading(true)
-    const color = { backgroundColor: '' }
-    switch (date.title) {
-      case LEAVE_DAY.SWAP_DAY:
-        color.backgroundColor = COLOR_CALENDAR.GOLD.backgroundColor
-        break
-      case LEAVE_DAY.SICK_DAY:
-        color.backgroundColor = COLOR_CALENDAR.VOLCANO.backgroundColor
-        break
-      case LEAVE_DAY.VACATION:
-        color.backgroundColor = COLOR_CALENDAR.LIME.backgroundColor
-        break
-      case LEAVE_DAY.MONTH_REMOTE:
-        color.backgroundColor = COLOR_CALENDAR.CYAN.backgroundColor
-        break
-      case LEAVE_DAY.WORK_FROM_HOME:
-        color.backgroundColor = COLOR_CALENDAR.MAGENTA.backgroundColor
-        break
-      case LEAVE_DAY.DAY_OFF:
-        color.backgroundColor = COLOR_CALENDAR.BLUE.backgroundColor
-        break
+    const color = titleSwitch(date.title)
+    console.log(typeof color)
+    try {
+      await addData(COLLECTIONS.LEAVE_DAYS, {
+        title: date?.title,
+        start: new Date(date.dateRange[0]),
+        end: new Date(date.dateRange[1]),
+        backgroundColor: color
+      })
+    } catch (e) {
+      message.error("Can't create Event")
     }
-
-    const leaveDayRequest = {
-      title: date?.title,
-      start: new Date(date.dateRange[0]),
-      end: new Date(date.dateRange[1]),
-      backgroundColor: color.backgroundColor
-    }
-    console.log(leaveDayRequest)
-
-    // console.log(date)
-    // console.log('title:', date.title)
-    // console.log('start day:', new Date(date.dateRange[0]))
-    // console.log('end day:', new Date(date.dateRange[1]))
 
     setIsModalVisible(false)
     form.resetFields()

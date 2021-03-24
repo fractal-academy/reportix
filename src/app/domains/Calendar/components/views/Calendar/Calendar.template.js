@@ -9,46 +9,51 @@ import {
   COLOR_CALENDAR_VALUE
 } from 'app/constants/leaveDayColorPalette'
 import { style } from './Calendar.style'
+import { useCollectionData } from 'react-firebase-hooks/firestore'
+import { getCollectionRef } from 'services/Firestore'
+import COLLECTIONS from 'constants/collection'
+import { Spinner } from 'components/Spinner'
+import { useState } from 'react'
 const { Text } = Typography
 
-const mockDayEvents = [
-  {
-    title: 'Vacation',
-    start: '2021-03-15',
-    end: '2021-03-15',
-    backgroundColor: COLOR_CALENDAR.LIME.backgroundColor
-  },
-  {
-    title: 'Swap Day',
-    start: '2021-03-01',
-    end: '2021-03-05',
-    backgroundColor: COLOR_CALENDAR.GOLD.backgroundColor
-  },
-  {
-    title: 'Work from home',
-    start: '2021-03-01',
-    end: '2021-03-05',
-    backgroundColor: COLOR_CALENDAR.MAGENTA.backgroundColor
-  },
-  {
-    title: 'Month Remote',
-    start: '2021-03-01',
-    end: '2021-03-05',
-    backgroundColor: COLOR_CALENDAR.CYAN.backgroundColor
-  },
-  {
-    title: 'Day off',
-    start: '2021-03-05',
-    end: '2021-03-05',
-    backgroundColor: COLOR_CALENDAR.BLUE.backgroundColor
-  },
-  {
-    title: 'Sick Day',
-    start: '2021-03-05',
-    end: '2021-03-05',
-    backgroundColor: COLOR_CALENDAR.VOLCANO.backgroundColor
-  }
-]
+// const mockDayEvents = [
+//   {
+//     title: 'Vacation',
+//     start: '2021-03-15',
+//     end: '2021-03-15',
+//     backgroundColor: COLOR_CALENDAR.LIME.backgroundColor
+//   },
+//   {
+//     title: 'Swap Day',
+//     start: '2021-03-01',
+//     end: '2021-03-05',
+//     backgroundColor: COLOR_CALENDAR.GOLD.backgroundColor
+//   },
+//   {
+//     title: 'Work from home',
+//     start: '2021-03-01',
+//     end: '2021-03-05',
+//     backgroundColor: COLOR_CALENDAR.MAGENTA.backgroundColor
+//   },
+//   {
+//     title: 'Month Remote',
+//     start: '2021-03-01',
+//     end: '2021-03-05',
+//     backgroundColor: COLOR_CALENDAR.CYAN.backgroundColor
+//   },
+//   {
+//     title: 'Day off',
+//     start: '2021-03-05',
+//     end: '2021-03-05',
+//     backgroundColor: COLOR_CALENDAR.BLUE.backgroundColor
+//   },
+//   {
+//     title: 'Sick Day',
+//     start: '2021-03-05',
+//     end: '2021-03-05',
+//     backgroundColor: COLOR_CALENDAR.VOLCANO.backgroundColor
+//   }
+// ]
 
 const renderEventContent = (eventInfo) => {
   const { textColor } = COLOR_CALENDAR_VALUE.find(
@@ -58,6 +63,20 @@ const renderEventContent = (eventInfo) => {
 }
 
 const CalendarAdvancedView = () => {
+  const [events, loading] = useCollectionData(
+    getCollectionRef(COLLECTIONS.LEAVE_DAYS)
+  )
+
+  if (!events || loading) {
+    return <Spinner />
+  }
+  console.log(events)
+  const editedEvents =
+    events &&
+    events.map((item) => {
+      return { ...item, end: item.end.toDate(), start: item.end.toDate() }
+    })
+
   return (
     <FullCalendar
       navLinks={true}
@@ -69,7 +88,7 @@ const CalendarAdvancedView = () => {
       selectMirror={true}
       unselectAuto={true}
       dayMaxEvents={true}
-      events={mockDayEvents}
+      events={editedEvents}
       headerToolbar={{
         left: 'prev,next today',
         center: 'title',
