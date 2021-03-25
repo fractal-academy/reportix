@@ -69,14 +69,14 @@ const RequestAdvancedView = (props) => {
                   <Text>{data.description} </Text>
                 </Col>
                 <Col cw={'auto'}>
-                  <Row v={'center'} noGutters>
-                    <Col>
-                      <UserSimpleView withName={true} withEmail={false} />
-                    </Col>
-                    <Col>
-                      <Tags status={data.status} />
-                    </Col>
-                  </Row>
+                  {/*<Row v={'center'} noGutters>*/}
+                  {/*  <Col>*/}
+                  {/*    <UserSimpleView withName={true} withEmail={false} />*/}
+                  {/*  </Col>*/}
+                  {/*  <Col>*/}
+                  {/*    <Tags status={data.status} />*/}
+                  {/*  </Col>*/}
+                  {/*</Row>*/}
                   <Row v={'center'} noGutters>
                     <Col>
                       <UserSimpleView withName={true} withEmail={false} />
@@ -103,7 +103,7 @@ const RequestAdvancedView = (props) => {
           </Row>
           <Row noGutters mb={3}>
             <Col>
-              <CommentListWithAdd />
+              <CommentListWithAdd requestId={data.id} />
             </Col>
           </Row>
         </Col>

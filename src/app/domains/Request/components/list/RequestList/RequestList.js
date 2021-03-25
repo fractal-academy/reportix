@@ -12,33 +12,32 @@ const RequestList = (props) => {
   const { ownRequests } = props
   const currentUser = useSession()
 
-  const mockRequest = [
-    {
-      type: 'Vacation',
-      userName: 'Name',
-      fromDate: '2021/04/03',
-      toDate: '2021/18/03',
-      description: 'Trip to Antarctica',
-      firstStatus: 'Approved',
-      secondStatus: 'Approved'
-    },
-    {
-      type: 'Swap day',
-      userName: 'Name',
-      fromDate: '2021/04/03',
-      toDate: '2021/13/03',
-      description: 'Hangover',
-      firstStatus: 'Approved',
-      secondStatus: 'Rejected'
-    }
-  ]
+  // const mockRequest = [
+  //   {
+  //     type: 'Vacation',
+  //     userName: 'Name',
+  //     fromDate: '2021/04/03',
+  //     toDate: '2021/18/03',
+  //     description: 'Trip to Antarctica',
+  //     firstStatus: 'Approved',
+  //     secondStatus: 'Approved'
+  //   },
+  //   {
+  //     type: 'Swap day',
+  //     userName: 'Name',
+  //     fromDate: '2021/04/03',
+  //     toDate: '2021/13/03',
+  //     description: 'Hangover',
+  //     firstStatus: 'Approved',
+  //     secondStatus: 'Rejected'
+  //   }
+  // ]
   const [requests, isLoading] = useCollectionData(
     getCollectionRef(COLLECTIONS.LEAVE_DAYS),
     { idField: 'id' }
   )
   const filteredRequests =
     !isLoading && requests.filter((item) => item.userId === currentUser.uid)
-  // !isLoading && console.log(requests)
   const switchRequests = ownRequests ? filteredRequests : requests
   return (
     <>

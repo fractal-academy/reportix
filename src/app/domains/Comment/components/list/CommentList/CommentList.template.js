@@ -9,8 +9,9 @@ const CommentList = (props) => {
     <>
       {comments.map((item) => (
         <CommentAdvancedView
-          commentTime={item.date.toDate()}
-          user={item.user}
+          commentTime={item.commentTime}
+          userName={item.userName}
+          // userAvatar={item.userAvatar}
           text={item.text}
           key={item.id}
         />
