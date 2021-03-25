@@ -5,6 +5,7 @@ const RequestList = (props) => {
   const mockRequest = [
     {
       type: 'Vacation',
+      userName: 'Name',
       fromDate: '2021/04/03',
       toDate: '2021/18/03',
       description: 'Trip to Antarctica',
@@ -13,6 +14,7 @@ const RequestList = (props) => {
     },
     {
       type: 'Swap day',
+      userName: 'Name',
       fromDate: '2021/04/03',
       toDate: '2021/13/03',
       description: 'Hangover',

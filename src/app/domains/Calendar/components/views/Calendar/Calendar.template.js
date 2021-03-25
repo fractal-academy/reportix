@@ -12,6 +12,7 @@ import { useCollectionData } from 'react-firebase-hooks/firestore'
 import { getCollectionRef } from 'services/Firestore'
 import COLLECTIONS from 'constants/collection'
 import { Spinner } from 'components/Spinner'
+import STATUS from 'constants/status'
 const { Text } = Typography
 
 // const mockDayEvents = [
@@ -71,9 +72,11 @@ const CalendarAdvancedView = () => {
   const editedEvents =
     events &&
     events.map((item) => {
-      return { ...item, end: item.end.toDate(), start: item.start.toDate() }
+      if (item.status === STATUS.APPROVED)
+        return { ...item, end: item.end.toDate(), start: item.start.toDate() }
+      else return []
     })
-
+  console.log(editedEvents)
   return (
     <FullCalendar
       navLinks={true}

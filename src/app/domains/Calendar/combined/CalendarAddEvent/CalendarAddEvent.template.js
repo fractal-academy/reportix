@@ -13,6 +13,7 @@ import { useSession } from 'context/SesionContext'
 import { auth } from 'services/Firebase'
 import firebase from 'app/services/Firebase/firebase'
 import { useDocument, useDocumentData } from 'react-firebase-hooks/firestore'
+import STATUS from 'constants/status'
 
 const titleSwitch = (title) => {
   const color = { backgroundColor: '' }
@@ -71,7 +72,8 @@ const CalendarAddEvent = () => {
         start: new Date(date.dateRange[0]),
         end: new Date(date.dateRange[1]),
         backgroundColor: color,
-        userId: user.uid
+        userId: user.uid,
+        status: STATUS.PENDING
       })
     } catch (e) {
       message.error("Can't create Event")

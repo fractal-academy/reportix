@@ -24,6 +24,7 @@ const RequestAdvancedView = (props) => {
               <Row noGutters>
                 <Col>
                   <Title level={2}>{type}</Title>
+                  <UserSimpleView />
                   <Box justifyContent="space-between">
                     <Text type={'secondary'}>From: </Text>
                     <Text>{fromDate} </Text>
