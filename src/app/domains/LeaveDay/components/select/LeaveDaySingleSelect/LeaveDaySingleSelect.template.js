@@ -11,16 +11,11 @@ const LeaveDaySingleSelect = (props) => {
   // }
   return (
     <>
-      <Row h="center">
-        <Col cw="auto">
-          <Select
-            placeholder="Choose Leave day"
-            // defaultValue="Choose Leave day"
-            style={{ width: 180 }}
-            onChange={onChange}>
+      <Row h="center" noGutters>
+        <Col>
+          <Select placeholder="Choose Leave day" onChange={onChange}>
             {LEAVE_DAY_VALUE.map((item, index) => (
               <Option key={index} value={item}>
-                {/*{item}*/}
                 <Tag status={item} key={index} />
               </Option>
             ))}

@@ -16,50 +16,57 @@ const LeaveDaySimpleForm = (props) => {
 
   return (
     <Form onFinish={onFinish} form={form}>
-      <Row h="center" noGutters mb={2}>
+      <Row h="center" mb={2}>
         <Col>
-          <Row noGutters mb={2}>
-            <Form.Item
-              name="title"
-              hasFeedback={loading}
-              rules={[
-                {
-                  required: true,
-                  message: 'Choose leave day'
-                }
-              ]}>
-              <LeaveDaySingleSelect onChange={onChange} />
-            </Form.Item>
+          <Row mb={2}>
+            <Col>
+              <Form.Item
+                name="title"
+                hasFeedback={loading}
+                rules={[
+                  {
+                    required: true,
+                    message: 'Choose leave day'
+                  }
+                ]}>
+                <LeaveDaySingleSelect onChange={onChange} />
+              </Form.Item>
+            </Col>
           </Row>
-          <Row noGutters mb={2}>
-            <Form.Item
-              name="leave day description"
-              hasFeedback={loading}
-              rules={[
-                {
-                  required: true,
-                  message: 'Type description'
-                }
-              ]}>
-              <Input allowClear placeholder="Leave day short description" />
-            </Form.Item>
+          <Row mb={2}>
+            <Col>
+              <Form.Item
+                name="leave day description"
+                hasFeedback={loading}
+                rules={[
+                  {
+                    required: true,
+                    message: 'Type description'
+                  }
+                ]}>
+                <Input allowClear placeholder="Leave day short description" />
+              </Form.Item>
+            </Col>
           </Row>
-          <Form.Item
-            name="dateRange"
-            hasFeedback={loading}
-            rules={[
-              {
-                required: true,
-                message: 'Select leave day duration'
-              }
-            ]}>
-            <RangePicker
-              // defaultValue={[moment(date), moment(date)]}
-              locale=""
-              format={dateFormat}
-              onCalendarChange={onCalendarChange}
-            />
-          </Form.Item>
+          <Row>
+            <Col>
+              <Form.Item
+                name="dateRange"
+                hasFeedback={loading}
+                rules={[
+                  {
+                    required: true,
+                    message: 'Select leave day duration'
+                  }
+                ]}>
+                <RangePicker
+                  locale=""
+                  format={dateFormat}
+                  onCalendarChange={onCalendarChange}
+                />
+              </Form.Item>
+            </Col>
+          </Row>
         </Col>
       </Row>
     </Form>

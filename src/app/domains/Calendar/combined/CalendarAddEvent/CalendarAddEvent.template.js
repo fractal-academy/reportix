@@ -94,6 +94,7 @@ const CalendarAddEvent = () => {
       <Modal
         title={<Title level={4}>New LeaveDay request</Title>}
         visible={isModalVisible}
+        onCancel={handleCancel}
         destroyOnClose
         footer={[
           <Button onClick={handleCancel} type="primary">
