@@ -27,7 +27,7 @@ const UserSimpleView = (props) => {
 
 UserSimpleView.defaultProps = {
   avatarURL: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-  // firstName: 'Dima Okrushko',
+  name: 'Dima Oukushko',
   // surname: 'Okrushko',
   avatarSize: 'large',
   withName: true,

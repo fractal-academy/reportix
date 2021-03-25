@@ -73,7 +73,8 @@ const CalendarAddEvent = () => {
         end: new Date(date.dateRange[1]),
         backgroundColor: color,
         userId: user.uid,
-        status: STATUS.PENDING
+        status: STATUS.PENDING,
+        description: date.description
       })
     } catch (e) {
       message.error("Can't create Event")

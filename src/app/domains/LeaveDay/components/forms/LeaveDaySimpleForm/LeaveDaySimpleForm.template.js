@@ -36,11 +36,11 @@ const LeaveDaySimpleForm = (props) => {
           <Row mb={2}>
             <Col>
               <Form.Item
-                name="leave day description"
+                name="description"
                 hasFeedback={loading}
                 rules={[
                   {
-                    required: true,
+                    // required: true,
                     message: 'Type description'
                   }
                 ]}>
