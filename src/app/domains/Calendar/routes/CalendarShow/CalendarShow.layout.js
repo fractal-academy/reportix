@@ -2,6 +2,7 @@ import { Calendar, LegendCalendar } from 'domains/Calendar/components/views'
 import { Col, Row } from '@qonsoll/react-design'
 import { Button } from 'antd'
 import { PlusCircleOutlined } from '@ant-design/icons'
+import CalendarAddEvent from 'domains/Calendar/combined/CalendarAddEvent'
 
 const CalendarShow = () => {
   return (
@@ -12,9 +13,7 @@ const CalendarShow = () => {
             <LegendCalendar />
           </Col>
           <Col cw="auto">
-            <Button type="primary" icon={<PlusCircleOutlined />}>
-              Add event
-            </Button>
+            <CalendarAddEvent />
           </Col>
         </Row>
         <Row noGutters>

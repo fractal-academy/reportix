@@ -7,8 +7,12 @@ import {
   COLOR_CALENDAR_VALUE
 } from 'app/constants/leaveDayColorPalette'
 import { LEAVE_DAY } from 'constants/leaveDay'
-import { addData, setData } from 'services/Firestore'
+import { addData, getCollectionRef, setData } from 'services/Firestore'
 import COLLECTIONS from 'constants/collection'
+import { useSession } from 'context/SesionContext'
+import { auth } from 'services/Firebase'
+import firebase from 'app/services/Firebase/firebase'
+import { useDocument, useDocumentData } from 'react-firebase-hooks/firestore'
 
 const titleSwitch = (title) => {
   const color = { backgroundColor: '' }
@@ -36,12 +40,26 @@ const titleSwitch = (title) => {
 }
 
 const CalendarAddEvent = () => {
+  const currentUser = useSession()
+  const firstName = currentUser.firstName
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [loading, setLoading] = useState(false)
   const [form] = Form.useForm()
+
   const showModal = () => {
     setIsModalVisible(true)
   }
+
+  const user = useSession()
+  const [userData, isLoading] = useDocumentData(
+    getCollectionRef(COLLECTIONS.USERS).doc(user.uid),
+    { idField: 'id' }
+  )
+  const name =
+    userData?.firstName &&
+    userData?.surname &&
+    `${userData?.firstName} ${userData?.surname}`
+  !isLoading && console.log(name)
 
   const onLeaveDayCreate = async (date) => {
     setLoading(true)
@@ -49,10 +67,11 @@ const CalendarAddEvent = () => {
     console.log(typeof color)
     try {
       await addData(COLLECTIONS.LEAVE_DAYS, {
-        title: date?.title,
+        title: `${date?.title}, ${name ? name : userData.email}`,
         start: new Date(date.dateRange[0]),
         end: new Date(date.dateRange[1]),
-        backgroundColor: color
+        backgroundColor: color,
+        userId: user.uid
       })
     } catch (e) {
       message.error("Can't create Event")

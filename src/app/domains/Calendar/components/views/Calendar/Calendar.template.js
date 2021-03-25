@@ -8,12 +8,10 @@ import {
   COLOR_CALENDAR,
   COLOR_CALENDAR_VALUE
 } from 'app/constants/leaveDayColorPalette'
-import { style } from './Calendar.style'
 import { useCollectionData } from 'react-firebase-hooks/firestore'
 import { getCollectionRef } from 'services/Firestore'
 import COLLECTIONS from 'constants/collection'
 import { Spinner } from 'components/Spinner'
-import { useState } from 'react'
 const { Text } = Typography
 
 // const mockDayEvents = [
@@ -70,11 +68,10 @@ const CalendarAdvancedView = () => {
   if (!events || loading) {
     return <Spinner />
   }
-  console.log(events)
   const editedEvents =
     events &&
     events.map((item) => {
-      return { ...item, end: item.end.toDate(), start: item.end.toDate() }
+      return { ...item, end: item.end.toDate(), start: item.start.toDate() }
     })
 
   return (
