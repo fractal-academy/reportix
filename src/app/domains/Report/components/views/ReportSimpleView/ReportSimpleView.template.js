@@ -51,7 +51,7 @@ const ReportSimpleView = (props) => {
                 <Table
                   dataSource={today}
                   size="small"
-                  pagination={{ position: ['none', 'none'] }}>
+                  pagination={{ position: [] }}>
                   <Column
                     title="Task name"
                     dataIndex="taskName"
@@ -75,7 +75,7 @@ const ReportSimpleView = (props) => {
                 <Table
                   dataSource={tomorrow}
                   size="small"
-                  pagination={{ position: ['none', 'none'] }}>
+                  pagination={{ position: [] }}>
                   <Column
                     title="Task TODO"
                     dataIndex="taskName"
