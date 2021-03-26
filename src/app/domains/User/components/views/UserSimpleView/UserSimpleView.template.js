@@ -5,16 +5,7 @@ import { Typography } from 'antd'
 const { Text } = Typography
 
 const UserSimpleView = (props) => {
-  const {
-    avatarURL,
-    withName,
-    firstName,
-    surname,
-    avatarSize,
-    withEmail,
-    email
-  } = props
-  const name = firstName ? `${firstName} ${surname}` : 'User'
+  const { avatarURL, withName, name, avatarSize, withEmail, email } = props
 
   return (
     <Row v="center" noGutters>
@@ -36,8 +27,7 @@ const UserSimpleView = (props) => {
 
 UserSimpleView.defaultProps = {
   avatarURL: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-  firstName: 'Dima Okrushko',
-  surname: 'Okrushko',
+  name: 'Dima Oukushko',
   avatarSize: 'large',
   withName: true,
   withEmail: true,

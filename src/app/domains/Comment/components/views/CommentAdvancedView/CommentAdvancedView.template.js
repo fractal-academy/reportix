@@ -8,8 +8,8 @@ const { Text } = Typography
 
 const CommentAdvancedView = (props) => {
   // [INTERFACES]
-  const { commentTime, user, text } = props
-  const { firstName, surname, avatarURL } = user
+  const { commentTime, userName, userAvatar, text } = props
+  // const { firstName, surname, avatarURL } = user
 
   // [COMPONENT_STATE_HOOKS]
   const [commentsDate, setCommentsDate] = useState(
@@ -31,8 +31,8 @@ const CommentAdvancedView = (props) => {
       <Row mb={1} pt={2} h="between">
         <Col cw="auto">
           <UserSimpleView
-            avatarURL={avatarURL}
-            name={`${firstName} ${surname}`}
+            // avatarURL={userAvatar}
+            name={userName}
             withEmail={false}
           />
         </Col>
@@ -44,18 +44,11 @@ const CommentAdvancedView = (props) => {
         <Col px={2} pb={2}>
           <Text>{text}</Text>
         </Col>
+        <Col cw="auto">{commentsDate}</Col>
       </Row>
     </Card>
   )
 }
-CommentAdvancedView.defaultProps = {
-  user: {
-    avatarURL:
-      'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-    firstName: 'Dima',
-    surname: 'Okrushko'
-  },
-  text: 'This is comments'
-}
+CommentAdvancedView.defaultProps = {}
 
 export default CommentAdvancedView

@@ -8,15 +8,10 @@ const COLLECTIONS = {
   COMPANIES: 'companies',
   COMMITS: 'commits',
   PROJECTS: 'projects',
-  SEEK_DAYS: 'seekDays',
-  SWAP_DAYS: 'swapDays',
-  VACATIONS: 'vacation',
-  WORK_FROM_HOME: 'workFromHome',
-  REMOTE_MONTH: 'remoteMonth',
   ACCOUNTS: 'accounts',
   TIME_SHEET_RULES: 'timeSheetRules',
   REQUESTS: 'requests',
-  CALENDARS: 'calendars'
+  LEAVE_DAYS: 'leaveDays'
 }
 
 export default COLLECTIONS

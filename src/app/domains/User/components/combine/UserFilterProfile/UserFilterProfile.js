@@ -8,14 +8,12 @@ import {
   AppstoreAddOutlined
 } from '@ant-design/icons'
 import { AccountsAll } from 'domains/Account/routes'
-import { ProjectAdvancedView } from 'domains/Project/components/views'
-import { RequestAdvancedView } from 'domains/Request/components/views'
-import { InvoiceAdvancedView } from 'domains/Invoice/components/views'
 import { ReportsAll } from 'domains/Report/routes'
 import RequestList from 'domains/Request/components/list/RequestList'
 import InvoiceList from 'domains/Invoice/components/list/InvoiceList'
 import ProjectList from 'domains/Project/components/list/ProjectList'
 import { Col, Row } from '@qonsoll/react-design'
+import { useParams } from 'react-router-dom'
 
 const tabList = [
   {
@@ -33,7 +31,7 @@ const tabList = [
   {
     tabName: 'Requests',
     icon: <PullRequestOutlined />,
-    content: <RequestList />,
+    content: <RequestList ownRequests />,
     addNew: true
   },
   {
@@ -59,6 +57,8 @@ const tabList = [
 const { TabPane } = Tabs
 
 const UserFilterProfile = () => {
+  const { id } = useParams()
+
   return (
     <Tabs centered size="large">
       {tabList.map((item, key) => (
@@ -74,7 +74,7 @@ const UserFilterProfile = () => {
             <Row h="right">
               <Col cw="auto">
                 <Button type="primary" icon={<AppstoreAddOutlined />}>
-                  Add project
+                  Add {item.tabName.slice(0, -1)}
                 </Button>
               </Col>
             </Row>
