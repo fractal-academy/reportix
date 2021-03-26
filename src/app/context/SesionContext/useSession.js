@@ -2,8 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { auth } from 'app/services/Firebase'
 import { Spin } from 'antd'
 import { Row, Col } from '@qonsoll/react-design'
-import { useDocumentDataOnce } from 'react-firebase-hooks/firestore'
-import { firestore, getCollectionRef } from 'services/Firestore'
+import { getData } from 'services/Firestore'
 import { COLLECTIONS } from 'app/constants'
 
 export const AuthContext = React.createContext()
@@ -15,9 +14,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     setLoading(true)
     auth.onAuthStateChanged(async (user) => {
-      const userData =
-        user &&
-        (await getCollectionRef(COLLECTIONS.USERS).doc(user.uid).get()).data()
+      const userData = user && (await getData(COLLECTIONS.USERS, user.uid))
       const contextData = userData
         ? { id: user && user.uid, ...userData }
         : user
