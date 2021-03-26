@@ -44,6 +44,7 @@ const CommentAdvancedView = (props) => {
         <Col px={2} pb={2}>
           <Text>{text}</Text>
         </Col>
+        <Col cw="auto">{commentsDate}</Col>
       </Row>
     </Card>
   )

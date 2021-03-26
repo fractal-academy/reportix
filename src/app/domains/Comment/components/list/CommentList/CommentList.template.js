@@ -7,15 +7,16 @@ const CommentList = (props) => {
   // [TEMPLATE]
   return (
     <>
-      {comments.map((item) => (
-        <CommentAdvancedView
-          commentTime={item.commentTime}
-          userName={item.userName}
-          // userAvatar={item.userAvatar}
-          text={item.text}
-          key={item.id}
-        />
-      ))}
+      {comments &&
+        comments.map((item) => (
+          <CommentAdvancedView
+            commentTime={item.commentTime.toDate()}
+            userName={item.userName}
+            // userAvatar={item.userAvatar}
+            text={item.text}
+            key={item.id}
+          />
+        ))}
     </>
   )
 }
