@@ -24,10 +24,9 @@ const ProjectList = () => {
       <Row>
         <Col>
           {mockProject.map((item, index) => (
-            <Row my={2} borderRadius={'8px'} py={3} noGutters>
+            <Row my={2} borderRadius={'8px'} py={3} noGutters key={index}>
               <Col>
                 <ProjectAdvancedView
-                  key={index}
                   company={item.company}
                   project={item.project}
                   tasks={item.tasks}

@@ -1,20 +1,50 @@
-import { Card, Typography, Button } from 'antd'
+import { Card, Typography, Button, message } from 'antd'
 import { Row, Box, Col } from '@qonsoll/react-design'
 import { UserSimpleView } from 'domains/User/components/views'
 import { CommentListWithAdd } from 'domains/Comment/components/combined'
 import { Tags } from 'app/components'
+import moment from 'moment'
+import { useState } from 'react'
+import { updateData } from 'services/Firestore'
+import COLLECTIONS from 'constants/collection'
+import { useParams } from 'react-router-dom'
+import STATUS from 'constants/status'
+import { firebase } from 'services/Firebase'
 
 const { Text, Title } = Typography
 
 const RequestAdvancedView = (props) => {
-  const {
-    type,
-    fromDate,
-    toDate,
-    description,
-    firstStatus,
-    secondStatus
-  } = props
+  const [loading, setLoading] = useState(false)
+
+  const { data } = props
+  const dateFormat = 'MMMM Do YYYY'
+  const start = moment(data.start.toDate()).format(dateFormat)
+  const end = moment(data.end.toDate()).format(dateFormat)
+
+  const onApprove = async () => {
+    setLoading(true)
+    try {
+      await updateData(COLLECTIONS.LEAVE_DAYS, data.id, {
+        status: STATUS.APPROVED
+      })
+    } catch (e) {
+      message.error(`Can't approve this leave day`)
+    }
+    setLoading(false)
+  }
+
+  const onReject = async () => {
+    setLoading(true)
+    try {
+      await updateData(COLLECTIONS.LEAVE_DAYS, data.id, {
+        status: STATUS.REJECTED
+      })
+    } catch (e) {
+      message.error(`Can't approve this leave day`)
+    }
+    setLoading(false)
+  }
+
   return (
     <Card hoverable>
       <Row noGutters>
@@ -23,31 +53,27 @@ const RequestAdvancedView = (props) => {
             <Col>
               <Row noGutters>
                 <Col>
-                  <Title level={2}>{type}</Title>
+                  <Title level={2}>{data.title}</Title>
                   <Box justifyContent="space-between">
-                    <Text type={'secondary'}>From: </Text>
-                    <Text>{fromDate} </Text>
-                    <Text type={'secondary'}>To: </Text>
-                    <Text>{toDate} </Text>
+                    <Row noGutters>
+                      <Text type={'secondary'}>From:</Text>
+                      <Text> {start} </Text>
+                    </Row>
+                    <Row>
+                      <Text type={'secondary'}>To: </Text>
+                      <Text>{end} </Text>
+                    </Row>
                   </Box>
                   <Text type={'secondary'}>Description: </Text>
-                  <Text>{description} </Text>
+                  <Text>{data.description} </Text>
                 </Col>
                 <Col cw={'auto'}>
                   <Row v={'center'} noGutters>
                     <Col>
-                      <UserSimpleView withName={false} withEmail={false} />
+                      <UserSimpleView withName={true} withEmail={false} />
                     </Col>
                     <Col>
-                      <Tags status={firstStatus} />
-                    </Col>
-                  </Row>
-                  <Row v={'center'} noGutters>
-                    <Col>
-                      <UserSimpleView withName={false} withEmail={false} />
-                    </Col>
-                    <Col>
-                      <Tags status={secondStatus} />
+                      <Tags status={data.status} />
                     </Col>
                   </Row>
                 </Col>
@@ -56,15 +82,19 @@ const RequestAdvancedView = (props) => {
           </Row>
           <Row noGutters mb={2}>
             <Col mr={2} cw={'auto'}>
-              <Button type={'primary'}>Approve</Button>
+              <Button type={'primary'} onClick={onApprove}>
+                Approve
+              </Button>
             </Col>
             <Col cw={'auto'}>
-              <Button danger>Reject</Button>
+              <Button danger onClick={onReject}>
+                Reject
+              </Button>
             </Col>
           </Row>
           <Row noGutters mb={3}>
             <Col>
-              <CommentListWithAdd />
+              <CommentListWithAdd requestId={data.id} />
             </Col>
           </Row>
         </Col>
@@ -73,12 +103,5 @@ const RequestAdvancedView = (props) => {
   )
 }
 
-RequestAdvancedView.defaultProps = {
-  type: 'Vacation',
-  fromDate: '2021/04/03',
-  toDate: '2021/04/24',
-  description: 'Trip to Himalayas',
-  firstStatus: 'Approved',
-  secondStatus: 'Rejected'
-}
+RequestAdvancedView.defaultProps = {}
 export default RequestAdvancedView

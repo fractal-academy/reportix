@@ -50,7 +50,7 @@ const UserListItem = (props) => {
               }}>
               <UserSimpleView
                 avatarURL={avatarURL}
-                name={`${firstName} ${surname}`}
+                name={firstName ? `${firstName} ${surname}` : 'User'}
                 email={email}
                 withName={withName}
                 withEmail={withEmail}

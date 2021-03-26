@@ -1,45 +1,33 @@
 import { RequestAdvancedView } from 'domains/Request/components/views/RequestAdvancedView'
 import { Col, Row } from '@qonsoll/react-design'
+import { useCollectionData } from 'react-firebase-hooks/firestore'
+import { getCollectionRef } from 'services/Firestore'
+import COLLECTIONS from 'constants/collection'
+import { useSession } from 'context/SesionContext'
 
 const RequestList = (props) => {
-  const mockRequest = [
-    {
-      type: 'Vacation',
-      fromDate: '2021/04/03',
-      toDate: '2021/18/03',
-      description: 'Trip to Antarctica',
-      firstStatus: 'Approved',
-      secondStatus: 'Approved'
-    },
-    {
-      type: 'Swap day',
-      fromDate: '2021/04/03',
-      toDate: '2021/13/03',
-      description: 'Hangover',
-      firstStatus: 'Approved',
-      secondStatus: 'Rejected'
-    }
-  ]
+  const { ownRequests } = props
+  const currentUser = useSession()
 
+  const [requests, isLoading] = useCollectionData(
+    getCollectionRef(COLLECTIONS.LEAVE_DAYS),
+    { idField: 'id' }
+  )
+  const filteredRequests =
+    !isLoading && requests.filter((item) => item.userId === currentUser.uid)
+  const switchRequests = ownRequests ? filteredRequests : requests
   return (
     <>
       <Row>
         <Col>
-          {mockRequest.map((item, index) => (
-            <Row my={2} borderRadius={'8px'} py={3} noGutters>
-              <Col>
-                <RequestAdvancedView
-                  key={index}
-                  type={item.type}
-                  fromDate={item.fromDate}
-                  toDate={item.toDate}
-                  description={item.description}
-                  firstStatus={item.firstStatus}
-                  secondStatus={item.secondStatus}
-                />
-              </Col>
-            </Row>
-          ))}
+          {!isLoading &&
+            switchRequests.map((item, index) => (
+              <Row my={2} borderRadius={'8px'} py={3} noGutters key={index}>
+                <Col>
+                  <RequestAdvancedView data={item} />
+                </Col>
+              </Row>
+            ))}
         </Col>
       </Row>
     </>
