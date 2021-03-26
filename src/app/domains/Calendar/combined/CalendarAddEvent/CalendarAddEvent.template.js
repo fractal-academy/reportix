@@ -10,8 +10,6 @@ import { LEAVE_DAY } from 'constants/leaveDay'
 import { addData, getCollectionRef, setData } from 'services/Firestore'
 import COLLECTIONS from 'constants/collection'
 import { useSession } from 'context/SesionContext'
-import { auth } from 'services/Firebase'
-import firebase from 'app/services/Firebase/firebase'
 import { useDocument, useDocumentData } from 'react-firebase-hooks/firestore'
 import STATUS from 'constants/status'
 
@@ -60,7 +58,6 @@ const CalendarAddEvent = () => {
     userData?.firstName &&
     userData?.surname &&
     `${userData?.firstName} ${userData?.surname}`
-  !isLoading && console.log(name)
 
   const onLeaveDayCreate = async (date) => {
     setLoading(true)

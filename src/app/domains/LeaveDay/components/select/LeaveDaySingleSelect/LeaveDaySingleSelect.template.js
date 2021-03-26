@@ -6,9 +6,6 @@ import { Col, Row } from '@qonsoll/react-design'
 const LeaveDaySingleSelect = (props) => {
   const { Option } = Select
   const { onChange } = props
-  // function handleChange(value) {
-  //   return value
-  // }
   return (
     <>
       <Row h="center" noGutters>

@@ -15,45 +15,6 @@ import { Spinner } from 'components/Spinner'
 import STATUS from 'constants/status'
 const { Text } = Typography
 
-// const mockDayEvents = [
-//   {
-//     title: 'Vacation',
-//     start: '2021-03-15',
-//     end: '2021-03-15',
-//     backgroundColor: COLOR_CALENDAR.LIME.backgroundColor
-//   },
-//   {
-//     title: 'Swap Day',
-//     start: '2021-03-01',
-//     end: '2021-03-05',
-//     backgroundColor: COLOR_CALENDAR.GOLD.backgroundColor
-//   },
-//   {
-//     title: 'Work from home',
-//     start: '2021-03-01',
-//     end: '2021-03-05',
-//     backgroundColor: COLOR_CALENDAR.MAGENTA.backgroundColor
-//   },
-//   {
-//     title: 'Month Remote',
-//     start: '2021-03-01',
-//     end: '2021-03-05',
-//     backgroundColor: COLOR_CALENDAR.CYAN.backgroundColor
-//   },
-//   {
-//     title: 'Day off',
-//     start: '2021-03-05',
-//     end: '2021-03-05',
-//     backgroundColor: COLOR_CALENDAR.BLUE.backgroundColor
-//   },
-//   {
-//     title: 'Sick Day',
-//     start: '2021-03-05',
-//     end: '2021-03-05',
-//     backgroundColor: COLOR_CALENDAR.VOLCANO.backgroundColor
-//   }
-// ]
-
 const renderEventContent = (eventInfo) => {
   const { textColor } = COLOR_CALENDAR_VALUE.find(
     (color) => color.backgroundColor === eventInfo.event.backgroundColor
@@ -76,7 +37,6 @@ const CalendarAdvancedView = () => {
         return { ...item, end: item.end.toDate(), start: item.start.toDate() }
       else return []
     })
-  console.log(editedEvents)
   return (
     <FullCalendar
       navLinks={true}

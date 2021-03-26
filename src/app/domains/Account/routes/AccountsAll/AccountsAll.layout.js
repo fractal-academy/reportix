@@ -18,7 +18,6 @@ const AccountsAll = () => {
         //   email: result.user.email
         // }
         const user = result
-        console.log(user)
         /*ADD FIREBASE FUNCTIONS LOGIC TO ADD THIS INFO INTO DATABASE*/
       })
     } catch (e) {

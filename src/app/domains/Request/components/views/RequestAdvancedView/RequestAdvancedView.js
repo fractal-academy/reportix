@@ -54,7 +54,6 @@ const RequestAdvancedView = (props) => {
               <Row noGutters>
                 <Col>
                   <Title level={2}>{data.title}</Title>
-                  {/*<UserSimpleView withName={false} withEmail={false} />*/}
                   <Box justifyContent="space-between">
                     <Row noGutters>
                       <Text type={'secondary'}>From:</Text>
@@ -69,14 +68,6 @@ const RequestAdvancedView = (props) => {
                   <Text>{data.description} </Text>
                 </Col>
                 <Col cw={'auto'}>
-                  {/*<Row v={'center'} noGutters>*/}
-                  {/*  <Col>*/}
-                  {/*    <UserSimpleView withName={true} withEmail={false} />*/}
-                  {/*  </Col>*/}
-                  {/*  <Col>*/}
-                  {/*    <Tags status={data.status} />*/}
-                  {/*  </Col>*/}
-                  {/*</Row>*/}
                   <Row v={'center'} noGutters>
                     <Col>
                       <UserSimpleView withName={true} withEmail={false} />
@@ -112,12 +103,5 @@ const RequestAdvancedView = (props) => {
   )
 }
 
-RequestAdvancedView.defaultProps = {
-  // type: 'Vacation',
-  // fromDate: '2021/04/03',
-  // toDate: '2021/04/24',
-  // description: 'Trip to Himalayas',
-  // firstStatus: 'Approved',
-  // secondStatus: 'Rejected'
-}
+RequestAdvancedView.defaultProps = {}
 export default RequestAdvancedView

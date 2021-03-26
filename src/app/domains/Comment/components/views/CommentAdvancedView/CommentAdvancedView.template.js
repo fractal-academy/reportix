@@ -49,14 +49,6 @@ const CommentAdvancedView = (props) => {
     </Card>
   )
 }
-CommentAdvancedView.defaultProps = {
-  // user: {
-  //   avatarURL:
-  //     'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-  //   firstName: 'Dima',
-  //   surname: 'Okrushko'
-  // },
-  // text: 'This is comments'
-}
+CommentAdvancedView.defaultProps = {}
 
 export default CommentAdvancedView

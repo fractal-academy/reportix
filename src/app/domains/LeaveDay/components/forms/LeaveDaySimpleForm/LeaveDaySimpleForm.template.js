@@ -7,8 +7,7 @@ import Title from 'antd/lib/typography/Title'
 const LeaveDaySimpleForm = (props) => {
   const { onFinish, form, loading, onCalendarChange } = props
   const { onChange } = (date) => {
-    console.log(date)
-    // console.log(date.name)
+    return
   }
   const { RangePicker } = DatePicker
   const dateFormat = 'YYYY/MM/DD'
@@ -40,7 +39,6 @@ const LeaveDaySimpleForm = (props) => {
                 hasFeedback={loading}
                 rules={[
                   {
-                    // required: true,
                     message: 'Type description'
                   }
                 ]}>
