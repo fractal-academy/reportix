@@ -10,18 +10,25 @@ import {
 import { AccountsAll } from 'domains/Account/routes'
 import { ReportsAll } from 'domains/Report/routes'
 import RequestList from 'domains/Request/components/list/RequestList'
-import InvoiceList from 'domains/Invoice/components/list/InvoiceList'
 import ProjectList from 'domains/Project/components/list/ProjectList'
 import { Col, Row } from '@qonsoll/react-design'
 import { useParams } from 'react-router-dom'
 
 const tabList = [
   {
-    tabName: 'Accounts',
-    icon: <UserOutlined />,
-    content: <AccountsAll />,
-    addNew: false
+    tabName: 'Requests',
+    icon: <PullRequestOutlined />,
+    content: <RequestList ownRequests />,
+    addNew: true
   },
+
+  {
+    tabName: 'Reports',
+    icon: <FileOutlined />,
+    content: <ReportsAll />,
+    addNew: true
+  },
+
   {
     tabName: 'Projects',
     icon: <ProjectOutlined />,
@@ -29,27 +36,9 @@ const tabList = [
     addNew: false
   },
   {
-    tabName: 'Requests',
-    icon: <PullRequestOutlined />,
-    content: <RequestList ownRequests />,
-    addNew: true
-  },
-  {
-    tabName: 'Reports',
-    icon: <FileOutlined />,
-    content: <ReportsAll />,
-    addNew: true
-  },
-  {
-    tabName: 'Statistic',
-    icon: <LineChartOutlined />,
-    content: <>Statistic</>,
-    addNew: false
-  },
-  {
-    tabName: 'Invoices',
-    icon: <FileOutlined />,
-    content: <InvoiceList />,
+    tabName: 'Accounts',
+    icon: <UserOutlined />,
+    content: <AccountsAll />,
     addNew: false
   }
 ]

@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     setLoading(true)
     auth.onAuthStateChanged(async (user) => {
-      const userData = user && (await getData(COLLECTIONS.USERS, user.uid))
+      const userData = user //&& (await getData(COLLECTIONS.USERS, user.uid))
       const contextData = userData
         ? { id: user && user.uid, ...userData }
         : user

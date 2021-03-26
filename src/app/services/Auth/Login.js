@@ -13,7 +13,7 @@ const Login = ({ history }) => {
       const { email, password } = event
       try {
         await auth.signInWithEmailAndPassword(email, password)
-        history.push(ROUTES_PATHS.DASHBOARD)
+        history.push(ROUTES_PATHS.USER_SHOW)
       } catch (error) {
         console.error(error)
       }
@@ -24,7 +24,7 @@ const Login = ({ history }) => {
   const currentUser = useSession()
 
   if (currentUser) {
-    return <Redirect to={ROUTES_PATHS.DASHBOARD} />
+    return <Redirect to={ROUTES_PATHS.USER_SHOW} />
   }
 
   const layout = {

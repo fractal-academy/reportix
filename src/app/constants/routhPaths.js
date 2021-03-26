@@ -1,7 +1,8 @@
 const ROUTES_PATHS = {
   LOGIN: '/login',
-  DASHBOARD: '/',
   SIGN_UP: '/signup',
+  USER_SHOW: '/users/:id',
+
   COMPANIES_SHOW: '/companies/:id',
   COMPANIES_CREATE: '/companies/create',
   COMPANIES_EDIT: '/companies/:id/edit',
@@ -15,10 +16,6 @@ const ROUTES_PATHS = {
   REQUESTS_SHOW: '/requests/:id',
   REQUESTS_CREATE: '/requests/create',
   REQUESTS_EDIT: '/requests/:id/edit',
-  STATISTICS_ALL: '/statistics',
-  USER_SHOW: '/users/:id',
-  SETTINGS: '/settings',
-  USERS_ALL: '/usersall',
-  INVOICES_ALL: '/invoices'
+  USERS_ALL: '/usersall'
 }
 export default ROUTES_PATHS

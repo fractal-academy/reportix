@@ -1,24 +1,13 @@
-// import { withLayout } from 'app/components/HOCs/withLayout'
-// import { SessionLogin } from 'domains/Session/routes'
-
 import ROUTES_PATHS from './routhPaths'
-import { Dashboard } from 'components'
 import { ReportsAll, ReportEdit } from 'domains/Report/routes'
 import { CalendarShow } from 'domains/Calendar/routes'
 import { CompanyShow } from 'domains/Company/routes'
 import { ProjectsAll, ProjectEdit } from 'domains/Project/routes'
-import { StatisticsAll } from 'domains/Statistic/routes'
 import { UsersAll, UserShow } from 'domains/User/routes'
 import { Settings } from 'components/Settings'
-import { InvoicesAll } from 'domains/Invoice/routes/InvoicesAll'
 import { RequestsAll } from 'domains/Request/routes/RequestsAll'
 
 const ROUTES = {
-  DASHBOARD: {
-    component: Dashboard,
-    path: ROUTES_PATHS.DASHBOARD,
-    exact: true
-  },
   REPORTS_ALL: {
     component: ReportsAll,
     path: ROUTES_PATHS.REPORTS_ALL,
@@ -52,37 +41,14 @@ const ROUTES = {
     path: ROUTES_PATHS.PROJECT_EDIT,
     exact: true
   },
-  STATISTIC_ALL: {
-    component: StatisticsAll,
-    path: ROUTES_PATHS.STATISTICS_ALL,
-    exact: true
-  },
   USER_SHOW: {
     component: UserShow,
     path: ROUTES_PATHS.USER_SHOW
-  },
-  //   PROJECTS: {
-  //     protect: [],
-  //     component: ProjectsAll,
-  //     path: ROUTES_PATHS.DASHBOARD,
-  //     exact: true
-  //   },
-  SETTINGS: {
-    protect: [],
-    component: Settings,
-    path: ROUTES_PATHS.SETTINGS,
-    exact: true
   },
   USERS_ALL: {
     protect: [],
     component: UsersAll,
     path: ROUTES_PATHS.USERS_ALL,
-    exact: true
-  },
-  INVOICES_ALL: {
-    protect: [],
-    component: InvoicesAll,
-    path: ROUTES_PATHS.INVOICES_ALL,
     exact: true
   },
   REQUESTS_ALL: {
