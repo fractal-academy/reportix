@@ -12,35 +12,6 @@ const PageWrapper = (props) => {
   const { title, children, imgPath, company } = props
   const history = useHistory()
 
-  const dropDownMenu = (
-    <Menu>
-      <Menu.Item
-        key="0"
-        onClick={() => {
-          history.push(ROUTES_PATHS.SETTINGS)
-        }}>
-        Settings
-      </Menu.Item>
-      <Menu.Item
-        key="1"
-        onClick={() => {
-          // history.push(ROUTES_PATHS.NEW_COMPANY)
-        }}>
-        Create new
-      </Menu.Item>
-      <Divider />
-      <Menu.Item>
-        <Text>{company}</Text>
-      </Menu.Item>
-      <Menu.Item>
-        <Text>Senseteq</Text>
-      </Menu.Item>
-      <Menu.Item>
-        <Text>Senseteq</Text>
-      </Menu.Item>
-    </Menu>
-  )
-
   return (
     <>
       <Row noGutters>
@@ -62,18 +33,6 @@ const PageWrapper = (props) => {
               </Menu.Item>
             ))}
           </Menu>
-          <Dropdown
-            overlay={dropDownMenu}
-            placement="topLeft"
-            trigger={'click'}
-            style={{ position: 'absolute', bottom: '0' }}>
-            <Button style={{ position: 'fixed', bottom: '10px' }}>
-              <Box>
-                <img src={imgPath} width="15px" height="15px" />
-                {company}
-              </Box>
-            </Button>
-          </Dropdown>
         </Col>
         <Col>{children}</Col>
       </Row>
