@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext, useReducer } from 'react'
 import { auth } from 'app/services/Firebase'
 import { Spin } from 'antd'
 import { Row, Col } from '@qonsoll/react-design'
-import { getCollectionRef, getData } from 'services/Firestore'
+import { getCollectionRef} from 'services/Firestore'
 import { COLLECTIONS } from 'app/constants'
 import sessionReducer from './sessionReducer'
 import SIGN_IN from './dispatchEventsType'
@@ -25,7 +25,6 @@ export const AuthProvider = ({ children }) => {
       setLoading(false)
     })
   }, [])
-  console.log('state', state)
   return (
     <AuthContext.Provider value={state}>
       <AuthContextDispatch.Provider value={dispatch}>
