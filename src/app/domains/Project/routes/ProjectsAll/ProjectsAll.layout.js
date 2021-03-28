@@ -2,6 +2,8 @@ import { Col, Container, Row } from '@qonsoll/react-design'
 import ProjectList from 'domains/Project/components/list/ProjectList/ProjectList'
 import { AppstoreAddOutlined, UserAddOutlined } from '@ant-design/icons'
 import { Button } from 'antd'
+import CalendarAddEvent from 'domains/Calendar/combined/CalendarAddEvent'
+import ProjectAddEvent from 'domains/Project/components/combined/ProjectAddEvent'
 
 const ProjectsAll = () => {
   return (
@@ -11,9 +13,7 @@ const ProjectsAll = () => {
           <Col>
             <Row h="right">
               <Col cw="auto">
-                <Button type="primary" icon={<AppstoreAddOutlined />}>
-                  Add project
-                </Button>
+                <ProjectAddEvent />
               </Col>
             </Row>
             <Row noGutters>

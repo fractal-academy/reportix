@@ -9,7 +9,7 @@ import { useState } from 'react'
 const { Title, Text } = Typography
 
 const ProjectAdvancedView = (props) => {
-  const { company, project, tasks, startDate, deadline } = props
+  const { company, project, tasks, start, end } = props
   const history = useHistory()
   const [visible, setVisible] = useState(false)
   const [confirmLoading, setConfirmLoading] = useState(false)
@@ -54,10 +54,10 @@ const ProjectAdvancedView = (props) => {
             </Col>
             <Col>
               <Box>
-                <Text>Project start date: {startDate}</Text>
+                <Text>Project start date: {start}</Text>
               </Box>
               <Box>
-                <Text>Project end date: {deadline}</Text>
+                <Text>Project end date: {end}</Text>
               </Box>
             </Col>
           </Row>
@@ -96,8 +96,8 @@ ProjectAdvancedView.defaultProps = {
   company: 'Senseteq',
   project: 'Expences tracking app',
   tasks: '20',
-  startDate: '2021/04/04',
-  deadline: '2021/04/04'
+  start: '2021/04/04',
+  end: '2021/04/04'
 }
 
 export default ProjectAdvancedView
