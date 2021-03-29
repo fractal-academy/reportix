@@ -9,7 +9,7 @@ import { useState } from 'react'
 const { Title, Text } = Typography
 
 const ProjectAdvancedView = (props) => {
-  const { company, project, tasks, start, end } = props
+  const { data } = props
   const history = useHistory()
   const [visible, setVisible] = useState(false)
   const [confirmLoading, setConfirmLoading] = useState(false)
@@ -37,7 +37,7 @@ const ProjectAdvancedView = (props) => {
         <Col>
           <Row noGutters>
             <Col cw="auto">
-              <Title level={3}>{project}</Title>
+              <Title level={3}>{data.projectName}</Title>
             </Col>
           </Row>
           <Row noGutters h="between">
@@ -45,19 +45,22 @@ const ProjectAdvancedView = (props) => {
               <Row>
                 <UserGroupView />
               </Row>
-              <Text strong>Company: </Text>
-              <Text> {company}</Text>
-              <Row>
-                <Text strong>Tasks: </Text>
-                <Text>{tasks || 'none'}</Text>
-              </Row>
+              {/*<Text strong>Company: </Text>*/}
+              {/*<Text> {company}</Text>*/}
+              {/*<Row>*/}
+              {/*  <Text strong>Tasks: </Text>*/}
+              {/*  <Text>{tasks || 'none'}</Text>*/}
+              {/*</Row>*/}
+              <Box>
+                <Text>Users: {data.users || 'none'}</Text>
+              </Box>
             </Col>
             <Col>
               <Box>
-                <Text>Project start date: {start}</Text>
+                <Text>Project start date: {data.start}</Text>
               </Box>
               <Box>
-                <Text>Project end date: {end}</Text>
+                <Text>Project end date: {data.end}</Text>
               </Box>
             </Col>
           </Row>
@@ -93,11 +96,10 @@ const ProjectAdvancedView = (props) => {
   )
 }
 ProjectAdvancedView.defaultProps = {
-  company: 'Senseteq',
-  project: 'Expences tracking app',
-  tasks: '20',
-  start: '2021/04/04',
-  end: '2021/04/04'
+  // project: 'Expences tracking app',
+  // start: '2021/04/04',
+  // end: '2021/04/04',
+  // users: ['Sasha', 'Dima', 'Max']
 }
 
 export default ProjectAdvancedView

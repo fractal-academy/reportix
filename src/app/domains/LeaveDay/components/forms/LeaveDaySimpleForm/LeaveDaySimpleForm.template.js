@@ -6,10 +6,10 @@ import Title from 'antd/lib/typography/Title'
 
 const LeaveDaySimpleForm = (props) => {
   const { onFinish, form, loading, onCalendarChange } = props
+  const { RangePicker } = DatePicker
   const { onChange } = (date) => {
     return
   }
-  const { RangePicker } = DatePicker
   const dateFormat = 'YYYY/MM/DD'
   const date = moment(new Date()).format(dateFormat)
 
