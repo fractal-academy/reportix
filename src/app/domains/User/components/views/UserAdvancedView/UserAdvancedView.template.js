@@ -20,7 +20,6 @@ const UserAdvancedView = (props) => {
     surname,
     GitHubName
   } = props
-  console.log(GitHubName)
   const name = firstName && surname ? `${firstName} ${surname}` : 'User'
   return (
     <Container>

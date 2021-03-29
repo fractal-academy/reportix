@@ -1,17 +1,15 @@
-import { Button, DatePicker, Form, Input, message, Modal, Space } from 'antd'
+import { Button, Form, message, Modal } from 'antd'
 import { useState } from 'react'
 import LeaveDaySimpleForm from 'app/domains/LeaveDay/components/forms/LeaveDaySimpleForm'
 import Title from 'antd/lib/typography/Title'
-import {
-  COLOR_CALENDAR,
-  COLOR_CALENDAR_VALUE
-} from 'app/constants/leaveDayColorPalette'
+import { COLOR_CALENDAR } from 'app/constants/leaveDayColorPalette'
 import { LEAVE_DAY } from 'constants/leaveDay'
-import { addData, getCollectionRef, setData } from 'services/Firestore'
+import { addData, getCollectionRef } from 'services/Firestore'
 import COLLECTIONS from 'constants/collection'
 import { useSession } from 'context/SesionContext'
-import { useDocument, useDocumentData } from 'react-firebase-hooks/firestore'
+import { useDocumentData } from 'react-firebase-hooks/firestore'
 import STATUS from 'constants/status'
+import { AppstoreAddOutlined } from '@ant-design/icons'
 
 const titleSwitch = (title) => {
   const color = { backgroundColor: '' }
@@ -34,23 +32,19 @@ const titleSwitch = (title) => {
     case LEAVE_DAY.DAY_OFF:
       color.backgroundColor = COLOR_CALENDAR.BLUE.backgroundColor
       break
+    default:
+      break
   }
   return color.backgroundColor
 }
 
 const CalendarAddEvent = () => {
-  const currentUser = useSession()
-  const firstName = currentUser.firstName
+  const user = useSession()
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [loading, setLoading] = useState(false)
   const [form] = Form.useForm()
 
-  const showModal = () => {
-    setIsModalVisible(true)
-  }
-
-  const user = useSession()
-  const [userData, isLoading] = useDocumentData(
+  const [userData] = useDocumentData(
     getCollectionRef(COLLECTIONS.USERS).doc(user.uid),
     { idField: 'id' }
   )
@@ -62,7 +56,6 @@ const CalendarAddEvent = () => {
   const onLeaveDayCreate = async (date) => {
     setLoading(true)
     const color = titleSwitch(date.title)
-    console.log(typeof color)
     try {
       await addData(COLLECTIONS.LEAVE_DAYS, {
         title: `${date?.title}, ${name ? name : userData.email}`,
@@ -76,19 +69,20 @@ const CalendarAddEvent = () => {
     } catch (e) {
       message.error("Can't create Event")
     }
-
+    setLoading(false)
     setIsModalVisible(false)
     form.resetFields()
   }
-
+  const showModal = () => {
+    setIsModalVisible(true)
+  }
   const handleCancel = () => {
     setIsModalVisible(false)
     form.resetFields()
   }
-
   return (
     <>
-      <Button type="primary" onClick={showModal}>
+      <Button type="primary" onClick={showModal} icon={<AppstoreAddOutlined />}>
         Add Leave Day
       </Button>
       <Modal
@@ -97,14 +91,18 @@ const CalendarAddEvent = () => {
         onCancel={handleCancel}
         destroyOnClose
         footer={[
-          <Button onClick={handleCancel} type="primary">
+          <Button key="back" onClick={handleCancel}>
             Cancel
           </Button>,
-          <Button onClick={() => form.submit()} type="primary">
+          <Button
+            key="submit"
+            loading={loading}
+            onClick={() => form.submit()}
+            type="primary">
             Create
           </Button>
         ]}>
-        <LeaveDaySimpleForm form={form} onFinish={onLeaveDayCreate} />
+        <LeaveDaySimpleForm form={form} onFinish={onLeaveDayCreate} loading />
       </Modal>
     </>
   )

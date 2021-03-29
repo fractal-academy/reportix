@@ -7,9 +7,8 @@ import moment from 'moment'
 import { useState } from 'react'
 import { updateData } from 'services/Firestore'
 import COLLECTIONS from 'constants/collection'
-import { useParams } from 'react-router-dom'
 import STATUS from 'constants/status'
-import { firebase } from 'services/Firebase'
+import { Spinner } from 'components/Spinner'
 
 const { Text, Title } = Typography
 
@@ -44,6 +43,7 @@ const RequestAdvancedView = (props) => {
     }
     setLoading(false)
   }
+  if (loading) <Spinner />
 
   return (
     <Card hoverable>

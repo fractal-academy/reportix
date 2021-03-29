@@ -1,19 +1,11 @@
 import { Form, Input } from 'antd'
 import { UserOutlined, PhoneOutlined } from '@ant-design/icons'
-import Title from 'antd/lib/typography/Title'
 import { Col, Row } from '@qonsoll/react-design'
 
 const UserSimpleForm = (props) => {
   const { onFinish, form, loading } = props
   return (
-    <Form
-      title={<Title level={4}>Create User</Title>}
-      name="Create user"
-      initialValues={{
-        remember: true
-      }}
-      onFinish={onFinish}
-      form={form}>
+    <Form name="Create user" onFinish={onFinish} form={form}>
       <Row noGutters>
         <Col>
           <Row noGutters>
