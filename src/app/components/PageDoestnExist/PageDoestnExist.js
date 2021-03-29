@@ -6,6 +6,7 @@ import { useSession } from 'app/context/SesionContext/useSession'
 const PageExistError = () => {
   const history = useHistory()
   const currentUser = useSession()
+
   return (
     <Result
       status="404"
@@ -15,9 +16,7 @@ const PageExistError = () => {
         <Button
           type="primary"
           onClick={() =>
-            history.push(
-              currentUser ? ROUTES_PATHS.DASHBOARD : ROUTES_PATHS.LOGIN
-            )
+            history.push(currentUser ? ROUTES_PATHS.USER : ROUTES_PATHS.LOGIN)
           }>
           Back Home
         </Button>
