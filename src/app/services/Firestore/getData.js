@@ -1,3 +1,4 @@
+import { message } from 'antd'
 import { getCollectionRef } from './'
 
 /**
@@ -17,7 +18,7 @@ async function getData(collection, document) {
       result = await result.data()
       return result
     } catch (e) {
-      console.log('data', e)
+      message.error(e)
     }
   }
   let res

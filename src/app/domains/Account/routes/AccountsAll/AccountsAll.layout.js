@@ -1,46 +1,28 @@
 import { AccountSimpleView } from 'domains/Account/components/views'
-import { Box, Row, Col } from '@qonsoll/react-design'
 import { firebase } from 'app/services/Firebase'
 import { auth } from 'app/services/Firebase/firebase'
+import { setData } from 'services/Firestore'
+import COLLECTIONS from 'constants/collection'
+import { message } from 'antd'
+import { useParams } from 'react-router-dom'
 
-const mockData = [
-  { type: 'GitHub' },
-  { type: 'BitBacket', nickname: 'sashka2131' }
-]
-
-const AccountsAll = () => {
+const AccountsAll = (props) => {
+  const { id } = useParams()
+  const { GitHubName } = props
   const addAccount = async () => {
     const GitHubProvider = new firebase.auth.GithubAuthProvider()
     try {
-      await auth.currentUser.linkWithPopup(GitHubProvider).then((result) => {
-        // const user = {
-        //   nickname: result.additionalUserInfo.username,
-        //   email: result.user.email
-        // }
-        const user = result
-        /*ADD FIREBASE FUNCTIONS LOGIC TO ADD THIS INFO INTO DATABASE*/
+      const result = await auth.currentUser.linkWithPopup(GitHubProvider)
+      const userNameGitHub = result.additionalUserInfo.username
+      await setData(COLLECTIONS.USERS, id, {
+        GitHubName: userNameGitHub
       })
     } catch (e) {
-      console.log(e)
+      message.error("Can't connect to GitHub")
     }
   }
 
-  return (
-    <Row>
-      <Col cw="auto">
-        <Box my={3} p={3} border="1px solid lightgray" borderRadius="1rem">
-          {mockData.map((account, index) => (
-            <AccountSimpleView
-              key={index}
-              type={account.type}
-              nickname={account.nickname}
-              addAccount={addAccount}
-            />
-          ))}
-        </Box>
-      </Col>
-    </Row>
-  )
+  return <AccountSimpleView addAccount={addAccount} GitHubName={GitHubName} />
 }
 
 export default AccountsAll

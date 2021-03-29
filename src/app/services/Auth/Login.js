@@ -1,4 +1,4 @@
-import { Button, Form, Input } from 'antd'
+import { Button, Form, Input, message } from 'antd'
 import { useCallback } from 'react'
 import { Redirect, withRouter } from 'react-router-dom'
 import { auth } from '../Firebase'
@@ -36,7 +36,7 @@ const Login = ({ history }) => {
   }
 
   const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo)
+    message.error('Failed:', errorInfo)
   }
 
   return (

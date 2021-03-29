@@ -2,18 +2,28 @@ import { useState } from 'react'
 import { Button, Modal, Typography, Form, message } from 'antd'
 import { UserSimpleForm } from 'domains/User/components/forms'
 import { EditOutlined } from '@ant-design/icons'
-import { updateData } from 'services/Firestore'
+import { getCollectionRef, updateData } from 'services/Firestore'
 import { useParams } from 'react-router-dom'
 import COLLECTIONS from 'constants/collection'
+import { useDocumentData } from 'react-firebase-hooks/firestore'
 
 message.config({ maxCount: 2 })
 
 const { Title } = Typography
+
 const UsersEdit = () => {
+  // [STATE]
   const [visible, setVisible] = useState(false)
   const [loading, setLoading] = useState(false)
+  // [ADDITIONAL_HOOKS]
   const { id } = useParams()
   const [form] = Form.useForm()
+  const [userData] = useDocumentData(
+    getCollectionRef(COLLECTIONS.USERS).doc(id),
+    { idField: 'id' }
+  )
+
+  //[HELPER_FUNCTIONS]
   const handleCancel = () => {
     setVisible(false)
     setLoading(false)
@@ -23,12 +33,13 @@ const UsersEdit = () => {
     setLoading(true)
     try {
       await updateData(COLLECTIONS.USERS, id, {
-        firstName: data.firstName,
-        surname: data.surname,
-        phone: data.phone
+        firstName: data?.firstName,
+        surname: data?.surname,
+        phone: data?.phone,
+        avatarURL: data?.avatar
       })
     } catch (e) {
-      message.error("Can't find this email.")
+      message.error(e)
     }
     form.resetFields()
     setLoading(false)
@@ -59,7 +70,12 @@ const UsersEdit = () => {
             Edit
           </Button>
         ]}>
-        <UserSimpleForm onFinish={onEditUser} form={form} loading />
+        <UserSimpleForm
+          onFinish={onEditUser}
+          form={form}
+          loading
+          user={userData}
+        />
       </Modal>
     </>
   )
