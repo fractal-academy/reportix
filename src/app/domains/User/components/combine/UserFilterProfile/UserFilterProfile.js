@@ -20,7 +20,7 @@ const tabList = [
   {
     tabName: 'Reports',
     icon: <FileOutlined />,
-    content: <ReportsAll />,
+    content: <ReportsAll withFilter={false} />,
     addNew: true //change on component which can add new report
   },
 

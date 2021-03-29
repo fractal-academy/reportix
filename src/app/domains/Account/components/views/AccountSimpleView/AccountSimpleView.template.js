@@ -1,11 +1,15 @@
 import { Row, Col } from '@qonsoll/react-design'
 import { Typography, Button } from 'antd'
 import { GithubOutlined, PlusCircleOutlined } from '@ant-design/icons'
+import { useSession } from 'context/SesionContext'
+import { useParams } from 'react-router-dom'
 const { Text } = Typography
 
 const AccountSimpleView = (props) => {
   const { GitHubName, addAccount } = props
-
+  const user = useSession()
+  const { id } = useParams()
+  const myProfile = user.uid === id
   return (
     <Row noGutters py={2}>
       <Col>
@@ -19,7 +23,7 @@ const AccountSimpleView = (props) => {
           <Col cw="auto">
             {GitHubName ? (
               <Text>{GitHubName}</Text>
-            ) : (
+            ) : myProfile ? (
               <Button
                 type="primary"
                 shape="round"
@@ -27,6 +31,8 @@ const AccountSimpleView = (props) => {
                 style={{ width: '100px' }}
                 onClick={addAccount}
               />
+            ) : (
+              <Text>None</Text>
             )}
           </Col>
         </Row>
