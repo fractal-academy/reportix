@@ -37,7 +37,7 @@ const ImageUploader = (props) => {
         const imageRef = storage.refFromURL(currentSource)
         await imageRef.delete()
       } catch (e) {
-        console.log('internal', e)
+        message.error(e)
       }
       const res = storage.ref().child(`images/${file.file.name}`).put(file.file)
       res.on(
@@ -52,7 +52,7 @@ const ImageUploader = (props) => {
         }
       )
     } catch (e) {
-      console.log(e)
+      message.error(e)
     }
   }
 
