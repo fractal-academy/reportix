@@ -17,6 +17,8 @@ const mockData = [
 
 const UserGroupView = (props) => {
   const { avatarSize, maxCount } = props
+  const { users } = props
+  console.log(users)
   return (
     <Row v="center" noOuterGutters>
       <Col cw="auto">
@@ -24,11 +26,11 @@ const UserGroupView = (props) => {
           maxCount={maxCount}
           size={avatarSize}
           maxStyle={style.maxStyle}>
-          {mockData.map((item, index) => (
+          {users.map((item, index) => (
             <Avatar
               key={index}
               size={avatarSize}
-              src={item.src}
+              src={item.avatarURL}
               icon={<UserOutlined />}
               {...item}
             />

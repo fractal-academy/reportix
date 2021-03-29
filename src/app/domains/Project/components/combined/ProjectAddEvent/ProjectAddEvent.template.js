@@ -25,15 +25,6 @@ const ProjectAddEvent = () => {
     setIsModalVisible(true)
   }
 
-  // const [userData, isLoading] = useDocumentData(
-  //   getCollectionRef(COLLECTIONS.PROJECTS).doc(user.uid),
-  //   { idField: 'id' }
-  // )
-  // const name =
-  //   userData?.firstName &&
-  //   userData?.surname &&
-  //   `${userData?.firstName} ${userData?.surname}`
-
   const onProjectCreate = async (data) => {
     setLoading(true)
 
@@ -42,10 +33,8 @@ const ProjectAddEvent = () => {
         projectName: data?.projectName,
         start: moment(data.dateRange[0]).format(dateFormat),
         end: moment(data.dateRange[1]).format(dateFormat),
-        // userId: user.uid
-        // status: STATUS.PENDING,
-        users: data?.users
-        // description: data.description
+        users: data?.users,
+        description: data.description
       })
     } catch (e) {
       message.error("Can't create Project")

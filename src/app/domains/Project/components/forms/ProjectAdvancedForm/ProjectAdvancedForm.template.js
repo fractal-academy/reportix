@@ -2,6 +2,7 @@ import { UserSelect } from 'domains/User/components/select'
 import { DatePicker, Form, Input } from 'antd'
 import LeaveDaySingleSelect from 'domains/LeaveDay/components/select/LeaveDaySingleSelect'
 import moment from 'moment'
+import TextArea from 'antd/lib/input/TextArea'
 
 const ProjectAdvancedForm = (props) => {
   const { onFinish, form, loading, onCalendarChange } = props
@@ -26,6 +27,21 @@ const ProjectAdvancedForm = (props) => {
         <Input placeholder="Enter new project name" />
       </Form.Item>
       <Form.Item
+        name="description"
+        rules={[
+          {
+            required: false,
+            message: 'General project description'
+          }
+        ]}>
+        <TextArea
+          maxLength={200}
+          height
+          placeholder="General info: purpose, stack etc."
+        />
+      </Form.Item>
+
+      <Form.Item
         name="dateRange"
         hasFeedback={loading}
         rules={[
@@ -42,6 +58,7 @@ const ProjectAdvancedForm = (props) => {
       </Form.Item>
       <Form.Item
         name="users"
+        placeholder=""
         rules={[
           {
             required: true,

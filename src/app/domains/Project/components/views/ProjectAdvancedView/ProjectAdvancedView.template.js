@@ -43,14 +43,17 @@ const ProjectAdvancedView = (props) => {
           <Row noGutters h="between">
             <Col>
               <Row>
-                <UserGroupView />
+                <UserGroupView users={data.users} />
               </Row>
-              {/*<Text strong>Company: </Text>*/}
-              {/*<Text> {company}</Text>*/}
-              {/*<Row>*/}
-              {/*  <Text strong>Tasks: </Text>*/}
-              {/*  <Text>{tasks || 'none'}</Text>*/}
-              {/*</Row>*/}
+              <Row>
+                <Col>
+                  {data.description ? (
+                    <Text>Project description: {data.description}</Text>
+                  ) : (
+                    <Text />
+                  )}
+                </Col>
+              </Row>
               <Box>
                 <Text>Users: {data.users || 'none'}</Text>
               </Box>
