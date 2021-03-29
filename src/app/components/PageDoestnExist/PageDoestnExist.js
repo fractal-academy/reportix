@@ -16,7 +16,9 @@ const PageExistError = () => {
         <Button
           type="primary"
           onClick={() =>
-            history.push(currentUser ? ROUTES_PATHS.USER : ROUTES_PATHS.LOGIN)
+            history.push(
+              currentUser ? ROUTES_PATHS.USER_SHOW : ROUTES_PATHS.LOGIN
+            )
           }>
           Back Home
         </Button>
