@@ -3,6 +3,7 @@ import { Typography, Avatar } from 'antd'
 import { MailOutlined, PhoneOutlined, UserOutlined } from '@ant-design/icons'
 import { style } from './UserAdvancedView.styles'
 import { UsersEdit } from 'domains/User/routes'
+import { AccountsAll } from 'domains/Account/routes'
 
 const { Text, Title } = Typography
 
@@ -16,7 +17,8 @@ const UserAdvancedView = (props) => {
     avatarURL,
     avatarSize,
     firstName,
-    surname
+    surname,
+    GitHubName
   } = props
   const name = firstName && surname ? `${firstName} ${surname}` : 'User'
   return (
@@ -24,7 +26,7 @@ const UserAdvancedView = (props) => {
       <Row mt={2} h="between">
         <Col>
           <Row>
-            <Col cw={'auto'}>
+            <Col cw="auto">
               <Avatar
                 src={avatarURL && avatarURL}
                 size={avatarSize}
@@ -81,6 +83,11 @@ const UserAdvancedView = (props) => {
                       <Text>{projectsNumber ? projectsNumber : 'None'}</Text>
                     </Col>
                   </Row>
+                  <Row noGutters>
+                    <Col>
+                      <AccountsAll GitHubName={GitHubName} />
+                    </Col>
+                  </Row>
                 </Col>
               </Row>
             </Col>
@@ -96,13 +103,6 @@ const UserAdvancedView = (props) => {
   )
 }
 UserAdvancedView.defaultProps = {
-  // email: 'okrdima@gmail.com',
-  // phone: '+380671682029',s
-  // // company: ['Senseteq'],
-  // employedDate: '2021-03-03',
-  // projectsNumber: '2',
-  // avatarURL:
-  //   'https://s.dou.ua/CACHE/images/img/events/65991023_663678084107355_736367396960337920_o/6402f87ec186fba0c3c98cd79a238296.png',
   avatarSize: 130
 }
 export default UserAdvancedView

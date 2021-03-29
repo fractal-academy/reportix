@@ -1,51 +1,36 @@
-import { Row, Col, Box } from '@qonsoll/react-design'
+import { Row, Col } from '@qonsoll/react-design'
 import { Typography, Button } from 'antd'
-import {
-  CoffeeOutlined,
-  EditOutlined,
-  DeleteOutlined,
-  PlusCircleOutlined
-} from '@ant-design/icons'
-import { style } from 'app/style'
-
+import { GithubOutlined, PlusCircleOutlined } from '@ant-design/icons'
 const { Text } = Typography
 
 const AccountSimpleView = (props) => {
-  const { type, nickname, addAccount } = props
+  const { GitHubName, addAccount } = props
 
   return (
-    <Row v="center" p={2}>
-      <Col cw="auto" p={0}>
-        <CoffeeOutlined />
-      </Col>
-      <Col cw="auto">
-        <Text>{type}:</Text>
-      </Col>
-      {nickname ? (
-        <>
+    <Row noGutters py={2}>
+      <Col>
+        <Row noGutters v="center" h="center">
+          <Col cw="auto" mr={2}>
+            <GithubOutlined />
+          </Col>
           <Col>
-            <Text>{nickname}</Text>
+            <Text type="secondary">GitHub:</Text>
           </Col>
           <Col cw="auto">
-            <Button type="primary" shape="circle" icon={<EditOutlined />} />
+            {GitHubName ? (
+              <Text>{GitHubName}</Text>
+            ) : (
+              <Button
+                type="primary"
+                shape="round"
+                icon={<PlusCircleOutlined />}
+                style={{ width: '100px' }}
+                onClick={addAccount}
+              />
+            )}
           </Col>
-          <Col cw="auto" p={0}>
-            <Button type="primary" shape="circle" icon={<DeleteOutlined />} />
-          </Col>
-        </>
-      ) : (
-        <Col>
-          <Box textAlign="center">
-            <Button
-              type="primary"
-              shape="round"
-              icon={<PlusCircleOutlined />}
-              style={style.fullWidth}
-              onClick={addAccount}
-            />
-          </Box>
-        </Col>
-      )}
+        </Row>
+      </Col>
     </Row>
   )
 }
