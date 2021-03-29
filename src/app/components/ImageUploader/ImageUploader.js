@@ -7,7 +7,7 @@ import './ImageUploader.style.css'
 
 const ImageUploader = (props) => {
   // INTERFACE
-  const { shape, src, name, size, value, onChange } = props
+  const { shape, src, name, size, onChange } = props
 
   // STATE
   const [loading, setLoading] = useState(false)
@@ -61,7 +61,6 @@ const ImageUploader = (props) => {
     <Row h="center">
       <Col cw="auto">
         <Upload
-          value={value}
           name="avatar"
           customRequest={upload}
           beforeUpload={beforeUpload}

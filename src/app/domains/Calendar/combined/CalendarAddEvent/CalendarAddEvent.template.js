@@ -62,7 +62,6 @@ const CalendarAddEvent = () => {
   const onLeaveDayCreate = async (date) => {
     setLoading(true)
     const color = titleSwitch(date.title)
-    console.log(typeof color)
     try {
       await addData(COLLECTIONS.LEAVE_DAYS, {
         title: `${date?.title}, ${name ? name : userData.email}`,
