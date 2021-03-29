@@ -73,13 +73,6 @@ const Header = (props) => {
       </Col>
       <Col px={4}>
         <Row h="right">
-          <Col cw="auto" v="center" px={3}>
-            <Button
-              type="text"
-              shape="circle"
-              icon={<BellOutlined style={style.iconSize} />}
-            />
-          </Col>
           <Col cw="auto" pr={4}>
             <Dropdown overlay={dropdownMenu} trigger={['click']} arrow>
               <Box onClick={(e) => e.preventDefault()}>

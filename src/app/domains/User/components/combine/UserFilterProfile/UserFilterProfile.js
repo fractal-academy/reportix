@@ -1,19 +1,15 @@
 import { Button, Tabs } from 'antd'
 import {
-  UserOutlined,
   ProjectOutlined,
   PullRequestOutlined,
-  LineChartOutlined,
   FileOutlined,
   AppstoreAddOutlined
 } from '@ant-design/icons'
-import { AccountsAll } from 'domains/Account/routes'
 import { ReportsAll } from 'domains/Report/routes'
 import RequestList from 'domains/Request/components/list/RequestList'
 import ProjectList from 'domains/Project/components/list/ProjectList'
 import { Col, Row } from '@qonsoll/react-design'
-import { useParams } from 'react-router-dom'
-
+const { TabPane } = Tabs
 const tabList = [
   {
     tabName: 'Requests',
@@ -34,20 +30,10 @@ const tabList = [
     icon: <ProjectOutlined />,
     content: <ProjectList />,
     addNew: false
-  },
-  {
-    tabName: 'Accounts',
-    icon: <UserOutlined />,
-    content: <AccountsAll />,
-    addNew: false
   }
 ]
 
-const { TabPane } = Tabs
-
 const UserFilterProfile = () => {
-  const { id } = useParams()
-
   return (
     <Tabs centered size="large">
       {tabList.map((item, key) => (
