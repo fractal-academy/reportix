@@ -3,15 +3,13 @@ import { Col, Container, Row } from '@qonsoll/react-design'
 
 const RequestsAllLayout = () => {
   return (
-    <>
-      <Container>
-        <Row mt={3} noGutters>
-          <Col>
-            <RequestList />
-          </Col>
-        </Row>
-      </Container>
-    </>
+    <Container>
+      <Row mt={3} noGutters>
+        <Col>
+          <RequestList withButtonAccept />
+        </Col>
+      </Row>
+    </Container>
   )
 }
 

@@ -14,7 +14,7 @@ const tabList = [
   {
     tabName: 'Requests',
     icon: <PullRequestOutlined />,
-    content: <RequestList ownRequests />,
+    content: <RequestList ownRequests withButtonAccept={false} />,
     addNew: <CalendarAddEvent />
   },
   {
