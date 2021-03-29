@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 import { auth } from '../Firebase'
-import { Button, Form, Input } from 'antd'
+import { Button, Form, Input, message } from 'antd'
 import { withRouter } from 'react-router-dom'
 import Title from 'antd/es/typography/Title'
 import { Container, Row, Col } from '@qonsoll/react-design'
@@ -34,7 +34,7 @@ const SignUp = ({ history }) => {
   const tailLayout = {}
 
   const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo)
+    message.error(errorInfo)
   }
 
   return (

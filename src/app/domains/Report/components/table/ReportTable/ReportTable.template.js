@@ -6,7 +6,8 @@ import {
   Form,
   Typography,
   Button,
-  Select
+  Select,
+  message
 } from 'antd'
 import { style } from 'app/style'
 import TASK_STATUS from 'app/constants/taskStatus'
@@ -79,7 +80,7 @@ const ReportTable = (props) => {
         setEditingKey('')
       }
     } catch (errInfo) {
-      console.log('Validate Failed:', errInfo)
+      message.error(errInfo)
     }
   }
   // [TEMPLATE_PARTS]

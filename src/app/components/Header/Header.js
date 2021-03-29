@@ -1,14 +1,13 @@
-import { BellOutlined, LeftOutlined } from '@ant-design/icons'
-import { Typography, Dropdown, Menu, Button } from 'antd'
+import { LeftOutlined } from '@ant-design/icons'
+import { Typography, Dropdown, Menu } from 'antd'
 import { Box, Row, Col } from '@qonsoll/react-design'
 import { style } from 'app/style'
 import { UserSimpleView } from 'domains/User/components/views'
 import { auth } from 'app/services/Firebase/firebase'
 import { ROUTES_PATHS } from 'app/constants'
-import { useHistory } from 'react-router'
+import { useHistory } from 'react-router-dom'
 import { useSession } from 'app/context/SesionContext'
 import { generatePath } from 'react-router-dom'
-import { useState } from 'react'
 
 const { Title } = Typography
 
@@ -26,7 +25,6 @@ const Header = (props) => {
       <Menu.Item
         key="0"
         onClick={() => {
-          // history.push(userProfile)
           history.push(userProfile)
         }}>
         Profile
@@ -44,11 +42,7 @@ const Header = (props) => {
   return (
     <Row v="center" py={3} noGutters>
       <Col cw={[3, 3, 2]}>
-        <Box
-          textAlign="center"
-          onClick={() => {
-            history.push(ROUTES_PATHS.DASHBOARD)
-          }}>
+        <Box textAlign="center">
           <Title level={3} style={style.resetMargin}>
             Reportix
           </Title>
@@ -72,15 +66,8 @@ const Header = (props) => {
         </Row>
       </Col>
       <Col px={4}>
-        <Row h="right">
-          <Col cw="auto" v="center" px={3}>
-            <Button
-              type="text"
-              shape="circle"
-              icon={<BellOutlined style={style.iconSize} />}
-            />
-          </Col>
-          <Col cw="auto" pr={4}>
+        <Row h="right" v="center">
+          <Col cw="auto">
             <Dropdown overlay={dropdownMenu} trigger={['click']} arrow>
               <Box onClick={(e) => e.preventDefault()}>
                 <UserSimpleView

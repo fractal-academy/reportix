@@ -1,17 +1,15 @@
-import { DatePicker, Form, Input, Space } from 'antd'
+import { DatePicker, Form, Input } from 'antd'
 import { Col, Row } from '@qonsoll/react-design'
 import LeaveDaySingleSelect from 'domains/LeaveDay/components/select/LeaveDaySingleSelect'
-import moment from 'moment'
-import Title from 'antd/lib/typography/Title'
+import { style } from 'app/style'
+const { RangePicker } = DatePicker
 
 const LeaveDaySimpleForm = (props) => {
   const { onFinish, form, loading, onCalendarChange } = props
   const { onChange } = (date) => {
-    return
+    return date
   }
-  const { RangePicker } = DatePicker
   const dateFormat = 'YYYY/MM/DD'
-  const date = moment(new Date()).format(dateFormat)
 
   return (
     <Form onFinish={onFinish} form={form}>
@@ -58,6 +56,7 @@ const LeaveDaySimpleForm = (props) => {
                   }
                 ]}>
                 <RangePicker
+                  style={style.fullWidth}
                   locale=""
                   format={dateFormat}
                   onCalendarChange={onCalendarChange}
