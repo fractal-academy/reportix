@@ -3,12 +3,11 @@ import { UserFilterProfile } from 'domains/User/components/combine'
 import { Box } from '@qonsoll/react-design'
 import { useHistory, useParams } from 'react-router-dom'
 import { useDocumentData } from 'react-firebase-hooks/firestore'
-import { COLLECTIONS } from 'app/constants'
 import { getCollectionRef } from 'app/services/Firestore'
 import { Spinner } from 'components/Spinner'
 import { useSession } from 'app/context/SesionContext'
 import { generatePath } from 'react-router-dom'
-import { ROUTES_PATHS } from 'app/constants'
+import { ROUTES_PATHS, COLLECTIONS } from 'app/constants'
 
 const UserShow = () => {
   // [ADDITIONAL_HOOKS]

@@ -1,6 +1,7 @@
 import { DatePicker, Form, Input } from 'antd'
 import { Col, Row } from '@qonsoll/react-design'
 import LeaveDaySingleSelect from 'domains/LeaveDay/components/select/LeaveDaySingleSelect'
+import { style } from 'app/style'
 const { RangePicker } = DatePicker
 
 const LeaveDaySimpleForm = (props) => {
@@ -55,7 +56,7 @@ const LeaveDaySimpleForm = (props) => {
                   }
                 ]}>
                 <RangePicker
-                  style={{ width: '100%' }}
+                  style={style.fullWidth}
                   locale=""
                   format={dateFormat}
                   onCalendarChange={onCalendarChange}
