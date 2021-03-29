@@ -15,7 +15,6 @@ const RequestList = (props) => {
     getCollectionRef(COLLECTIONS.LEAVE_DAYS),
     { idField: 'id' }
   )
-  console.log(id)
   const filteredRequests =
     !isLoading && requests.filter((item) => item.userId === id)
   const switchRequests = ownRequests ? filteredRequests : requests

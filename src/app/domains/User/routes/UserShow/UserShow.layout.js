@@ -29,7 +29,6 @@ const UserShow = () => {
   if (loading || !userData) {
     return <Spinner />
   }
-
   return (
     <>
       <Box mb={4}>
