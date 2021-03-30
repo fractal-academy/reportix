@@ -2,9 +2,11 @@ import { Box, Col, Row } from '@qonsoll/react-design'
 import { UserGroupView } from 'domains/User/components/views'
 import { Button, Card, Popconfirm, Typography } from 'antd'
 import { EditOutlined } from '@ant-design/icons'
-import { ROUTES_PATHS } from 'app/constants'
+import { COLLECTIONS, ROUTES_PATHS } from 'app/constants'
 import { useHistory } from 'react-router-dom'
 import { useState } from 'react'
+import { useCollectionData } from 'react-firebase-hooks/firestore'
+import { getCollectionRef } from 'services/Firestore'
 
 const { Title, Text } = Typography
 
@@ -13,6 +15,13 @@ const ProjectAdvancedView = (props) => {
   const history = useHistory()
   const [visible, setVisible] = useState(false)
   const [confirmLoading, setConfirmLoading] = useState(false)
+
+  // const [usersData] = useCollectionData(
+  //   getCollectionRef(COLLECTIONS.USERS).where('id' === data.users),
+  //   {
+  //     idField: 'id'
+  //   }
+  // )
 
   const showPopconfirm = () => {
     setVisible(true)
@@ -54,9 +63,7 @@ const ProjectAdvancedView = (props) => {
                   )}
                 </Col>
               </Row>
-              <Box>
-                <Text>Users: {data.users || 'none'}</Text>
-              </Box>
+              <Box>{/*<Text>Users: {data.users || 'none'}</Text>*/}</Box>
             </Col>
             <Col>
               <Box>
