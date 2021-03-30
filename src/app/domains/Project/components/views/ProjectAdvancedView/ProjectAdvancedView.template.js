@@ -6,9 +6,9 @@ import { COLLECTIONS, ROUTES_PATHS } from 'app/constants'
 import { useHistory } from 'react-router-dom'
 import { useState } from 'react'
 import { useCollectionData } from 'react-firebase-hooks/firestore'
-import { addData, deleteData, getCollectionRef } from 'services/Firestore'
+
+import { deleteData, getCollectionRef } from 'services/Firestore'
 import { ProjectEdit } from 'domains/Project/routes'
-import moment from 'moment'
 
 const { Title, Text } = Typography
 
@@ -82,7 +82,7 @@ const ProjectAdvancedView = (props) => {
         <Col cw="auto">
           <Row noGutters>
             <Col mr={2}>
-              <ProjectEdit projectData={data} />
+              <ProjectEdit />
             </Col>
             <Col>
               <Popconfirm

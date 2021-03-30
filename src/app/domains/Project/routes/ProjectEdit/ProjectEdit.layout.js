@@ -1,22 +1,29 @@
 import { Button, Form, message, Modal } from 'antd'
 import { EditOutlined } from '@ant-design/icons'
-import { ROUTES_PATHS } from 'constants/index'
-import { Col } from '@qonsoll/react-design'
-import Title from 'antd/lib/typography/Title'
-import ProjectAdvancedForm from 'domains/Project/components/forms/ProjectAdvancedForm'
 import { useState } from 'react'
-import { addData, updateData } from 'services/Firestore'
+import { updateData } from 'services/Firestore'
 import COLLECTIONS from 'constants/collection'
 import moment from 'moment'
 import { useParams } from 'react-router-dom'
+import Title from 'antd/lib/typography/Title'
+import ProjectAdvancedForm from 'domains/Project/components/forms/ProjectAdvancedForm'
 
 const ProjectEdit = (props) => {
-  const { projectData } = props
+  // [STATE]
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [form] = Form.useForm()
+  const { projectData } = props
+  // [ADDITIONAL_HOOKS]
   const { id } = useParams()
+  const [form] = Form.useForm()
   const dateFormat = 'MMMM Do YYYY'
+
+  // const [projectData] = useDocumentData(
+  //   getCollectionRef(COLLECTIONS.PROJECTS).doc(id),
+  //   { idField: 'id' }
+  // )
+
+  // [HELPER_FUNCTIONS]
 
   const showModal = () => {
     setIsModalVisible(true)
@@ -25,6 +32,7 @@ const ProjectEdit = (props) => {
   const handleCancel = () => {
     setLoading(false)
     setIsModalVisible(false)
+
     form.resetFields()
   }
   const onProjectEdit = async (data) => {
@@ -42,14 +50,15 @@ const ProjectEdit = (props) => {
       message.error(e)
     }
 
-    setIsModalVisible(false)
     form.resetFields()
+    setLoading(false)
+    setIsModalVisible(false)
   }
 
   return (
     <>
       <Button type="primary" icon={<EditOutlined />} onClick={showModal}>
-        Edit
+        Edit project
       </Button>
       <Modal
         title={<Title level={4}>Edit project</Title>}

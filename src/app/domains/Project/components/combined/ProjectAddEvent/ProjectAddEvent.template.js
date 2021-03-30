@@ -39,7 +39,7 @@ const ProjectAddEvent = () => {
     } catch (e) {
       message.error("Can't create Project")
     }
-
+    setLoading(false)
     setIsModalVisible(false)
     form.resetFields()
   }

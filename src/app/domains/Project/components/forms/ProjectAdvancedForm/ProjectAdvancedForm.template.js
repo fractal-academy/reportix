@@ -1,21 +1,26 @@
 import { UserSelect } from 'domains/User/components/select'
 import { DatePicker, Form, Input } from 'antd'
-import LeaveDaySingleSelect from 'domains/LeaveDay/components/select/LeaveDaySingleSelect'
 import moment from 'moment'
 import TextArea from 'antd/lib/input/TextArea'
 
 const ProjectAdvancedForm = (props) => {
-  const { onFinish, form, loading, onCalendarChange } = props
+  const { onFinish, form, loading, onCalendarChange, project } = props
   const { RangePicker } = DatePicker
 
   const dateFormat = 'YYYY/MM/DD'
   const date = moment(new Date()).format(dateFormat)
-  const { onChange } = (data) => {
-    return
-  }
 
   return (
-    <Form onFinish={onFinish} form={form}>
+    <Form
+      onFinish={onFinish}
+      form={form}
+      initialValues={{
+        remember: true,
+        projectName: project?.projectName,
+        description: project?.description,
+        dateRange: [project?.start, project?.end],
+        users: project?.users
+      }}>
       <Form.Item
         name="projectName"
         rules={[
@@ -64,7 +69,7 @@ const ProjectAdvancedForm = (props) => {
             message: 'Select project team'
           }
         ]}>
-        <UserSelect onChange={onChange} />
+        <UserSelect />
       </Form.Item>
     </Form>
   )
