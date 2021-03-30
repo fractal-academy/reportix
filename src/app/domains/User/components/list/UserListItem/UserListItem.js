@@ -1,44 +1,44 @@
 import { Box, Col, Container, Row } from '@qonsoll/react-design'
 import { UserSimpleView } from 'domains/User/components/views'
-import { Button, Card, Popconfirm } from 'antd'
+import { Button, Card, message, Popconfirm } from 'antd'
 import { DeleteOutlined } from '@ant-design/icons'
 import { useState } from 'react'
 import Tag from 'components/Tags/Tags'
 import { generatePath, useHistory } from 'react-router-dom'
-import { ROUTES_PATHS } from 'app/constants'
+import { COLLECTIONS, ROUTES_PATHS, STATUS } from 'app/constants'
+import { deleteData } from 'services/Firestore'
+import moment from 'moment'
 
 const UserListItem = (props) => {
   const {
-    users,
+    id,
     avatarURL,
     firstName,
     surname,
     email,
     withName,
     withEmail,
-    leaveDayStatus,
-    id
+    requests
   } = props
   const [visible, setVisible] = useState(false)
   const [confirmLoading, setConfirmLoading] = useState(false)
   const history = useHistory()
+  const currentDay = Number(moment().format('x'))
 
-  const showPopConfirm = () => {
+  const requestsUser = requests.map((request) => {
+    if (request.userId === id) return request
+  })
+  const handleOk = async () => {
+    setConfirmLoading(true)
+    try {
+      await deleteData(COLLECTIONS.USERS, id)
+    } catch (error) {
+      message.error(`Can't delete ${firstName} ${surname}`)
+    }
+    setConfirmLoading(false)
     setVisible(!visible)
   }
-
-  const handleOk = () => {
-    setConfirmLoading(true)
-    setTimeout(() => {
-      setVisible(false)
-      setConfirmLoading(false)
-    }, 800)
-  }
   const userProfile = generatePath(ROUTES_PATHS.USER_SHOW, { id })
-
-  const handleCancel = () => {
-    setVisible(false)
-  }
   return (
     <Container>
       <Card>
@@ -58,21 +58,36 @@ const UserListItem = (props) => {
             </Box>
           </Col>
           <Col>
-            <Tag status={leaveDayStatus} />
+            {requestsUser?.map((item, index) => (
+              <Tag
+                key={index}
+                status={
+                  item?.status !== STATUS.PENDING &&
+                  item?.status !== STATUS.REJECTED &&
+                  item?.start.toDate().getTime() <= currentDay &&
+                  currentDay <= item?.end.toDate().getTime() &&
+                  item?.leaveDayType
+                }
+              />
+            ))}
           </Col>
           <Col cw="auto">
             <Popconfirm
-              title="Confirm"
+              title="Delete user?"
               cancelText="No"
               okText="Yes"
               visible={visible}
               onConfirm={handleOk}
               okButtonProps={{ loading: confirmLoading }}
-              onCancel={handleCancel}>
+              onCancel={() => {
+                setVisible(false)
+              }}>
               <Button
                 danger
                 type="text"
-                onClick={showPopConfirm}
+                onClick={() => {
+                  setVisible(!visible)
+                }}
                 icon={<DeleteOutlined />}
               />
             </Popconfirm>

@@ -2,7 +2,7 @@ import { UserListItem } from 'domains/User/components/list'
 import { Col, Row } from '@qonsoll/react-design'
 
 const UserList = (props) => {
-  const { users, withName, withEmail } = props
+  const { users, withName, withEmail, requests } = props
 
   return (
     <Row noGutters>
@@ -18,6 +18,7 @@ const UserList = (props) => {
             withName={withName}
             withEmail={withEmail}
             leaveDayStatus={item?.leaveDayStatus}
+            requests={requests}
           />
         ))}
       </Col>
