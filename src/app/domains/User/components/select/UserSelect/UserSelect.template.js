@@ -15,9 +15,8 @@ const UserSelect = (props) => {
     getCollectionRef(COLLECTIONS.USERS),
     { idField: 'id' }
   )
-  const [selected, setSelected] = useState(props?.users || null)
+  const [selected, setSelected] = useState(props?.users || [])
 
-  console.log(props.users)
   //[COMPUTED_PROPERTIES]
   const dataForSelect =
     users &&

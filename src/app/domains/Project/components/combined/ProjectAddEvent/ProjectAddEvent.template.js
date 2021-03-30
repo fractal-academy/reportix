@@ -60,7 +60,7 @@ const ProjectAddEvent = () => {
         onCancel={handleCancel}
         destroyOnClose
         footer={[
-          <Button onClick={handleCancel} type="primary" key={'cancel'}>
+          <Button onClick={handleCancel} key={'cancel'}>
             Cancel
           </Button>,
           <Button onClick={() => form.submit()} type="primary" key={'create'}>

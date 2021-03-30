@@ -90,7 +90,9 @@ const CalendarAddEvent = () => {
           <Button
             key="submit"
             loading={loading}
-            onClick={() => form.submit()}
+            onClick={() => {
+              form.submit()
+            }}
             type="primary">
             Create
           </Button>
