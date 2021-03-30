@@ -51,6 +51,7 @@ const CalendarAddEvent = () => {
     try {
       await addData(COLLECTIONS.LEAVE_DAYS, {
         title: `${date?.title}, ${name ? name : user.email}`,
+        leaveDayType: date?.title,
         start: new Date(date.dateRange[0]),
         end: new Date(date.dateRange[1]),
         backgroundColor: color,
