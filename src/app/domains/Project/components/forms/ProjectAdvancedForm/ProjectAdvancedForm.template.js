@@ -4,23 +4,27 @@ import moment from 'moment'
 import TextArea from 'antd/lib/input/TextArea'
 
 const ProjectAdvancedForm = (props) => {
-  const { onFinish, form, loading, onCalendarChange, project } = props
+  const { onFinish, form, loading, onCalendarChange, projectData } = props
   const { RangePicker } = DatePicker
 
   const dateFormat = 'YYYY/MM/DD'
-  const date = moment(new Date()).format(dateFormat)
 
   return (
     <Form
       onFinish={onFinish}
       form={form}
-      initialValues={{
-        remember: true,
-        projectName: project?.projectName,
-        description: project?.description,
-        dateRange: [project?.start, project?.end],
-        users: project?.users
-      }}>
+      initialValues={
+        projectData && {
+          remember: true,
+          projectName: projectData?.projectName,
+          description: projectData?.description || '',
+          dateRange: [
+            moment(projectData?.start, 'MMMM Do YYYY'),
+            moment(projectData?.end, 'MMMM Do YYYY')
+          ],
+          users: projectData?.users
+        }
+      }>
       <Form.Item
         name="projectName"
         rules={[
@@ -44,7 +48,6 @@ const ProjectAdvancedForm = (props) => {
           placeholder="General info: purpose, stack etc."
         />
       </Form.Item>
-
       <Form.Item
         name="dateRange"
         hasFeedback={loading}

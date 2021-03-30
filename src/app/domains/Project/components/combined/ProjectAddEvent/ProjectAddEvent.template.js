@@ -31,13 +31,13 @@ const ProjectAddEvent = () => {
     try {
       await addData(COLLECTIONS.PROJECTS, {
         projectName: data?.projectName,
-        start: moment(data.dateRange[0]).format(dateFormat),
-        end: moment(data.dateRange[1]).format(dateFormat),
+        start: moment(data?.dateRange[0]).format(dateFormat),
+        end: moment(data?.dateRange[1]).format(dateFormat),
         users: data?.users,
-        description: data.description
+        description: data?.description || ''
       })
     } catch (e) {
-      message.error("Can't create Project")
+      message.error(e)
     }
     setLoading(false)
     setIsModalVisible(false)

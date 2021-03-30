@@ -9,12 +9,13 @@ import Title from 'antd/lib/typography/Title'
 import ProjectAdvancedForm from 'domains/Project/components/forms/ProjectAdvancedForm'
 
 const ProjectEdit = (props) => {
+  const { projectData } = props
+
   // [STATE]
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [loading, setLoading] = useState(false)
-  const { projectData } = props
   // [ADDITIONAL_HOOKS]
-  const { id } = useParams()
+
   const [form] = Form.useForm()
   const dateFormat = 'MMMM Do YYYY'
 
@@ -41,10 +42,10 @@ const ProjectEdit = (props) => {
     try {
       await updateData(COLLECTIONS.PROJECTS, projectData?.id, {
         projectName: data?.projectName,
-        start: moment(data.dateRange[0]).format(dateFormat),
-        end: moment(data.dateRange[1]).format(dateFormat),
+        start: moment(data?.dateRange[0]).format(dateFormat),
+        end: moment(data?.dateRange[1]).format(dateFormat),
         users: data?.users,
-        description: data.description
+        description: data?.description
       })
     } catch (e) {
       message.error(e)
@@ -57,7 +58,11 @@ const ProjectEdit = (props) => {
 
   return (
     <>
-      <Button type="primary" icon={<EditOutlined />} onClick={showModal}>
+      <Button
+        type="primary"
+        icon={<EditOutlined />}
+        onClick={showModal}
+        key={'showModal'}>
         Edit project
       </Button>
       <Modal
@@ -72,7 +77,11 @@ const ProjectEdit = (props) => {
             Save changes
           </Button>
         ]}>
-        <ProjectAdvancedForm form={form} onFinish={onProjectEdit} />
+        <ProjectAdvancedForm
+          form={form}
+          onFinish={onProjectEdit}
+          projectData={projectData}
+        />
       </Modal>
     </>
   )

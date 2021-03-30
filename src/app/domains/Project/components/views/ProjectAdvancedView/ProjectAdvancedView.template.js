@@ -14,7 +14,6 @@ const { Title, Text } = Typography
 
 const ProjectAdvancedView = (props) => {
   const { data } = props
-  const history = useHistory()
   const [visible, setVisible] = useState(false)
   const [confirmLoading, setConfirmLoading] = useState(false)
 
@@ -42,7 +41,6 @@ const ProjectAdvancedView = (props) => {
   }
 
   const handleCancel = () => {
-    console.log('Clicked cancel button')
     setVisible(false)
   }
 
@@ -52,7 +50,7 @@ const ProjectAdvancedView = (props) => {
         <Col>
           <Row noGutters>
             <Col cw="auto">
-              <Title level={3}>{data.projectName}</Title>
+              <Title level={3}>{data?.projectName}</Title>
             </Col>
           </Row>
           <Row noGutters h="between">
@@ -60,8 +58,8 @@ const ProjectAdvancedView = (props) => {
               <Row>{/*<UserGroupView users={data.users} />*/}</Row>
               <Row>
                 <Col>
-                  {data.description ? (
-                    <Text>Project description: {data.description}</Text>
+                  {data?.description ? (
+                    <Text>Project description: {data?.description}</Text>
                   ) : (
                     <Text />
                   )}
@@ -71,10 +69,10 @@ const ProjectAdvancedView = (props) => {
             </Col>
             <Col>
               <Box>
-                <Text>Project start date: {data.start}</Text>
+                <Text>Project start date: {data?.start}</Text>
               </Box>
               <Box>
-                <Text>Project end date: {data.end}</Text>
+                <Text>Project end date: {data?.end}</Text>
               </Box>
             </Col>
           </Row>
@@ -82,7 +80,7 @@ const ProjectAdvancedView = (props) => {
         <Col cw="auto">
           <Row noGutters>
             <Col mr={2}>
-              <ProjectEdit />
+              <ProjectEdit projectData={data} />
             </Col>
             <Col>
               <Popconfirm
