@@ -51,9 +51,7 @@ const ProjectAdvancedView = (props) => {
           </Row>
           <Row noGutters h="between">
             <Col>
-              <Row>
-                <UserGroupView users={data.users} />
-              </Row>
+              <Row>{/*<UserGroupView users={data.users} />*/}</Row>
               <Row>
                 <Col>
                   {data.description ? (

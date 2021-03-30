@@ -36,7 +36,6 @@ const ProjectAdvancedForm = (props) => {
         ]}>
         <TextArea
           maxLength={200}
-          height
           placeholder="General info: purpose, stack etc."
         />
       </Form.Item>

@@ -6,26 +6,8 @@ import { useCollectionData } from 'react-firebase-hooks/firestore'
 import { getCollectionRef } from 'services/Firestore'
 import COLLECTIONS from 'constants/collection'
 
-const mockProject = [
-  {
-    company: 'Senseteq',
-    project: 'Expences tracking app',
-    tasks: '20',
-    startDate: '2021/04/04',
-    deadline: '2021/04/04'
-  },
-  {
-    company: 'Senseteq1',
-    project: 'Simple TODO',
-    tasks: '2011',
-    startDate: '2021/04/04',
-    deadline: '2021/04/04'
-  }
-]
-
 const ProjectList = (props) => {
   const { ownProjects } = props
-  const currentUser = useSession()
   const { id } = useParams()
 
   const [projects, isLoading] = useCollectionData(

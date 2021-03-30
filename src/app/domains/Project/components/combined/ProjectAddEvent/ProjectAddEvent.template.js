@@ -51,7 +51,7 @@ const ProjectAddEvent = () => {
 
   return (
     <>
-      <Button type="primary" onClick={showModal}>
+      <Button type="primary" onClick={showModal} key={'openModal'}>
         Create new project
       </Button>
       <Modal
@@ -60,10 +60,10 @@ const ProjectAddEvent = () => {
         onCancel={handleCancel}
         destroyOnClose
         footer={[
-          <Button onClick={handleCancel} type="primary">
+          <Button onClick={handleCancel} type="primary" key={'cancel'}>
             Cancel
           </Button>,
-          <Button onClick={() => form.submit()} type="primary">
+          <Button onClick={() => form.submit()} type="primary" key={'create'}>
             Create
           </Button>
         ]}>
