@@ -8,6 +8,9 @@ import { ROUTES_PATHS } from 'app/constants'
 import { useHistory } from 'react-router-dom'
 import { useSession } from 'app/context/SesionContext'
 import { generatePath } from 'react-router-dom'
+import { useDocumentData } from 'react-firebase-hooks/firestore'
+import { getCollectionRef } from 'services/Firestore'
+import COLLECTIONS from 'constants/collection'
 
 const { Title } = Typography
 
@@ -16,9 +19,13 @@ const Header = (props) => {
   const history = useHistory()
   const user = useSession()
   const id = user?.uid || 'id'
-  const avatarURL = user?.photoURL
   // [COMPUTED_PROPERTIES]
   const userProfile = generatePath(ROUTES_PATHS.USER_SHOW, { id })
+  const [userData] = useDocumentData(
+    getCollectionRef(COLLECTIONS.USERS).doc(user?.uid),
+    { idField: 'id' }
+  )
+  const avatarURL = userData?.avatarURL || user?.avatarURL
 
   const dropdownMenu = (
     <Menu>

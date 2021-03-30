@@ -12,8 +12,11 @@ const UsersAll = () => {
     getCollectionRef(COLLECTIONS.USERS),
     { idField: 'id' }
   )
-
-  if (!users || loading) {
+  const [requests, isLoading] = useCollectionData(
+    getCollectionRef(COLLECTIONS.LEAVE_DAYS),
+    { idField: 'id' }
+  )
+  if (!users || loading || isLoading) {
     return <Spinner />
   }
 
@@ -31,7 +34,7 @@ const UsersAll = () => {
               <Box mb={3} mt={2}>
                 <UserListSearch />
               </Box>
-              <UserList users={users} />
+              <UserList users={users} requests={requests} />
             </Col>
           </Row>
         </Col>

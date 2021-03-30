@@ -14,13 +14,13 @@ const tabList = [
   {
     tabName: 'Requests',
     icon: <PullRequestOutlined />,
-    content: <RequestList ownRequests />,
+    content: <RequestList ownRequests withButtonAccept={false} />,
     addNew: <CalendarAddEvent />
   },
   {
     tabName: 'Reports',
     icon: <FileOutlined />,
-    content: <ReportsAll />,
+    content: <ReportsAll withFilter={false} />,
     addNew: true //change on component which can add new report
   },
 
