@@ -12,7 +12,6 @@ const PageWrapper = (props) => {
   const { title, children } = props
   const history = useHistory()
   const user = useSession()
-  console.log(user)
 
   return (
     <>
