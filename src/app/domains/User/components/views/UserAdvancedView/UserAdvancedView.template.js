@@ -16,8 +16,7 @@ const UserAdvancedView = (props) => {
     email,
     phone,
     employedDate,
-    company,
-    projectsNumber,
+    Company,
     avatarURL,
     avatarSize,
     firstName,
@@ -60,15 +59,15 @@ const UserAdvancedView = (props) => {
                     </Col>
                     <Col cw="auto">
                       <PhoneOutlined style={style.marginForIcon} />
-                      <Text>{phone ? phone : 'None'}</Text>
+                      <Text>{phone ? phone : 'none'}</Text>
                     </Col>
                   </Row>
                   <Row v={'center'} noGutters mb={1}>
                     <Col cw={'auto'} mr={2}>
-                      <Text type="secondary">Company:</Text>
-                    </Col>
-                    <Col>
-                      <Text>{company || 'none'}</Text>
+                      <Text type="secondary" style={style.marginForIcon}>
+                        Company:
+                      </Text>
+                      <Text>{Company || 'none'}</Text>
                     </Col>
                   </Row>
                   {/*Employed*/}
