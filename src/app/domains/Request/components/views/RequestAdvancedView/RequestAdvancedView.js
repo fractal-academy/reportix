@@ -96,7 +96,7 @@ const RequestAdvancedView = (props) => {
           </Row>
           <Row noGutters mb={3}>
             <Col>
-              <CommentListWithAdd requestId={data.id} />
+              {withButtonAccept && <CommentListWithAdd requestId={data.id} />}
             </Col>
           </Row>
         </Col>

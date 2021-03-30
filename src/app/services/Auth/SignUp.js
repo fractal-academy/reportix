@@ -14,7 +14,12 @@ const SignUp = ({ history }) => {
       const { email, password } = event
       try {
         const currentDate = moment().format('DD-MM-YYYY')
-        const data = { email: email, employedDate: currentDate }
+        const data = {
+          email: email,
+          employedDate: currentDate,
+          Company: 'Senseteq',
+          isAdmin: false
+        }
         await auth
           .createUserWithEmailAndPassword(email, password)
           .then((user) => {

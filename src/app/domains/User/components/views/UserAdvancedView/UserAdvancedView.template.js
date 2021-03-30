@@ -12,7 +12,7 @@ const UserAdvancedView = (props) => {
     email,
     phone,
     employedDate,
-    company,
+    Company,
     projectsNumber,
     avatarURL,
     avatarSize,
@@ -54,18 +54,10 @@ const UserAdvancedView = (props) => {
                   </Row>
                   <Row v={'center'} noGutters mb={1}>
                     <Col cw={'auto'} mr={2}>
-                      <Text type="secondary">Company:</Text>
-                    </Col>
-                    <Col>
-                      {company ? (
-                        company.map((item, index) => (
-                          <Text key={index} {...item}>
-                            {item} &nbsp;
-                          </Text>
-                        ))
-                      ) : (
-                        <Text>None</Text>
-                      )}
+                      <Text type="secondary" style={style.marginForIcon}>
+                        Company:
+                      </Text>
+                      <Text>{Company ? Company : 'None'}</Text>
                     </Col>
                   </Row>
                   {/*Employed*/}
