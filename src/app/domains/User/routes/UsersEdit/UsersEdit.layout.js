@@ -36,7 +36,7 @@ const UsersEdit = () => {
         firstName: data?.firstName,
         surname: data?.surname,
         phone: data?.phone,
-        avatarURL: data?.avatar
+        avatarURL: data?.avatar || ''
       })
     } catch (e) {
       message.error(e)
