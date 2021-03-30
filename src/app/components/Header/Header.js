@@ -23,14 +23,14 @@ const Header = (props) => {
   const dropdownMenu = (
     <Menu>
       <Menu.Item
-        key="0"
+        key="profile"
         onClick={() => {
           history.push(userProfile)
         }}>
         Profile
       </Menu.Item>
       <Menu.Item
-        key="1"
+        key="logOut"
         onClick={() => {
           auth.signOut()
           history.push(ROUTES_PATHS.LOGIN)
