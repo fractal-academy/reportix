@@ -7,36 +7,9 @@ import { getCollectionRef } from 'services/Firestore'
 import COLLECTIONS from 'constants/collection'
 import { Spinner } from 'components/Spinner'
 
-const mockData = [
-  {
-    src: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'
-  },
-  {
-    src: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'
-  },
-  {
-    src: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'
-  },
-  {
-    src: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'
-  },
-  {
-    src: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'
-  }
-]
-
 const UserGroupView = (props) => {
   const { avatarSize, maxCount } = props
   const { users, userIds } = props
-  // const [usersData, loading] = useCollectionData(
-  //   getCollectionRef(COLLECTIONS.USERS),
-  //   { idField: 'id' }
-  // )
-  // if (!usersData || loading) {
-  //   return <Spinner />
-  // }
-
-  // console.log(usersData)
 
   const filteredData = users?.filter((user) => userIds.includes(user?.id))
 

@@ -32,7 +32,6 @@ const ProjectAdvancedView = (props) => {
   const handleCancel = () => {
     setVisible(false)
   }
-  // console.log(data.users)
   return (
     <Card hoverable>
       <Row noGutters h="between">
@@ -56,7 +55,6 @@ const ProjectAdvancedView = (props) => {
                   )}
                 </Col>
               </Row>
-              <Box>{/*<Text>Users: {data.users || 'none'}</Text>*/}</Box>
             </Col>
             <Col>
               <Box>
@@ -91,11 +89,6 @@ const ProjectAdvancedView = (props) => {
     </Card>
   )
 }
-ProjectAdvancedView.defaultProps = {
-  // project: 'Expences tracking app',
-  // start: '2021/04/04',
-  // end: '2021/04/04',
-  // users: ['Sasha', 'Dima', 'Max']
-}
+ProjectAdvancedView.defaultProps = {}
 
 export default ProjectAdvancedView

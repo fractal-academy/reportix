@@ -52,7 +52,7 @@ const ImageUploader = (props) => {
         }
       )
     } catch (e) {
-      message.error(e)
+      message.error(e.message)
     }
   }
 

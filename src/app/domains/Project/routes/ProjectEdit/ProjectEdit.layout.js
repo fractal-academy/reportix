@@ -19,11 +19,6 @@ const ProjectEdit = (props) => {
   const [form] = Form.useForm()
   const dateFormat = 'MMMM Do YYYY'
 
-  // const [projectData] = useDocumentData(
-  //   getCollectionRef(COLLECTIONS.PROJECTS).doc(id),
-  //   { idField: 'id' }
-  // )
-
   // [HELPER_FUNCTIONS]
 
   const showModal = () => {
