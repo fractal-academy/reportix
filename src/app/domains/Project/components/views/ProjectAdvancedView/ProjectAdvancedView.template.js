@@ -1,16 +1,15 @@
 import { Box, Col, Row } from '@qonsoll/react-design'
 import { UserGroupView } from 'domains/User/components/views'
-import { Button, Card, Popconfirm, Typography } from 'antd'
-import { EditOutlined } from '@ant-design/icons'
-import { ROUTES_PATHS } from 'app/constants'
-import { useHistory } from 'react-router-dom'
+import { Button, Card, message, Popconfirm, Typography } from 'antd'
+import { COLLECTIONS, ROUTES_PATHS } from 'app/constants'
 import { useState } from 'react'
+import { deleteData, getCollectionRef } from 'services/Firestore'
+import { ProjectEdit } from 'domains/Project/routes'
 
 const { Title, Text } = Typography
 
 const ProjectAdvancedView = (props) => {
-  const { company, project, tasks, startDate, deadline } = props
-  const history = useHistory()
+  const { data, users } = props
   const [visible, setVisible] = useState(false)
   const [confirmLoading, setConfirmLoading] = useState(false)
 
@@ -18,46 +17,51 @@ const ProjectAdvancedView = (props) => {
     setVisible(true)
   }
 
-  const handleOk = () => {
+  const handleOk = async () => {
     setConfirmLoading(true)
-    setTimeout(() => {
-      setVisible(false)
-      setConfirmLoading(false)
-    }, 2000)
+    try {
+      await deleteData(COLLECTIONS.PROJECTS, data?.id)
+    } catch (e) {
+      message.error("Can't delete project")
+    }
+
+    setVisible(false)
+    setConfirmLoading(false)
   }
 
   const handleCancel = () => {
-    console.log('Clicked cancel button')
     setVisible(false)
   }
-
   return (
     <Card hoverable>
       <Row noGutters h="between">
         <Col>
           <Row noGutters>
             <Col cw="auto">
-              <Title level={3}>{project}</Title>
+              <Title level={3}>{data?.projectName}</Title>
             </Col>
           </Row>
           <Row noGutters h="between">
             <Col>
               <Row>
-                <UserGroupView />
+                <UserGroupView users={users} userIds={data.users} />
               </Row>
-              <Text strong>Company: </Text>
-              <Text> {company}</Text>
               <Row>
-                <Text strong>Tasks: </Text>
-                <Text>{tasks || 'none'}</Text>
+                <Col>
+                  {data?.description ? (
+                    <Text>Project description: {data?.description}</Text>
+                  ) : (
+                    <Text />
+                  )}
+                </Col>
               </Row>
             </Col>
             <Col>
               <Box>
-                <Text>Project start date: {startDate}</Text>
+                <Text>Project start date: {data?.start}</Text>
               </Box>
               <Box>
-                <Text>Project end date: {deadline}</Text>
+                <Text>Project end date: {data?.end}</Text>
               </Box>
             </Col>
           </Row>
@@ -65,14 +69,7 @@ const ProjectAdvancedView = (props) => {
         <Col cw="auto">
           <Row noGutters>
             <Col mr={2}>
-              <Button
-                type="primary"
-                icon={<EditOutlined />}
-                onClick={() => {
-                  history.push(ROUTES_PATHS.PROJECT_EDIT)
-                }}>
-                Edit
-              </Button>
+              <ProjectEdit projectData={data} />
             </Col>
             <Col>
               <Popconfirm
@@ -92,12 +89,6 @@ const ProjectAdvancedView = (props) => {
     </Card>
   )
 }
-ProjectAdvancedView.defaultProps = {
-  company: 'Senseteq',
-  project: 'Expences tracking app',
-  tasks: '20',
-  startDate: '2021/04/04',
-  deadline: '2021/04/04'
-}
+ProjectAdvancedView.defaultProps = {}
 
 export default ProjectAdvancedView

@@ -36,7 +36,7 @@ const UsersEdit = () => {
         firstName: data?.firstName,
         surname: data?.surname,
         phone: data?.phone,
-        avatarURL: data?.avatar
+        avatarURL: data?.avatar || ''
       })
     } catch (e) {
       message.error(e)
@@ -50,7 +50,9 @@ const UsersEdit = () => {
     <>
       <Button
         type="primary"
-        onClick={() => setVisible(true)}
+        onClick={() => {
+          setVisible(true)
+        }}
         icon={<EditOutlined />}>
         Edit
       </Button>
@@ -65,7 +67,9 @@ const UsersEdit = () => {
           <Button
             key="submit"
             type="primary"
-            onClick={() => form.submit()}
+            onClick={() => {
+              form.submit()
+            }}
             loading={loading}>
             Edit
           </Button>

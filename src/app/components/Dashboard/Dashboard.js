@@ -17,7 +17,6 @@ import LeaveDaySingleSelect from 'domains/LeaveDay/components/select/LeaveDaySin
 
 const Dashboard = () => {
   const currentUser = useSession()
-
   return (
     <Box p={2}>
       <Title>Dashboard</Title>

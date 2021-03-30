@@ -4,6 +4,10 @@ import { MailOutlined, PhoneOutlined, UserOutlined } from '@ant-design/icons'
 import { style } from './UserAdvancedView.styles'
 import { UsersEdit } from 'domains/User/routes'
 import { AccountsAll } from 'domains/Account/routes'
+import { useCollectionData } from 'react-firebase-hooks/firestore'
+import { getCollectionRef } from 'services/Firestore'
+import COLLECTIONS from 'constants/collection'
+import { useParams } from 'react-router-dom'
 
 const { Text, Title } = Typography
 
@@ -13,14 +17,20 @@ const UserAdvancedView = (props) => {
     phone,
     employedDate,
     Company,
-    projectsNumber,
     avatarURL,
     avatarSize,
     firstName,
     surname,
     GitHubName
   } = props
+  const { id } = useParams()
+
+  const [userProjects, loading] = useCollectionData(
+    getCollectionRef(COLLECTIONS.PROJECTS).where('users', 'array-contains', id)
+  )
   const name = firstName && surname ? `${firstName} ${surname}` : 'User'
+  const projectsName =
+    !loading && userProjects.map((project) => project.projectName).join(', ')
   return (
     <Container>
       <Row mt={2} h="between">
@@ -49,7 +59,7 @@ const UserAdvancedView = (props) => {
                     </Col>
                     <Col cw="auto">
                       <PhoneOutlined style={style.marginForIcon} />
-                      <Text>{phone ? phone : 'None'}</Text>
+                      <Text>{phone ? phone : 'none'}</Text>
                     </Col>
                   </Row>
                   <Row v={'center'} noGutters mb={1}>
@@ -57,7 +67,7 @@ const UserAdvancedView = (props) => {
                       <Text type="secondary" style={style.marginForIcon}>
                         Company:
                       </Text>
-                      <Text>{Company ? Company : 'None'}</Text>
+                      <Text>{Company || 'none'}</Text>
                     </Col>
                   </Row>
                   {/*Employed*/}
@@ -66,13 +76,13 @@ const UserAdvancedView = (props) => {
                       <Text type="secondary" style={style.marginForIcon}>
                         Employed:
                       </Text>
-                      <Text>{employedDate ? employedDate : 'None'}</Text>
+                      <Text>{employedDate || 'none'}</Text>
                     </Col>
                     <Col cw="auto">
                       <Text type="secondary" style={style.marginForIcon}>
                         Projects:
                       </Text>
-                      <Text>{projectsNumber ? projectsNumber : 'None'}</Text>
+                      <Text>{projectsName || 'none'}</Text>
                     </Col>
                   </Row>
                   <Row noGutters>

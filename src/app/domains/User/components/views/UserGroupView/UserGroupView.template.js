@@ -1,22 +1,18 @@
-import { Avatar } from 'antd'
+import { Avatar, Tooltip } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
 import { Row, Col } from '@qonsoll/react-design'
 import { style } from './UserGroupView.styles'
-
-const mockData = [
-  {
-    src: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'
-  },
-  {
-    src: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'
-  },
-  {
-    src: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'
-  }
-]
+import { useCollectionData } from 'react-firebase-hooks/firestore'
+import { getCollectionRef } from 'services/Firestore'
+import COLLECTIONS from 'constants/collection'
+import { Spinner } from 'components/Spinner'
 
 const UserGroupView = (props) => {
   const { avatarSize, maxCount } = props
+  const { users, userIds } = props
+
+  const filteredData = users?.filter((user) => userIds.includes(user?.id))
+
   return (
     <Row v="center" noOuterGutters>
       <Col cw="auto">
@@ -24,14 +20,21 @@ const UserGroupView = (props) => {
           maxCount={maxCount}
           size={avatarSize}
           maxStyle={style.maxStyle}>
-          {mockData.map((item, index) => (
-            <Avatar
-              key={index}
-              size={avatarSize}
-              src={item.src}
-              icon={<UserOutlined />}
-              {...item}
-            />
+          {filteredData.map((item, index) => (
+            <Tooltip
+              title={
+                item.firstName && item.surname
+                  ? `${item.firstName} ${item.surname}`
+                  : item.email
+              }
+              placement="top">
+              <Avatar
+                key={index}
+                size={avatarSize}
+                src={item.avatarURL}
+                icon={<UserOutlined />}
+              />
+            </Tooltip>
           ))}
         </Avatar.Group>
       </Col>
@@ -40,6 +43,6 @@ const UserGroupView = (props) => {
 }
 UserGroupView.defaultProps = {
   avatarSize: 'large',
-  maxCount: 2
+  maxCount: 10
 }
 export default UserGroupView

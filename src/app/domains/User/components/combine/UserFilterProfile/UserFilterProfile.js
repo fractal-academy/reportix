@@ -27,7 +27,7 @@ const tabList = [
   {
     tabName: 'Projects',
     icon: <ProjectOutlined />,
-    content: <ProjectList />,
+    content: <ProjectList ownProjects />,
     addNew: false
   }
 ]

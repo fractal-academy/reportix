@@ -6,6 +6,7 @@ const { RangePicker } = DatePicker
 
 const LeaveDaySimpleForm = (props) => {
   const { onFinish, form, loading, onCalendarChange } = props
+  const { RangePicker } = DatePicker
   const { onChange } = (date) => {
     return date
   }
