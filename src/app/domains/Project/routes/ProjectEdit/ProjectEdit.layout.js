@@ -20,7 +20,6 @@ const ProjectEdit = (props) => {
 
   const showModal = () => {
     setIsModalVisible(true)
-    console.log(projectData?.id)
   }
 
   const handleCancel = () => {

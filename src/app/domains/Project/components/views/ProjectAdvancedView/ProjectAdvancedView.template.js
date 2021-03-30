@@ -1,13 +1,14 @@
 import { Box, Col, Row } from '@qonsoll/react-design'
 import { UserGroupView } from 'domains/User/components/views'
-import { Button, Card, Popconfirm, Typography } from 'antd'
+import { Button, Card, message, Popconfirm, Typography } from 'antd'
 import { EditOutlined } from '@ant-design/icons'
 import { COLLECTIONS, ROUTES_PATHS } from 'app/constants'
 import { useHistory } from 'react-router-dom'
 import { useState } from 'react'
 import { useCollectionData } from 'react-firebase-hooks/firestore'
-import { getCollectionRef } from 'services/Firestore'
+import { addData, deleteData, getCollectionRef } from 'services/Firestore'
 import { ProjectEdit } from 'domains/Project/routes'
+import moment from 'moment'
 
 const { Title, Text } = Typography
 
@@ -28,12 +29,16 @@ const ProjectAdvancedView = (props) => {
     setVisible(true)
   }
 
-  const handleOk = () => {
+  const handleOk = async () => {
     setConfirmLoading(true)
-    setTimeout(() => {
-      setVisible(false)
-      setConfirmLoading(false)
-    }, 2000)
+    try {
+      await deleteData(COLLECTIONS.PROJECTS, data?.id)
+    } catch (e) {
+      message.error("Can't delete project")
+    }
+
+    setVisible(false)
+    setConfirmLoading(false)
   }
 
   const handleCancel = () => {
