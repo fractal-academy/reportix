@@ -7,6 +7,7 @@ import { useHistory } from 'react-router-dom'
 import { useState } from 'react'
 import { useCollectionData } from 'react-firebase-hooks/firestore'
 import { getCollectionRef } from 'services/Firestore'
+import { ProjectEdit } from 'domains/Project/routes'
 
 const { Title, Text } = Typography
 
@@ -76,14 +77,7 @@ const ProjectAdvancedView = (props) => {
         <Col cw="auto">
           <Row noGutters>
             <Col mr={2}>
-              <Button
-                type="primary"
-                icon={<EditOutlined />}
-                onClick={() => {
-                  history.push(ROUTES_PATHS.PROJECT_EDIT)
-                }}>
-                Edit
-              </Button>
+              <ProjectEdit projectData={data} />
             </Col>
             <Col>
               <Popconfirm
