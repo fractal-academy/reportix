@@ -4,6 +4,7 @@ import { useCollectionData } from 'react-firebase-hooks/firestore'
 import { getCollectionRef } from 'app/services/Firestore'
 import { COLLECTIONS } from 'app/constants'
 import { style } from 'app/style'
+import { useState } from 'react'
 
 const UserSelect = (props) => {
   // [INTERFACES]
@@ -14,6 +15,9 @@ const UserSelect = (props) => {
     getCollectionRef(COLLECTIONS.USERS),
     { idField: 'id' }
   )
+  const [selected, setSelected] = useState(props?.users || null)
+
+  console.log(props.users)
   //[COMPUTED_PROPERTIES]
   const dataForSelect =
     users &&
@@ -26,15 +30,21 @@ const UserSelect = (props) => {
       }
     })
 
+  const onSelect = (value) => {
+    setSelected(value)
+    onChange && onChange(value)
+  }
+
   // [TEMPLATE]
   if (!users || loading) {
     return <Spinner />
   }
   return (
     <Select
+      value={selected}
       placeholder="Enter user"
       mode="multiple"
-      onChange={onChange}
+      onChange={onSelect}
       style={style.fullWidth}
       options={dataForSelect}
       showArrow

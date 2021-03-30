@@ -64,7 +64,7 @@ const UserAdvancedView = (props) => {
                           </Text>
                         ))
                       ) : (
-                        <Text>None</Text>
+                        <Text>Senseteq</Text>
                       )}
                     </Col>
                   </Row>

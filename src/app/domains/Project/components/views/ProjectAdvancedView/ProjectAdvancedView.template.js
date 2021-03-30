@@ -1,28 +1,17 @@
 import { Box, Col, Row } from '@qonsoll/react-design'
 import { UserGroupView } from 'domains/User/components/views'
 import { Button, Card, message, Popconfirm, Typography } from 'antd'
-import { EditOutlined } from '@ant-design/icons'
 import { COLLECTIONS, ROUTES_PATHS } from 'app/constants'
-import { useHistory } from 'react-router-dom'
 import { useState } from 'react'
-import { useCollectionData } from 'react-firebase-hooks/firestore'
-
 import { deleteData, getCollectionRef } from 'services/Firestore'
 import { ProjectEdit } from 'domains/Project/routes'
 
 const { Title, Text } = Typography
 
 const ProjectAdvancedView = (props) => {
-  const { data } = props
+  const { data, users } = props
   const [visible, setVisible] = useState(false)
   const [confirmLoading, setConfirmLoading] = useState(false)
-
-  // const [usersData] = useCollectionData(
-  //   getCollectionRef(COLLECTIONS.USERS).where('id' === data.users),
-  //   {
-  //     idField: 'id'
-  //   }
-  // )
 
   const showPopconfirm = () => {
     setVisible(true)
@@ -43,7 +32,7 @@ const ProjectAdvancedView = (props) => {
   const handleCancel = () => {
     setVisible(false)
   }
-
+  // console.log(data.users)
   return (
     <Card hoverable>
       <Row noGutters h="between">
@@ -55,7 +44,9 @@ const ProjectAdvancedView = (props) => {
           </Row>
           <Row noGutters h="between">
             <Col>
-              <Row>{/*<UserGroupView users={data.users} />*/}</Row>
+              <Row>
+                <UserGroupView users={users} userIds={data.users} />
+              </Row>
               <Row>
                 <Col>
                   {data?.description ? (

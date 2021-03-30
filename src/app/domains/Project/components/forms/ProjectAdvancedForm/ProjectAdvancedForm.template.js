@@ -9,6 +9,10 @@ const ProjectAdvancedForm = (props) => {
 
   const dateFormat = 'YYYY/MM/DD'
 
+  const testData = projectData?.users.map((item) => {
+    return { value: item }
+  })
+  console.log('test', testData)
   return (
     <Form
       onFinish={onFinish}
@@ -72,7 +76,7 @@ const ProjectAdvancedForm = (props) => {
             message: 'Select project team'
           }
         ]}>
-        <UserSelect />
+        <UserSelect users={projectData?.users} />
       </Form.Item>
     </Form>
   )

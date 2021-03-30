@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 import { useCollectionData } from 'react-firebase-hooks/firestore'
 import { getCollectionRef } from 'services/Firestore'
 import COLLECTIONS from 'constants/collection'
+import { Spinner } from 'components/Spinner'
 
 const ProjectList = (props) => {
   const { ownProjects } = props
@@ -14,6 +15,14 @@ const ProjectList = (props) => {
     getCollectionRef(COLLECTIONS.PROJECTS),
     { idField: 'id' }
   )
+  const [usersData, loading] = useCollectionData(
+    getCollectionRef(COLLECTIONS.USERS),
+    { idField: 'id' }
+  )
+  if (!usersData || !projects || isLoading || loading) {
+    return <Spinner />
+  }
+
   const filteredProjects =
     !isLoading && projects.filter((item) => item.user === id)
   const switchProjects = ownProjects ? filteredProjects : projects
@@ -25,7 +34,7 @@ const ProjectList = (props) => {
             switchProjects.map((item, index) => (
               <Row my={2} borderRadius={'8px'} py={3} noGutters key={index}>
                 <Col>
-                  <ProjectAdvancedView data={item} />
+                  <ProjectAdvancedView data={item} users={usersData} />
                 </Col>
               </Row>
             ))}
