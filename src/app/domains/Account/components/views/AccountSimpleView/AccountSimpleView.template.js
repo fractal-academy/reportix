@@ -47,26 +47,28 @@ const AccountSimpleView = (props) => {
             {GitHubName ? (
               <>
                 <Text>{GitHubName}</Text>
-                <Popconfirm
-                  title="Unlink account?"
-                  cancelText="No"
-                  okText="Yes"
-                  visible={visible}
-                  onConfirm={removeAccount}
-                  okButtonProps={{ loading: confirmLoading }}
-                  onCancel={() => {
-                    setVisible(false)
-                  }}>
-                  <Button
-                    danger
-                    shape="round"
-                    type="text"
-                    onClick={() => {
-                      setVisible(!visible)
-                    }}
-                    icon={<DeleteOutlined />}
-                  />
-                </Popconfirm>
+                {myProfile && (
+                  <Popconfirm
+                    title="Unlink account?"
+                    cancelText="No"
+                    okText="Yes"
+                    visible={visible}
+                    onConfirm={removeAccount}
+                    okButtonProps={{ loading: confirmLoading }}
+                    onCancel={() => {
+                      setVisible(false)
+                    }}>
+                    <Button
+                      danger
+                      shape="round"
+                      type="text"
+                      onClick={() => {
+                        setVisible(!visible)
+                      }}
+                      icon={<DeleteOutlined />}
+                    />
+                  </Popconfirm>
+                )}
               </>
             ) : myProfile ? (
               <Button
