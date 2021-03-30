@@ -34,7 +34,7 @@ const SignUp = ({ history }) => {
   const tailLayout = {}
 
   const onFinishFailed = (errorInfo) => {
-    message.error(errorInfo)
+    console.log(errorInfo)
   }
 
   return (

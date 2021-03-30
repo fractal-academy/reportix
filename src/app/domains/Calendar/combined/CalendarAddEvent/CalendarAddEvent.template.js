@@ -4,10 +4,9 @@ import LeaveDaySimpleForm from 'app/domains/LeaveDay/components/forms/LeaveDaySi
 import Title from 'antd/lib/typography/Title'
 import { COLOR_CALENDAR } from 'app/constants/leaveDayColorPalette'
 import { LEAVE_DAY } from 'constants/leaveDay'
-import { addData, getCollectionRef } from 'services/Firestore'
+import { addData } from 'services/Firestore'
 import COLLECTIONS from 'constants/collection'
 import { useSession } from 'context/SesionContext'
-import { useDocumentData } from 'react-firebase-hooks/firestore'
 import STATUS from 'constants/status'
 import { AppstoreAddOutlined } from '@ant-design/icons'
 
@@ -43,22 +42,15 @@ const CalendarAddEvent = () => {
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [loading, setLoading] = useState(false)
   const [form] = Form.useForm()
-
-  const [userData] = useDocumentData(
-    getCollectionRef(COLLECTIONS.USERS).doc(user.uid),
-    { idField: 'id' }
-  )
   const name =
-    userData?.firstName &&
-    userData?.surname &&
-    `${userData?.firstName} ${userData?.surname}`
+    user?.firstName && user?.surname && `${user?.firstName} ${user?.surname}`
 
   const onLeaveDayCreate = async (date) => {
     setLoading(true)
     const color = titleSwitch(date.title)
     try {
       await addData(COLLECTIONS.LEAVE_DAYS, {
-        title: `${date?.title}, ${name ? name : userData.email}`,
+        title: `${date?.title}, ${name ? name : user.email}`,
         start: new Date(date.dateRange[0]),
         end: new Date(date.dateRange[1]),
         backgroundColor: color,

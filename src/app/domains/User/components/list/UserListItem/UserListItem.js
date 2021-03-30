@@ -1,23 +1,23 @@
 import { Box, Col, Container, Row } from '@qonsoll/react-design'
 import { UserSimpleView } from 'domains/User/components/views'
-import { Button, Card, Popconfirm } from 'antd'
+import { Button, Card, message, Popconfirm } from 'antd'
 import { DeleteOutlined } from '@ant-design/icons'
 import { useState } from 'react'
 import Tag from 'components/Tags/Tags'
 import { generatePath, useHistory } from 'react-router-dom'
-import { ROUTES_PATHS } from 'app/constants'
+import { COLLECTIONS, ROUTES_PATHS } from 'app/constants'
+import { deleteData } from 'services/Firestore'
 
 const UserListItem = (props) => {
   const {
-    users,
+    id,
     avatarURL,
     firstName,
     surname,
     email,
     withName,
     withEmail,
-    leaveDayStatus,
-    id
+    leaveDayStatus
   } = props
   const [visible, setVisible] = useState(false)
   const [confirmLoading, setConfirmLoading] = useState(false)
@@ -27,12 +27,15 @@ const UserListItem = (props) => {
     setVisible(!visible)
   }
 
-  const handleOk = () => {
+  const handleOk = async () => {
     setConfirmLoading(true)
-    setTimeout(() => {
-      setVisible(false)
-      setConfirmLoading(false)
-    }, 800)
+    try {
+      await deleteData(COLLECTIONS.USERS, id)
+    } catch (error) {
+      message.error(`Can't delete ${firstName} ${surname}`)
+    }
+    setConfirmLoading(false)
+    setVisible(!visible)
   }
   const userProfile = generatePath(ROUTES_PATHS.USER_SHOW, { id })
 
@@ -62,7 +65,7 @@ const UserListItem = (props) => {
           </Col>
           <Col cw="auto">
             <Popconfirm
-              title="Confirm"
+              title="Delete user?"
               cancelText="No"
               okText="Yes"
               visible={visible}

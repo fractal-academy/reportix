@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom'
 import { Empty } from 'antd'
 
 const RequestList = (props) => {
-  const { ownRequests } = props
+  const { ownRequests, withButtonAccept } = props
   const { id } = useParams()
 
   const [requests, isLoading] = useCollectionData(
@@ -26,7 +26,10 @@ const RequestList = (props) => {
               switchRequests.map((item, index) => (
                 <Row my={2} borderRadius={'8px'} py={3} noGutters key={index}>
                   <Col>
-                    <RequestAdvancedView data={item} />
+                    <RequestAdvancedView
+                      data={item}
+                      withButtonAccept={withButtonAccept}
+                    />
                   </Col>
                 </Row>
               ))}

@@ -15,7 +15,7 @@ const { Text, Title } = Typography
 const RequestAdvancedView = (props) => {
   const [loading, setLoading] = useState(false)
 
-  const { data } = props
+  const { data, withButtonAccept } = props
   const dateFormat = 'MMMM Do YYYY'
   const start = moment(data.start.toDate()).format(dateFormat)
   const end = moment(data.end.toDate()).format(dateFormat)
@@ -81,11 +81,13 @@ const RequestAdvancedView = (props) => {
             </Col>
           </Row>
           <Row noGutters mb={2}>
-            <Col mr={2} cw={'auto'}>
-              <Button type={'primary'} onClick={onApprove}>
-                Approve
-              </Button>
-            </Col>
+            {withButtonAccept && (
+              <Col mr={2} cw={'auto'}>
+                <Button type={'primary'} onClick={onApprove}>
+                  Approve
+                </Button>
+              </Col>
+            )}
             <Col cw={'auto'}>
               <Button danger onClick={onReject}>
                 Reject
