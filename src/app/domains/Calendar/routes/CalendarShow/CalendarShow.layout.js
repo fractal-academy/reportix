@@ -25,7 +25,7 @@ const CalendarShow = () => {
             />
           </Box>
           <Title style={{ marginBottom: 0 }} level={3}>
-            Reports
+            Calendar
           </Title>
         </Box>
         <Row noGutters my={3} v={'center'}>
