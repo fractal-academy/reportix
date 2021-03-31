@@ -56,6 +56,11 @@ const CalendarAdvancedView = () => {
       allDayMaintainDuration
       unselectAuto
       editable
+      buttonText={{
+        today: 'Today',
+        month: 'Calendar',
+        list: 'List'
+      }}
       dayMaxEvents
       events={editedEvents}
       headerToolbar={{
