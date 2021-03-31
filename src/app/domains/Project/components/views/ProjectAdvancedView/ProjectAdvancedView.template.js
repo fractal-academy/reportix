@@ -1,9 +1,9 @@
 import { Box, Col, Row } from '@qonsoll/react-design'
 import { UserGroupView } from 'domains/User/components/views'
 import { Button, Card, message, Popconfirm, Typography } from 'antd'
-import { COLLECTIONS, ROUTES_PATHS } from 'app/constants'
+import { COLLECTIONS } from 'app/constants'
 import { useState } from 'react'
-import { deleteData, getCollectionRef } from 'services/Firestore'
+import { deleteData } from 'services/Firestore'
 import { ProjectEdit } from 'domains/Project/routes'
 
 const { Title, Text } = Typography

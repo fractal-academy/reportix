@@ -1,12 +1,10 @@
 import RequestList from 'domains/Request/components/list/RequestList'
-import { Box, Col, Container, Row } from '@qonsoll/react-design'
-import ProjectAddEvent from 'domains/Project/components/combined/ProjectAddEvent'
+import { Box, Container } from '@qonsoll/react-design'
 import CalendarAddEvent from 'domains/Calendar/combined/CalendarAddEvent'
 import { Button } from 'antd'
 import { ArrowLeftOutlined } from '@ant-design/icons'
 import Title from 'antd/es/typography/Title'
 import { useHistory } from 'react-router-dom'
-import ProjectList from 'domains/Project/components/list/ProjectList'
 
 const RequestsAllLayout = () => {
   const history = useHistory()
@@ -31,12 +29,10 @@ const RequestsAllLayout = () => {
             Requests
           </Title>
         </Box>
-
         <CalendarAddEvent />
       </Box>
-
       <Box mx={4}>
-        <RequestList withButtonAccept />
+        <RequestList />
       </Box>
     </Container>
   )

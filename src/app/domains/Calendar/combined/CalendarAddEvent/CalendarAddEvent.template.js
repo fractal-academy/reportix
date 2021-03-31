@@ -45,19 +45,19 @@ const CalendarAddEvent = () => {
   const name =
     user?.firstName && user?.surname && `${user?.firstName} ${user?.surname}`
 
-  const onLeaveDayCreate = async (date) => {
+  const onLeaveDayCreate = async (data) => {
     setLoading(true)
-    const color = titleSwitch(date.title)
+    const color = titleSwitch(data.title)
     try {
       await addData(COLLECTIONS.LEAVE_DAYS, {
-        title: `${date?.title}, ${name ? name : user.email}`,
-        leaveDayType: date?.title,
-        start: new Date(date.dateRange[0]),
-        end: new Date(date.dateRange[1]),
+        title: `${data?.title}, ${name ? name : user.email}`,
+        leaveDayType: data?.title,
+        start: new Date(data.dateRange[0]),
+        end: new Date(data.dateRange[1]),
         backgroundColor: color,
         userId: user.uid,
         status: STATUS.PENDING,
-        description: date.description
+        description: data.description || ''
       })
     } catch (e) {
       message.error("Can't create Event")
