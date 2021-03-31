@@ -98,7 +98,7 @@ const ReportsAll = (props) => {
   return (
     <Container>
       <Box
-        my={4}
+        mt={4}
         mx={4}
         display="flex"
         alignItems="center"
@@ -118,7 +118,7 @@ const ReportsAll = (props) => {
         </Box>
       </Box>
 
-      <Box mx={4}>
+      <Box mx={4} mt={3}>
         {withFilter && (
           <Row noGutters>
             <Col cw="auto">
@@ -138,15 +138,10 @@ const ReportsAll = (props) => {
           </Row>
         )}
       </Box>
-      <Box mx={4} mt={4}>
+      <Box mx={4} mt={3}>
         {reportMockData.map((report, index) => (
-          <Row
-            key={index}
-            noGutters
-            mb={3}
-            pr={2}
-            style={{ background: 'white' }}>
-            <Col py={3} noGutters>
+          <Row key={index} noGutters mb={3} style={{ background: 'white' }}>
+            <Col>
               <ReportSimpleView data={report} />
             </Col>
           </Row>

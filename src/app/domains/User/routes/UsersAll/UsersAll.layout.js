@@ -54,7 +54,7 @@ const UsersAll = () => {
         </Box>
         {/*{user?.isAdmin && <ProjectAddEvent />}*/}
       </Box>
-      <Box mx={4} mt={4}>
+      <Box mx={4}>
         <LeaveDayFilter />
       </Box>
       <Box mx={4} mt={4}>
