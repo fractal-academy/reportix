@@ -82,9 +82,15 @@ const Header = (props) => {
       display="flex"
       flex={1}
       flexDirection="column">
-      <Box px={3} py={2}>
+      <Box p={3} display="flex" alignItems="center">
         <Link to={userData?.isAuthorize && '/'}>
-          <img src="/logo-white.svg" alt="Qonsoll" height="40px" />
+          <Typography.Title
+            level={4}
+            id="logo1"
+            style={{ color: '#fff', margin: 0 }}>
+            Vacation system
+          </Typography.Title>
+          {/* <img src="/logo-white.svg" alt="Qonsoll" height="40px" /> */}
         </Link>
       </Box>
       {userData?.isAuthorize && (

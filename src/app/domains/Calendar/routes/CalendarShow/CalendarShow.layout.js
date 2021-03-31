@@ -37,14 +37,34 @@ const CalendarShow = () => {
             </Box>
             <CalendarAddEvent />
           </Box>
-          <Row noGutters mb={3}>
+          {/* <Row noGutters mb={3}>
+            <Col> */}
+          <Box
+            bg="white"
+            mb={3}
+            p={2}
+            borderRadius="6px"
+            style={{
+              position: 'sticky',
+              top: '0px',
+              zIndex: '1000',
+              boxShadow: '0 20px 12px -12px rgba(0,0,0,0.25)'
+            }}>
+            <LegendCalendar />
+          </Box>
+          {/* </Col>
+          </Row> */}
+          <Row noGutters>
             <Col>
               <Card>
-                <Row noGutters v={'center'}>
-                  <Col>
-                    <LegendCalendar />
-                  </Col>
-                </Row>
+                <Calendar />
+              </Card>
+            </Col>
+          </Row>
+          <Row noGutters>
+            <Col>
+              <Card>
+                <Calendar />
               </Card>
             </Col>
           </Row>

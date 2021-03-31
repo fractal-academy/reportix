@@ -45,7 +45,7 @@ const Login = ({ history }) => {
         <Box>
           <Box display="flex" justifyContent="center" mb={2}>
             <Title style={{ color: '#f6f6f6' }} level={2}>
-              Report helper / Vacation system
+              Vacation system
             </Title>
           </Box>
           <Row

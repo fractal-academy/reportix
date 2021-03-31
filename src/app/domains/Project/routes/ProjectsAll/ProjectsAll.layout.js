@@ -1,10 +1,6 @@
-import { Box, Col, Container, Row } from '@qonsoll/react-design'
+import { Box, Container } from '@qonsoll/react-design'
 import ProjectList from 'domains/Project/components/list/ProjectList/ProjectList'
-import {
-  AppstoreAddOutlined,
-  ArrowLeftOutlined,
-  UserAddOutlined
-} from '@ant-design/icons'
+import { ArrowLeftOutlined } from '@ant-design/icons'
 import { Button } from 'antd'
 import ProjectAddEvent from 'domains/Project/components/combined/ProjectAddEvent'
 import Title from 'antd/es/typography/Title'
