@@ -6,7 +6,6 @@ import {
   UserAddOutlined
 } from '@ant-design/icons'
 import { Button } from 'antd'
-import CalendarAddEvent from 'domains/Calendar/combined/CalendarAddEvent'
 import ProjectAddEvent from 'domains/Project/components/combined/ProjectAddEvent'
 import Title from 'antd/es/typography/Title'
 import { useHistory } from 'react-router-dom'

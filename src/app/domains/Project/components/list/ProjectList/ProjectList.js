@@ -32,7 +32,7 @@ const ProjectList = (props) => {
         <Col>
           {!isLoading &&
             switchProjects.map((item, index) => (
-              <Row my={2} pt={3} noGutters key={index}>
+              <Row my={3} noGutters key={index}>
                 <Col>
                   <ProjectAdvancedView data={item} users={usersData} />
                 </Col>

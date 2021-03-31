@@ -145,8 +145,7 @@ const ReportsAll = (props) => {
             noGutters
             mb={3}
             pr={2}
-            style={{ background: 'white' }}
-            border="1px solid lightgray">
+            style={{ background: 'white' }}>
             <Col py={3} noGutters>
               <ReportSimpleView data={report} />
             </Col>

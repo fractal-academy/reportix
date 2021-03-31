@@ -9,10 +9,14 @@ import { Spinner } from 'components/Spinner'
 import { Button, Typography } from 'antd'
 import { ArrowLeftOutlined } from '@ant-design/icons'
 import { useHistory } from 'react-router'
+import ProjectAddEvent from 'domains/Project/components/combined/ProjectAddEvent'
+import ProjectList from 'domains/Project/components/list/ProjectList'
+import { useSession } from 'context/SesionContext'
 
 const { Title } = Typography
 
 const UsersAll = () => {
+  const user = useSession()
   const history = useHistory()
 
   const [users, loading] = useCollectionData(
@@ -29,36 +33,36 @@ const UsersAll = () => {
 
   return (
     <Container>
-      <Row noGutters>
-        <Col>
-          <Box mt={4} mx={4} display="flex" alignItems="center">
-            <Box mr={2}>
-              <Button
-                size="large"
-                type="text"
-                icon={<ArrowLeftOutlined />}
-                onClick={() => history.goBack()}
-              />
-            </Box>
-            <Title style={{ marginBottom: 0 }} level={3}>
-              Users
-            </Title>
+      <Box
+        mt={4}
+        mx={4}
+        display="flex"
+        alignItems="center"
+        justifyContent="space-between">
+        <Box display="flex" alignItems="center">
+          <Box mr={2} display="flex" alignItems="center">
+            <Button
+              size="large"
+              type="text"
+              icon={<ArrowLeftOutlined />}
+              onClick={() => history.goBack()}
+            />
           </Box>
-          <Row h={'center'} v={'center'} noGutters>
-            <Col>
-              <LeaveDayFilter />
-            </Col>
-          </Row>
-          <Row noGutters>
-            <Col>
-              <Box mb={3} mt={2}>
-                <UserListSearch />
-              </Box>
-              <UserList users={users} requests={requests} />
-            </Col>
-          </Row>
-        </Col>
-      </Row>
+          <Title style={{ marginBottom: 0 }} level={3}>
+            Users
+          </Title>
+        </Box>
+        {/*{user?.isAdmin && <ProjectAddEvent />}*/}
+      </Box>
+      <Box mx={4} mt={4}>
+        <LeaveDayFilter />
+      </Box>
+      <Box mx={4} mt={4}>
+        <UserListSearch />
+      </Box>
+      <Box mx={4} mt={4}>
+        <UserList users={users} requests={requests} withName />
+      </Box>
     </Container>
   )
 }
