@@ -9,7 +9,7 @@ import { useHistory } from 'react-router-dom'
 import ProjectList from 'domains/Project/components/list/ProjectList'
 
 const RequestsAllLayout = () => {
-  const { history } = useHistory()
+  const history = useHistory()
   return (
     <Container>
       <Box
