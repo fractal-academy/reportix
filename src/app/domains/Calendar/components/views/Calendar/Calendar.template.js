@@ -3,12 +3,14 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import listPlugin from '@fullcalendar/list'
 import interactionPlugin from '@fullcalendar/interaction'
-import { Typography } from 'antd'
+import { Button, Typography } from 'antd'
 import { useCollectionData } from 'react-firebase-hooks/firestore'
 import { getCollectionRef } from 'services/Firestore'
 import COLLECTIONS from 'constants/collection'
 import { Spinner } from 'components/Spinner'
 import STATUS from 'constants/status'
+import { Box } from '@qonsoll/react-design'
+import { DeleteOutlined } from '@ant-design/icons'
 const { Text } = Typography
 
 const CalendarAdvancedView = () => {
@@ -25,7 +27,6 @@ const CalendarAdvancedView = () => {
       if (item.status === STATUS.APPROVED)
         return {
           ...item,
-          backgroundColor: '#E310044D',
           end: item.end.toDate(),
           start: item.start.toDate()
         }
@@ -56,7 +57,12 @@ const CalendarAdvancedView = () => {
 }
 
 const renderEventContent = (eventInfo) => {
-  return <Text>{eventInfo.event.title}</Text>
+  return (
+    <Box display="flex" justifyContent="space-between" alignItems="center">
+      <Text>{eventInfo.event.title}</Text>
+      <Button size="small" type="text" danger icon={<DeleteOutlined />} />
+    </Box>
+  )
 }
 
 export default CalendarAdvancedView
