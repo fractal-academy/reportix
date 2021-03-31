@@ -1,10 +1,11 @@
-import { Box, Col, Row } from '@qonsoll/react-design'
+import { Col, Row } from '@qonsoll/react-design'
 import { UserGroupView } from 'domains/User/components/views'
 import { Button, Card, message, Popconfirm, Typography } from 'antd'
 import { COLLECTIONS } from 'app/constants'
 import { useState } from 'react'
 import { deleteData } from 'services/Firestore'
 import { ProjectEdit } from 'domains/Project/routes'
+import { DeleteOutlined } from '@ant-design/icons'
 
 const { Title, Text } = Typography
 
@@ -32,6 +33,7 @@ const ProjectAdvancedView = (props) => {
   const handleCancel = () => {
     setVisible(false)
   }
+
   return (
     <Card hoverable>
       <Row noGutters h="between">
@@ -43,9 +45,14 @@ const ProjectAdvancedView = (props) => {
           </Row>
           <Row noGutters h="between">
             <Col>
-              <Row>
+              {data?.users?.length ? (
                 <UserGroupView users={users} userIds={data.users} />
-              </Row>
+              ) : (
+                <Typography.Text type="secondary">
+                  No employees yet
+                </Typography.Text>
+              )}
+
               <Row>
                 <Col>
                   {data?.description ? (
@@ -55,14 +62,6 @@ const ProjectAdvancedView = (props) => {
                   )}
                 </Col>
               </Row>
-            </Col>
-            <Col>
-              <Box>
-                <Text>Project start date: {data?.start}</Text>
-              </Box>
-              <Box>
-                <Text>Project end date: {data?.end}</Text>
-              </Box>
             </Col>
           </Row>
         </Col>
@@ -78,9 +77,11 @@ const ProjectAdvancedView = (props) => {
                 onConfirm={handleOk}
                 okButtonProps={{ loading: confirmLoading }}
                 onCancel={handleCancel}>
-                <Button danger onClick={showPopconfirm}>
-                  Delete
-                </Button>
+                <Button
+                  danger
+                  onClick={showPopconfirm}
+                  icon={<DeleteOutlined />}
+                />
               </Popconfirm>
             </Col>
           </Row>

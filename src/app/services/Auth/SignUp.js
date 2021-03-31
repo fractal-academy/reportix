@@ -27,7 +27,7 @@ const SignUp = ({ history }) => {
           })
         history.push('/')
       } catch (error) {
-        console.error(error)
+        message.error(error.message)
       }
     },
     [history]

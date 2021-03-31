@@ -1,13 +1,10 @@
 import { UserSelect } from 'domains/User/components/select'
-import { DatePicker, Form, Input } from 'antd'
-import moment from 'moment'
+import { Form, Input, Typography } from 'antd'
 import TextArea from 'antd/lib/input/TextArea'
+import { Box } from '@qonsoll/react-design'
 
 const ProjectAdvancedForm = (props) => {
-  const { onFinish, form, loading, onCalendarChange, projectData } = props
-  const { RangePicker } = DatePicker
-
-  const dateFormat = 'YYYY/MM/DD'
+  const { onFinish, form, projectData } = props
 
   return (
     <Form
@@ -18,13 +15,12 @@ const ProjectAdvancedForm = (props) => {
           remember: true,
           projectName: projectData?.projectName,
           description: projectData?.description || '',
-          dateRange: [
-            moment(projectData?.start, 'MMMM Do YYYY'),
-            moment(projectData?.end, 'MMMM Do YYYY')
-          ],
           users: projectData?.users
         }
       }>
+      <Box mb={2}>
+        <Typography.Text strong>Project name:</Typography.Text>
+      </Box>
       <Form.Item
         name="projectName"
         rules={[
@@ -35,43 +31,20 @@ const ProjectAdvancedForm = (props) => {
         ]}>
         <Input placeholder="Enter new project name" />
       </Form.Item>
-      <Form.Item
-        name="description"
-        rules={[
-          {
-            required: false,
-            message: 'General project description'
-          }
-        ]}>
+      <Box mb={2}>
+        <Typography.Text strong>Description:</Typography.Text>
+      </Box>
+      <Form.Item name="description">
         <TextArea
+          autoSize={{ minRows: 4 }}
           maxLength={200}
           placeholder="General info: purpose, stack etc."
         />
       </Form.Item>
-      <Form.Item
-        name="dateRange"
-        hasFeedback={loading}
-        rules={[
-          {
-            required: true,
-            message: 'Select project timelines'
-          }
-        ]}>
-        <RangePicker
-          locale=""
-          format={dateFormat}
-          onCalendarChange={onCalendarChange}
-        />
-      </Form.Item>
-      <Form.Item
-        name="users"
-        placeholder=""
-        rules={[
-          {
-            required: true,
-            message: 'Select project team'
-          }
-        ]}>
+      <Box mb={2}>
+        <Typography.Text strong>Employees:</Typography.Text>
+      </Box>
+      <Form.Item name="users" placeholder="">
         <UserSelect users={projectData?.users} />
       </Form.Item>
     </Form>

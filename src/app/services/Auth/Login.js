@@ -15,7 +15,7 @@ const Login = ({ history }) => {
         await auth.signInWithEmailAndPassword(email, password)
         history.push(ROUTES_PATHS.REQUESTS_ALL)
       } catch (error) {
-        console.error(error)
+        message.error('User not exist. Sign up, please.')
       }
     },
     [history]
