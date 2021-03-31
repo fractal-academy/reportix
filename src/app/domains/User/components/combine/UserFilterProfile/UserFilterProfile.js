@@ -2,7 +2,8 @@ import { Tabs } from 'antd'
 import {
   ProjectOutlined,
   PullRequestOutlined,
-  FileOutlined
+  FileOutlined,
+  CalendarOutlined
 } from '@ant-design/icons'
 import { ReportsAll } from 'domains/Report/routes'
 import RequestList from 'domains/Request/components/list/RequestList'
