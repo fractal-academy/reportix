@@ -29,7 +29,10 @@ const UserSimpleForm = (props) => {
         <Col>
           <Row noGutters h="center">
             <Col cw="auto">
-              <Form.Item name="avatar" hasFeedback={!!loading}>
+              <Form.Item
+                name="avatar"
+                hasFeedback={!!loading}
+                style={{ margin: 0 }}>
                 <AvatarUploader
                   shape="user"
                   imageUrl={user?.avatarURL}

@@ -31,7 +31,6 @@ const UsersEdit = () => {
   }
   const onEditUser = async (data) => {
     setLoading(true)
-    console.log(data)
     try {
       await updateData(COLLECTIONS.USERS, id, {
         firstName: data?.firstName,
