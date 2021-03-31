@@ -103,15 +103,15 @@ const RequestAdvancedView = (props) => {
             noGutters
             mb={2}
             display={
-              data?.status === STATUS.REJECTED &&
-              !currentUser?.isAdmin &&
-              'none'
+              data?.status === STATUS.REJECTED && !currentUser?.isAdmin
+                ? 'none'
+                : 'flex'
             }>
             {currentUser?.isAdmin && (
               <Col
                 mr={2}
                 cw={'auto'}
-                display={data?.status === STATUS.APPROVED && 'none'}>
+                display={data?.status === STATUS.APPROVED ? 'none' : 'block'}>
                 <Button type={'primary'} onClick={onApprove}>
                   Approve
                 </Button>
@@ -119,7 +119,7 @@ const RequestAdvancedView = (props) => {
             )}
             <Col
               cw={'auto'}
-              display={data?.status === STATUS.REJECTED && 'none'}>
+              display={data?.status === STATUS.REJECTED ? 'none' : 'block'}>
               <Popconfirm
                 title="Unlink account?"
                 cancelText="No"
