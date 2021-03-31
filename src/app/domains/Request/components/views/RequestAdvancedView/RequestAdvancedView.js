@@ -57,7 +57,6 @@ const RequestAdvancedView = (props) => {
     setVisible(false)
   }
   if (loading) return <Spinner />
-  console.log(data.status)
   //[TEMPLATE]
   return (
     <Card hoverable>
