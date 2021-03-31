@@ -13,7 +13,7 @@ const RequestsAllLayout = () => {
   //[TEMPLATE]
   return (
     <Container>
-      <Row mt={3} noGutters>
+      <Row noGutters>
         <Col>
           <Box mt={4} mx={4} display="flex" alignItems="center">
             <Box mr={2}>

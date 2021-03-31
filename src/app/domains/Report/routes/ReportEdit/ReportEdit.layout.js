@@ -13,7 +13,7 @@ const ReportEdit = () => {
   //[TEMPLATE]
   return (
     <Container>
-      <Row>
+      <Row noGutters>
         <Col>
           <Box mt={4} mx={4} display="flex" alignItems="center">
             <Box mr={2}>
