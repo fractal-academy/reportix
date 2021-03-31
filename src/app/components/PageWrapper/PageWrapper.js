@@ -13,7 +13,6 @@ const PageWrapper = (props) => {
       <Box display="flex" flex={1} overflow="auto" max-height="100%">
         {children}
       </Box>
-      g{' '}
     </Box>
   )
 }
