@@ -1,10 +1,18 @@
 import { Form, Input } from 'antd'
 import { UserOutlined, PhoneOutlined } from '@ant-design/icons'
 import { Col, Row } from '@qonsoll/react-design'
-import { ImageUploader } from 'app/components'
+import { AvatarUploader } from 'app/components'
+import { useState } from 'react'
 
 const UserSimpleForm = (props) => {
+  //[INTERFACES]
   const { onFinish, form, loading, user } = props
+  const [avatar, setAvatar] = useState()
+  const onSubmit = (data) => {
+    data.avatar = avatar || ''
+    onFinish(data)
+  }
+  //[TEMPLATE]
   return (
     <Form
       name="Create user"
@@ -15,19 +23,20 @@ const UserSimpleForm = (props) => {
         surname: user?.surname,
         phone: user?.phone
       }}
-      onFinish={onFinish}
+      onFinish={onSubmit}
       form={form}>
       <Row noGutters>
         <Col>
           <Row noGutters h="center">
             <Col cw="auto">
               <Form.Item name="avatar" hasFeedback={!!loading}>
-                <ImageUploader
+                <AvatarUploader
                   shape="user"
-                  src={user?.avatarURL}
-                  collection="users"
-                  itemId={user?.id}
-                  size={130}
+                  imageUrl={user?.avatarURL}
+                  size="large"
+                  onLoad={(loadedAvatar) => {
+                    setAvatar(loadedAvatar)
+                  }}
                 />
               </Form.Item>
             </Col>
