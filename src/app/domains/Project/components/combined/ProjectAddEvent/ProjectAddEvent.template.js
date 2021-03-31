@@ -4,8 +4,12 @@ import Title from 'antd/lib/typography/Title'
 import { addData } from 'services/Firestore'
 import COLLECTIONS from 'constants/collection'
 import ProjectAdvancedForm from 'domains/Project/components/forms/ProjectAdvancedForm'
+import { useSession } from 'context/SesionContext'
 
 const ProjectAddEvent = () => {
+  const user = useSession()
+  const users = []
+  users.push(user.uid)
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [loading, setLoading] = useState(false)
   const [form] = Form.useForm()
@@ -58,7 +62,11 @@ const ProjectAddEvent = () => {
             Save
           </Button>
         ]}>
-        <ProjectAdvancedForm form={form} onFinish={onProjectCreate} />
+        <ProjectAdvancedForm
+          form={form}
+          onFinish={onProjectCreate}
+          projectData={{ users: users }}
+        />
       </Modal>
     </>
   )

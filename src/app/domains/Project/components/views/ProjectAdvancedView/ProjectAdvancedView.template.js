@@ -52,7 +52,6 @@ const ProjectAdvancedView = (props) => {
                   No employees yet
                 </Typography.Text>
               )}
-
               <Row>
                 <Col>
                   {data?.description ? (
