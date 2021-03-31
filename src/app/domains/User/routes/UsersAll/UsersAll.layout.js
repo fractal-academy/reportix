@@ -6,8 +6,15 @@ import { useCollectionData } from 'react-firebase-hooks/firestore'
 import { getCollectionRef } from 'app/services/Firestore'
 import { COLLECTIONS } from 'app/constants'
 import { Spinner } from 'components/Spinner'
+import { Button, Typography } from 'antd'
+import { ArrowLeftOutlined } from '@ant-design/icons'
+import { useHistory } from 'react-router'
+
+const { Title } = Typography
 
 const UsersAll = () => {
+  const history = useHistory()
+
   const [users, loading] = useCollectionData(
     getCollectionRef(COLLECTIONS.USERS),
     { idField: 'id' }
@@ -22,8 +29,21 @@ const UsersAll = () => {
 
   return (
     <Container>
-      <Row>
+      <Row noGutters>
         <Col>
+          <Box mt={4} mx={4} display="flex" alignItems="center">
+            <Box mr={2}>
+              <Button
+                size="large"
+                type="text"
+                icon={<ArrowLeftOutlined />}
+                onClick={() => history.goBack()}
+              />
+            </Box>
+            <Title style={{ marginBottom: 0 }} level={3}>
+              Users
+            </Title>
+          </Box>
           <Row h={'center'} v={'center'} noGutters>
             <Col>
               <LeaveDayFilter />
