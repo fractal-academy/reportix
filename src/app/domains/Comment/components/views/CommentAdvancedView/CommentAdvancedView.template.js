@@ -31,9 +31,10 @@ const CommentAdvancedView = (props) => {
       <Row mb={1} pt={2} h="between">
         <Col cw="auto">
           <UserSimpleView
-            // avatarURL={userAvatar}
+            avatarURL={userAvatar}
             name={userName}
             withEmail={false}
+            withName={true}
           />
         </Col>
         <Col cw="auto">

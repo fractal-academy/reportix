@@ -28,11 +28,11 @@ const ProjectList = (props) => {
   const switchProjects = ownProjects ? filteredProjects : projects
   return (
     <>
-      <Row>
+      <Row noGutters>
         <Col>
           {!isLoading &&
             switchProjects.map((item, index) => (
-              <Row my={2} borderRadius={'8px'} py={3} noGutters key={index}>
+              <Row my={3} noGutters key={index}>
                 <Col>
                   <ProjectAdvancedView data={item} users={usersData} />
                 </Col>

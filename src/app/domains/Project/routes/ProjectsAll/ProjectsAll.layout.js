@@ -1,51 +1,45 @@
-import { Col, Container, Row, Box } from '@qonsoll/react-design'
+import { Box, Col, Container, Row } from '@qonsoll/react-design'
 import ProjectList from 'domains/Project/components/list/ProjectList/ProjectList'
 import {
   AppstoreAddOutlined,
-  UserAddOutlined,
-  ArrowLeftOutlined
+  ArrowLeftOutlined,
+  UserAddOutlined
 } from '@ant-design/icons'
-import { Button, Typography } from 'antd'
-import CalendarAddEvent from 'domains/Calendar/combined/CalendarAddEvent'
+import { Button } from 'antd'
 import ProjectAddEvent from 'domains/Project/components/combined/ProjectAddEvent'
-import { useHistory } from 'react-router'
-
-const { Title } = Typography
+import Title from 'antd/es/typography/Title'
+import { useHistory } from 'react-router-dom'
+import { useSession } from 'context/SesionContext'
 
 const ProjectsAll = () => {
-  //[ADITIONAL_HOOKS]
   const history = useHistory()
-
-  //[TEMPLATE]
+  const user = useSession()
   return (
     <Container>
-      <Row noGutters>
-        <Col>
-          <Box mt={4} mx={4} display="flex" alignItems="center">
-            <Box mr={2}>
-              <Button
-                size="large"
-                type="text"
-                icon={<ArrowLeftOutlined />}
-                onClick={() => history.goBack()}
-              />
-            </Box>
-            <Title style={{ marginBottom: 0 }} level={3}>
-              Projects
-            </Title>
+      <Box
+        mt={4}
+        mx={4}
+        display="flex"
+        alignItems="center"
+        justifyContent="space-between">
+        <Box display="flex" alignItems="center">
+          <Box mr={2} display="flex" alignItems="center">
+            <Button
+              size="large"
+              type="text"
+              icon={<ArrowLeftOutlined />}
+              onClick={() => history.goBack()}
+            />
           </Box>
-          <Row h="right">
-            <Col cw="auto">
-              <ProjectAddEvent />
-            </Col>
-          </Row>
-          <Row noGutters>
-            <Col>
-              <ProjectList />
-            </Col>
-          </Row>
-        </Col>
-      </Row>
+          <Title style={{ marginBottom: 0 }} level={3}>
+            Projects
+          </Title>
+        </Box>
+        {user?.isAdmin && <ProjectAddEvent />}
+      </Box>
+      <Box mx={4}>
+        <ProjectList />
+      </Box>
     </Container>
   )
 }

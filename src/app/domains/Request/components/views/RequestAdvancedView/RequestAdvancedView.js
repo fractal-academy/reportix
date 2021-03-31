@@ -53,7 +53,7 @@ const RequestAdvancedView = (props) => {
             <Col>
               <Row noGutters>
                 <Col>
-                  <Title level={2}>{data.title}</Title>
+                  <Title level={3}>{data.title}</Title>
                   <Box justifyContent="space-between">
                     <Row noGutters>
                       <Text type={'secondary'}>From:</Text>
@@ -94,7 +94,7 @@ const RequestAdvancedView = (props) => {
               </Button>
             </Col>
           </Row>
-          <Row noGutters mb={3}>
+          <Row noGutters>
             <Col>
               {withButtonAccept && <CommentListWithAdd requestId={data.id} />}
             </Col>
