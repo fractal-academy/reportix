@@ -55,6 +55,7 @@ const CalendarAddEvent = () => {
         start: new Date(data.dateRange[0]),
         end: new Date(data.dateRange[1]),
         backgroundColor: color,
+        borderColor: color,
         userId: user.uid,
         status:
           data?.title === LEAVE_DAY.SICK_DAY ? STATUS.APPROVED : STATUS.PENDING,
@@ -77,10 +78,10 @@ const CalendarAddEvent = () => {
   return (
     <>
       <Button type="primary" onClick={showModal} icon={<AppstoreAddOutlined />}>
-        Add Leave Day
+        Create
       </Button>
       <Modal
-        title={<Title level={4}>New LeaveDay request</Title>}
+        title={<Title level={4}>Create leave day</Title>}
         visible={isModalVisible}
         onCancel={handleCancel}
         destroyOnClose
@@ -95,7 +96,7 @@ const CalendarAddEvent = () => {
               form.submit()
             }}
             type="primary">
-            Create
+            Save
           </Button>
         ]}>
         <LeaveDaySimpleForm form={form} onFinish={onLeaveDayCreate} loading />

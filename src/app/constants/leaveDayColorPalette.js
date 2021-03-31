@@ -1,27 +1,27 @@
 const COLOR_CALENDAR = {
   GOLD: {
     textColor: '#d48806',
-    backgroundColor: '#fffbe6'
+    backgroundColor: '#1890ff4D'
   },
   LIME: {
     textColor: '#7cb305',
-    backgroundColor: '#fcffe6'
+    backgroundColor: '#fff0004D'
   },
   MAGENTA: {
     textColor: '#c41d7f',
-    backgroundColor: '#fff0f6'
+    backgroundColor: '#00FFFF4D'
   },
   CYAN: {
     textColor: '#08979c',
-    backgroundColor: '#e6fffb'
+    backgroundColor: '#2477774D'
   },
   BLUE: {
     textColor: '#096dd9',
-    backgroundColor: '#e6f7ff'
+    backgroundColor: '#ad56104D'
   },
   VOLCANO: {
     textColor: '#d4380d',
-    backgroundColor: '#fff2e8'
+    backgroundColor: '#e310044D'
   }
 }
 const COLOR_CALENDAR_VALUE = Object.values(COLOR_CALENDAR)

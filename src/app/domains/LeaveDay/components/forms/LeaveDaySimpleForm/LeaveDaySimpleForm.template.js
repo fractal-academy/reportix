@@ -20,11 +20,9 @@ const LeaveDaySimpleForm = (props) => {
             <Col>
               <Form.Item
                 name="title"
-                hasFeedback={loading}
                 rules={[
                   {
-                    required: true,
-                    message: 'Choose leave day'
+                    required: true
                   }
                 ]}>
                 <LeaveDaySingleSelect onChange={onChange} />
@@ -33,14 +31,7 @@ const LeaveDaySimpleForm = (props) => {
           </Row>
           <Row mb={2}>
             <Col>
-              <Form.Item
-                name="description"
-                hasFeedback={loading}
-                rules={[
-                  {
-                    message: 'Type description'
-                  }
-                ]}>
+              <Form.Item name="description">
                 <Input allowClear placeholder="Leave day short description" />
               </Form.Item>
             </Col>
@@ -49,11 +40,9 @@ const LeaveDaySimpleForm = (props) => {
             <Col>
               <Form.Item
                 name="dateRange"
-                hasFeedback={loading}
                 rules={[
                   {
-                    required: true,
-                    message: 'Select leave day duration'
+                    required: true
                   }
                 ]}>
                 <RangePicker

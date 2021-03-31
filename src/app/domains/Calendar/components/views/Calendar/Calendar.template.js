@@ -4,23 +4,12 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 import listPlugin from '@fullcalendar/list'
 import interactionPlugin from '@fullcalendar/interaction'
 import { Typography } from 'antd'
-import {
-  COLOR_CALENDAR,
-  COLOR_CALENDAR_VALUE
-} from 'app/constants/leaveDayColorPalette'
 import { useCollectionData } from 'react-firebase-hooks/firestore'
 import { getCollectionRef } from 'services/Firestore'
 import COLLECTIONS from 'constants/collection'
 import { Spinner } from 'components/Spinner'
 import STATUS from 'constants/status'
 const { Text } = Typography
-
-const renderEventContent = (eventInfo) => {
-  const { textColor } = COLOR_CALENDAR_VALUE.find(
-    (color) => color.backgroundColor === eventInfo.event.backgroundColor
-  )
-  return <Text style={{ color: textColor }}>{eventInfo.event.title}</Text>
-}
 
 const CalendarAdvancedView = () => {
   const [events, loading] = useCollectionData(
@@ -34,20 +23,28 @@ const CalendarAdvancedView = () => {
     events &&
     events.map((item) => {
       if (item.status === STATUS.APPROVED)
-        return { ...item, end: item.end.toDate(), start: item.start.toDate() }
+        return {
+          ...item,
+          backgroundColor: '#E310044D',
+          end: item.end.toDate(),
+          start: item.start.toDate()
+        }
       else return []
     })
   return (
     <FullCalendar
-      navLinks={true}
+      navLinks
       firstDay={1}
+      eventDrop={(e) => console.log(e)}
       plugins={[dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]}
       eventContent={renderEventContent}
       initialView="dayGridMonth"
-      selectable={true}
-      selectMirror={true}
-      unselectAuto={true}
-      dayMaxEvents={true}
+      selectable
+      selectMirror
+      allDayMaintainDuration
+      unselectAuto
+      editable
+      dayMaxEvents
       events={editedEvents}
       headerToolbar={{
         left: 'prev,next today',
@@ -57,4 +54,9 @@ const CalendarAdvancedView = () => {
     />
   )
 }
+
+const renderEventContent = (eventInfo) => {
+  return <Text>{eventInfo.event.title}</Text>
+}
+
 export default CalendarAdvancedView
