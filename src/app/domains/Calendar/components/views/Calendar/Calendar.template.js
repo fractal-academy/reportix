@@ -9,7 +9,7 @@ import { deleteData, getCollectionRef, updateData } from 'services/Firestore'
 import COLLECTIONS from 'constants/collection'
 import { Spinner } from 'components/Spinner'
 import STATUS from 'constants/status'
-import { Box, Col } from '@qonsoll/react-design'
+import { Box } from '@qonsoll/react-design'
 import { DeleteOutlined } from '@ant-design/icons'
 import { useState } from 'react'
 const { Text } = Typography
@@ -58,8 +58,8 @@ const CalendarAdvancedView = () => {
       editable
       buttonText={{
         today: 'Today',
-        month: 'Calendar',
-        list: 'List'
+        month: 'Month',
+        list: 'Week'
       }}
       dayMaxEvents
       events={editedEvents}
