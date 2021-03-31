@@ -18,7 +18,7 @@ const CalendarShow = () => {
         <Col>
           <Box
             mt={4}
-            mb={4}
+            mb={3}
             display="flex"
             justifyContent={'space-between'}
             alignItems={'center'}>
