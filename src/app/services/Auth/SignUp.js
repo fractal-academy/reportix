@@ -1,9 +1,9 @@
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import { auth } from '../Firebase'
 import { Button, Form, Input, message } from 'antd'
-import { withRouter } from 'react-router-dom'
+import { generatePath, withRouter } from 'react-router-dom'
 import Title from 'antd/es/typography/Title'
-import { Box, Row, Col, Container } from '@qonsoll/react-design'
+import { Box, Row, Col } from '@qonsoll/react-design'
 import { COLLECTIONS, ROUTES_PATHS } from 'app/constants'
 import moment from 'moment'
 import { setData } from '../Firestore'
@@ -18,14 +18,14 @@ const SignUp = ({ history }) => {
           email: email,
           employedDate: currentDate,
           Company: 'Senseteq',
+          isAuthorize: false,
           isAdmin: false
         }
-        await auth
-          .createUserWithEmailAndPassword(email, password)
-          .then((user) => {
-            setData(COLLECTIONS.USERS, user.user.uid, data)
-          })
-        history.push('/')
+        const user = await auth.createUserWithEmailAndPassword(email, password)
+        await setData(COLLECTIONS.USERS, user.user.uid, data)
+        const id = user.user.uid
+        const userCreate = generatePath(ROUTES_PATHS.USER_CREATE, { id })
+        history.push(userCreate)
       } catch (error) {
         message.error(error.message)
       }

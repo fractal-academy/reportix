@@ -2,7 +2,7 @@ const ROUTES_PATHS = {
   LOGIN: '/login',
   SIGN_UP: '/signup',
   USER_SHOW: '/users/:id',
-
+  USER_CREATE: '/users/create/:id',
   COMPANIES_SHOW: '/companies/:id',
   COMPANIES_CREATE: '/companies/create',
   COMPANIES_EDIT: '/companies/:id/edit',

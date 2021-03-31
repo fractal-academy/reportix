@@ -35,11 +35,10 @@ const Header = (props) => {
     getCollectionRef(COLLECTIONS.USERS).doc(user?.uid),
     { idField: 'id' }
   )
-
   const userFullName =
     (userData?.firstName &&
       userData?.surname &&
-      `${user?.firstName} ${user?.surname}`) ||
+      `${userData?.firstName} ${userData?.surname}`) ||
     null
 
   const avatarURL = userData?.avatarURL || user?.avatarURL
@@ -84,72 +83,77 @@ const Header = (props) => {
       flex={1}
       flexDirection="column">
       <Box px={3} py={2}>
-        <Link to="/">
+        <Link to={userData?.isAuthorize && '/'}>
           <img src="/logo-white.svg" alt="Qonsoll" height="40px" />
         </Link>
       </Box>
-      <Box>
-        {user?.isAdmin ? (
-          <Menu
-            style={{ background: 'transparent' }}
-            theme="dark"
-            defaultSelectedKeys={history.location.pathname}>
-            {PAGES.map((page, index) => (
+      {userData?.isAuthorize && (
+        <Box>
+          {user?.isAdmin ? (
+            <Menu
+              style={{ background: 'transparent' }}
+              theme="dark"
+              defaultSelectedKeys={history.location.pathname}>
+              {PAGES.map((page, index) => (
+                <Menu.Item
+                  key={page.path}
+                  icon={page.icon}
+                  onClick={() => {
+                    history.push(page.path)
+                  }}>
+                  {page.text}
+                </Menu.Item>
+              ))}
+            </Menu>
+          ) : (
+            <Menu
+              style={{ background: 'transparent' }}
+              theme="dark"
+              selectedKeys={location.pathname}>
+              {menuMap.map((item) => (
+                <Menu.Item
+                  key={item.key}
+                  icon={item.icon}
+                  onClick={() => {
+                    history.push(item.key)
+                  }}>
+                  {item.name}
+                </Menu.Item>
+              ))}
+            </Menu>
+          )}
+        </Box>
+      )}
+
+      <Box mt="auto" style={{ marginTop: 'auto' }} mb={2}>
+        {userData?.isAuthorize && (
+          <Menu style={{ background: 'transparent', padding: 0 }} theme="dark">
+            <SubMenu
+              title={
+                <Box display="flex" alignItems="center">
+                  <Box mr={2}>
+                    <Avatar src={avatarURL} icon={<UserOutlined />} />
+                  </Box>
+                  <Box
+                    style={{ whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}
+                    overflow="hidden">
+                    {user?.displayName || userFullName || user?.email}
+                  </Box>
+                </Box>
+              }>
               <Menu.Item
-                key={page.path}
-                icon={page.icon}
+                key="profile"
                 onClick={() => {
-                  history.push(page.path)
+                  history.push(userProfile)
                 }}>
-                {page.text}
+                Profile
               </Menu.Item>
-            ))}
-          </Menu>
-        ) : (
-          <Menu
-            style={{ background: 'transparent' }}
-            theme="dark"
-            selectedKeys={location.pathname}>
-            {menuMap.map((item) => (
-              <Menu.Item
-                key={item.key}
-                icon={item.icon}
-                onClick={() => {
-                  history.push(item.key)
-                }}>
-                {item.name}
+              <Menu.Item key="logout" onClick={logout}>
+                Logout
               </Menu.Item>
-            ))}
+            </SubMenu>
           </Menu>
         )}
-      </Box>
-      <Box mt="auto" style={{ marginTop: 'auto' }} mb={2}>
-        <Menu style={{ background: 'transparent', padding: 0 }} theme="dark">
-          <SubMenu
-            title={
-              <Box display="flex" alignItems="center">
-                <Box mr={2}>
-                  <Avatar src={avatarURL} icon={<UserOutlined />} />
-                </Box>
-                <Box
-                  style={{ whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}
-                  overflow="hidden">
-                  {user?.displayName || userFullName || user?.email}
-                </Box>
-              </Box>
-            }>
-            <Menu.Item
-              key="profile"
-              onClick={() => {
-                history.push(userProfile)
-              }}>
-              Profile
-            </Menu.Item>
-            <Menu.Item key="logout" onClick={logout}>
-              Logout
-            </Menu.Item>
-          </SubMenu>
-        </Menu>
       </Box>
     </Box>
   )
