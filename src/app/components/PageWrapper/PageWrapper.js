@@ -20,7 +20,6 @@ const PageWrapper = (props) => {
       </Box>
 
       <Box display="flex" flex={1}>
-        {/* <Header title={title} style={style.Header} /> */}
         {children}
       </Box>
       {/* <Row>

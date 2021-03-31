@@ -4,7 +4,7 @@ import {
   PullRequestOutlined,
   UserOutlined
 } from '@ant-design/icons'
-import { Menu } from 'antd'
+import { Menu, Typography } from 'antd'
 import { Box } from '@qonsoll/react-design'
 import { auth } from 'app/services/Firebase/firebase'
 import { ROUTES_PATHS } from 'app/constants'
@@ -16,7 +16,11 @@ import { getCollectionRef } from 'services/Firestore'
 import COLLECTIONS from 'constants/collection'
 import Avatar from 'antd/lib/avatar/avatar'
 
+import { PAGES } from 'app/constants'
+
 const { SubMenu } = Menu
+
+const { Text } = Typography
 
 const Header = (props) => {
   const history = useHistory()
@@ -74,21 +78,39 @@ const Header = (props) => {
         </Link>
       </Box>
       <Box>
-        <Menu
-          style={{ background: 'transparent' }}
-          theme="dark"
-          selectedKeys={location.pathname}>
-          {menuMap.map((item) => (
-            <Menu.Item
-              key={item.key}
-              icon={item.icon}
-              onClick={() => {
-                history.push(item.key)
-              }}>
-              {item.name}
-            </Menu.Item>
-          ))}
-        </Menu>
+        {user?.isAdmin ? (
+          <Menu
+            style={{ background: 'transparent' }}
+            theme="dark"
+            defaultSelectedKeys={history.location.pathname}>
+            {PAGES.map((page, index) => (
+              <Menu.Item
+                key={page.path}
+                icon={page.icon}
+                onClick={() => {
+                  history.push(page.path)
+                }}>
+                {page.text}
+              </Menu.Item>
+            ))}
+          </Menu>
+        ) : (
+          <Menu
+            style={{ background: 'transparent' }}
+            theme="dark"
+            selectedKeys={location.pathname}>
+            {menuMap.map((item) => (
+              <Menu.Item
+                key={item.key}
+                icon={item.icon}
+                onClick={() => {
+                  history.push(item.key)
+                }}>
+                {item.name}
+              </Menu.Item>
+            ))}
+          </Menu>
+        )}
       </Box>
       <Box mt="auto" style={{ marginTop: 'auto' }} mb={2}>
         <Menu style={{ background: 'transparent', padding: 0 }} theme="dark">
