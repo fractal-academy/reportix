@@ -1,7 +1,9 @@
+import { Col, Row, Box } from '@qonsoll/react-design'
 import { ReportSimpleView } from 'domains/Report/components/views'
-import { DatePicker, Button } from 'antd'
-import { Row, Col } from '@qonsoll/react-design'
 import { UserSelect } from 'domains/User/components/select'
+import { DatePicker, Button, Typography } from 'antd'
+import { ArrowLeftOutlined } from '@ant-design/icons'
+import { useHistory } from 'react-router'
 
 const reportMockData = [
   {
@@ -76,8 +78,16 @@ const reportMockData = [
   }
 ]
 
+const { Title } = Typography
+
 const ReportsAll = (props) => {
+  //[INTERFACES]
   const { withFilter = true } = props
+
+  //[ADITIONAL_HOOKS]
+  const history = useHistory()
+
+  //[HELPER_FUNCTIONS]
   const onSelectChange = (selected) => {
     //set data
   }
@@ -90,8 +100,22 @@ const ReportsAll = (props) => {
     /*!!selectedItems ? setSelectedItems() : users && setSelectedItems(users)*/
   }
 
+  //[TEMPLATE]
   return (
     <>
+      <Box mt={4} mx={4} display="flex" alignItems="center">
+        <Box mr={2}>
+          <Button
+            size="large"
+            type="text"
+            icon={<ArrowLeftOutlined />}
+            onClick={() => history.goBack()}
+          />
+        </Box>
+        <Title style={{ marginBottom: 0 }} level={3}>
+          Reports
+        </Title>
+      </Box>
       {withFilter && (
         <Row noGutters py={3} pr={2}>
           <Col cw="auto">

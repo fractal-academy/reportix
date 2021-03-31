@@ -28,10 +28,7 @@ const UserAdvancedView = (props) => {
   const [userProjects, loading] = useCollectionData(
     getCollectionRef(COLLECTIONS.PROJECTS).where('users', 'array-contains', id)
   )
-  const name =
-    firstName && surname
-      ? `${firstName} ${surname}`
-      : 'Slava Shamrelyuk' || 'No name'
+  const name = firstName && surname ? `${firstName} ${surname}` : 'No name'
   const projectsName =
     !loading && userProjects.map((project) => project.projectName).join(', ')
   return (
