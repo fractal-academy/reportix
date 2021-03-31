@@ -56,7 +56,8 @@ const CalendarAddEvent = () => {
         end: new Date(data.dateRange[1]),
         backgroundColor: color,
         userId: user.uid,
-        status: STATUS.PENDING,
+        status:
+          data?.title === LEAVE_DAY.SICK_DAY ? STATUS.APPROVED : STATUS.PENDING,
         description: data.description || ''
       })
     } catch (e) {
