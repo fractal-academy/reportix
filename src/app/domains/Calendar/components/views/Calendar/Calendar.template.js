@@ -59,7 +59,14 @@ const CalendarAdvancedView = () => {
 const renderEventContent = (eventInfo) => {
   return (
     <Box display="flex" justifyContent="space-between" alignItems="center">
-      <Text>{eventInfo.event.title}</Text>
+      <Text
+        style={{
+          whiteSpace: 'nowrap',
+          textOverflow: 'ellipsis',
+          overflow: 'hidden'
+        }}>
+        {eventInfo.event.title}
+      </Text>
       <Button size="small" type="text" danger icon={<DeleteOutlined />} />
     </Box>
   )
