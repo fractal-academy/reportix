@@ -8,7 +8,7 @@ import { useHistory } from 'react-router'
 const { Title } = Typography
 
 const CalendarShow = () => {
-  //[ADITIONAL_HOOKS]
+  //[ADDITIONAL_HOOKS]
   const history = useHistory()
 
   //[TEMPLATE]
