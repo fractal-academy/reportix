@@ -8,14 +8,12 @@ import { updateData } from 'services/Firestore'
 import { useSession } from 'context/SesionContext'
 import { useState } from 'react'
 import moment from 'moment'
-import { reject } from 'lodash'
 
 const { Text, Title } = Typography
 
 const RequestAdvancedView = (props) => {
   //[INTERFACES]
-  const { data } = props
-
+  const { data, admin } = props
   //[STATE]
   const [loading, setLoading] = useState(false)
   const [visible, setVisible] = useState(false)
@@ -89,7 +87,15 @@ const RequestAdvancedView = (props) => {
                 <Col cw={'auto'}>
                   <Row v={'center'} noGutters>
                     <Col>
-                      <UserSimpleView withName={true} withEmail={false} />
+                      <UserSimpleView
+                        withEmail={false}
+                        nameTooltip={
+                          admin?.firstName &&
+                          admin?.surname &&
+                          `${admin?.firstName} ${admin?.surname}`
+                        }
+                        avatarURL={admin?.avatarURL}
+                      />
                     </Col>
                     <Col>
                       <Tags status={data.status} />
@@ -121,7 +127,7 @@ const RequestAdvancedView = (props) => {
               cw={'auto'}
               display={data?.status === STATUS.REJECTED ? 'none' : 'block'}>
               <Popconfirm
-                title="Unlink account?"
+                title="Reject request?"
                 cancelText="No"
                 okText="Yes"
                 visible={visible}

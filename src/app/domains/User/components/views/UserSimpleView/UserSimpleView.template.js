@@ -1,17 +1,27 @@
 import { Avatar } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
 import { Row, Col } from '@qonsoll/react-design'
-import { Typography } from 'antd'
+import { Typography, Tooltip } from 'antd'
 const { Text } = Typography
 
 const UserSimpleView = (props) => {
-  const { avatarURL, withName, name, avatarSize, withEmail, email } = props
+  const {
+    avatarURL,
+    withName,
+    name,
+    avatarSize,
+    withEmail,
+    email,
+    nameTooltip
+  } = props
 
   return (
     <Row v="center" noGutters>
       <Col cw="auto">
         {/*icon if User without avatar*/}
-        <Avatar size={avatarSize} src={avatarURL} icon={<UserOutlined />} />
+        <Tooltip title={nameTooltip && nameTooltip} placement="top">
+          <Avatar size={avatarSize} src={avatarURL} icon={<UserOutlined />} />
+        </Tooltip>
       </Col>
       {(withName || withEmail) && (
         <Col cw="auto" px={0}>

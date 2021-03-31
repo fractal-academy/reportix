@@ -12,6 +12,10 @@ const RequestList = (props) => {
     getCollectionRef(COLLECTIONS.LEAVE_DAYS),
     { idField: 'id' }
   )
+  const [admins, loading] = useCollectionData(
+    getCollectionRef(COLLECTIONS.USERS).where('isAdmin', '==', true),
+    { idField: 'id' }
+  )
   const filteredRequests =
     !isLoading && requests.filter((item) => item.userId === currentUser?.uid)
   const switchRequests = currentUser?.isAdmin ? requests : filteredRequests
@@ -24,7 +28,7 @@ const RequestList = (props) => {
               switchRequests.map((item, index) => (
                 <Row my={3} noGutters key={index}>
                   <Col>
-                    <RequestAdvancedView data={item} />
+                    <RequestAdvancedView data={item} admin={admins?.[0]} />
                   </Col>
                 </Row>
               ))}
