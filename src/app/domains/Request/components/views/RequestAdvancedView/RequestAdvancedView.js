@@ -64,7 +64,11 @@ const RequestAdvancedView = (props) => {
         <Col>
           <Row
             noGutters
-            mb={data?.status === STATUS.PENDING && !currentUser?.isAdmin && 3}>
+            mb={
+              ((data?.status === STATUS.PENDING && !currentUser?.isAdmin) ||
+                currentUser?.isAdmin) &&
+              3
+            }>
             <Col>
               <Row noGutters>
                 <Col>
