@@ -20,7 +20,7 @@ const RequestList = (props) => {
   return (
     <>
       {requests?.length !== 0 ? (
-        <Row>
+        <Row noGutters>
           <Col>
             {!isLoading &&
               switchRequests.map((item, index) => (

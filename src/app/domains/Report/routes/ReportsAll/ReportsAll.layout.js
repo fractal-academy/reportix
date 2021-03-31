@@ -1,7 +1,11 @@
 import { ReportSimpleView } from 'domains/Report/components/views'
 import { DatePicker, Button } from 'antd'
-import { Row, Col } from '@qonsoll/react-design'
+import { Row, Col, Box, Container } from '@qonsoll/react-design'
 import { UserSelect } from 'domains/User/components/select'
+import { ArrowLeftOutlined } from '@ant-design/icons'
+import Title from 'antd/es/typography/Title'
+import ProjectAddEvent from 'domains/Project/components/combined/ProjectAddEvent'
+import { useHistory } from 'react-router-dom'
 
 const reportMockData = [
   {
@@ -77,6 +81,7 @@ const reportMockData = [
 ]
 
 const ReportsAll = (props) => {
+  const history = useHistory()
   const { withFilter = true } = props
   const onSelectChange = (selected) => {
     //set data
@@ -91,38 +96,64 @@ const ReportsAll = (props) => {
   }
 
   return (
-    <>
-      {withFilter && (
-        <Row noGutters py={3} pr={2}>
-          <Col cw="auto">
-            <Button type="primary" onClick={onClickAll}>
-              All
-            </Button>
-          </Col>
-          <Col ml={2}>
-            <UserSelect onChange={onSelectChange} placeholder="Select users" />
-          </Col>
-          <Col cw="auto">
-            <DatePicker onChange={onDateChange} />
-          </Col>
-        </Row>
-      )}
-      <Row>
-        <Col>
-          {reportMockData.map((report, index) => (
-            <Row key={index} noGutters mb={3} pr={2}>
-              <Col
-                py={3}
-                noGutters
-                border="1px solid lightgray"
-                borderRadius="1rem">
-                <ReportSimpleView data={report} />
-              </Col>
-            </Row>
-          ))}
-        </Col>
-      </Row>
-    </>
+    <Container>
+      <Box
+        my={4}
+        mx={4}
+        display="flex"
+        alignItems="center"
+        justifyContent="space-between">
+        <Box display="flex" alignItems="center">
+          <Box mr={2} display="flex" alignItems="center">
+            <Button
+              size="large"
+              type="text"
+              icon={<ArrowLeftOutlined />}
+              onClick={() => history.goBack()}
+            />
+          </Box>
+          <Title style={{ marginBottom: 0 }} level={3}>
+            Reports
+          </Title>
+        </Box>
+      </Box>
+
+      <Box mx={4}>
+        {withFilter && (
+          <Row noGutters>
+            <Col cw="auto">
+              <Button type="primary" onClick={onClickAll}>
+                All
+              </Button>
+            </Col>
+            <Col ml={2}>
+              <UserSelect
+                onChange={onSelectChange}
+                placeholder="Select users"
+              />
+            </Col>
+            <Col cw="auto">
+              <DatePicker onChange={onDateChange} />
+            </Col>
+          </Row>
+        )}
+      </Box>
+      <Box mx={4} mt={4}>
+        {reportMockData.map((report, index) => (
+          <Row
+            key={index}
+            noGutters
+            mb={3}
+            pr={2}
+            style={{ background: 'white' }}
+            border="1px solid lightgray">
+            <Col py={3} noGutters>
+              <ReportSimpleView data={report} />
+            </Col>
+          </Row>
+        ))}
+      </Box>
+    </Container>
   )
 }
 

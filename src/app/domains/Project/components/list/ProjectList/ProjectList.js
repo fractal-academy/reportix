@@ -28,7 +28,7 @@ const ProjectList = (props) => {
   const switchProjects = ownProjects ? filteredProjects : projects
   return (
     <>
-      <Row>
+      <Row noGutters>
         <Col>
           {!isLoading &&
             switchProjects.map((item, index) => (
