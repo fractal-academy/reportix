@@ -4,7 +4,7 @@ import { Dashboard } from 'app/components/Dashboard'
 import { PageNotFound } from './PageDoestnExist'
 import { Tags } from 'app/components/Tags'
 import { PrivateRoute } from './PrivateRoute'
-import { ImageUploader } from './ImageUploader'
+import { AvatarUploader } from './AvatarUploader'
 
 export {
   PageWrapper,
@@ -13,5 +13,5 @@ export {
   PageNotFound,
   Tags,
   PrivateRoute,
-  ImageUploader
+  AvatarUploader
 }
