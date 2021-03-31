@@ -16,6 +16,7 @@
     "@testing-library/user-event": "^12.8.1",
     "antd": "^4.13.0",
     "antd-styled": "^1.1.56",
+    "craco-less": "^1.17.1",
     "env-cmd": "^10.1.0",
     "eslint": "^7.17.0",
     "firebase": "^8.2.6",
