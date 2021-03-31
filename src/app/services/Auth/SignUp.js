@@ -3,7 +3,7 @@ import { auth } from '../Firebase'
 import { Button, Form, Input, message } from 'antd'
 import { withRouter } from 'react-router-dom'
 import Title from 'antd/es/typography/Title'
-import { Box, Row, Col, Container } from '@qonsoll/react-design'
+import { Box, Row, Col } from '@qonsoll/react-design'
 import { COLLECTIONS, ROUTES_PATHS } from 'app/constants'
 import moment from 'moment'
 import { setData } from '../Firestore'
@@ -27,7 +27,7 @@ const SignUp = ({ history }) => {
           })
         history.push('/')
       } catch (error) {
-        console.error(error)
+        message.error(error.message)
       }
     },
     [history]
@@ -39,7 +39,7 @@ const SignUp = ({ history }) => {
   const tailLayout = {}
 
   const onFinishFailed = (errorInfo) => {
-    console.log(errorInfo)
+    // console.log(errorInfo)
   }
 
   return (
