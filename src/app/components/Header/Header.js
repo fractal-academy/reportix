@@ -20,8 +20,6 @@ import { PAGES } from 'app/constants'
 
 const { SubMenu } = Menu
 
-const { Text } = Typography
-
 const Header = (props) => {
   const history = useHistory()
   const location = useLocation()
@@ -36,6 +34,12 @@ const Header = (props) => {
     getCollectionRef(COLLECTIONS.USERS).doc(user?.uid),
     { idField: 'id' }
   )
+
+  const userFullName =
+    (userData?.firstName &&
+      userData?.surname &&
+      `${user?.firstName} ${user?.surname}`) ||
+    null
 
   const avatarURL = userData?.avatarURL || user?.avatarURL
 
@@ -123,7 +127,7 @@ const Header = (props) => {
                 <Box
                   style={{ whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}
                   overflow="hidden">
-                  {user?.displayName || user?.email}
+                  {user?.displayName || userFullName || user?.email}
                 </Box>
               </Box>
             }>
