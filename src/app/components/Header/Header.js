@@ -2,7 +2,8 @@ import {
   FileOutlined,
   ProjectOutlined,
   PullRequestOutlined,
-  UserOutlined
+  UserOutlined,
+  CalendarOutlined
 } from '@ant-design/icons'
 import { Menu, Typography } from 'antd'
 import { Box } from '@qonsoll/react-design'
@@ -49,6 +50,12 @@ const Header = (props) => {
   }
 
   const menuMap = [
+    {
+      title: 'Calendar',
+      name: 'Calendar',
+      key: '/calendar/:id',
+      icon: <CalendarOutlined />
+    },
     {
       title: 'Requests',
       name: 'Requests',
