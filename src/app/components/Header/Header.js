@@ -53,7 +53,7 @@ const Header = (props) => {
     {
       title: 'Calendar',
       name: 'Calendar',
-      key: '/calendar:id',
+      key: '/calendar/:id',
       icon: <CalendarOutlined />
     },
     {
