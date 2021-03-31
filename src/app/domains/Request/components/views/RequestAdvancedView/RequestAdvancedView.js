@@ -62,7 +62,9 @@ const RequestAdvancedView = (props) => {
     <Card hoverable>
       <Row noGutters>
         <Col>
-          <Row noOuterGutters mb={3}>
+          <Row
+            noGutters
+            mb={data?.status === STATUS.PENDING && !currentUser?.isAdmin && 3}>
             <Col>
               <Row noGutters>
                 <Col>
@@ -93,7 +95,14 @@ const RequestAdvancedView = (props) => {
               </Row>
             </Col>
           </Row>
-          <Row noGutters mb={2}>
+          <Row
+            noGutters
+            mb={2}
+            display={
+              data?.status === STATUS.REJECTED &&
+              !currentUser?.isAdmin &&
+              'none'
+            }>
             {currentUser?.isAdmin && (
               <Col
                 mr={2}
@@ -127,13 +136,13 @@ const RequestAdvancedView = (props) => {
               </Popconfirm>
             </Col>
           </Row>
-          <Row noGutters>
-            <Col>
-              {currentUser?.isAdmin && (
+          {currentUser?.isAdmin && (
+            <Row noGutters>
+              <Col>
                 <CommentListWithAdd requestId={data.id} />
-              )}
-            </Col>
-          </Row>
+              </Col>
+            </Row>
+          )}
         </Col>
       </Row>
     </Card>
