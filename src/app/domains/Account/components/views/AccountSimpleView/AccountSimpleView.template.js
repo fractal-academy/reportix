@@ -1,9 +1,10 @@
-import { Row, Col } from '@qonsoll/react-design'
+import { Row, Col, Box } from '@qonsoll/react-design'
 import { Typography, Button, Popconfirm, message } from 'antd'
 import {
   GithubOutlined,
   PlusCircleOutlined,
-  DeleteOutlined
+  DeleteOutlined,
+  PlusOutlined
 } from '@ant-design/icons'
 import { useSession } from 'context/SesionContext'
 import { useParams } from 'react-router-dom'
@@ -45,8 +46,10 @@ const AccountSimpleView = (props) => {
           </Col>
           <Col cw="auto">
             {GitHubName ? (
-              <>
-                <Text>{GitHubName}</Text>
+              <Box display="flex" justifyContent="center" alignItems="center">
+                <Box mr={2}>
+                  <Text>{GitHubName}</Text>
+                </Box>
                 {myProfile && (
                   <Popconfirm
                     title="Unlink account?"
@@ -60,7 +63,6 @@ const AccountSimpleView = (props) => {
                     }}>
                     <Button
                       danger
-                      shape="round"
                       type="text"
                       onClick={() => {
                         setVisible(!visible)
@@ -69,15 +71,14 @@ const AccountSimpleView = (props) => {
                     />
                   </Popconfirm>
                 )}
-              </>
+              </Box>
             ) : myProfile ? (
               <Button
                 type="primary"
-                shape="round"
-                icon={<PlusCircleOutlined />}
-                style={{ width: '100px' }}
-                onClick={addAccount}
-              />
+                icon={<PlusOutlined />}
+                onClick={addAccount}>
+                Add
+              </Button>
             ) : (
               <Text>None</Text>
             )}

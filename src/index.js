@@ -6,6 +6,8 @@ import Theme from 'app/config/theme'
 import { ThemeProvider } from '@qonsoll/react-design'
 import { AuthProvider } from 'app/context/SesionContext/useSession'
 import 'antd/dist/antd.css'
+import './index.less'
+import reportWebVitals from './reportWebVitals'
 
 ReactDOM.render(
   <ThemeProvider theme={Theme}>
@@ -17,3 +19,4 @@ ReactDOM.render(
   </ThemeProvider>,
   document.getElementById('root')
 )
+reportWebVitals()

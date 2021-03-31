@@ -13,24 +13,34 @@ const UserSimpleView = (props) => {
         {/*icon if User without avatar*/}
         <Avatar size={avatarSize} src={avatarURL} icon={<UserOutlined />} />
       </Col>
-      <Col cw="auto" px={0}>
-        <Row v="center">
-          <Col>{withName && <Text>{name}</Text>}</Col>
-        </Row>
-        <Row v="center">
-          <Col>{withEmail && <Text>{email}</Text>}</Col>
-        </Row>
-      </Col>
+      {(withName || withEmail) && (
+        <Col cw="auto" px={0}>
+          {withName && (
+            <Row v="center">
+              <Col>
+                <Text>{name}</Text>
+              </Col>
+            </Row>
+          )}
+          {withEmail && (
+            <Row v="center">
+              <Col>
+                <Text>{email}</Text>
+              </Col>
+            </Row>
+          )}
+        </Col>
+      )}
     </Row>
   )
 }
 
-UserSimpleView.defaultProps = {
-  avatarURL: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-  name: 'Dima Oukushko',
-  avatarSize: 'large',
-  withName: true,
-  withEmail: true,
-  email: 'okrdima@gmail.com'
-}
+// UserSimpleView.defaultProps = {
+//   avatarURL: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+//   name: 'Dima Oukushko',
+//   avatarSize: 'large',
+//   withName: true,
+//   withEmail: true,
+//   email: 'okrdima@gmail.com'
+// }
 export default UserSimpleView

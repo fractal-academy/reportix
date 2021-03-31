@@ -1,6 +1,6 @@
-import { Divider, Typography, Menu } from 'antd'
+import { Typography, Menu } from 'antd'
 import { Header } from 'components/Header'
-import { Row, Col } from '@qonsoll/react-design'
+import { Row, Col, Box } from '@qonsoll/react-design'
 import { style } from 'app/style'
 import { useHistory } from 'react-router-dom'
 import { PAGES } from 'app/constants'
@@ -14,15 +14,16 @@ const PageWrapper = (props) => {
   const user = useSession()
 
   return (
-    <>
-      <Row noGutters>
-        <Col>
-          <Header title={title} style={style.Header} />
-          <Divider style={style.resetMargin} />
-        </Col>
-      </Row>
+    <Box bg="#f6f6f6" display="flex" height="inherit" flex={1}>
+      <Box bg="#272042" width="220px" display="flex" flexDirection="column">
+        <Header title={title} style={style.Header} />
+      </Box>
 
-      <Row>
+      <Box display="flex" flex={1}>
+        {/* <Header title={title} style={style.Header} /> */}
+        {children}
+      </Box>
+      {/* <Row>
         {user?.isAdmin && (
           <Col cw={[3, 3, 2]}>
             <Menu defaultSelectedKeys={history.location.pathname}>
@@ -39,8 +40,8 @@ const PageWrapper = (props) => {
           </Col>
         )}
         <Col>{children}</Col>
-      </Row>
-    </>
+      </Row> */}
+    </Box>
   )
 }
 export default PageWrapper

@@ -12,7 +12,7 @@ const App = () => {
       <Route
         exact
         path="/"
-        render={() => <Redirect to={ROUTES_PATHS.USER_SHOW} />}
+        render={() => <Redirect to={ROUTES_PATHS.REQUESTS_ALL} />}
       />
       <PageWrapper>
         <Switch>

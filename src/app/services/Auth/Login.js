@@ -3,7 +3,7 @@ import { useCallback } from 'react'
 import { Redirect, withRouter } from 'react-router-dom'
 import { auth } from '../Firebase'
 import Title from 'antd/lib/typography/Title'
-import { Container, Row, Col } from '@qonsoll/react-design'
+import { Row, Col, Box } from '@qonsoll/react-design'
 import { ROUTES_PATHS } from 'app/constants'
 import { useSession } from 'app/context/SesionContext'
 
@@ -13,7 +13,7 @@ const Login = ({ history }) => {
       const { email, password } = event
       try {
         await auth.signInWithEmailAndPassword(email, password)
-        history.push(ROUTES_PATHS.USER_SHOW)
+        history.push(ROUTES_PATHS.REQUESTS_ALL)
       } catch (error) {
         console.error(error)
       }
@@ -24,7 +24,7 @@ const Login = ({ history }) => {
   const currentUser = useSession()
 
   if (currentUser) {
-    return <Redirect to={ROUTES_PATHS.USER_SHOW} />
+    return <Redirect to={ROUTES_PATHS.REQUESTS_ALL} />
   }
 
   const layout = {
@@ -40,63 +40,78 @@ const Login = ({ history }) => {
   }
 
   return (
-    <Container mt={4}>
-      <Row noGutters h="center">
-        <Col cw="6">
-          <Form
-            {...layout}
-            name="basic"
-            initialValues={{
-              remember: true
-            }}
-            onFinish={handleLogin}
-            onFinishFailed={onFinishFailed}>
-            <Form.Item {...tailLayout}>
-              <Title level={1}> Log in</Title>
-            </Form.Item>
+    <Box bg="#272042" display="flex" height="inherit" flex={1}>
+      <Box display="flex" flex={1} justifyContent="center" alignItems="center">
+        <Box>
+          <Box display="flex" justifyContent="center" mb={2}>
+            <Title style={{ color: '#f6f6f6' }} level={2}>
+              Report helper / Vacation system
+            </Title>
+          </Box>
+          <Row
+            h="center"
+            bg="#f6f6f6"
+            borderRadius="12px"
+            v="center"
+            style={{ boxShadow: '0 20px 24px -24px rgba(0,0,0,1)' }}>
+            <Col p={4}>
+              <Form
+                {...layout}
+                name="basic"
+                initialValues={{
+                  remember: true
+                }}
+                onFinish={handleLogin}
+                onFinishFailed={onFinishFailed}>
+                <Box display="flex" flex={1} justifyContent="center" mb={3}>
+                  <Title level={3}>Login</Title>
+                </Box>
 
-            <Form.Item
-              label="Email"
-              name="email"
-              rules={[
-                {
-                  required: true,
-                  message: 'Please input your email to Login!'
-                }
-              ]}>
-              <Input placeholder="Input your email to Login" />
-            </Form.Item>
+                <Form.Item
+                  name="email"
+                  rules={[
+                    {
+                      required: true,
+                      message: 'Please input your email to Login!'
+                    }
+                  ]}>
+                  <Input placeholder="Input your email to Login" />
+                </Form.Item>
 
-            <Form.Item
-              label="Password"
-              name="password"
-              rules={[
-                {
-                  required: true,
-                  message: 'Please input your password!'
-                }
-              ]}>
-              <Input.Password placeholder="Type your password to Login" />
-            </Form.Item>
+                <Form.Item
+                  name="password"
+                  rules={[
+                    {
+                      required: true,
+                      message: 'Please input your password!'
+                    }
+                  ]}>
+                  <Input.Password placeholder="Type your password to Login" />
+                </Form.Item>
 
-            <Form.Item {...tailLayout}>
-              <Button type="primary" htmlType="submit">
-                LOG IN
-              </Button>
-            </Form.Item>
+                <Box display="flex" justifyContent="space-between">
+                  <Form.Item {...tailLayout} style={{ marginBottom: 0 }}>
+                    <Button
+                      type="text"
+                      onClick={() => {
+                        history.push(ROUTES_PATHS.SIGN_UP)
+                      }}>
+                      Don't have an account yet? Sign Up
+                    </Button>
+                  </Form.Item>
 
-            <Form.Item {...tailLayout}>
-              <Button
-                onClick={() => {
-                  history.push(ROUTES_PATHS.SIGN_UP)
-                }}>
-                Don't have an account yet? Sign Up
-              </Button>
-            </Form.Item>
-          </Form>
-        </Col>
-      </Row>
-    </Container>
+                  <Form.Item {...tailLayout} style={{ marginBottom: 0 }}>
+                    <Button type="primary" htmlType="submit">
+                      Login
+                    </Button>
+                  </Form.Item>
+                </Box>
+              </Form>
+            </Col>
+          </Row>
+        </Box>
+      </Box>
+    </Box>
   )
 }
 

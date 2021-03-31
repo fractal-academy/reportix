@@ -49,16 +49,16 @@ const UsersEdit = () => {
   return (
     <>
       <Button
-        type="primary"
+        size="large"
+        type="text"
         onClick={() => {
           setVisible(true)
         }}
-        icon={<EditOutlined />}>
-        Edit
-      </Button>
+        icon={<EditOutlined />}
+      />
       <Modal
         visible={visible}
-        title={<Title level={4}>Edit user</Title>}
+        title={<Title level={4}>Edit profile</Title>}
         onCancel={handleCancel}
         footer={[
           <Button key="back" onClick={handleCancel}>
@@ -71,7 +71,7 @@ const UsersEdit = () => {
               form.submit()
             }}
             loading={loading}>
-            Edit
+            Save
           </Button>
         ]}>
         <UserSimpleForm

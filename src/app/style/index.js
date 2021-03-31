@@ -7,7 +7,7 @@ const style = {
   fullHeight: { height: '100%' },
   bottomFixed: {
     position: '-webkit-sticky',
-    position: 'sticky',
+    // position: 'sticky',
     bottom: 0
   }
 }

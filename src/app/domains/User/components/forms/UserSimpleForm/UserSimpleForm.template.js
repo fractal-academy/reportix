@@ -32,9 +32,10 @@ const UserSimpleForm = (props) => {
               </Form.Item>
             </Col>
           </Row>
-          <Row noGutters>
-            <Col>
+          <Row noGutters mb={3}>
+            <Col mr={3}>
               <Form.Item
+                style={{ marginBottom: 0 }}
                 name="firstName"
                 hasFeedback={!!loading}
                 rules={[
@@ -43,11 +44,12 @@ const UserSimpleForm = (props) => {
                     message: 'Please input your First name!'
                   }
                 ]}>
-                <Input prefix={<UserOutlined />} placeholder="First name" />
+                <Input placeholder="First name" />
               </Form.Item>
             </Col>
             <Col>
               <Form.Item
+                style={{ marginBottom: 0 }}
                 name="surname"
                 hasFeedback={!!loading}
                 rules={[
@@ -56,7 +58,7 @@ const UserSimpleForm = (props) => {
                     message: 'Please input your surname!'
                   }
                 ]}>
-                <Input prefix={<UserOutlined />} placeholder="Surname" />
+                <Input placeholder="Surname" />
               </Form.Item>
             </Col>
           </Row>

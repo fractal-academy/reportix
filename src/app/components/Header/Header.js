@@ -1,93 +1,124 @@
-import { LeftOutlined } from '@ant-design/icons'
-import { Typography, Dropdown, Menu } from 'antd'
-import { Box, Row, Col } from '@qonsoll/react-design'
-import { style } from 'app/style'
-import { UserSimpleView } from 'domains/User/components/views'
+import {
+  FileOutlined,
+  ProjectOutlined,
+  PullRequestOutlined,
+  UserOutlined
+} from '@ant-design/icons'
+import { Menu } from 'antd'
+import { Box } from '@qonsoll/react-design'
 import { auth } from 'app/services/Firebase/firebase'
 import { ROUTES_PATHS } from 'app/constants'
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory, useLocation } from 'react-router-dom'
 import { useSession } from 'app/context/SesionContext'
 import { generatePath } from 'react-router-dom'
 import { useDocumentData } from 'react-firebase-hooks/firestore'
 import { getCollectionRef } from 'services/Firestore'
 import COLLECTIONS from 'constants/collection'
+import Avatar from 'antd/lib/avatar/avatar'
 
-const { Title } = Typography
+const { SubMenu } = Menu
 
 const Header = (props) => {
-  const { title } = props
   const history = useHistory()
+  const location = useLocation()
   const user = useSession()
+
   const id = user?.uid || 'id'
+
   // [COMPUTED_PROPERTIES]
   const userProfile = generatePath(ROUTES_PATHS.USER_SHOW, { id })
+
   const [userData] = useDocumentData(
     getCollectionRef(COLLECTIONS.USERS).doc(user?.uid),
     { idField: 'id' }
   )
+
   const avatarURL = userData?.avatarURL || user?.avatarURL
 
-  const dropdownMenu = (
-    <Menu>
-      <Menu.Item
-        key="profile"
-        onClick={() => {
-          history.push(userProfile)
-        }}>
-        Profile
-      </Menu.Item>
-      <Menu.Item
-        key="logOut"
-        onClick={() => {
-          auth.signOut()
-          history.push(ROUTES_PATHS.LOGIN)
-        }}>
-        Log Out
-      </Menu.Item>
-    </Menu>
-  )
+  const logout = () => {
+    auth.signOut()
+    history.push(ROUTES_PATHS.LOGIN)
+  }
+
+  const menuMap = [
+    {
+      title: 'Requests',
+      name: 'Requests',
+      key: '/requests',
+      icon: <PullRequestOutlined />
+    },
+    {
+      title: 'Reports',
+      name: 'Reports',
+      key: '/reports',
+      icon: <FileOutlined />
+    },
+    {
+      title: 'Projects',
+      name: 'Projects',
+      key: '/projects',
+      icon: <ProjectOutlined />
+    }
+  ]
+
   return (
-    <Row v="center" py={3} noGutters>
-      <Col cw={[3, 3, 2]}>
-        <Box textAlign="center">
-          <Title level={3} style={style.resetMargin}>
-            Reportix
-          </Title>
-        </Box>
-      </Col>
-      <Col cw="auto">
-        <Row noGutters>
-          <Col cw="auto" v="center">
-            <LeftOutlined
-              style={style.iconSize}
+    <Box
+      bg="#272042"
+      width="220px"
+      display="flex"
+      flex={1}
+      flexDirection="column">
+      <Box px={3} py={2}>
+        <Link to="/">
+          <img src="/logo-white.svg" alt="Qonsoll" height="40px" />
+        </Link>
+      </Box>
+      <Box>
+        <Menu
+          style={{ background: 'transparent' }}
+          theme="dark"
+          selectedKeys={location.pathname}>
+          {menuMap.map((item) => (
+            <Menu.Item
+              key={item.key}
+              icon={item.icon}
               onClick={() => {
-                history.goBack()
-              }}
-            />
-          </Col>
-          <Col cw="auto" px={2}>
-            <Title level={3} style={style.resetMargin}>
-              {title}
-            </Title>
-          </Col>
-        </Row>
-      </Col>
-      <Col px={4}>
-        <Row h="right" v="center">
-          <Col cw="auto">
-            <Dropdown overlay={dropdownMenu} trigger={['click']} arrow>
-              <Box onClick={(e) => e.preventDefault()}>
-                <UserSimpleView
-                  withName={false}
-                  withEmail={false}
-                  avatarURL={avatarURL}
-                />
+                history.push(item.key)
+              }}>
+              {item.name}
+            </Menu.Item>
+          ))}
+        </Menu>
+      </Box>
+      <Box mt="auto" style={{ marginTop: 'auto' }} mb={2}>
+        <Menu style={{ background: 'transparent', padding: 0 }} theme="dark">
+          <SubMenu
+            title={
+              <Box display="flex" alignItems="center">
+                <Box mr={2}>
+                  <Avatar src={avatarURL} icon={<UserOutlined />} />
+                </Box>
+                <Box
+                  style={{ whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}
+                  overflow="hidden">
+                  {user?.displayName || user?.email}
+                </Box>
               </Box>
-            </Dropdown>
-          </Col>
-        </Row>
-      </Col>
-    </Row>
+            }>
+            <Menu.Item
+              key="profile"
+              onClick={() => {
+                history.push(userProfile)
+              }}>
+              Profile
+            </Menu.Item>
+            <Menu.Item key="logout" onClick={logout}>
+              Logout
+            </Menu.Item>
+          </SubMenu>
+        </Menu>
+      </Box>
+    </Box>
   )
 }
 

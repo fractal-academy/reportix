@@ -1,6 +1,5 @@
 import { UserAdvancedView } from 'domains/User/components/views'
-import { UserFilterProfile } from 'domains/User/components/combine'
-import { Box } from '@qonsoll/react-design'
+import { Box, Container } from '@qonsoll/react-design'
 import { useHistory, useParams } from 'react-router-dom'
 import { useDocumentData } from 'react-firebase-hooks/firestore'
 import { getCollectionRef } from 'app/services/Firestore'
@@ -8,6 +7,10 @@ import { Spinner } from 'components/Spinner'
 import { useSession } from 'app/context/SesionContext'
 import { generatePath } from 'react-router-dom'
 import { ROUTES_PATHS, COLLECTIONS } from 'app/constants'
+import { Button, Typography } from 'antd'
+import { ArrowLeftOutlined } from '@ant-design/icons'
+
+const { Title } = Typography
 
 const UserShow = () => {
   // [ADDITIONAL_HOOKS]
@@ -29,12 +32,25 @@ const UserShow = () => {
     return <Spinner />
   }
   return (
-    <>
-      <Box mb={4}>
-        <UserAdvancedView {...userData} />
+    <Container>
+      <Box mt={4} mx={4} display="flex" alignItems="center">
+        <Box mr={2}>
+          <Button
+            size="large"
+            type="text"
+            icon={<ArrowLeftOutlined />}
+            onClick={() => history.goBack()}
+          />
+        </Box>
+
+        <Title style={{ marginBottom: 0 }} level={3}>
+          Profile
+        </Title>
       </Box>
-      <UserFilterProfile />
-    </>
+      <UserAdvancedView {...userData} />
+    </Container>
+
+    // {/* <UserFilterProfile /> */}
   )
 }
 
