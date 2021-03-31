@@ -4,12 +4,12 @@ import Tag from 'components/Tags/Tags'
 
 const LegendCalendar = () => {
   return (
-    <Row noGutters>
-      <Col>
-        {LEAVE_DAY_VALUE.map((item, index) => (
+    <Row noGutters h={'between'}>
+      {LEAVE_DAY_VALUE.map((item, index) => (
+        <Col cw={'auto'}>
           <Tag status={item} key={index} />
-        ))}
-      </Col>
+        </Col>
+      ))}
     </Row>
   )
 }
