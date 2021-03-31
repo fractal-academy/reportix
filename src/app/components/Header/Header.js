@@ -73,6 +73,7 @@ const Header = (props) => {
     <Box
       bg="#272042"
       width="220px"
+      // height="inherit"
       display="flex"
       flex={1}
       flexDirection="column">

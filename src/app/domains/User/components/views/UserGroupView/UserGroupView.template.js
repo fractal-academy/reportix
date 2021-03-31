@@ -27,7 +27,8 @@ const UserGroupView = (props) => {
                   ? `${item.firstName} ${item.surname}`
                   : item.email
               }
-              placement="top">
+              placement="top"
+              key={index}>
               <Avatar
                 key={index}
                 size={avatarSize}
