@@ -1,8 +1,0 @@
-.image-component {
-  cursor: pointer;
-}
-
-.image-component:hover {
-  transition: 0.3s ease-in-out;
-  opacity: 0.7;
-}

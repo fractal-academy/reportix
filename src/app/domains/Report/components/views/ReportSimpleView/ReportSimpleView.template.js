@@ -1,5 +1,5 @@
 import { Row, Col } from '@qonsoll/react-design'
-import { Button, Typography, Table } from 'antd'
+import { Button, Typography, Table, Card } from 'antd'
 import {
   EditOutlined,
   DownCircleTwoTone,
@@ -21,126 +21,128 @@ const ReportSimpleView = (props) => {
   const history = useHistory()
   return (
     <>
-      <Row>
-        <Col>
-          <UserSimpleView withEmail={false} />
-        </Col>
-        <Col cw="auto">
+      <Card hoverable>
+        <Row>
+          <Col>
+            <UserSimpleView withEmail={false} />
+          </Col>
+          <Col cw="auto">
+            <Button
+              type="primary"
+              icon={<EditOutlined />}
+              onClick={() => {
+                history.push(ROUTES_PATHS.REPORT_EDIT)
+              }}>
+              Edit
+            </Button>
+          </Col>
+        </Row>
+        {open && (
+          <Row pt={2}>
+            <Col>
+              <Row>
+                <Col>
+                  <Title level={3} style={style.resetMargin}>
+                    Today
+                  </Title>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <Table
+                    dataSource={today}
+                    size="small"
+                    pagination={{ position: [] }}>
+                    <Column
+                      title="Task name"
+                      dataIndex="taskName"
+                      key="taskName"
+                    />
+                    <Column title="Status" dataIndex="status" key="status" />
+                  </Table>
+                </Col>
+              </Row>
+            </Col>
+            <Col>
+              <Row>
+                <Col>
+                  <Title level={3} style={style.resetMargin}>
+                    Tomorrow
+                  </Title>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <Table
+                    dataSource={tomorrow}
+                    size="small"
+                    pagination={{ position: [] }}>
+                    <Column
+                      title="Task TODO"
+                      dataIndex="taskName"
+                      key="taskName"
+                    />
+                    <Column title="Blocker" dataIndex="blocker" key="blocker" />
+                  </Table>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        )}
+        <Row py={2} h="center" style={{ position: 'relative' }}>
           <Button
             type="primary"
-            icon={<EditOutlined />}
+            shape="circle"
+            icon={open ? <UpCircleTwoTone /> : <DownCircleTwoTone />}
+            style={{ position: 'absolute', top: '-1rem' }}
             onClick={() => {
-              history.push(ROUTES_PATHS.REPORT_EDIT)
-            }}>
-            Edit
-          </Button>
-        </Col>
-      </Row>
-      {open && (
-        <Row pt={2}>
-          <Col>
-            <Row>
+              setOpen(!open)
+            }}
+          />
+          <Col cw="auto">
+            <Row h="center">
               <Col>
-                <Title level={3} style={style.resetMargin}>
-                  Today
+                <Title level={4} style={style.resetMargin}>
+                  19
                 </Title>
               </Col>
             </Row>
-            <Row>
+            <Row h="center">
               <Col>
-                <Table
-                  dataSource={today}
-                  size="small"
-                  pagination={{ position: [] }}>
-                  <Column
-                    title="Task name"
-                    dataIndex="taskName"
-                    key="taskName"
-                  />
-                  <Column title="Status" dataIndex="status" key="status" />
-                </Table>
+                <Text>Done</Text>
               </Col>
             </Row>
           </Col>
-          <Col>
+          <Col cw="auto">
             <Row>
               <Col>
-                <Title level={3} style={style.resetMargin}>
-                  Tomorrow
+                <Title level={4} style={style.resetMargin}>
+                  4
                 </Title>
               </Col>
             </Row>
             <Row>
               <Col>
-                <Table
-                  dataSource={tomorrow}
-                  size="small"
-                  pagination={{ position: [] }}>
-                  <Column
-                    title="Task TODO"
-                    dataIndex="taskName"
-                    key="taskName"
-                  />
-                  <Column title="Blocker" dataIndex="blocker" key="blocker" />
-                </Table>
+                <Text>In progress</Text>
+              </Col>
+            </Row>
+          </Col>
+          <Col cw="auto">
+            <Row>
+              <Col>
+                <Title level={4} style={style.resetMargin}>
+                  28
+                </Title>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Text>Hours spend</Text>
               </Col>
             </Row>
           </Col>
         </Row>
-      )}
-      <Row py={2} h="center" style={{ position: 'relative' }}>
-        <Button
-          type="primary"
-          shape="circle"
-          icon={open ? <UpCircleTwoTone /> : <DownCircleTwoTone />}
-          style={{ position: 'absolute', top: '-1rem' }}
-          onClick={() => {
-            setOpen(!open)
-          }}
-        />
-        <Col cw="auto">
-          <Row h="center">
-            <Col>
-              <Title level={4} style={style.resetMargin}>
-                19
-              </Title>
-            </Col>
-          </Row>
-          <Row h="center">
-            <Col>
-              <Text>Done</Text>
-            </Col>
-          </Row>
-        </Col>
-        <Col cw="auto">
-          <Row>
-            <Col>
-              <Title level={4} style={style.resetMargin}>
-                4
-              </Title>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Text>In progress</Text>
-            </Col>
-          </Row>
-        </Col>
-        <Col cw="auto">
-          <Row>
-            <Col>
-              <Title level={4} style={style.resetMargin}>
-                28
-              </Title>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Text>Hours spend</Text>
-            </Col>
-          </Row>
-        </Col>
-      </Row>
+      </Card>
     </>
   )
 }

@@ -2,10 +2,6 @@ import { Avatar, Tooltip } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
 import { Row, Col } from '@qonsoll/react-design'
 import { style } from './UserGroupView.styles'
-import { useCollectionData } from 'react-firebase-hooks/firestore'
-import { getCollectionRef } from 'services/Firestore'
-import COLLECTIONS from 'constants/collection'
-import { Spinner } from 'components/Spinner'
 
 const UserGroupView = (props) => {
   const { avatarSize, maxCount } = props
@@ -27,7 +23,8 @@ const UserGroupView = (props) => {
                   ? `${item.firstName} ${item.surname}`
                   : item.email
               }
-              placement="top">
+              placement="top"
+              key={index}>
               <Avatar
                 key={index}
                 size={avatarSize}

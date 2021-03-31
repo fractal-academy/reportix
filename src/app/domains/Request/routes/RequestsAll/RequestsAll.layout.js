@@ -1,36 +1,43 @@
 import RequestList from 'domains/Request/components/list/RequestList'
-import { Col, Container, Row, Box } from '@qonsoll/react-design'
-import { Button, Typography } from 'antd'
+import { Box, Col, Container, Row } from '@qonsoll/react-design'
+import ProjectAddEvent from 'domains/Project/components/combined/ProjectAddEvent'
+import CalendarAddEvent from 'domains/Calendar/combined/CalendarAddEvent'
+import { Button } from 'antd'
 import { ArrowLeftOutlined } from '@ant-design/icons'
-import { useHistory } from 'react-router'
-
-const { Title } = Typography
+import Title from 'antd/es/typography/Title'
+import { useHistory } from 'react-router-dom'
+import ProjectList from 'domains/Project/components/list/ProjectList'
 
 const RequestsAllLayout = () => {
-  //[ADDITIONAL_HOOKS]
   const history = useHistory()
-
-  //[TEMPLATE]
   return (
     <Container>
-      <Row noGutters>
-        <Col>
-          <Box mt={4} mx={4} display="flex" alignItems="center">
-            <Box mr={2}>
-              <Button
-                size="large"
-                type="text"
-                icon={<ArrowLeftOutlined />}
-                onClick={() => history.goBack()}
-              />
-            </Box>
-            <Title style={{ marginBottom: 0 }} level={3}>
-              Requests
-            </Title>
+      <Box
+        mt={4}
+        mx={4}
+        display="flex"
+        alignItems="center"
+        justifyContent="space-between">
+        <Box display="flex" alignItems="center">
+          <Box mr={2} display="flex" alignItems="center">
+            <Button
+              size="large"
+              type="text"
+              icon={<ArrowLeftOutlined />}
+              onClick={() => history.goBack()}
+            />
           </Box>
-          <RequestList withButtonAccept />
-        </Col>
-      </Row>
+          <Title style={{ marginBottom: 0 }} level={3}>
+            Requests
+          </Title>
+        </Box>
+
+        <CalendarAddEvent />
+      </Box>
+
+      <Box mx={4}>
+        <RequestList withButtonAccept />
+      </Box>
     </Container>
   )
 }
