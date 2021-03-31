@@ -2,20 +2,20 @@ import { Tabs } from 'antd'
 import {
   ProjectOutlined,
   PullRequestOutlined,
-  FileOutlined,
-  CalendarOutlined
+  FileOutlined
 } from '@ant-design/icons'
 import { ReportsAll } from 'domains/Report/routes'
 import RequestList from 'domains/Request/components/list/RequestList'
 import ProjectList from 'domains/Project/components/list/ProjectList'
 import { Col, Row } from '@qonsoll/react-design'
 import CalendarAddEvent from 'domains/Calendar/combined/CalendarAddEvent'
+
 const { TabPane } = Tabs
 const tabList = [
   {
     tabName: 'Requests',
     icon: <PullRequestOutlined />,
-    content: <RequestList ownRequests withButtonAccept={false} />,
+    content: <RequestList />,
     addNew: <CalendarAddEvent />
   },
   {

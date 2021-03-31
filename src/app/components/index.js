@@ -5,6 +5,7 @@ import { PageNotFound } from './PageDoestnExist'
 import { Tags } from 'app/components/Tags'
 import { PrivateRoute } from './PrivateRoute'
 import { AvatarUploader } from './AvatarUploader'
+import { Spinner } from './Spinner'
 
 export {
   PageWrapper,
@@ -13,5 +14,6 @@ export {
   PageNotFound,
   Tags,
   PrivateRoute,
-  AvatarUploader
+  AvatarUploader,
+  Spinner
 }

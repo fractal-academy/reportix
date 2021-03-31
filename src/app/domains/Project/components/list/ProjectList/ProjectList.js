@@ -1,15 +1,13 @@
 import { ProjectAdvancedView } from 'domains/Project/components/views'
 import { Col, Row } from '@qonsoll/react-design'
 import { useSession } from 'context/SesionContext'
-import { useParams } from 'react-router-dom'
 import { useCollectionData } from 'react-firebase-hooks/firestore'
 import { getCollectionRef } from 'services/Firestore'
 import COLLECTIONS from 'constants/collection'
 import { Spinner } from 'components/Spinner'
 
 const ProjectList = (props) => {
-  const { ownProjects } = props
-  const { id } = useParams()
+  const currentUser = useSession()
 
   const [projects, isLoading] = useCollectionData(
     getCollectionRef(COLLECTIONS.PROJECTS),
@@ -22,10 +20,10 @@ const ProjectList = (props) => {
   if (!usersData || !projects || isLoading || loading) {
     return <Spinner />
   }
-
   const filteredProjects =
-    !isLoading && projects.filter((item) => item.user === id)
-  const switchProjects = ownProjects ? filteredProjects : projects
+    !isLoading &&
+    projects.filter((item) => item.users.includes(currentUser?.uid))
+  const switchProjects = currentUser?.isAdmin ? projects : filteredProjects
   return (
     <>
       <Row noGutters>
