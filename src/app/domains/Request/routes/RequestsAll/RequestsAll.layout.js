@@ -31,25 +31,13 @@ const RequestsAllLayout = () => {
             Requests
           </Title>
         </Box>
+
         <CalendarAddEvent />
       </Box>
+
       <Box mx={4}>
         <RequestList withButtonAccept />
       </Box>
-      {/*<Row mt={3} noGutters>*/}
-      {/*  <Col>*/}
-      {/*    <Row h="right">*/}
-      {/*      <Col cw="auto">*/}
-      {/*        <CalendarAddEvent />*/}
-      {/*      </Col>*/}
-      {/*    </Row>*/}
-      {/*    <Row>*/}
-      {/*      <Col>*/}
-      {/*        <RequestList withButtonAccept />*/}
-      {/*      </Col>*/}
-      {/*    </Row>*/}
-      {/*  </Col>*/}
-      {/*</Row>*/}
     </Container>
   )
 }
