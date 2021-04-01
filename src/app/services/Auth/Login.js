@@ -1,6 +1,6 @@
 import { Button, Form, Input, message } from 'antd'
 import { useCallback } from 'react'
-import { Redirect, withRouter } from 'react-router-dom'
+import { generatePath, Redirect, withRouter } from 'react-router-dom'
 import { auth } from '../Firebase'
 import Title from 'antd/lib/typography/Title'
 import { Row, Col, Box } from '@qonsoll/react-design'
@@ -13,7 +13,6 @@ const Login = ({ history }) => {
       const { email, password } = event
       try {
         await auth.signInWithEmailAndPassword(email, password)
-        history.push(ROUTES_PATHS.CALENDAR_SHOW)
       } catch (error) {
         message.error('User not exist. Sign up, please.')
       }
@@ -24,7 +23,13 @@ const Login = ({ history }) => {
   const currentUser = useSession()
 
   if (currentUser) {
-    return <Redirect to={ROUTES_PATHS.CALENDAR_SHOW} />
+    if (currentUser.isAuthorize)
+      return <Redirect to={ROUTES_PATHS.CALENDAR_SHOW} />
+    else {
+      const id = currentUser.uid
+      const userCreate = generatePath(ROUTES_PATHS.USER_CREATE, { id })
+      history.push(userCreate)
+    }
   }
 
   const layout = {
