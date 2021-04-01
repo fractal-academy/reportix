@@ -62,8 +62,16 @@ const CalendarShow = () => {
             }}>
             <LegendCalendar />
           </Box>
-
-          <Calendar />
+          <Box
+            bg="white"
+            mb={3}
+            p={2}
+            borderRadius="6px"
+            style={{
+              boxShadow: '0 20px 12px -12px rgba(0,0,0,0.25)'
+            }}>
+            <Calendar />
+          </Box>
         </Col>
       </Row>
     </Container>

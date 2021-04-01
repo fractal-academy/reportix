@@ -74,7 +74,6 @@ const CalendarAdvancedView = () => {
       events={editedEvents}
       headerToolbar={{
         left: 'title',
-        // center: 'title'
         right: 'prev,next'
       }}
     />
