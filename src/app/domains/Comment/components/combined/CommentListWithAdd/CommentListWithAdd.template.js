@@ -46,7 +46,7 @@ const CommentListWithAdd = (props) => {
     <Container>
       <Row noGutters>
         <Col>
-          <Box>
+          <Box mb={3}>
             <CommentSimpleForm onSubmit={onSubmit} />
           </Box>
           {isLoading ? <Spin /> : <CommentList comments={comments} />}

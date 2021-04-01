@@ -1,5 +1,5 @@
 import moment from 'moment'
-import { Row, Col } from '@qonsoll/react-design'
+import { Row, Col, Box } from '@qonsoll/react-design'
 import { Card, Typography } from 'antd'
 import { UserSimpleView } from 'domains/User/components/views'
 import { useEffect, useState } from 'react'
@@ -27,27 +27,29 @@ const CommentAdvancedView = (props) => {
 
   // [TEMPLATE]
   return (
-    <Card size={'small'}>
-      <Row mb={1} pt={2} h="between">
-        <Col cw="auto">
-          <UserSimpleView
-            avatarURL={userAvatar}
-            name={userName}
-            withEmail={false}
-            withName={true}
-          />
-        </Col>
-        <Col cw="auto">
-          {/*<Text type={'secondary'}>{commentsDate}</Text>*/}
-        </Col>
-      </Row>
-      <Row>
-        <Col px={2} pb={2}>
-          <Text>{text}</Text>
-        </Col>
-        <Col cw="auto">{commentsDate}</Col>
-      </Row>
-    </Card>
+    <Box mb={2}>
+      <Card size={'small'}>
+        <Row mb={1} pt={2} h="between">
+          <Col cw="auto" mb={1}>
+            <UserSimpleView
+              avatarURL={userAvatar}
+              name={userName}
+              withEmail={false}
+              withName={true}
+            />
+          </Col>
+          <Col cw="auto">
+            {/*<Text type={'secondary'}>{commentsDate}</Text>*/}
+          </Col>
+        </Row>
+        <Row>
+          <Col px={2} pb={2}>
+            <Text>{text}</Text>
+          </Col>
+          <Col cw="auto">{commentsDate}</Col>
+        </Row>
+      </Card>
+    </Box>
   )
 }
 CommentAdvancedView.defaultProps = {}
