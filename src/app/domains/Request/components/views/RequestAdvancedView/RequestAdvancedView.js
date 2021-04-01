@@ -8,6 +8,7 @@ import { updateData } from 'services/Firestore'
 import { useSession } from 'context/SesionContext'
 import { useState } from 'react'
 import moment from 'moment'
+import { LEAVE_DAY } from 'constants/leaveDay'
 
 const { Text, Title } = Typography
 
@@ -123,28 +124,30 @@ const RequestAdvancedView = (props) => {
                 </Button>
               </Col>
             )}
-            <Col
-              cw={'auto'}
-              display={data?.status === STATUS.REJECTED ? 'none' : 'block'}>
-              <Popconfirm
-                title="Reject request?"
-                cancelText="No"
-                okText="Yes"
-                visible={visible}
-                onConfirm={onReject}
-                okButtonProps={{ loading: confirmLoading }}
-                onCancel={() => {
-                  setVisible(false)
-                }}>
-                <Button
-                  danger
-                  onClick={() => {
-                    setVisible(!visible)
+            {data?.leaveDayType !== LEAVE_DAY.SICK_DAY && (
+              <Col
+                cw={'auto'}
+                display={data?.status === STATUS.REJECTED ? 'none' : 'block'}>
+                <Popconfirm
+                  title="Reject request?"
+                  cancelText="No"
+                  okText="Yes"
+                  visible={visible}
+                  onConfirm={onReject}
+                  okButtonProps={{ loading: confirmLoading }}
+                  onCancel={() => {
+                    setVisible(false)
                   }}>
-                  Reject
-                </Button>
-              </Popconfirm>
-            </Col>
+                  <Button
+                    danger
+                    onClick={() => {
+                      setVisible(!visible)
+                    }}>
+                    Reject
+                  </Button>
+                </Popconfirm>
+              </Col>
+            )}
           </Row>
           {currentUser?.isAdmin && (
             <Row noGutters>

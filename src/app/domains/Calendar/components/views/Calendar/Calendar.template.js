@@ -11,7 +11,7 @@ import { Spinner } from 'components/Spinner'
 import STATUS from 'constants/status'
 import { Box } from '@qonsoll/react-design'
 import { DeleteOutlined } from '@ant-design/icons'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import moment from 'moment'
 import { useSession } from 'context/SesionContext'
 const { Text } = Typography
@@ -19,17 +19,38 @@ const { Text } = Typography
 const { useBreakpoint } = Grid
 
 const CalendarAdvancedView = () => {
+  const user = useSession()
   const screens = useBreakpoint()
+  const [editEvents, setEditEvents] = useState()
   const [events, loading] = useCollectionData(
     getCollectionRef(COLLECTIONS.LEAVE_DAYS),
     { idField: 'id' }
   )
   const updateEventData = async (event) => {
+    // console.log(event)
     try {
-      await updateData(COLLECTIONS.LEAVE_DAYS, event.event._def.publicId, {
-        start: new Date(event.event._instance.range.start),
-        end: new Date(event.event._instance.range.end)
-      })
+      if (user.uid === event.event._def.extendedProps.userId)
+        await updateData(COLLECTIONS.LEAVE_DAYS, event.event._def.publicId, {
+          start: new Date(event.event._instance.range.start),
+          end: new Date(event.event._instance.range.end)
+        })
+      else {
+        editedEvents.map((item) => {
+          if (item.id === event.event._def.publicId) {
+            return {
+              ...item,
+              start: new Date(event.oldEvent._instance.range.start),
+              end: new Date(event.oldEvent._instance.range.end)
+            }
+          } else {
+            return item
+          }
+        })
+        // await updateData(COLLECTIONS.LEAVE_DAYS, event.oldEvent._def.publicId, {
+        //   start: new Date(event.oldEvent._instance.range.start),
+        //   end: new Date(event.oldEvent._instance.range.end)
+        // })
+      }
     } catch (e) {
       message.error('Can`t move event')
     }
@@ -37,20 +58,24 @@ const CalendarAdvancedView = () => {
   if (!events || loading) {
     return <Spinner />
   }
-  const editedEvents =
-    events &&
-    events.map((item) => {
-      if (item.status === STATUS.APPROVED)
-        return {
-          ...item,
-          end:
-            item.leaveDayType === 'Sick day' && !item.finished
-              ? moment(new Date()).toDate()
-              : item.end.toDate(),
-          start: item.start.toDate()
-        }
-      else return []
-    })
+
+  useEffect(() => {
+    const editedEvents =
+      events &&
+      events.map((item) => {
+        if (item.status === STATUS.APPROVED)
+          return {
+            ...item,
+            end:
+              item.leaveDayType === 'Sick day' && !item.finished
+                ? moment(new Date()).toDate()
+                : item.end.toDate(),
+            start: item.start.toDate()
+          }
+        else return []
+      })
+    setEditEvents(editedEvents)
+  }, [])
 
   return (
     <FullCalendar
