@@ -47,17 +47,17 @@ const statusMap = {
   [STATUS.REJECTED]: {
     type: STATUS.REJECTED,
     icon: <CloseCircleOutlined />,
-    color: 'error'
+    color: '#ff4d4f'
   },
   [STATUS.PENDING]: {
     type: STATUS.PENDING,
     icon: <SyncOutlined />,
-    color: 'warning'
+    color: '#2081e2CC'
   },
   [STATUS.APPROVED]: {
     type: STATUS.APPROVED,
     icon: <CheckCircleOutlined />,
-    color: 'success'
+    color: '#17e222CC'
   },
   [STATUS.PAYED]: {
     type: STATUS.PAYED,

@@ -74,20 +74,37 @@ const RequestAdvancedView = (props) => {
                 <Col>
                   <Title level={3}>{data.title}</Title>
                   <Box justifyContent="space-between">
-                    <Row noGutters>
-                      <Text type={'secondary'}>From:</Text>
-                      <Text> {start} </Text>
+                    <Row noGutters mb={1}>
+                      <Col cw="auto" mr={2}>
+                        <Text type={'secondary'}>From:</Text>
+                      </Col>
+                      <Col cw="auto">
+                        <Text>{start}</Text>
+                      </Col>
                     </Row>
-                    <Row>
-                      <Text type={'secondary'}>To: </Text>
-                      <Text>{end} </Text>
+                    <Row noGutters mb={1}>
+                      <Col cw="auto" mr={2}>
+                        <Text type={'secondary'}>To:</Text>
+                      </Col>
+                      <Col cw="auto">
+                        <Text>{end}</Text>
+                      </Col>
+                    </Row>
+                    <Row noGutters mb={1}>
+                      <Col cw="auto" mr={2}>
+                        <Text type={'secondary'}>Description:</Text>
+                      </Col>
+                      <Col cw="auto">
+                        <Text>{data.description}</Text>
+                      </Col>
                     </Row>
                   </Box>
-                  <Text type={'secondary'}>Description: </Text>
-                  <Text>{data.description} </Text>
                 </Col>
                 <Col cw={'auto'}>
-                  <Row v={'center'} noGutters>
+                  <Row v={'center'} noGutters mb={4}>
+                    <Col mr={2}>
+                      <Tags status={data.status} />
+                    </Col>
                     <Col>
                       <UserSimpleView
                         withEmail={false}
@@ -99,57 +116,72 @@ const RequestAdvancedView = (props) => {
                         avatarURL={admin?.avatarURL}
                       />
                     </Col>
-                    <Col>
-                      <Tags status={data.status} />
+                  </Row>
+                  <Row
+                    h="right"
+                    noGutters
+                    mb={2}
+                    display={
+                      data?.status === STATUS.REJECTED && !currentUser?.isAdmin
+                        ? 'none'
+                        : 'flex'
+                    }>
+                    {/* {currentUser?.isAdmin && ( */}
+                    <Col
+                      mr={2}
+                      cw={'auto'}
+                      // display={
+                      //   data?.status === STATUS.APPROVED ? 'none' : 'block'
+                      // }
+                    >
+                      <Button
+                        disabled={
+                          data?.status === STATUS.APPROVED ||
+                          !currentUser?.isAdmin
+                        }
+                        type={'primary'}
+                        onClick={onApprove}>
+                        Approve
+                      </Button>
                     </Col>
+                    {/* )} */}
+                    {/* {data?.leaveDayType !== LEAVE_DAY.SICK_DAY && ( */}
+                    <Col
+                      cw={'auto'}
+                      // display={
+                      //   data?.status === STATUS.REJECTED ? 'none' : 'block'
+                      // }
+                    >
+                      <Popconfirm
+                        title="Reject request?"
+                        cancelText="No"
+                        okText="Yes"
+                        visible={visible}
+                        onConfirm={onReject}
+                        okButtonProps={{ loading: confirmLoading }}
+                        onCancel={() => {
+                          setVisible(false)
+                        }}>
+                        <Button
+                          disabled={
+                            data?.leaveDayType !== LEAVE_DAY.SICK_DAY ||
+                            data?.status === STATUS.REJECTED
+                          }
+                          danger
+                          onClick={() => {
+                            setVisible(!visible)
+                          }}>
+                          Reject
+                        </Button>
+                      </Popconfirm>
+                    </Col>
+                    {/* )} */}
                   </Row>
                 </Col>
               </Row>
             </Col>
           </Row>
-          <Row
-            noGutters
-            mb={2}
-            display={
-              data?.status === STATUS.REJECTED && !currentUser?.isAdmin
-                ? 'none'
-                : 'flex'
-            }>
-            {currentUser?.isAdmin && (
-              <Col
-                mr={2}
-                cw={'auto'}
-                display={data?.status === STATUS.APPROVED ? 'none' : 'block'}>
-                <Button type={'primary'} onClick={onApprove}>
-                  Approve
-                </Button>
-              </Col>
-            )}
-            {data?.leaveDayType !== LEAVE_DAY.SICK_DAY && (
-              <Col
-                cw={'auto'}
-                display={data?.status === STATUS.REJECTED ? 'none' : 'block'}>
-                <Popconfirm
-                  title="Reject request?"
-                  cancelText="No"
-                  okText="Yes"
-                  visible={visible}
-                  onConfirm={onReject}
-                  okButtonProps={{ loading: confirmLoading }}
-                  onCancel={() => {
-                    setVisible(false)
-                  }}>
-                  <Button
-                    danger
-                    onClick={() => {
-                      setVisible(!visible)
-                    }}>
-                    Reject
-                  </Button>
-                </Popconfirm>
-              </Col>
-            )}
-          </Row>
+
           {currentUser?.isAdmin && (
             <Row noGutters>
               <Col>

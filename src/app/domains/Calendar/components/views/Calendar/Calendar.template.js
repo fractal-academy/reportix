@@ -48,12 +48,12 @@ const CalendarAdvancedView = () => {
   const updateEventData = async (event) => {
     // console.log(event)
     try {
-      if (user.uid === event.event._def.extendedProps.userId)
+      if (user.uid === event.event._def.extendedProps.userId) {
         await updateData(COLLECTIONS.LEAVE_DAYS, event.event._def.publicId, {
           start: new Date(event.event._instance.range.start),
           end: new Date(event.event._instance.range.end)
         })
-      else {
+      } else {
         const data = editEvents.map((item) => {
           if (item.id === event.event._def.publicId) {
             return {

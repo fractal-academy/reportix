@@ -54,12 +54,12 @@ const UsersAll = () => {
         </Box>
         {/*{user?.isAdmin && <ProjectAddEvent />}*/}
       </Box>
-      <Box mx={4}>
+      {/* <Box mx={4}>
         <LeaveDayFilter />
-      </Box>
-      <Box mx={4} mt={4}>
+      </Box> */}
+      {/* <Box mx={4} mt={4}>
         <UserListSearch />
-      </Box>
+      </Box> */}
       <Box mx={4} mt={4}>
         <UserList users={users} requests={requests} withName />
       </Box>
