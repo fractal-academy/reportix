@@ -50,7 +50,7 @@ const CalendarAddEvent = () => {
     const color = titleSwitch(data.title)
     try {
       await addData(COLLECTIONS.LEAVE_DAYS, {
-        title: `${data?.title}, ${name ? name : user.email}`,
+        title: name ? name : user.email,
         leaveDayType: data?.title,
         start: new Date(data?.dateStart),
         end: new Date(data?.dateEnd),

@@ -3,7 +3,7 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import listPlugin from '@fullcalendar/list'
 import interactionPlugin from '@fullcalendar/interaction'
-import { Button, Typography, message, Popconfirm, Grid } from 'antd'
+import { Button, Typography, message, Popconfirm, Grid, Tooltip } from 'antd'
 import { useCollectionData } from 'react-firebase-hooks/firestore'
 import { deleteData, getCollectionRef, updateData } from 'services/Firestore'
 import COLLECTIONS from 'constants/collection'
@@ -94,14 +94,18 @@ const RenderEventContent = (eventInfo) => {
   }
   return (
     <Box display="flex" justifyContent="space-between" alignItems="center">
-      <Text
-        style={{
-          whiteSpace: 'nowrap',
-          textOverflow: 'ellipsis',
-          overflow: 'hidden'
-        }}>
-        {eventInfo.event.title}
-      </Text>
+      <Tooltip
+        placement="top"
+        title={eventInfo.event._def.extendedProps.leaveDayType}>
+        <Text
+          style={{
+            whiteSpace: 'nowrap',
+            textOverflow: 'ellipsis',
+            overflow: 'hidden'
+          }}>
+          {eventInfo.event.title}
+        </Text>
+      </Tooltip>
       <Popconfirm
         title="Delete user?"
         cancelText="No"

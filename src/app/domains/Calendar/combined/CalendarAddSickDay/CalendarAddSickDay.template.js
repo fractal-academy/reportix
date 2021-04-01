@@ -28,7 +28,7 @@ const CalendarAddSickDay = () => {
     setLoading(true)
     try {
       await addData(COLLECTIONS.LEAVE_DAYS, {
-        title: `${LEAVE_DAY.SICK_DAY}, ${name ? name : user.email}`,
+        title: name ? name : user.email,
         leaveDayType: LEAVE_DAY.SICK_DAY,
         start: new Date(),
         end: null,

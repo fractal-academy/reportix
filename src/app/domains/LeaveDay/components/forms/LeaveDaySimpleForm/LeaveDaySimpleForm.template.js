@@ -1,16 +1,11 @@
-import { DatePicker, Form, Input, Tooltip } from 'antd'
+import { DatePicker, Form, Input } from 'antd'
 import { Col, Row } from '@qonsoll/react-design'
 import LeaveDaySingleSelect from 'domains/LeaveDay/components/select/LeaveDaySingleSelect'
-import { style } from 'app/style'
 
 const LeaveDaySimpleForm = (props) => {
   const { onFinish, form, onCalendarChange } = props
-  const { RangePicker, TimePicker } = DatePicker
   const { onChange } = (date) => {
     return date
-  }
-  function onChange1(date, dateString) {
-    console.log(date, dateString)
   }
   const dateFormat = 'YYYY/MM/DD'
 
