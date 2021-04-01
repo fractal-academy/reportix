@@ -5,17 +5,24 @@ import { getCollectionRef } from 'services/Firestore'
 import COLLECTIONS from 'constants/collection'
 import { Empty } from 'antd'
 import { useSession } from 'context/SesionContext'
+import { Spinner } from 'components/Spinner'
 
 const RequestList = (props) => {
   const currentUser = useSession()
+
   const [requests, isLoading] = useCollectionData(
-    getCollectionRef(COLLECTIONS.LEAVE_DAYS),
+    getCollectionRef(COLLECTIONS.LEAVE_DAYS).orderBy('start', 'desc'),
     { idField: 'id' }
   )
   const [admins, loading] = useCollectionData(
-    getCollectionRef(COLLECTIONS.USERS).where('isAdmin', '==', true),
+    getCollectionRef(COLLECTIONS.USERS)
+      .where('isAdmin', '==', true)
+      .orderBy('start', 'desc'),
     { idField: 'id' }
   )
+  if (loading || isLoading) {
+    return <Spinner />
+  }
   const filteredRequests =
     !isLoading && requests.filter((item) => item.userId === currentUser?.uid)
   const switchRequests = currentUser?.isAdmin ? requests : filteredRequests
