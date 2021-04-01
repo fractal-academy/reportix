@@ -26,41 +26,9 @@ const CalendarAdvancedView = () => {
     getCollectionRef(COLLECTIONS.LEAVE_DAYS),
     { idField: 'id' }
   )
-  const updateEventData = async (event) => {
-    // console.log(event)
-    try {
-      if (user.uid === event.event._def.extendedProps.userId)
-        await updateData(COLLECTIONS.LEAVE_DAYS, event.event._def.publicId, {
-          start: new Date(event.event._instance.range.start),
-          end: new Date(event.event._instance.range.end)
-        })
-      else {
-        editedEvents.map((item) => {
-          if (item.id === event.event._def.publicId) {
-            return {
-              ...item,
-              start: new Date(event.oldEvent._instance.range.start),
-              end: new Date(event.oldEvent._instance.range.end)
-            }
-          } else {
-            return item
-          }
-        })
-        // await updateData(COLLECTIONS.LEAVE_DAYS, event.oldEvent._def.publicId, {
-        //   start: new Date(event.oldEvent._instance.range.start),
-        //   end: new Date(event.oldEvent._instance.range.end)
-        // })
-      }
-    } catch (e) {
-      message.error('Can`t move event')
-    }
-  }
-  if (!events || loading) {
-    return <Spinner />
-  }
 
   useEffect(() => {
-    const editedEvents =
+    const newEditedEvents =
       events &&
       events.map((item) => {
         if (item.status === STATUS.APPROVED)
@@ -74,8 +42,42 @@ const CalendarAdvancedView = () => {
           }
         else return []
       })
-    setEditEvents(editedEvents)
-  }, [])
+    setEditEvents(newEditedEvents)
+  }, [events])
+
+  const updateEventData = async (event) => {
+    // console.log(event)
+    try {
+      if (user.uid === event.event._def.extendedProps.userId)
+        await updateData(COLLECTIONS.LEAVE_DAYS, event.event._def.publicId, {
+          start: new Date(event.event._instance.range.start),
+          end: new Date(event.event._instance.range.end)
+        })
+      else {
+        const data = editEvents.map((item) => {
+          if (item.id === event.event._def.publicId) {
+            return {
+              ...item,
+              start: new Date(event.oldEvent._instance.range.start),
+              end: new Date(event.oldEvent._instance.range.end)
+            }
+          } else {
+            return item
+          }
+        })
+        setEditEvents(data)
+        // await updateData(COLLECTIONS.LEAVE_DAYS, event.oldEvent._def.publicId, {
+        //   start: new Date(event.oldEvent._instance.range.start),
+        //   end: new Date(event.oldEvent._instance.range.end)
+        // })
+      }
+    } catch (e) {
+      message.error('Can`t move event')
+    }
+  }
+  if (!events || loading) {
+    return <Spinner />
+  }
 
   return (
     <FullCalendar
@@ -97,7 +99,7 @@ const CalendarAdvancedView = () => {
         list: 'Week'
       }}
       dayMaxEvents
-      events={editedEvents}
+      events={editEvents}
       headerToolbar={{
         left: 'title',
         right: 'prev,next'
