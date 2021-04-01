@@ -48,7 +48,7 @@ const AvatarUploader = (props) => {
     width: ${avatarSizeMap[size].width || avatarSizeMap['middle'].buttonSize};
     height: ${avatarSizeMap[size].height || avatarSizeMap['middle'].buttonSize};
     border: 3px solid #eff5fd;
-    background-color: #1d6fdc;
+    background-color: #9088e5;
     border-radius: 50%;
     cursor: pointer;
     justify-content: center;
@@ -61,7 +61,7 @@ const AvatarUploader = (props) => {
 
     &:hover {
       border-color: #eff5fd;
-      background-color: #4390e8;
+      background-color: #a095e6;
     }
   `
 

@@ -66,10 +66,6 @@ const CalendarAdvancedView = () => {
           }
         })
         setEditEvents(data)
-        // await updateData(COLLECTIONS.LEAVE_DAYS, event.oldEvent._def.publicId, {
-        //   start: new Date(event.oldEvent._instance.range.start),
-        //   end: new Date(event.oldEvent._instance.range.end)
-        // })
       }
     } catch (e) {
       message.error('Can`t move event')

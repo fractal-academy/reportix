@@ -9,7 +9,7 @@ const UserSimpleForm = (props) => {
   const { onFinish, form, user } = props
   const [avatar, setAvatar] = useState()
   const onSubmit = (data) => {
-    data.avatar = avatar || ''
+    data.avatar = avatar || user?.avatarURL || ''
     onFinish(data)
   }
   //[TEMPLATE]
