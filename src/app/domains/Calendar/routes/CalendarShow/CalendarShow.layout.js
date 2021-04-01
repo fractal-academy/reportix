@@ -4,6 +4,7 @@ import CalendarAddEvent from 'domains/Calendar/combined/CalendarAddEvent'
 import { Button, Card, Typography } from 'antd'
 import { ArrowLeftOutlined } from '@ant-design/icons'
 import { useHistory } from 'react-router'
+import { CalendarAddSickDay } from 'domains/Calendar/combined/CalendarAddSickDay'
 
 const { Title } = Typography
 
@@ -35,6 +36,7 @@ const CalendarShow = () => {
                 Calendar
               </Title>
             </Box>
+            <CalendarAddSickDay />
             <CalendarAddEvent />
           </Box>
           <Box

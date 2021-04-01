@@ -23,8 +23,8 @@ const RequestAdvancedView = (props) => {
   const currentUser = useSession()
   //[COMPUTED_PROPERTIES]
   const dateFormat = 'MMMM Do YYYY'
-  const start = moment(data.start.toDate()).format(dateFormat)
-  const end = moment(data.end.toDate()).format(dateFormat)
+  const start = moment(data?.start?.toDate()).format(dateFormat)
+  const end = moment(data?.end?.toDate()).format(dateFormat)
 
   //[HELPER_FUNCTIONS]
   const onApprove = async () => {

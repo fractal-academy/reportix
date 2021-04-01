@@ -5,6 +5,7 @@ import { Button } from 'antd'
 import { ArrowLeftOutlined } from '@ant-design/icons'
 import Title from 'antd/es/typography/Title'
 import { useHistory } from 'react-router-dom'
+import { CalendarAddSickDay } from 'domains/Calendar/combined/CalendarAddSickDay'
 
 const RequestsAllLayout = () => {
   const history = useHistory()
@@ -29,6 +30,7 @@ const RequestsAllLayout = () => {
             Requests
           </Title>
         </Box>
+        <CalendarAddSickDay />
         <CalendarAddEvent />
       </Box>
       <Box mx={4}>

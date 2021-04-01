@@ -9,9 +9,10 @@ import { deleteData, getCollectionRef, updateData } from 'services/Firestore'
 import COLLECTIONS from 'constants/collection'
 import { Spinner } from 'components/Spinner'
 import STATUS from 'constants/status'
-import { Box, Col } from '@qonsoll/react-design'
+import { Box } from '@qonsoll/react-design'
 import { DeleteOutlined } from '@ant-design/icons'
 import { useState } from 'react'
+import moment from 'moment'
 const { Text } = Typography
 
 const CalendarAdvancedView = () => {
@@ -38,7 +39,10 @@ const CalendarAdvancedView = () => {
       if (item.status === STATUS.APPROVED)
         return {
           ...item,
-          end: item.end.toDate(),
+          end:
+            item.leaveDayType === 'Sick day' && !item.finished
+              ? moment(new Date()).toDate()
+              : item.end.toDate(),
           start: item.start.toDate()
         }
       else return []
@@ -71,7 +75,6 @@ export default CalendarAdvancedView
 
 const RenderEventContent = (eventInfo) => {
   const [visible, setVisible] = useState(false)
-  console.log(eventInfo.event._def.publicId)
   const handleOk = async (data) => {
     try {
       await deleteData(COLLECTIONS.LEAVE_DAYS, eventInfo.event._def.publicId)
