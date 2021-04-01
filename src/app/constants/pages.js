@@ -1,9 +1,9 @@
 import {
   CalendarOutlined,
-  FileOutlined,
+  // FileOutlined,
   ProjectOutlined,
-  PullRequestOutlined,
-  UsergroupAddOutlined
+  PullRequestOutlined
+  // UsergroupAddOutlined
 } from '@ant-design/icons'
 import { ROUTES_PATHS } from 'app/constants/'
 
@@ -14,21 +14,21 @@ const PAGES = [
     icon: <CalendarOutlined />
   },
   {
-    text: 'Projects',
-    path: ROUTES_PATHS.PROJECTS_ALL,
-    icon: <ProjectOutlined />
-  },
-  { text: 'Reports', path: ROUTES_PATHS.REPORTS_ALL, icon: <FileOutlined /> },
-  {
     text: 'Request',
     path: ROUTES_PATHS.REQUESTS_ALL,
     icon: <PullRequestOutlined />
   },
   {
-    text: 'Users',
-    path: ROUTES_PATHS.USERS_ALL,
-    icon: <UsergroupAddOutlined />
+    text: 'Projects',
+    path: ROUTES_PATHS.PROJECTS_ALL,
+    icon: <ProjectOutlined />
   }
+
+  // {
+  //   text: 'Users',
+  //   path: ROUTES_PATHS.USERS_ALL,
+  //   icon: <UsergroupAddOutlined />
+  // }
 ]
 
 export default PAGES

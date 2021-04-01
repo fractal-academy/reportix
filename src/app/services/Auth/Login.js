@@ -13,7 +13,7 @@ const Login = ({ history }) => {
       const { email, password } = event
       try {
         await auth.signInWithEmailAndPassword(email, password)
-        history.push(ROUTES_PATHS.REQUESTS_ALL)
+        history.push(ROUTES_PATHS.CALENDAR_SHOW)
       } catch (error) {
         message.error('User not exist. Sign up, please.')
       }
@@ -24,7 +24,7 @@ const Login = ({ history }) => {
   const currentUser = useSession()
 
   if (currentUser) {
-    return <Redirect to={ROUTES_PATHS.REQUESTS_ALL} />
+    return <Redirect to={ROUTES_PATHS.CALENDAR_SHOW} />
   }
 
   const layout = {

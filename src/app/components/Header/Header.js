@@ -1,5 +1,4 @@
 import {
-  FileOutlined,
   ProjectOutlined,
   PullRequestOutlined,
   UserOutlined,
@@ -60,18 +59,6 @@ const Header = (props) => {
       name: 'Requests',
       key: '/requests',
       icon: <PullRequestOutlined />
-    },
-    {
-      title: 'Reports',
-      name: 'Reports',
-      key: '/reports',
-      icon: <FileOutlined />
-    },
-    {
-      title: 'Projects',
-      name: 'Projects',
-      key: '/projects',
-      icon: <ProjectOutlined />
     }
   ]
 
@@ -90,7 +77,6 @@ const Header = (props) => {
             style={{ color: '#fff', margin: 0 }}>
             Vacation system
           </Typography.Title>
-          {/* <img src="/logo-white.svg" alt="Qonsoll" height="40px" /> */}
         </Link>
       </Box>
       {userData?.isAuthorize && (
