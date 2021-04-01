@@ -58,7 +58,7 @@ const CalendarAdvancedView = () => {
       eventDrop={updateEventData}
       plugins={[dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]}
       eventContent={(e) => <RenderEventContent {...e} />}
-      initialView="listWeek"
+      initialView={screens.md ? 'dayGridMonth' : 'listWeek'}
       selectable
       selectMirror
       allDayMaintainDuration

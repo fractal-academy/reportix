@@ -19,28 +19,33 @@ const CalendarShow = () => {
     <Container>
       <Row noGutters mx={screens === 'lg' ? 4 : 1}>
         <Col>
-          <Box
-            mt={4}
-            mb={3}
-            display="flex"
-            justifyContent={'space-between'}
-            alignItems={'center'}>
-            <Box display="flex" alignItems="center">
-              <Box mr={2}>
-                <Button
-                  size="large"
-                  type="text"
-                  icon={<ArrowLeftOutlined />}
-                  onClick={() => history.goBack()}
-                />
+          <Row mt={4} mb={3}>
+            <Col cw="auto">
+              <Box display="flex" alignItems="center">
+                <Box mr={2}>
+                  <Button
+                    size="large"
+                    type="text"
+                    icon={<ArrowLeftOutlined />}
+                    onClick={() => history.goBack()}
+                  />
+                </Box>
+                <Title style={{ marginBottom: 0 }} level={3}>
+                  Calendar
+                </Title>
               </Box>
-              <Title style={{ marginBottom: 0 }} level={3}>
-                Calendar
-              </Title>
-            </Box>
-            <CalendarAddSickDay />
-            <CalendarAddEvent />
-          </Box>
+            </Col>
+
+            <Col>
+              <Box flex={1} display="flex" justifyContent="center">
+                <CalendarAddSickDay />
+              </Box>
+            </Col>
+            <Col cw="auto">
+              <CalendarAddEvent />
+            </Col>
+          </Row>
+
           <Box
             bg="white"
             mb={3}
