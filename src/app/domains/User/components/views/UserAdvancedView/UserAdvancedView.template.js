@@ -1,5 +1,5 @@
 import { Row, Col, Box } from '@qonsoll/react-design'
-import { Typography, Avatar, Divider } from 'antd'
+import { Typography, Avatar, Divider, Grid } from 'antd'
 import { MailOutlined, PhoneOutlined, UserOutlined } from '@ant-design/icons'
 import { style } from './UserAdvancedView.styles'
 import { UsersEdit } from 'domains/User/routes'
@@ -10,6 +10,7 @@ import COLLECTIONS from 'constants/collection'
 import { useParams } from 'react-router-dom'
 
 const { Text, Title } = Typography
+const { useBreakpoint } = Grid
 
 const UserAdvancedView = (props) => {
   const {
@@ -21,10 +22,10 @@ const UserAdvancedView = (props) => {
     avatarSize,
     firstName,
     surname,
-    GitHubName,
-    isAdmin
+    GitHubName
   } = props
   const { id } = useParams()
+  const screens = useBreakpoint()
 
   const [userProjects, loading] = useCollectionData(
     getCollectionRef(COLLECTIONS.PROJECTS).where('users', 'array-contains', id)
@@ -33,12 +34,14 @@ const UserAdvancedView = (props) => {
   const projectsName =
     !loading && userProjects.map((project) => project.projectName).join(', ')
   return (
-    <Box justifyContent="center" display="flex" flex={1} mt={4}>
+    <Box justifyContent="center" display="flex" flex={1}>
       <Box
         p={3}
-        bg="#fff"
+        bg={screens.md && '#fff'}
         borderRadius="12px"
-        style={{ boxShadow: '0 20px 24px -24px rgba(0,0,0,0.35)' }}>
+        style={{
+          boxShadow: screens.md ? '0 20px 24px -24px rgba(0,0,0,0.35)' : null
+        }}>
         <Row h="center" noGutters>
           <Col cw={12}>
             <Box display="flex" justifyContent="flex-end">
