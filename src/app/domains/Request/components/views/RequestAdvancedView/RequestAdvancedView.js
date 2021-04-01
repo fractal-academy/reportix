@@ -2,7 +2,7 @@ import { Card, Typography, Button, message, Popconfirm } from 'antd'
 import { Row, Box, Col } from '@qonsoll/react-design'
 import { UserSimpleView } from 'domains/User/components/views'
 import { CommentListWithAdd } from 'domains/Comment/components/combined'
-import { Spinner, Tags } from 'components'
+import { Spinner, Tags } from 'app/components'
 import { COLLECTIONS, STATUS } from 'constants'
 import { updateData } from 'services/Firestore'
 import { useSession } from 'context/SesionContext'
@@ -27,6 +27,7 @@ const RequestAdvancedView = (props) => {
   const start = moment(data?.start?.toDate()).format(dateFormat)
   const end = moment(data?.end?.toDate()).format(dateFormat)
 
+  console.log(data.status)
   //[HELPER_FUNCTIONS]
   const onApprove = async () => {
     setLoading(true)

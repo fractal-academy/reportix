@@ -16,50 +16,50 @@ import { Typography } from 'antd'
 const statusMap = {
   [LEAVE_DAY.WORK_FROM_HOME]: {
     type: LEAVE_DAY.WORK_FROM_HOME,
-    color: '#00FFFF',
+    color: '#00FFFF4D',
     icon: <HomeOutlined />
   },
   [LEAVE_DAY.VACATION]: {
     type: LEAVE_DAY.VACATION,
-    color: '#fff000',
+    color: '#fff0004D',
     icon: <GlobalOutlined />
   },
   [LEAVE_DAY.SWAP_DAY]: {
     type: LEAVE_DAY.SWAP_DAY,
-    color: '#1890ff',
+    color: '#1890ff4D',
     icon: <SwapOutlined />
   },
   [LEAVE_DAY.SICK_DAY]: {
     type: LEAVE_DAY.SICK_DAY,
-    color: '#e31004',
+    color: '#e310044D',
     icon: <HeartOutlined />
   },
   [LEAVE_DAY.MONTH_REMOTE]: {
     type: LEAVE_DAY.MONTH_REMOTE,
-    color: '#247777',
+    color: '#2477774D',
     icon: <CarOutlined />
   },
   [LEAVE_DAY.DAY_OFF]: {
     type: LEAVE_DAY.DAY_OFF,
-    color: '#ad5610',
+    color: '#ad56104D',
     icon: <HomeOutlined />
   },
-  [LEAVE_DAY.REJECTED]: {
+  [STATUS.REJECTED]: {
     type: STATUS.REJECTED,
     icon: <CloseCircleOutlined />,
     color: 'error'
   },
-  [LEAVE_DAY.PENDING]: {
+  [STATUS.PENDING]: {
     type: STATUS.PENDING,
     icon: <SyncOutlined />,
     color: 'warning'
   },
-  [LEAVE_DAY.APPROVED]: {
+  [STATUS.APPROVED]: {
     type: STATUS.APPROVED,
     icon: <CheckCircleOutlined />,
     color: 'success'
   },
-  [LEAVE_DAY.PAYED]: {
+  [STATUS.PAYED]: {
     type: STATUS.PAYED,
     icon: <CheckCircleOutlined />,
     color: 'success'
@@ -80,7 +80,7 @@ const Tag = (props) => {
           justifyContent="center"
           borderRadius="4px"
           style={{ boxShadow: '0 4px 2px -2px rgba(0,0,0,0.25)' }}
-          bg={`${statusMap[status]?.color}4D`}>
+          bg={`${statusMap[status]?.color}`}>
           <Box mr={2}>{statusMap[status]?.icon}</Box>
           <Typography.Text>{statusMap[status]?.type}</Typography.Text>
         </Box>

@@ -64,8 +64,8 @@ const UserListItem = (props) => {
                 status={
                   item?.status !== STATUS.PENDING &&
                   item?.status !== STATUS.REJECTED &&
-                  item?.start.toDate().getTime() <= currentDay &&
-                  currentDay <= item?.end.toDate().getTime() &&
+                  item?.start?.toDate().getTime() <= currentDay &&
+                  currentDay <= item?.end?.toDate().getTime() &&
                   item?.leaveDayType
                 }
               />
