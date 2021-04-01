@@ -67,7 +67,7 @@ const CalendarAddSickDay = () => {
           loading={loading}
           onClick={onLeaveDayFinish}
           icon={<HeartFilled />}>
-          Finish Sick Day
+          I am fine
         </Button>
       ) : (
         <Button
@@ -76,7 +76,7 @@ const CalendarAddSickDay = () => {
           loading={loading}
           onClick={onLeaveDayCreate}
           icon={<HeartFilled />}>
-          Create Sick Day
+          I am Sick Day
         </Button>
       )}
     </>
