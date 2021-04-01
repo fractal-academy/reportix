@@ -1,10 +1,10 @@
 const LEAVE_DAY = {
   VACATION: 'Vacation',
+  WORK_FROM_HOME: 'Work from home',
   SICK_DAY: 'Sick day',
   SWAP_DAY: 'Swap day',
-  WORK_FROM_HOME: 'Work from home',
-  MONTH_REMOTE: 'Month Remote',
-  DAY_OFF: 'Day off'
+  DAY_OFF: 'Day off',
+  MONTH_REMOTE: 'Month Remote'
 }
 
 const LEAVE_DAY_KEYS = Object.keys(LEAVE_DAY)

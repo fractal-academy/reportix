@@ -1,21 +1,23 @@
 import { Calendar, LegendCalendar } from 'domains/Calendar/components/views'
 import { Col, Row, Box, Container } from '@qonsoll/react-design'
 import CalendarAddEvent from 'domains/Calendar/combined/CalendarAddEvent'
-import { Button, Card, Typography } from 'antd'
+import { Button, Card, Typography, Grid } from 'antd'
 import { ArrowLeftOutlined } from '@ant-design/icons'
 import { useHistory } from 'react-router'
 import { CalendarAddSickDay } from 'domains/Calendar/combined/CalendarAddSickDay'
 
+const { useBreakpoint } = Grid
 const { Title } = Typography
 
 const CalendarShow = () => {
   //[ADDITIONAL_HOOKS]
   const history = useHistory()
+  const screens = useBreakpoint()
 
   //[TEMPLATE]
   return (
     <Container>
-      <Row noGutters mx={4}>
+      <Row noGutters mx={screens === 'lg' ? 4 : 1}>
         <Col>
           <Box
             mt={4}

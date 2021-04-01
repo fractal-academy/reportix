@@ -3,7 +3,7 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import listPlugin from '@fullcalendar/list'
 import interactionPlugin from '@fullcalendar/interaction'
-import { Button, Typography, message, Popconfirm } from 'antd'
+import { Button, Typography, message, Popconfirm, Grid } from 'antd'
 import { useCollectionData } from 'react-firebase-hooks/firestore'
 import { deleteData, getCollectionRef, updateData } from 'services/Firestore'
 import COLLECTIONS from 'constants/collection'
@@ -15,7 +15,10 @@ import { useState } from 'react'
 import moment from 'moment'
 const { Text } = Typography
 
+const { useBreakpoint } = Grid
+
 const CalendarAdvancedView = () => {
+  const screens = useBreakpoint()
   const [events, loading] = useCollectionData(
     getCollectionRef(COLLECTIONS.LEAVE_DAYS),
     { idField: 'id' }
@@ -47,6 +50,7 @@ const CalendarAdvancedView = () => {
         }
       else return []
     })
+
   return (
     <FullCalendar
       navLinks
@@ -54,23 +58,23 @@ const CalendarAdvancedView = () => {
       eventDrop={updateEventData}
       plugins={[dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]}
       eventContent={(e) => <RenderEventContent {...e} />}
-      initialView="dayGridMonth"
+      initialView="listWeek"
       selectable
       selectMirror
       allDayMaintainDuration
       unselectAuto
       editable
       buttonText={{
-        today: 'Today',
+        today: 'Current month',
         month: 'Month',
         list: 'Week'
       }}
       dayMaxEvents
       events={editedEvents}
       headerToolbar={{
-        left: 'prev,next today',
-        center: 'title',
-        right: 'dayGridMonth,listWeek'
+        left: 'title',
+        // center: 'title'
+        right: 'prev,next'
       }}
     />
   )
