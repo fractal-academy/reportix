@@ -13,6 +13,7 @@ import { Box } from '@qonsoll/react-design'
 import { DeleteOutlined } from '@ant-design/icons'
 import { useState } from 'react'
 import moment from 'moment'
+import { useSession } from 'context/SesionContext'
 const { Text } = Typography
 
 const { useBreakpoint } = Grid
@@ -83,6 +84,7 @@ const CalendarAdvancedView = () => {
 export default CalendarAdvancedView
 
 const RenderEventContent = (eventInfo) => {
+  const user = useSession()
   const [visible, setVisible] = useState(false)
   const handleOk = async (data) => {
     try {
@@ -115,15 +117,17 @@ const RenderEventContent = (eventInfo) => {
         onCancel={() => {
           setVisible(false)
         }}>
-        <Button
-          size="small"
-          type="text"
-          danger
-          icon={<DeleteOutlined />}
-          onClick={() => {
-            setVisible(!visible)
-          }}
-        />
+        {user.isAdmin && (
+          <Button
+            size="small"
+            type="text"
+            danger
+            icon={<DeleteOutlined />}
+            onClick={() => {
+              setVisible(!visible)
+            }}
+          />
+        )}
       </Popconfirm>
     </Box>
   )
