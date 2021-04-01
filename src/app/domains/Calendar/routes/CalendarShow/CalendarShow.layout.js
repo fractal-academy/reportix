@@ -37,7 +37,10 @@ const CalendarShow = () => {
             </Col>
 
             <Col>
-              <Box flex={1} display="flex" justifyContent="center">
+              <Box
+                flex={1}
+                display="flex"
+                justifyContent={screens.md ? 'center' : 'start'}>
                 <CalendarAddSickDay />
               </Box>
             </Col>
@@ -59,13 +62,8 @@ const CalendarShow = () => {
             }}>
             <LegendCalendar />
           </Box>
-          <Row noGutters>
-            <Col>
-              <Card>
-                <Calendar />
-              </Card>
-            </Col>
-          </Row>
+
+          <Calendar />
         </Col>
       </Row>
     </Container>

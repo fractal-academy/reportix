@@ -155,7 +155,18 @@ const Header = (props) => {
                       {user?.displayName || userFullName || user?.email}
                     </Box>
                   </Box>
-                }></SubMenu>
+                }>
+                <Menu.Item
+                  key="profile"
+                  onClick={() => {
+                    history.push(userProfile)
+                  }}>
+                  Profile
+                </Menu.Item>
+                <Menu.Item key="logout" onClick={logout}>
+                  Logout
+                </Menu.Item>
+              </SubMenu>
             </Menu>
           </Box>
         )
