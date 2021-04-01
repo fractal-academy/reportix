@@ -16,7 +16,7 @@ const RequestsAllLayout = () => {
 
   return (
     <Container>
-      <Row noGutters mx={screens === 'lg' ? 4 : 1}>
+      <Row noGutters mx={screens.md ? 4 : 1}>
         <Col>
           <Row mt={4} mb={3}>
             <Col cw="auto">

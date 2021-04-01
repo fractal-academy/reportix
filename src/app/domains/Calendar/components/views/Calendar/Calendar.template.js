@@ -63,6 +63,7 @@ const CalendarAdvancedView = () => {
       selectable
       selectMirror
       allDayMaintainDuration
+      themeSystem="bootstrap"
       unselectAuto
       editable
       buttonText={{

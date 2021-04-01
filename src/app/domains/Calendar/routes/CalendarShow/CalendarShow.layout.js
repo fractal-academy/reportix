@@ -1,7 +1,7 @@
 import { Calendar, LegendCalendar } from 'domains/Calendar/components/views'
 import { Col, Row, Box, Container } from '@qonsoll/react-design'
 import CalendarAddEvent from 'domains/Calendar/combined/CalendarAddEvent'
-import { Button, Card, Typography, Grid } from 'antd'
+import { Button, Typography, Grid } from 'antd'
 import { ArrowLeftOutlined } from '@ant-design/icons'
 import { useHistory } from 'react-router'
 import { CalendarAddSickDay } from 'domains/Calendar/combined/CalendarAddSickDay'
@@ -17,7 +17,7 @@ const CalendarShow = () => {
   //[TEMPLATE]
   return (
     <Container>
-      <Row noGutters mx={screens === 'lg' ? 4 : 1}>
+      <Row noGutters mx={screens.md ? 4 : 1}>
         <Col>
           <Row mt={4} mb={3}>
             <Col cw="auto">

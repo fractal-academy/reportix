@@ -3,7 +3,7 @@ import {
   UserOutlined,
   CalendarOutlined
 } from '@ant-design/icons'
-import { Menu, Typography, Grid, Dropdown } from 'antd'
+import { Menu, Typography, Grid, Dropdown, Badge } from 'antd'
 import { Box } from '@qonsoll/react-design'
 import { auth } from 'app/services/Firebase/firebase'
 import { ROUTES_PATHS } from 'app/constants'
