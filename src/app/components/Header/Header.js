@@ -75,7 +75,7 @@ const Header = (props) => {
             level={4}
             id="logo1"
             style={{ color: '#fff', margin: 0 }}>
-            {screens.md ? 'Vacation system' : 'VS'}
+            {screens.md ? 'Report system' : 'VS'}
           </Typography.Title>
         </Link>
       </Box>
