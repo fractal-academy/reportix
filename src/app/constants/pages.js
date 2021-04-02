@@ -1,5 +1,6 @@
 import {
   CalendarOutlined,
+  DeliveredProcedureOutlined,
   FileOutlined,
   ProjectOutlined,
   PullRequestOutlined,
@@ -8,16 +9,16 @@ import {
 import { ROUTES_PATHS } from 'app/constants/'
 
 const PAGES = [
-  {
-    text: 'Calendar',
-    path: ROUTES_PATHS.CALENDAR_SHOW,
-    icon: <CalendarOutlined />
-  },
-  {
-    text: 'Request',
-    path: ROUTES_PATHS.REQUESTS_ALL,
-    icon: <PullRequestOutlined />
-  },
+  // {
+  //   text: 'Calendar',
+  //   path: ROUTES_PATHS.CALENDAR_SHOW,
+  //   icon: <CalendarOutlined />
+  // },
+  // {
+  //   text: 'Request',
+  //   path: ROUTES_PATHS.REQUESTS_ALL,
+  //   icon: <PullRequestOutlined />
+  // },
   {
     text: 'Projects',
     path: ROUTES_PATHS.PROJECTS_ALL,
@@ -26,6 +27,16 @@ const PAGES = [
   {
     text: 'Users',
     path: ROUTES_PATHS.USERS_ALL,
+    icon: <UsergroupAddOutlined />
+  },
+  {
+    text: 'Reports',
+    path: ROUTES_PATHS.REPORTS_ALL,
+    icon: <DeliveredProcedureOutlined />
+  },
+  {
+    text: 'Invoices',
+    path: ROUTES_PATHS.INVOICES_ALL,
     icon: <UsergroupAddOutlined />
   }
 ]

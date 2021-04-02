@@ -49,18 +49,18 @@ const Header = (props) => {
   }
 
   const menuMap = [
-    {
-      title: 'Calendar',
-      name: 'Calendar',
-      key: '/calendar/:id',
-      icon: <CalendarOutlined />
-    },
-    {
-      title: 'Requests',
-      name: 'Requests',
-      key: '/requests',
-      icon: <PullRequestOutlined />
-    }
+    // {
+    //   title: 'Calendar',
+    //   name: 'Calendar',
+    //   key: '/calendar/:id',
+    //   icon: <CalendarOutlined />
+    // },
+    // {
+    //   title: 'Requests',
+    //   name: 'Requests',
+    //   key: '/requests',
+    //   icon: <PullRequestOutlined />
+    // }
   ]
 
   return (
