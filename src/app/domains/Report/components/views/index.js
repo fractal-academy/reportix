@@ -1,2 +1,2 @@
-import { ReportSimpleView } from './ReportSimpleView'
-export { ReportSimpleView }
+import { ReportAdvancedView } from './ReportAdvancedView'
+export { ReportAdvancedView }

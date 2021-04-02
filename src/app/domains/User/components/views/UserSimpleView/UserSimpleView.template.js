@@ -16,7 +16,7 @@ const UserSimpleView = (props) => {
   } = props
 
   return (
-    <Row v="center" noGutters>
+    <Row noGutters display={props.vertical ? 'inline' : 'flex'}>
       <Col cw="auto">
         {/*icon if User without avatar*/}
         <Tooltip title={nameTooltip && nameTooltip} placement="top">
@@ -24,16 +24,16 @@ const UserSimpleView = (props) => {
         </Tooltip>
       </Col>
       {(withName || withEmail) && (
-        <Col cw="auto" px={0}>
-          {withName && (
-            <Row v="center">
+        <Col px={0}>
+          {withName && name && (
+            <Row v="center" noGutters={!!props.vertical}>
               <Col>
                 <Text>{name}</Text>
               </Col>
             </Row>
           )}
-          {withEmail && (
-            <Row v="center">
+          {withEmail && email && (
+            <Row v="center" noGutters={!!props.vertical}>
               <Col>
                 <Text>{email}</Text>
               </Col>

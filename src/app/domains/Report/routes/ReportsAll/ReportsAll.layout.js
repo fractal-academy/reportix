@@ -1,4 +1,4 @@
-import { ReportSimpleView } from 'domains/Report/components/views'
+import { ReportAdvancedView } from 'domains/Report/components/views'
 import { DatePicker, Button } from 'antd'
 import { Row, Col, Box, Container } from '@qonsoll/react-design'
 import { UserSelect } from 'domains/User/components/select'
@@ -142,7 +142,7 @@ const ReportsAll = (props) => {
         {reportMockData.map((report, index) => (
           <Row key={index} noGutters mb={3} style={{ background: 'white' }}>
             <Col>
-              <ReportSimpleView data={report} />
+              <ReportAdvancedView data={report} />
             </Col>
           </Row>
         ))}

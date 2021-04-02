@@ -1,8 +1,4 @@
-import {
-  PullRequestOutlined,
-  UserOutlined,
-  CalendarOutlined
-} from '@ant-design/icons'
+import { UserOutlined, DeliveredProcedureOutlined } from '@ant-design/icons'
 import { Menu, Typography, Grid, Dropdown, Badge } from 'antd'
 import { Box } from '@qonsoll/react-design'
 import { auth } from 'app/services/Firebase/firebase'
@@ -49,6 +45,12 @@ const Header = (props) => {
   }
 
   const menuMap = [
+    {
+      title: 'Reports',
+      name: 'Reports',
+      key: ROUTES_PATHS.REPORTS_ALL,
+      icon: <DeliveredProcedureOutlined />
+    }
     // {
     //   title: 'Calendar',
     //   name: 'Calendar',

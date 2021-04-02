@@ -1,4 +1,4 @@
-import { ReportSimpleView } from 'domains/Report/components/views/ReportSimpleView'
+import { ReportAdvancedView } from 'domains/Report/components/views/ReportAdvancedView'
 import { Row, Col } from '@qonsoll/react-design'
 
 const ReportShow = (props) => {
@@ -6,7 +6,7 @@ const ReportShow = (props) => {
   return (
     <Row>
       <Col cw="auto">
-        <ReportSimpleView data={data} />
+        <ReportAdvancedView data={data} />
       </Col>
     </Row>
   )
