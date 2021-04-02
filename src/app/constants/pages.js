@@ -6,7 +6,7 @@ import {
   PullRequestOutlined,
   UsergroupAddOutlined
 } from '@ant-design/icons'
-import { ROUTES_PATHS } from 'app/constants/'
+import { ROUTES_PATHS } from 'app/constants'
 
 const PAGES = [
   // {
@@ -33,11 +33,6 @@ const PAGES = [
     text: 'Reports',
     path: ROUTES_PATHS.REPORTS_ALL,
     icon: <DeliveredProcedureOutlined />
-  },
-  {
-    text: 'Invoices',
-    path: ROUTES_PATHS.INVOICES_ALL,
-    icon: <UsergroupAddOutlined />
   }
 ]
 

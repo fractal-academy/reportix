@@ -20,16 +20,6 @@ const ROUTES = {
     path: ROUTES_PATHS.REPORT_EDIT,
     exact: true
   },
-  CALENDAR_SHOW: {
-    component: CalendarShow,
-    path: ROUTES_PATHS.CALENDAR_SHOW,
-    exact: true
-  },
-  COMPANIES_SHOW: {
-    component: CompanyShow,
-    path: ROUTES_PATHS.COMPANIES_SHOW,
-    exact: true
-  },
   PROJECTS_ALL: {
     component: ProjectsAll,
     path: ROUTES_PATHS.PROJECTS_ALL,
@@ -52,12 +42,6 @@ const ROUTES = {
     protect: [],
     component: UsersAll,
     path: ROUTES_PATHS.USERS_ALL,
-    exact: true
-  },
-  REQUESTS_ALL: {
-    protect: [],
-    component: RequestsAll,
-    path: ROUTES_PATHS.REQUESTS_ALL,
     exact: true
   }
 }
