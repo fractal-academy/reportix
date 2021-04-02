@@ -10,6 +10,7 @@ import { UserSimpleView } from 'domains/User/components/views/UserSimpleView'
 import { useHistory } from 'react-router'
 import { ROUTES_PATHS } from 'app/constants'
 import { useState } from 'react'
+import TaskAddEvent from 'domains/Task/combined/TaskAddEvent'
 
 const { Text, Title } = Typography
 const { Column } = Table
@@ -35,6 +36,7 @@ const ReportSimpleView = (props) => {
               }}>
               Edit
             </Button>
+            <TaskAddEvent />
           </Col>
         </Row>
         {open && (
