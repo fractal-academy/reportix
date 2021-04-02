@@ -6,6 +6,7 @@ import { ArrowLeftOutlined } from '@ant-design/icons'
 import Title from 'antd/es/typography/Title'
 import ProjectAddEvent from 'domains/Project/components/combined/ProjectAddEvent'
 import { useHistory } from 'react-router-dom'
+import ReportAdvancedForm from 'domains/Report/components/form/ReportAdvancedForm'
 
 const reportMockData = [
   {
@@ -146,6 +147,9 @@ const ReportsAll = (props) => {
             </Col>
           </Row>
         ))}
+      </Box>
+      <Box mx={4} style={{ position: 'sticky', bottom: '0' }}>
+        <ReportAdvancedForm />
       </Box>
     </Container>
   )
