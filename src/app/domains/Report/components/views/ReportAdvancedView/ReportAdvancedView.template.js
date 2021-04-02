@@ -1,15 +1,12 @@
 import { Row, Col, Box } from '@qonsoll/react-design'
 import { Button, Typography, Table, Card, Divider } from 'antd'
-import {
-  EditOutlined,
-  DownCircleTwoTone,
-  UpCircleTwoTone
-} from '@ant-design/icons'
+import { PlusOutlined } from '@ant-design/icons'
 import { style } from 'app/style'
 import { UserSimpleView } from 'domains/User/components/views/UserSimpleView'
 import { useHistory } from 'react-router'
 import { ROUTES_PATHS } from 'app/constants'
 import { useState } from 'react'
+import { TaskSimpleView } from 'app/domains/Task/components/views'
 
 const { Text, Title } = Typography
 
@@ -49,50 +46,68 @@ const ReportAdvancedView = (props) => {
         </Col>
         <Col>
           <Row noGutters>
-            <Col>
-              <Row noGutters h="center">
+            <Col mr={1}>
+              <Row noGutters h="center" v="center">
                 <Col cw="auto">
                   <Title level={4} style={style.resetMargin}>
                     TitleToday
                   </Title>
                 </Col>
               </Row>
-              <Row noGutters height="175px" overflow="auto">
+              <Row noGutters height="250px" overflow="auto">
                 <Col>
-                  <Box>1. Removed Calendar page</Box>
+                  <Box>
+                    <TaskSimpleView />
+                  </Box>
+                  <Box>
+                    <TaskSimpleView />
+                  </Box>
+                  <Box>
+                    <TaskSimpleView />
+                  </Box>
+                  <Box>
+                    <TaskSimpleView />
+                  </Box>
+                  <Box>
+                    <TaskSimpleView />
+                  </Box>
+                  <Box>
+                    <TaskSimpleView />
+                  </Box>
+                  <Box>
+                    <TaskSimpleView />
+                  </Box>
+                  <Box>
+                    <TaskSimpleView />
+                  </Box>
+                  <Box>
+                    <TaskSimpleView />
+                  </Box>
+                  <Box>
+                    <TaskSimpleView />
+                  </Box>
+                  <Box>
+                    <TaskSimpleView />
+                  </Box>
+                  <Box>
+                    <TaskSimpleView />
+                  </Box>
                 </Col>
               </Row>
             </Col>
-            <Col>
-              <Row noGutters h="center">
+            <Col ml={1}>
+              <Row noGutters h="center" v="center">
                 <Col cw="auto">
                   <Title level={4} style={style.resetMargin}>
                     TitleTomorrow
                   </Title>
                 </Col>
               </Row>
-              <Row noGutters height="175px" overflow="auto">
+              <Row noGutters height="250px" overflow="auto">
                 <Col>
-                  <Box>1. Fix header layout</Box>
-                </Col>
-              </Row>
-            </Col>
-          </Row>
-          <Row v="center" noGutters>
-            <Col>
-              <Row noGutters>
-                <Col p={0}>
-                  <Divider />
-                </Col>
-              </Row>
-              <Row noGutters>
-                <Col cw="auto">
-                  <Title level={4} style={style.resetMargin}>
-                    Blockers:
-                  </Title>
-                </Col>
-                <Col pt={1}>
-                  <Text> You, me, All of us</Text>
+                  <Box>
+                    <TaskSimpleView />
+                  </Box>
                 </Col>
               </Row>
             </Col>
