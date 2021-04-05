@@ -1,6 +1,6 @@
 import { Row, Col, Box } from '@qonsoll/react-design'
-import { Button, Typography, Table, Card, Divider } from 'antd'
-import { PlusOutlined } from '@ant-design/icons'
+import { Typography, Tag, Card, Divider } from 'antd'
+import { EditOutlined } from '@ant-design/icons'
 import { style } from 'app/style'
 import { UserSimpleView } from 'domains/User/components/views/UserSimpleView'
 import { useHistory } from 'react-router'
@@ -45,69 +45,73 @@ const ReportAdvancedView = (props) => {
           <Divider style={{ height: '100%' }} type="vertical" />
         </Col>
         <Col>
-          <Row noGutters>
-            <Col mr={1}>
-              <Row noGutters h="center" v="center">
-                <Col cw="auto">
-                  <Title level={4} style={style.resetMargin}>
-                    TitleToday
-                  </Title>
-                </Col>
-              </Row>
-              <Row noGutters height="250px" overflow="auto">
-                <Col>
-                  <Box>
-                    <TaskSimpleView />
-                  </Box>
-                  <Box>
-                    <TaskSimpleView />
-                  </Box>
-                  <Box>
-                    <TaskSimpleView />
-                  </Box>
-                  <Box>
-                    <TaskSimpleView />
-                  </Box>
-                  <Box>
-                    <TaskSimpleView />
-                  </Box>
-                  <Box>
-                    <TaskSimpleView />
-                  </Box>
-                  <Box>
-                    <TaskSimpleView />
-                  </Box>
-                  <Box>
-                    <TaskSimpleView />
-                  </Box>
-                  <Box>
-                    <TaskSimpleView />
-                  </Box>
-                  <Box>
-                    <TaskSimpleView />
-                  </Box>
-                  <Box>
-                    <TaskSimpleView />
-                  </Box>
-                  <Box>
-                    <TaskSimpleView />
-                  </Box>
-                </Col>
-              </Row>
+          <Row noGutters v="center">
+            <Col>
+              <Box textAlign="center">
+                <Title level={4} style={style.resetMargin}>
+                  TitleToday
+                </Title>
+              </Box>
             </Col>
-            <Col ml={1}>
-              <Row noGutters h="center" v="center">
+            <Col>
+              <Box textAlign="center">
+                <Title level={4} style={style.resetMargin}>
+                  TitleTomorrow
+                </Title>
+              </Box>
+            </Col>
+          </Row>
+          <Row noGutters height="250px" overflow="auto">
+            <Col>
+              <Row h="center" v="center" noGutters>
                 <Col cw="auto">
-                  <Title level={4} style={style.resetMargin}>
-                    TitleTomorrow
-                  </Title>
+                  <Tag color="lightgreen">Worktube</Tag>
                 </Col>
               </Row>
-              <Row noGutters height="250px" overflow="auto">
+              <Row noGutters>
                 <Col>
-                  <Box>
-                    <TaskSimpleView />
-                  </Box>
+                  <TaskSimpleView />
+                </Col>
+                {/* <Col><TaskSimpleView /></Col> */}
+              </Row>
+              <Row noGutters>
+                <Col>
+                  <TaskSimpleView />
+                </Col>
+                <Col>
+                  <TaskSimpleView />
+                </Col>
+              </Row>
+              <Row h="center" v="center" noGutters>
+                <Col cw="auto">
+                  <Tag color="lightblue">FOI</Tag>
+                </Col>
+              </Row>
+              <Row noGutters>
+                <Col>
+                  <TaskSimpleView />
+                </Col>
+                <Col>
+                  <TaskSimpleView />
+                </Col>
+              </Row>
+              <Row noGutters>
+                <Col></Col>
+                <Col>
+                  <TaskSimpleView />
+                </Col>
+              </Row>
+              <Row h="center" v="center" noGutters>
+                <Col cw="auto">
+                  <Tag color="violet">Reportix</Tag>
+                </Col>
+              </Row>
+              <Row noGutters>
+                <Col>
+                  <TaskSimpleView />
+                </Col>
+                <Col>
+                  <TaskSimpleView />
                 </Col>
               </Row>
             </Col>

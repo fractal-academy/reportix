@@ -2,7 +2,7 @@ import { UserOutlined, DeliveredProcedureOutlined } from '@ant-design/icons'
 import { Menu, Typography, Grid, Dropdown, Badge } from 'antd'
 import { Box } from '@qonsoll/react-design'
 import { auth } from 'app/services/Firebase/firebase'
-import { ROUTES_PATHS } from 'app/constants'
+import { ROUTES, ROUTES_PATHS } from 'app/constants'
 import { Link, useHistory, useLocation } from 'react-router-dom'
 import { useSession } from 'app/context/SesionContext'
 import { generatePath } from 'react-router-dom'
@@ -15,6 +15,15 @@ import { PAGES } from 'app/constants'
 
 const { SubMenu } = Menu
 const { useBreakpoint } = Grid
+
+const menuMap = [
+  {
+    title: 'Reports',
+    name: 'Reports',
+    key: ROUTES_PATHS.REPORTS_ALL,
+    icon: <DeliveredProcedureOutlined />
+  }
+]
 
 const Header = (props) => {
   const screens = useBreakpoint()
@@ -44,27 +53,6 @@ const Header = (props) => {
     history.push(ROUTES_PATHS.LOGIN)
   }
 
-  const menuMap = [
-    {
-      title: 'Reports',
-      name: 'Reports',
-      key: ROUTES_PATHS.REPORTS_ALL,
-      icon: <DeliveredProcedureOutlined />
-    }
-    // {
-    //   title: 'Calendar',
-    //   name: 'Calendar',
-    //   key: '/calendar/:id',
-    //   icon: <CalendarOutlined />
-    // },
-    // {
-    //   title: 'Requests',
-    //   name: 'Requests',
-    //   key: '/requests',
-    //   icon: <PullRequestOutlined />
-    // }
-  ]
-
   return (
     <Box bg="#272042" display="flex" flex={1} flexDirection="column">
       <Box
@@ -77,7 +65,7 @@ const Header = (props) => {
             level={4}
             id="logo1"
             style={{ color: '#fff', margin: 0 }}>
-            {screens.md ? 'Report system' : 'VS'}
+            {screens.md ? 'Report system' : 'RS'}
           </Typography.Title>
         </Link>
       </Box>

@@ -6,6 +6,8 @@ import { ArrowLeftOutlined } from '@ant-design/icons'
 import Title from 'antd/es/typography/Title'
 import ProjectAddEvent from 'domains/Project/components/combined/ProjectAddEvent'
 import { useHistory } from 'react-router-dom'
+import { useCollectionData } from 'react-firebase-hooks/firestore'
+import { firestore } from 'app/services/Firestore'
 
 const reportMockData = [
   {
@@ -81,8 +83,10 @@ const reportMockData = [
 ]
 
 const ReportsAll = (props) => {
-  const history = useHistory()
   const { withFilter = true } = props
+  const history = useHistory()
+  //const [reports, loading] = useCollectionData(firestore.collection('reports'))
+  //!loading && console.log(reports)
   const onSelectChange = (selected) => {
     //set data
   }

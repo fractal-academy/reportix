@@ -6,7 +6,7 @@ const { Text, Title } = Typography
 
 const TaskSimpleView = () => {
   return (
-    <Row noGutters>
+    <Row noGutters mb={2} pt={2}>
       <Col>
         <Row>
           <Col cw="auto" pr={0}>
