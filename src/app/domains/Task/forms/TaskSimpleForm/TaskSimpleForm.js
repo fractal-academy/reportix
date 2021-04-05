@@ -2,8 +2,10 @@ import { DatePicker, Form, Input, Select, Tag } from 'antd'
 import { Col, Row } from '@qonsoll/react-design'
 import LeaveDaySingleSelect from 'domains/LeaveDay/components/select/LeaveDaySingleSelect'
 import { Option } from 'antd/lib/mentions'
+import ProjectSingleSelect from 'domains/Project/components/select/ProjectSingleSelect/ProjectSingleSelect'
 
-const selectMap = ['Today', 'Tomorrow']
+const selectDayMap = ['Today', 'Tomorrow']
+const selectStatusMap = ['In progress', 'Done']
 
 const TaskSimpleForm = (props) => {
   const { onFinish, form } = props
@@ -16,6 +18,14 @@ const TaskSimpleForm = (props) => {
     <Form onFinish={onFinish} form={form}>
       <Row h="center" noGutters mb={2}>
         <Col>
+          <Row mb={2}>
+            <Col>
+              <Form.Item name="ProjectName">
+                {/*<Input allowClear placeholder="Enter project name" />*/}
+                <ProjectSingleSelect />
+              </Form.Item>
+            </Col>
+          </Row>
           <Row mb={2}>
             <Col>
               <Form.Item name="taskName">
@@ -72,23 +82,32 @@ const TaskSimpleForm = (props) => {
           <Row mb={2}>
             <Col>
               <Form.Item name="date">
-                <Select placeholder="Choose date" onChange={onChange}>
-                  {selectMap.map((item, index) => (
+                <Select
+                  defaultValue={selectDayMap[0]}
+                  placeholder="Choose date"
+                  onChange={onChange}>
+                  {selectDayMap.map((item, index) => (
                     <Option key={index} value={item}>
                       {item}
                     </Option>
                   ))}
-                  <Option value={dateFormat}>
-                    <DatePicker />
-                  </Option>
                 </Select>
               </Form.Item>
             </Col>
           </Row>
           <Row mb={2}>
             <Col>
-              <Form.Item name="description">
-                <Input allowClear placeholder="Short task  description" />
+              <Form.Item name="status">
+                <Select
+                  placeholder="Select status"
+                  onChange={onChange}
+                  defaultValue={selectStatusMap[0]}>
+                  {selectStatusMap.map((item, index) => (
+                    <Option key={index} value={item}>
+                      {item}
+                    </Option>
+                  ))}
+                </Select>
               </Form.Item>
             </Col>
           </Row>

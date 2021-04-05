@@ -148,6 +148,9 @@ const ReportsAll = (props) => {
           </Row>
         ))}
       </Box>
+      <Box style={{ position: 'sticky', bottom: '0' }}>
+        <ReportAdvancedForm />
+      </Box>
     </Container>
   )
 }

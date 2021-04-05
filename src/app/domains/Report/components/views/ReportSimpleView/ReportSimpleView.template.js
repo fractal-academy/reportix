@@ -36,7 +36,6 @@ const ReportSimpleView = (props) => {
               }}>
               Edit
             </Button>
-            <TaskAddEvent />
           </Col>
         </Row>
         {open && (
