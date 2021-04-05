@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useCollectionData } from 'react-firebase-hooks/firestore'
 import { getCollectionRef } from 'services/Firestore'
 import COLLECTIONS from 'constants/collection'
+import { Spinner } from 'components/Spinner'
 
 const ProjectSingleSelect = (props) => {
   // [INTERFACES]
@@ -31,12 +32,13 @@ const ProjectSingleSelect = (props) => {
     setSelected(value)
     onChange && onChange(value)
   }
-
+  if (!projects || loading) {
+    return <Spinner />
+  }
   return (
     <Select
       value={selected}
       placeholder="Select project"
-      // mode="tags"
       onChange={onSelect}
       style={style.fullWidth}
       options={dataForSelect}

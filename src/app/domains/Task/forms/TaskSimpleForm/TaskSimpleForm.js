@@ -40,43 +40,6 @@ const TaskSimpleForm = (props) => {
               </Form.Item>
             </Col>
           </Row>
-          <Row>
-            {/*<Col>*/}
-            {/*  <Form.Item*/}
-            {/*    name="dateStart"*/}
-            {/*    rules={[*/}
-            {/*      {*/}
-            {/*        required: true*/}
-            {/*      }*/}
-            {/*    ]}>*/}
-            {/*    <DatePicker*/}
-            {/*      style={{ width: '100%' }}*/}
-            {/*      onChange={onCalendarChange}*/}
-            {/*      allowClear={false}*/}
-            {/*      placeholder="From"*/}
-            {/*      format={dateFormat}*/}
-            {/*    />*/}
-            {/*  </Form.Item>*/}
-            {/*</Col>*/}
-
-            {/*<Col>*/}
-            {/*  <Form.Item*/}
-            {/*    name="dateEnd"*/}
-            {/*    rules={[*/}
-            {/*      {*/}
-            {/*        required: true*/}
-            {/*      }*/}
-            {/*    ]}>*/}
-            {/*    <DatePicker*/}
-            {/*      style={{ width: '100%' }}*/}
-            {/*      onChange={onCalendarChange}*/}
-            {/*      allowClear={false}*/}
-            {/*      placeholder="To"*/}
-            {/*      format={dateFormat}*/}
-            {/*    />*/}
-            {/*  </Form.Item>*/}
-            {/*</Col>*/}
-          </Row>
         </Col>
         <Col cw={3}>
           <Row mb={2}>
